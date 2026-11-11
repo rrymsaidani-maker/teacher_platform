@@ -1,7 +1,0 @@
-node_modules
-.mcp-use
-dist
-.env
-.env.*
-!.env.example
-.DS_Store
