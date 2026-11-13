@@ -1,4 +1,5 @@
 import type { SchoolBrand } from '@/lib/themes/school-brand'
+import { emailDir, emailTranslator } from '@/lib/email/i18n'
 import { escapeHtml, schoolButton, schoolHeadingStyle, schoolLogoHeader } from './school-brand-parts'
 
 export interface InvitationEmailData {
@@ -7,27 +8,28 @@ export interface InvitationEmailData {
   role: 'student' | 'teacher' | 'admin'
   joinUrl: string
   brand: SchoolBrand
+  locale?: string | null
 }
 
 export function invitationTemplate(data: InvitationEmailData): { subject: string; html: string } {
-  const roleLabel =
-    data.role === 'admin' ? 'administrator' : data.role === 'teacher' ? 'teacher' : 'student'
-
+  const t = emailTranslator(data.locale, 'emails.invitation')
+  const school = escapeHtml(data.schoolName)
+  const roleKey = data.role === 'admin' ? 'roleAdmin' : data.role === 'teacher' ? 'roleTeacher' : 'roleStudent'
   return {
-    subject: `You're invited to join ${data.schoolName}`,
+    subject: t('subject', { schoolName: data.schoolName }),
     html: `<!DOCTYPE html>
-<html>
+<html dir="${emailDir(data.locale)}">
 <body style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#1a1a1a">
   ${schoolLogoHeader(data.brand)}
-  <h2 style="${schoolHeadingStyle(data.brand)}">You're invited!</h2>
-  <p>${escapeHtml(data.inviterName)} has invited you to join <strong>${escapeHtml(data.schoolName)}</strong> as ${data.role === 'admin' ? 'an' : 'a'} <strong>${roleLabel}</strong>.</p>
-  <p>Click the button below to create your account and get started.</p>
+  <h2 style="${schoolHeadingStyle(data.brand)}">${t('heading')}</h2>
+  <p>${t('body', { inviterName: escapeHtml(data.inviterName), schoolName: school, role: `<strong>${t(roleKey)}</strong>` })}</p>
+  <p>${t('nextStep')}</p>
   <p style="text-align:center;margin:32px 0">
-    ${schoolButton(data.brand, data.joinUrl, `Join ${escapeHtml(data.schoolName)}`)}
+    ${schoolButton(data.brand, data.joinUrl, t('cta', { schoolName: school }))}
   </p>
-  <p style="color:#666;font-size:13px">If you didn't expect this invitation, you can safely ignore this email.</p>
+  <p style="color:#666;font-size:13px">${t('ignore')}</p>
   <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-  <p style="color:#999;font-size:12px">${escapeHtml(data.schoolName)}</p>
+  <p style="color:#999;font-size:12px">${school}</p>
 </body>
 </html>`,
   }
