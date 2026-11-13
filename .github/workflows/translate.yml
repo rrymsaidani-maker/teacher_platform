@@ -38,5 +38,5 @@ jobs:
       - name: Commit translations
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update ar, fr and es translations"
+          commit_message: "chore: update ar, fr and es translations" 
           file_pattern: messages/ar.json messages/fr.json messages/es.json
