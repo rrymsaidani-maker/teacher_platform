@@ -1,3 +1,6 @@
+import { emailDir, emailTranslator } from '@/lib/email/i18n'
+import { escapeHtml } from './school-brand-parts'
+
 export interface CompedExpiryNoticeData {
   schoolName: string
   planName: string
@@ -11,65 +14,50 @@ export interface CompedExpiryNoticeData {
   graceDays?: number | null
   /** Platform-owner copy: names the school and drops the call to action. */
   audience?: 'school' | 'owner'
+  locale?: string | null
 }
 
 export function compedExpiryNoticeTemplate(data: CompedExpiryNoticeData): { subject: string; html: string } {
   const ended = data.stage === 'ended'
   const owner = data.audience === 'owner'
-  const dayWord = data.daysRemaining === 1 ? 'day' : 'days'
+  const t = emailTranslator(data.locale, 'emails.compedExpiry')
+  const c = emailTranslator(data.locale, 'emails.common')
+  const school = escapeHtml(data.schoolName)
+  const plan = escapeHtml(data.planName)
+  const expiry = escapeHtml(data.expiryDate)
+  const audience = owner ? 'Owner' : 'School'
 
-  const subject = ended
-    ? owner
-      ? `Comped plan ended: ${data.schoolName}`
-      : `Your complimentary ${data.planName} plan has ended`
-    : owner
-      ? `Comped plan ending in ${data.daysRemaining} ${dayWord}: ${data.schoolName}`
-      : `Your complimentary ${data.planName} plan ends in ${data.daysRemaining} ${dayWord}`
-
-  const heading = ended ? 'Complimentary Plan Ended' : 'Complimentary Plan Ending'
+  const subjectKey = ended ? `subjectEnded${audience}` : `subjectUpcoming${audience}`
+  const introKey = ended
+    ? `intro${owner ? 'Owner' : 'School'}Ended`
+    : `intro${owner ? 'Owner' : 'School'}Upcoming`
+  const actionKey = ended ? `action${audience}Ended` : `action${audience}Upcoming`
   const color = ended ? '#dc2626' : '#7c3aed'
-  const grace = data.graceDays
-    ? ` The school has a ${data.graceDays}-day grace period, after which it moves to the free plan.`
-    : ' Normal billing now applies.'
 
-  let intro: string
-  let action: string
-  if (owner) {
-    intro = ended
-      ? `The complimentary <strong>${data.planName}</strong> plan for <strong>${data.schoolName}</strong> ended on ${data.expiryDate}.${grace}`
-      : `The complimentary <strong>${data.planName}</strong> plan for <strong>${data.schoolName}</strong> ends on ${data.expiryDate} (${data.daysRemaining} ${dayWord} left).`
-    action = ended
-      ? 'No action is needed unless you want to extend or re-comp this school from the platform console.'
-      : 'To extend it, update the school from the platform console before that date. Otherwise it converts to paid and enters the normal grace period.'
-  } else {
-    intro = ended
-      ? `The complimentary <strong>${data.planName}</strong> plan for ${data.schoolName} ended on ${data.expiryDate}.${grace}`
-      : `The complimentary <strong>${data.planName}</strong> plan for ${data.schoolName} ends on ${data.expiryDate}.`
-    action = ended
-      ? 'Choose a plan before the grace period ends to keep your current features.'
-      : 'Choose a plan before then to keep your features without interruption. Otherwise your school enters a 7-day grace period and is then moved to the free plan.'
-  }
+  const grace = data.graceDays
+    ? ` ${t('graceSuffix', { graceDays: data.graceDays })}`
+    : ` ${t('normalBilling')}`
 
   const button = owner
     ? ''
     : `<p style="text-align:center;margin:32px 0">
     <a href="${data.billingUrl}" style="background:${color};color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600">
-      Choose a Plan
+      ${t('cta')}
     </a>
   </p>`
 
   return {
-    subject,
+    subject: t(subjectKey, { planName: data.planName, schoolName: data.schoolName, days: data.daysRemaining }),
     html: `<!DOCTYPE html>
-<html>
+<html dir="${emailDir(data.locale)}">
 <body style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#1a1a1a">
-  <h2 style="color:${color}">${heading}</h2>
-  <p>Hi,</p>
-  <p>${intro}</p>
-  <p>${action}</p>
+  <h2 style="color:${color}">${t(ended ? 'headingEnded' : 'headingUpcoming')}</h2>
+  <p>${c('greeting')}</p>
+  <p>${t(introKey, { planName: plan, schoolName: school, expiryDate: expiry, days: data.daysRemaining })}${ended ? grace : ''}</p>
+  <p>${t(actionKey)}</p>
   ${button}
   <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-  <p style="color:#999;font-size:12px">LMS Platform Billing</p>
+  <p style="color:#999;font-size:12px">${c('billingFooter')}</p>
 </body>
 </html>`,
   }

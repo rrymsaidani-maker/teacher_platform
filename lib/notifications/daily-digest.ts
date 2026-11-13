@@ -20,11 +20,11 @@ import { dailyDigestEmailTemplate, streakNudgeEmailTemplate } from '@/lib/email/
 import { fetchAllRows } from '@/lib/supabase/fetch-all-rows'
 import { fetchAllRowsIn } from '@/lib/supabase/fetch-all-rows-in'
 import { getSchoolBrand } from '@/lib/themes/school-brand'
+import type { Locale } from '@/i18n'
+import { emailTranslator } from '@/lib/email/i18n'
 
 export type DigestLocale = Locale
 export type DigestKind = 'daily_digest' | 'streak_nudge'
-import { toLocale, type Locale } from '@/i18n'
-
 
 export interface DigestSettings {
   sendHour: number
@@ -89,7 +89,7 @@ export function resolveDigestSettings(value: unknown): DigestSettings {
     sendHour: int(v.send_hour) ?? DEFAULT_DIGEST_SETTINGS.sendHour,
     nudgeHour: int(v.nudge_hour) ?? DEFAULT_DIGEST_SETTINGS.nudgeHour,
     timezone: typeof v.timezone === 'string' && v.timezone ? v.timezone : DEFAULT_DIGEST_SETTINGS.timezone,
-    locale: toLocale(v.locale),
+    locale: v.locale === 'es' ? 'es' : DEFAULT_DIGEST_SETTINGS.locale,
   }
 }
 
@@ -160,20 +160,6 @@ export function isStreakAtRisk(
   return streak >= min && lastActivityDate === localYesterday(now, timezone)
 }
 
-const SUMMARY_COPY = {
-  en: {
-    cards: (n: number) => `${n} ${n === 1 ? 'card' : 'cards'} due`,
-    goals: (n: number) => `${n} ${n === 1 ? 'study goal' : 'study goals'} left this week`,
-    community: (n: number) => `${n} new ${n === 1 ? 'reply' : 'replies'} in the community`,
-    streak: (n: number) => `your ${n}-day streak ends tonight`,
-  },
-  es: {
-    cards: (n: number) => `${n} ${n === 1 ? 'tarjeta pendiente' : 'tarjetas pendientes'}`,
-    goals: (n: number) => `${n} ${n === 1 ? 'meta de estudio' : 'metas de estudio'} esta semana`,
-    community: (n: number) => `${n} ${n === 1 ? 'respuesta nueva' : 'respuestas nuevas'} en la comunidad`,
-    streak: (n: number) => `tu racha de ${n} días termina esta noche`,
-  },
-} as const
 
 /**
  * "12 cards due · 1 study goal left this week · 3 new replies in the community ·
@@ -183,13 +169,13 @@ export function buildSummary(
   parts: { dueCards: number; goalsPending: number; streak: number; streakAtRisk: boolean; communityReplies?: number },
   locale: DigestLocale
 ): string {
-  const copy = SUMMARY_COPY[locale]
+  const t = emailTranslator(locale, 'notifications.summary')
   const out: string[] = []
-  if (parts.dueCards > 0) out.push(copy.cards(parts.dueCards))
-  if (parts.goalsPending > 0) out.push(copy.goals(parts.goalsPending))
+  if (parts.dueCards > 0) out.push(t('cards', { n: parts.dueCards }))
+  if (parts.goalsPending > 0) out.push(t('goals', { n: parts.goalsPending }))
   const replies = parts.communityReplies ?? 0
-  if (replies > 0) out.push(copy.community(replies))
-  if (parts.streakAtRisk && parts.streak >= DIGEST_STREAK_MIN) out.push(copy.streak(parts.streak))
+  if (replies > 0) out.push(t('community', { n: replies }))
+  if (parts.streakAtRisk && parts.streak >= DIGEST_STREAK_MIN) out.push(t('streak', { n: parts.streak }))
   return out.join(' · ')
 }
 
@@ -219,7 +205,7 @@ export function resolveChannels(row: PreferencesRow | undefined): { inApp: boole
 
 export function firstName(fullName: string | null, locale: DigestLocale): string {
   const first = fullName?.trim().split(/\s+/)[0]
-  return first || (({ en: 'there', es: 'estudiante', fr: 'vous', ar: 'صديقي' } as Record<string, string>)[locale] ?? 'there')
+  return first || emailTranslator(locale, 'notifications')('fallbackFirstName')
 }
 
 /** https://{slug}.{platform-domain} — same heuristic as the invitation email. */
@@ -229,21 +215,19 @@ export function tenantBaseUrl(slug: string | null): string {
   return `${protocol}://${slug || 'app'}.${platformDomain}`
 }
 
-const FALLBACK_TEMPLATES: Record<DigestKind, Record<DigestLocale, { title: string; content: string }>> = {
-  daily_digest: {
-    en: { title: 'Your day at {{school_name}}', content: '{{summary}}. A few minutes today keeps you on track.' },
-    es: { title: 'Tu día en {{school_name}}', content: '{{summary}}. Unos minutos hoy te mantienen al día.' },
-  },
-  streak_nudge: {
-    en: {
-      title: 'Your {{streak}}-day streak ends tonight',
-      content: '{{first_name}}, one quick practice session before the day ends keeps your {{streak}}-day streak alive.',
-    },
-    es: {
-      title: 'Tu racha de {{streak}} días termina esta noche',
-      content: '{{first_name}}, una sesión rápida de práctica antes de que termine el día mantiene viva tu racha de {{streak}} días.',
-    },
-  },
+/** Fallback copy from messages/*.json. `{{var}}` placeholders are kept so renderTemplate fills them later. */
+function fallbackTemplate(kind: DigestKind, locale: DigestLocale): { title: string; content: string } {
+  const t = emailTranslator(locale, 'notifications')
+  if (kind === 'daily_digest') {
+    return {
+      title: t('dailyDigest.title', { school_name: '{{school_name}}' }),
+      content: t('dailyDigest.content', { summary: '{{summary}}' }),
+    }
+  }
+  return {
+    title: t('streakNudge.title', { streak: '{{streak}}' }),
+    content: t('streakNudge.content', { first_name: '{{first_name}}', streak: '{{streak}}' }),
+  }
 }
 
 interface TemplateRow {
@@ -265,7 +249,7 @@ export function pickTemplate(
   const candidates = rows.filter((r) => r.name === name)
   const row = candidates.find((r) => r.tenant_id === tenantId) ?? candidates.find((r) => r.tenant_id === null)
   if (row) return { id: row.id, title: row.title, content: row.content }
-  const fb = FALLBACK_TEMPLATES[kind][locale]
+  const fb = fallbackTemplate(kind, locale)
   return { id: null, title: fb.title, content: fb.content }
 }
 
