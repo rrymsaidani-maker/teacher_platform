@@ -11316,5 +11316,498 @@
       "removeStep": "الخطوة الأولى",
       "paymentMethodExamples": "Bank Transfer, Wire Transfer, Cash, etc."
     }
+  },
+  "learning": {
+    "video": "Video",
+    "embeddedContent": "المحتوى المدمج",
+    "loadingLesson": "درس الشحن",
+    "loadingSubmissions": "طلبات التوريد",
+    "exerciseCompleted": "التمرين مكتمل!",
+    "restartConfirm": "هل أنت متأكد من أنك تريد أن تعود؟ هذا سيوضح تاريخ الدردشة",
+    "chatRestarted": "شات عاد",
+    "restartFailed": "فشل في إعادة الدردشة",
+    "restartError": "دردشة الرعب",
+    "cameraPreview": "كاميرا",
+    "recordingPreview": "التسجيل المسبق",
+    "blankLabel": "Blank {number}",
+    "previousCard": "بطاقة سابقة",
+    "nextCard": "البطاقة التالية",
+    "spoilerSolution": "حل العرض",
+    "spoilerHint": "تلميح العرض",
+    "spoilerAnswer": "إجابة العرض",
+    "logoAlt": "لوجو",
+    "signatureAlt": "التوقيع",
+    "aiConfigSaved": "تم إنقاذ تشكيلة التدرج بنجاح",
+    "unexpectedError": "حدث خطأ غير متوقع",
+    "selectPersona": "Select AI persona",
+    "selectTone": "النبرة المرتدة المختارة",
+    "selectDetail": "مستوى التفاصيل المختارة",
+    "graderInstructionsPlaceholder": "أضف تعليمات محددة لصف الـ(آي آي)\n\nمثال:\n- إيلاء اهتمام خاص لجودة المدونة وأفضل الممارسات\n- التركيز على الفهم المفاهيمي على النسيج\n- الاستشهاد بالمصادر المتعلقة بالمطالبات الوقائعية\n- التأكيد على التفكير والتحليل النقديين",
+    "questionPlaceholder": "أكتب السؤال...",
+    "markCorrect": "Mark option {number} as correct",
+    "optionPlaceholder": "Option {number}",
+    "explanationPlaceholder": "التفسير الموضح بعد الجواب",
+    "searchByName": "البحث بالاسم...",
+    "picker": {
+      "callout": "خدمات الاتصال (معلومات المعلومات)",
+      "spoiler": "Spoiler / Solution",
+      "quiz": "Quiz (MCQ)",
+      "codeBlock": "CodeBlock",
+      "steps": "الخطوات",
+      "vocabulary": "الشرطة",
+      "definition": "التعريف",
+      "beforeAfter": "Compare (Before/After)"
+    }
+  },
+  "emails": {
+    "authOtp": {
+      "signup": {
+        "subject": "Confirm your email for {school}",
+        "heading": "تأكد من بريدك الإلكتروني",
+        "body": "Click the button below to confirm your email address and finish setting up your account on <strong>{school}</strong>.",
+        "cta": "البريد الإلكتروني المؤكد",
+        "footer": "إذا لم تخلق هذا الحساب يمكنك تجاهل هذه الرسالة بأمان"
+      },
+      "magiclink": {
+        "subject": "Your sign-in link for {school}",
+        "heading": "وقع",
+        "body": "Click the button below to sign in to <strong>{school}</strong>. This link expires soon and works only once.",
+        "cta": "وقع",
+        "footer": "إذا لم تطلب هذا يمكنك تجاهل هذه الرسالة بأمان"
+      },
+      "recovery": {
+        "subject": "Reset your password for {school}",
+        "heading": "أعد كلمة سرك",
+        "body": "Click the button below to choose a new password for your <strong>{school}</strong> account.",
+        "cta": "إعادة كلمة السر",
+        "footer": "إذا لم تطلب هذا يمكنك تجاهل هذه الرسالة بأمان كلمة السر لن تتغير"
+      },
+      "invite": {
+        "subject": "You're invited to join {school}",
+        "heading": "أنت مدعو",
+        "body": "Click the button below to accept your invitation and create your account on <strong>{school}</strong>.",
+        "cta": "قبول الدعوة",
+        "footer": "إذا لم تكن تتوقع هذا يمكنك تجاهل هذا البريد"
+      },
+      "emailChangeNew": {
+        "subject": "Confirm your new email — {school}",
+        "heading": "تأكد من بريدك الجديد",
+        "body": "Click the button below to confirm this address as your new email for <strong>{school}</strong>.",
+        "cta": "تأكيد البريد الإلكتروني الجديد",
+        "footer": "إذا لم تطلب هذا يمكنك تجاهل هذه الرسالة بأمان"
+      },
+      "emailChangeCurrent": {
+        "subject": "Confirm your email change — {school}",
+        "heading": "تأكد من تغيير بريدك الإلكتروني",
+        "body": "Someone requested to change the email on your <strong>{school}</strong> account. Click the button below to confirm it was you.",
+        "cta": "التغيير",
+        "footer": "إذا لم تطلب هذا، أمن حسابك وتجاهل هذا البريد الإلكتروني."
+      },
+      "reauthentication": {
+        "subject": "Confirm your identity — {school}",
+        "heading": "تأكد من هويتك",
+        "body": "Use this code to confirm the change to your <strong>{school}</strong> account.",
+        "footer": "إذا لم تطلب هذا التغيير، تجاهل هذا البريد الإلكتروني. لا تتشاركي الرمز"
+      }
+    },
+    "common": {
+      "greeting": "مرحباً",
+      "contactSupport": "إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بالدعم.",
+      "billingFooter": "بيلينغ",
+      "restoreAccess": "Restore Access",
+      "manageBilling": "مشروع قانون"
+    },
+    "accessCutoff": {
+      "scheduled": {
+        "subject": "Action required: student access to {schoolName} will be cut off on {cutoffDate}",
+        "heading": "الدورة ستقيد",
+        "lead": "<strong>{schoolName}</strong> is on the <strong>{planName}</strong> plan and currently exceeds its limits:",
+        "consequence": "If this isn't resolved by <strong>{cutoffDate}</strong>, every student at your school will lose access to all courses — lessons, exams, exercises, and certificates — until usage is brought back within the plan's limits or you upgrade.",
+        "callToAction": "للحفاظ على الوصول دون انقطاع، ورفع مستوى خطتك أو تخفيض الاستخدام (الدروس الدراسية / إزالة الطلاب) قبل التاريخ المذكور."
+      },
+      "reminder7d": {
+        "subject": "1 week left: student access to {schoolName} will be cut off on {cutoffDate}",
+        "heading": "أسبوع واحد حتى الدورة",
+        "lead": "<strong>{schoolName}</strong> is still over the limits of its <strong>{planName}</strong> plan:",
+        "consequence": "In one week — on <strong>{cutoffDate}</strong> — every student at your school will lose access to all courses, including lessons, exams, exercises and certificates. Access returns automatically once usage is back within the plan's limits or you upgrade.",
+        "callToAction": "ما زال هناك وقت لحل هذا بدون أي انقطاع لطلابك"
+      },
+      "reminder1d": {
+        "subject": "Tomorrow: student access to {schoolName} will be cut off on {cutoffDate}",
+        "heading": "دخول الدورة محظور غداً",
+        "lead": "This is the final notice before access is paused. <strong>{schoolName}</strong> is still over the limits of its <strong>{planName}</strong> plan:",
+        "consequence": "Tomorrow — on <strong>{cutoffDate}</strong> — every student at your school will lose access to all courses, including lessons, exams, exercises and certificates. Nothing is deleted and no enrollment is lost, but no student will be able to open any course until this is resolved.",
+        "callToAction": "إن رفع مستوى الاستخدام أو تخفيضه اليوم يحول دون الانقطاع تماما."
+      },
+      "enforced": {
+        "subject": "Student access to {schoolName} is now paused",
+        "heading": "دخول الدورة الآن مدفوع",
+        "lead": "As of <strong>{cutoffDate}</strong>, course access for <strong>{schoolName}</strong> is paused because the school is over the limits of its <strong>{planName}</strong> plan:",
+        "consequence": "وقد فقد كل طالب في مدرستكم إمكانية الوصول إلى جميع الدورات الدراسية - الدروس والامتحانات والتمارين والشهادات. تسجيلاتهم وتقدمهم وشراءهم كلها سليمة ولا شيء تم حذفه",
+        "callToAction": "إعادة وصول طلابك من خلال تحسين خطتك أو تقليل الاستخدام"
+      }
+    },
+    "courseRemoved": {
+      "subject": "Course \"{course}\" has been removed — {school}",
+      "body": "The course <strong>{course}</strong> that you were enrolled in has been removed from {school}. We're sorry for any inconvenience.",
+      "cta": "دورات أخرى"
+    },
+    "paymentFailed": {
+      "subject": "Action required: Payment failed for your {planName} plan",
+      "heading": "المدفوعات المفقودة",
+      "body": "We were unable to process your payment for the <strong>{planName}</strong> plan on {schoolName}.",
+      "note": "يرجى تحديث طريقة الدفع الخاصة بك لتجنب انقطاع إلى خدمة مدرستك.",
+      "cta": "تحديث طريقة الدفع"
+    },
+    "joinedSchool": {
+      "subject": "Welcome to {schoolName}!",
+      "heading": "Welcome to {schoolName}!",
+      "greeting": "Hi {studentName},",
+      "body": "You've successfully joined <strong>{schoolName}</strong>. Browse available courses and start learning today.",
+      "cta": "الذهاب إلى داش لوح"
+    },
+    "planDowngraded": {
+      "subject": "Your {schoolName} school has moved to the free plan",
+      "heading": "الخطة المخفضة",
+      "body": "We didn't receive a renewal payment for the <strong>{planName}</strong> plan on {schoolName} before the grace period ended, so your school has been moved to the <strong>free</strong> plan.",
+      "note": "دوراتكم وبياناتكم غير متأثرة على الفور، ولكن الحدود الخاصة بالتخطيط الحر سارية الآن وقد تغيرت رسوم معاملاتكم وفقا لذلك. إذا تجاوز استخدامك الحالي حدود الخطة المجانية ستتلقى إشعاراً منفصلاً بموعد محدد قبل أن يتم تقييد دخول الطلاب",
+      "upgradeNote": "يمكنك التحديث مرة أخرى في أي وقت من لوحة الفواتير.",
+      "cta": "إرفع خطتك",
+      "support": "إذا كنت قد قدمت بالفعل دفعة تجديد، يرجى الاتصال الدعم حتى نتمكن من استعادة خطتك."
+    },
+    "enrollmentConfirmed": {
+      "subject": "You're enrolled in \"{courseTitle}\" — {schoolName}",
+      "heading": "Welcome to {courseTitle}!",
+      "greeting": "Hi {studentName},",
+      "body": "You're now enrolled in <strong>{courseTitle}</strong> at {schoolName}. You can start learning right away.",
+      "cta": "أذهب إلى دوراتي",
+      "support": "إذا كان لديك أي أسئلة، الرد على هذا البريد الإلكتروني أو دعم الاتصال."
+    },
+    "certificateIssued": {
+      "subject": "Your certificate for \"{courseTitle}\" is ready — {schoolName}",
+      "heading": "Congratulations, {studentName}!",
+      "body": "You've successfully completed <strong>{courseTitle}</strong> and your certificate is ready.",
+      "cta": "شهادة تحميل",
+      "verify": "التحقق على الإنترنت",
+      "share": "اتقاسم انجازك مع شبكتك باستخدام وصلة التحقق"
+    },
+    "invitation": {
+      "subject": "You're invited to join {schoolName}",
+      "heading": "أنت مدعو!",
+      "body": "{inviterName} has invited you to join <strong>{schoolName}</strong> as {role}.",
+      "roleAdmin": "مدير",
+      "roleTeacher": "معلم",
+      "roleStudent": "طالب",
+      "nextStep": "اضغط على الزر أسفل لخلق حسابك وابدأ",
+      "cta": "Join {schoolName}",
+      "ignore": "إذا لم تتوقع هذه الدعوة يمكنك تجاهل هذه الرسالة بأمان"
+    },
+    "paymentRequestExpired": {
+      "subject": "Your {planName} payment request for {schoolName} has expired",
+      "heading": "طلب الدفع المنتهي",
+      "body": "The bank transfer request for the <strong>{planName}</strong> plan on {schoolName} ({amount}) has been open for {ttlDays} days without a confirmed payment, so we've closed it.",
+      "note": "لم يتم اتهام أي شيء خطتك لم تتغير الآن، ولكن هذا الطلب لم يعد يحملها - إذا كانت فترة فواتيرك قد انتهت بالفعل، ستنتقل مدرستك إلى الخطة الحرة على الجدول العادي.",
+      "action": "إذا كنت لا تزال تريد هذه الخطة، بدء طلب جديد من لوحة الفواتير. إذا كنت قد نقلت المال بالفعل، الاتصال الدعم ونحن سوف تطابق ذلك.",
+      "cta": "الذهاب إلى بيلينغ"
+    },
+    "renewalReminder": {
+      "overdue": {
+        "subject": "Your {planName} plan payment is overdue for {schoolName}",
+        "heading": "المبالغ المستحقة الدفع",
+        "intro": "Your <strong>{planName}</strong> plan for {schoolName} lapsed on {periodEnd} and is now in a grace period.",
+        "action": "للحفاظ على خطتك الحالية، يرجى تقديم دفعة تجديد الخاص بك قبل نهاية فترة السماح. إذا لم نستلمها ستنتقل مدرستك إلى الخطة الحرة",
+        "cta": "Submit Renewal Payment"
+      },
+      "due": {
+        "subject": "Renewal due soon: your {planName} plan for {schoolName}",
+        "heading": "تذكير جديد",
+        "intro": "Your <strong>{planName}</strong> plan for {schoolName} is scheduled to renew on {periodEnd}.",
+        "action": "لتجنب أي انقطاع، يرجى تقديم دفعة التجديد من خلال لوحة الإعلانات قبل تاريخ التجديد.",
+        "cta": "استعراض مشاريع القوانين"
+      },
+      "alreadySubmitted": "إذا كنت قد قدمت بالفعل تجديد الخاص بك، يمكنك تجاهل هذه الرسالة - قد لا تزال تنتظر تأكيد."
+    },
+    "downgradeBlocked": {
+      "reverted": {
+        "subject": "Your downgrade to {newPlanName} could not be completed",
+        "heading": "لم يكتمل",
+        "lead": "We could not complete the downgrade of <strong>{schoolName}</strong> to the <strong>{newPlanName}</strong> plan because your school currently exceeds that plan's limits. Your subscription remains on the <strong>{oldPlanName}</strong> plan and your billing has not changed.",
+        "next": "To downgrade to {newPlanName}, first reduce your usage below its limits, then change your plan again from the billing page."
+      },
+      "applied": {
+        "subject": "Action required: {schoolName} is over its {newPlanName} plan limits",
+        "heading": "على حدود الخطة",
+        "lead": "<strong>{schoolName}</strong> was downgraded to the <strong>{newPlanName}</strong> plan, but your school currently exceeds that plan's limits. Please reduce usage or upgrade your plan.",
+        "next": "If this isn't resolved within 14 days, all students at your school will lose access to all courses until usage is brought back within the {newPlanName} plan's limits or you upgrade."
+      }
+    },
+    "paymentInstructions": {
+      "subject": "Payment instructions for {item} — {school}",
+      "heading": "How to pay for {item}",
+      "intro": "<strong>{school}</strong> has sent the payment instructions for your request.",
+      "amount": "المبلغ",
+      "method": "المنهجية",
+      "payBy": "المرتب",
+      "afterPaying": "بمجرد أن تدفع، تحميل إيصالك على صفحة طلبك حتى تتمكن المدرسة من تأكيد ذلك.",
+      "cta": "افتح طلب الدفع"
+    },
+    "paymentRequestReminder": {
+      "subject": "Your payment request for {item} expires soon — {school}",
+      "heading": "Your request for {item} is about to expire",
+      "intro": "<strong>{school}</strong> is still waiting on your payment for the request below.",
+      "item": "البند",
+      "amount": "المبلغ",
+      "expiresToday": "ينتهي هذا الطلب اليوم.",
+      "expiresIn": "This request expires in {days} days.",
+      "expiresOn": "النفقات على",
+      "afterExpiry": "إذا تباطأت، لا شيء مُتهم لكن عليك أن تبدأ بطلب جديد لاسترداد هذا",
+      "cta": "اذهب إلى طلب الدفع"
+    },
+    "compedExpiry": {
+      "subjectEndedSchool": "Your complimentary {planName} plan has ended",
+      "subjectEndedOwner": "Comped plan ended: {schoolName}",
+      "subjectUpcomingSchool": "Your complimentary {planName} plan ends in {days, plural, one {# يوم #} other {# أيام #}}",
+      "subjectUpcomingOwner": "الخطة المجمعة تنتهي {days, plural, one {# يوم #} other {# أيام #}}: {schoolName}",
+      "headingEnded": "الخطة التكميلية",
+      "headingUpcoming": "الخطة التكميلية",
+      "graceSuffix": "The school has a {graceDays}-day grace period, after which it moves to the free plan.",
+      "normalBilling": "فاتورة عادية الآن تنطبق.",
+      "introOwnerEnded": "The complimentary <strong>{planName}</strong> plan for <strong>{schoolName}</strong> ended on {expiryDate}.",
+      "introOwnerUpcoming": "The complimentary <strong>{planName}</strong> plan for <strong>{schoolName}</strong> ends on {expiryDate} ({days, plural, one {# يوم #} other {# أيام #}} اليسار.",
+      "introSchoolEnded": "The complimentary <strong>{planName}</strong> plan for {schoolName} ended on {expiryDate}.",
+      "introSchoolUpcoming": "The complimentary <strong>{planName}</strong> plan for {schoolName} ends on {expiryDate}.",
+      "actionOwnerEnded": "لا حاجة لاتخاذ أي إجراء إلا إذا كنت ترغب في تمديد هذه المدرسة أو إعادة تجهيزها من النظام.",
+      "actionOwnerUpcoming": "To extend it, update the school from the platform console before that date. وإلا ستتحوّل إلى أجر وتدخل فترة النعمة العادية.",
+      "actionSchoolEnded": "اختر خطة قبل أن تنتهي فترة النعمة للحفاظ على ملامحك الحالية",
+      "actionSchoolUpcoming": "اختر خطة قبل ذلك للحفاظ على خصائصك دون انقطاع. وإلا تدخل مدرستك فترة سماح مدتها 7 أيام ثم تنتقل إلى الخطة الحرة",
+      "cta": "اختر خطة"
+    },
+    "dailyDigest": {
+      "subject": "Your day at {schoolName}",
+      "greeting": "Hi {name},",
+      "intro": "هذا ما ينتظرك اليوم",
+      "cards": "{n, plural, one {بطاقة مراجعة} other {بطاقات مراجعة}}",
+      "goals": "{n, plural, one {# الهدف الدراسي ترك هذا الأسبوع} other {# أهداف الدراسة تركت هذا الأسبوع}}",
+      "community": "{n, plural, one {# رد جديد في المجتمع} other {الردود الجديدة في المجتمع}}",
+      "streak": "Your {n}-day streak ends tonight",
+      "cta": "إلتقطْ حيث تَركتَ",
+      "footer": "بضعة دقائق اليوم تبقيك على المسار الصحيح"
+    },
+    "streakNudge": {
+      "subject": "Your {streak}-day streak ends tonight",
+      "body": "{name}, one quick practice session before the day ends keeps your {streak}-day streak alive.",
+      "cta": "أنقذني"
+    },
+    "platformFee": {
+      "footer": "إعداد فواتير المنبر",
+      "statement": {
+        "subject": "Platform fee statement for {schoolName}",
+        "heading": "بيان رسوم البرامج الشهرية",
+        "body": "We issued the platform fee statement for <strong>{school}</strong>{ref}: <strong>{amount}</strong>, due {due}. This is a statement, not a tax invoice.",
+        "button": "رصيد الرؤية"
+      },
+      "reminder": {
+        "subject": "Reminder: platform fees for {schoolName} are due tomorrow",
+        "heading": "غداً",
+        "body": "The platform fee balance for <strong>{school}</strong> (<strong>{amount}</strong>) is due {due}.",
+        "button": "رصيد المرتبات"
+      },
+      "overdue": {
+        "subject": "Platform fees overdue for {schoolName}",
+        "heading": "المدفوعات المستحقة الدفع",
+        "body": "The platform fee balance for <strong>{school}</strong> (<strong>{amount}</strong>) is overdue. If it is not paid within the grace period, the school will stop accepting new sales and enrollments. Your current students keep their access.",
+        "button": "رصيد المرتبات"
+      },
+      "blocked": {
+        "subject": "New sales paused for {schoolName}",
+        "heading": "مبيعات جديدة متوقفة",
+        "body": "<strong>{school}</strong> is not accepting new sales or enrollments until the platform fee balance (<strong>{amount}</strong>) is paid. Current students keep their access and renewals continue. Sales resume as soon as you pay.",
+        "button": "رصيد المرتبات"
+      },
+      "resumed": {
+        "subject": "Sales resumed for {schoolName}",
+        "heading": "المبيعات المستأنفة",
+        "body": "We received your payment. <strong>{school}</strong> is accepting new sales and enrollments again.",
+        "button": "رصيد الرؤية"
+      }
+    }
+  },
+  "notifications": {
+    "fallbackFirstName": "هناك",
+    "summary": {
+      "cards": "{n, plural, one {البطاقة المستحقة} other {البطاقات المستحقة}}",
+      "goals": "{n, plural, one {# الهدف الدراسي ترك هذا الأسبوع} other {# أهداف الدراسة تركت هذا الأسبوع}}",
+      "community": "{n, plural, one {# رد جديد في المجتمع} other {الردود الجديدة في المجتمع}}",
+      "streak": "your {n}-day streak ends tonight"
+    },
+    "dailyDigest": {
+      "title": "Your day at {school_name}",
+      "content": "{summary}. A few minutes today keeps you on track."
+    },
+    "streakNudge": {
+      "title": "Your {streak}-day streak ends tonight",
+      "content": "{first_name}, one quick practice session before the day ends keeps your {streak}-day streak alive."
+    }
+  },
+  "actionErrors": {
+    "e8d19f0f3": "الموضوع أو اللون الغائب",
+    "e015e931e": "فشل في إنقاذ الموضوع",
+    "e293b3ff3": "فشل في إعادة تحديد الموضوع",
+    "e7ccefc10": "فشل في جلب الأماكن",
+    "e7cef8413": "تفشل في وضع",
+    "e55e7e0a0": "تحديد القيمة يجب أن يكون غرضاً",
+    "ec42234a8": "لم يستكمل",
+    "e0d6ed489": "فشل في تحديث الأطر",
+    "eeb4b7e32": "Invalid input",
+    "e688420e2": "مفتاح غير معروف",
+    "e72165ade": "فشل في إعادة تحديد الوضع",
+    "eb31589f3": "اختر بلد من القائمة",
+    "e40a6d082": "عدم تحديث البلد المدرسي",
+    "e9cf28122": "فشل في جلب محفظة سولانا",
+    "e4c8a5cff": "أدخل عنوان محفظة سولانا صالح (القاعدة 58 و 32 إلى 44)",
+    "ed0fc0310": "فشل في إنقاذ محفظة سولانا",
+    "e78621b2a": "أدخل هويتك",
+    "e92726434": "أدخل مفتاحك و سرك",
+    "e799d5edb": "أدخلي كل من مفتاح \"إم آي\" و سر \"آي أي\"",
+    "ee72733d8": "\"الدفعة\"",
+    "eeec48510": "عدم توفير وثائق تفويض الدفع الملزمة",
+    "ed39fda5b": "فشل في الحصول على مركز",
+    "e2fc59369": "عدم إزالة وثائق تفويض الدفع الملزمة",
+    "e281fb51b": "عدم التوصل إلى حل يمكّن مقدمي الخدمات",
+    "ee6be78db": "هذه الصفحة تغيرت في مكان آخر بعد أن فتحتها",
+    "efb0f9070": "لم يعثر على صفحة الهبوط",
+    "edd9f5ee2": "لم يقدم أي ملف",
+    "e2ceb3aba": "حجم الملف يجب أن يكون أقل من 5MB",
+    "ea68d3eb8": "نوع الملفوف غير مسموح به إستعملْ جي بي جي، PNG، GIF، ويب، أَو SVG.",
+    "ed9f504b4": "Invalid file URL",
+    "e64343a83": "Access denied",
+    "e10d9c06f": "غير المأذون به: يلزم الحصول على المعلومات",
+    "ef3d57b2c": "الاشتراكات غير المسددة",
+    "e23c40f30": "الاشتراكات التي لم يعثر عليها أو يُرفض الحصول عليها",
+    "e0e715593": "حدث خطأ غير متوقع",
+    "e0e2128ed": "ليس من المقرر إلغاء الاشتراك",
+    "e3e9043c2": "وقد ألغي هذا الاشتراك في مقدم الدفع ولا يمكن استئنافه. ويمكن للطالب أن ينضم مرة أخرى عندما ينتهي.",
+    "e34caa3b2": "فشل إعادة تنشيط المورد",
+    "e2a87047b": "الوظائف التي لم يعثر عليها",
+    "e3d82047d": "لم يعثر على تعليق",
+    "e0c91acba": "غير موثق",
+    "e0febdb39": "أنت لا تَستطيعُ طَفْ نفسك",
+    "eb74d4166": "الإنهاء يجب أن يكون في المستقبل",
+    "e9c995b45": "مستخدم لم يعثر عليه في هذه المدرسة",
+    "e7b7e2f9f": "العلم لم يعثر عليه",
+    "e7d2849dd": "No settings provided",
+    "e9d49d7c7": "المعاملات التي لم يعثر عليها",
+    "ef58bef1a": "عدم تأكيد الدفع",
+    "eedc36943": "عدم إلغاء الدفع",
+    "e99495b63": "نوع الإخطار غير المستوفى",
+    "eda252cdc": "لا يمكن للمعلمين إلا أن يوجّهوا إخطارات",
+    "e26dca9a8": "يمكنك فقط أن تخلق إخطارات لدوراتك الخاصة",
+    "e542d2da1": "عدم وضع إخطار",
+    "e94f040bf": "عدم إرسال الإخطار",
+    "e89993ca4": "فشل في جلب الإخطارات",
+    "ef802e372": "لم يوضع بعد على النحو التالي:",
+    "e9b4d0868": "لم يوضع علامة على الجميع كما يلي:",
+    "e4ba9f830": "عدم التخلي عن الإخطار",
+    "e3b91a64f": "عدم العثور على إخطار أو منع الوصول إليه",
+    "e5e3403e7": "لم تستكمل الحالة",
+    "e939f282d": "عدم حذف الإخطار",
+    "e24f1253f": "فشل في جلب الإحصائيات",
+    "eccae6794": "فشل في جلب النماذج",
+    "e9d6c12e8": "فشل في جلب النموذج",
+    "e21a704ee": "فشل في خلق النموذج",
+    "ef03d9116": "عدم العثور على النموذج أو منع الوصول إليه",
+    "e56d2206f": "لم يستكمل النموذج",
+    "ecd7811a5": "عدم حذف النموذج",
+    "e25504122": "حجم الملف يجب أن يكون أقل من 2MB",
+    "e9029b987": "سوبرمان فقط",
+    "ebfe28e06": "Invalid UI state key",
+    "e855f40bd": "الأصول غير المكتشفة",
+    "e50a5fe1c": "لا يمكن أن تحذف الملفات المحملة من الآخرين",
+    "e69362442": "لم يكتمل ركوب الطائرة",
+    "e05f65aea": "فشل في امتحان الدرجة",
+    "e59bdf967": "Exam not found",
+    "e3f2c815e": "فشل في تحديث التشكيلة",
+    "e384c5d78": "أنت حالياً مذعور ولا تستطيع أن تخلق وظائف",
+    "eea300382": "المطلوب",
+    "e9ee12865": "Invalid course ID",
+    "e95da7b58": "ID",
+    "e9902dad1": "التاريخ غير المستوفى",
+    "ed931d030": "نوع الوظائف الثابتة",
+    "e5f77c09c": "المعلمون والمعلمون الوحيدون يمكنهم خلق هذا النوع من الوظائف",
+    "eceb3e557": "يمكن أن يكون موعداً مناسباً",
+    "e2f996477": "ملحقات غير صالحة",
+    "e87aeb687": "فقط وظائف الدورة يمكن تحديدها عند نشرها",
+    "ecc5b9073": "لا يمكن إلا لمؤلف الدورة أو المدير أن يعلق الوظائف",
+    "e803341a8": "أنت الآن مُشوّه ولا تستطيع تحرير الوظائف",
+    "e88c587f5": "يمكنك فقط تحرير وظائفك",
+    "e61856515": "لا يمكن تحرير الوظائف العسكرية",
+    "e8d93bea9": "العنوان مطلوب للاستطلاعات",
+    "e3649aeda": "يمكنك فقط أن تحذف وظائفك",
+    "eb2899c32": "أنت حالياً مشوه ولا تستطيع التعليق",
+    "ec3849f4a": "هذه الوظيفة مغلقة ولا تقبل تعليقات جديدة",
+    "e9e24f9d1": "لم يعثر على تعليق الوالدين",
+    "eecd05cf7": "يمكنك فقط حذف تعليقاتك",
+    "e0bb4a6a0": "رد فعل غير مستقر",
+    "e2e7264a3": "أنت حالياً مذعور",
+    "ebdffe9f1": "أنت مُشوّه حالياً ولا يُمكنُ أَنْ تَجْعلَ إستطلاعاتَ",
+    "ea45961bd": "Invalid options format",
+    "e8a8110e3": "لا يقل عن خيارين من خيارات الاقتراع",
+    "ee791b302": "الحد الأقصى لعشرة خيارات الاقتراع المسموح بها",
+    "efdeabcb1": "ويجب أن يكون كل خيار من خيارات الاقتراع أقل من 200 شخص",
+    "e2717e4ee": "لا يسمح للطلاب بخلق استطلاعات",
+    "ef1382264": "هذه الوظيفة ليست إستطلاع",
+    "eabc9a8de": "خيار آخر",
+    "e7ccc695c": "لقد صوتت بالفعل على هذا الاقتراع",
+    "e10ef8666": "حجم الملف يجب أن يكون أقل من 10MB",
+    "e1000b531": "نوع الملفوف غير مسموح به Use JPEG, PNG, GIF, WebP, MP4, WebM, or PDF.",
+    "e801fe691": "السبب مطلوب ويجب أن يكون أقل من 000 1 شخص",
+    "e5c3059d4": "لا يمكنك أن تحجب نفسك",
+    "e8d4fc86c": "الأسئلة فقط لها جواب مقبول",
+    "e5f13bb4c": "فقط الشخص الذي سأل أو المعلم يمكنه قبول إجابة",
+    "e78d02f93": "هذه الإجابة لم تعد متاحة",
+    "ed3409084": "الشرايين الغامضة",
+    "e9affd916": "الوظائف الثابتة",
+    "ec5085bd6": "فشل في تفتيش الأعضاء",
+    "e10007098": "أنت لست عضوا في هذه المدرسة",
+    "ea7b50ae7": "النوع غير المسموح به",
+    "e2d1d4c27": "الموارد التي لم يعثر عليها",
+    "e8c75371c": "بالطبع لم يعثر عليه",
+    "e336700dd": "دورة غير صالحة",
+    "ec2ba81a4": "عدم وجود طلب",
+    "e779c0067": "يجب أن يكون الرقم كله من صفر إلى 100",
+    "ea1387d14": "التغذية الرجعية طويلة جدا",
+    "efd68d5cb": "هذه السرعة لم تصنف أو لم تعد موجودة",
+    "e7a2c6ab2": "فشل في إنقاذ الصف",
+    "eeceee888": "هذه العجلة لم تعد موجودة",
+    "eb06a62bc": "العمود الفقري",
+    "e4317b07e": "المفقودون",
+    "e3d24273b": "موجود بالفعل",
+    "ec378d6a1": "عدم العثور على طلب دفع أو رفض الحصول عليه",
+    "e2947a309": "لم يعثر على طلب دفع",
+    "ef6cb4938": "هذا الطلب لم يعد ينتظر الدفع",
+    "e950b4dc6": "وقد سُجلت هذه الإشارة بالفعل لدفعة أخرى في هذه المدرسة. تحقق من الرقم وحاول مرة أخرى",
+    "ec486b2c3": "فشل في توفير تفاصيل الدفع",
+    "e04eb7762": "التفضيل الناقص",
+    "e487cabef": "عدم توفير الأفضلية"
+  },
+  "libErrors": {
+    "e5fd805fe": "No active certificate template found for this course",
+    "e223b2574": "لم يعثر على بيانات المستخدمين",
+    "e394c3372": "لم يتم العثور على مفتاح الإصدار رجاءً إتّصلْ مدير.",
+    "e935841dc": "التحقق من الأهلية",
+    "e8c75371c": "بالطبع لم يعثر عليه",
+    "e615b5c93": "أنت بالفعل عضو في هذه المدرسة",
+    "ea9939325": "فشل في الانضمام إلى المدرسة. أرجوك حاول مرة أخرى",
+    "e8869b053": "لم تستكمل عضوية المدرسة. أرجوك حاول مرة أخرى",
+    "e7bc0967b": "عدم توجيه دعوة",
+    "e213a7692": "لم يعثر على",
+    "e7a3e0c7b": "Submission already graded",
+    "e59bdf967": "Exam not found",
+    "ecc449b42": "فشل في اختبار الحمل",
+    "ee9a7b9a6": "التخرج غير متاح الآن أرجوك حاول مرة أخرى",
+    "e5defbf3d": "فشل في إنقاذ نتائج التدرج",
+    "eab9c615c": "فشل في الرد على التدرج أرجوك حاول مرة أخرى",
+    "e2ceb3aba": "حجم الملف يجب أن يكون أقل من 5MB",
+    "e89dde603": "نوع الملفوف غير مسموح به (استخدم (جي بي جي)، (بي إن جي)، (جي إف)، أو (ويب بي"
   }
 }

@@ -11316,5 +11316,498 @@
       "removeStep": "Supprimer l' étape",
       "paymentMethodExamples": "Virement bancaire, virement bancaire, espèces, etc."
     }
+  },
+  "learning": {
+    "video": "Vidéo",
+    "embeddedContent": "Contenu intégré",
+    "loadingLesson": "Chargement de la leçon",
+    "loadingSubmissions": "Chargement des soumissions",
+    "exerciseCompleted": "Exercice terminé!",
+    "restartConfirm": "Voulez-vous vraiment redémarrer ? Cela effacera votre historique de chat.",
+    "chatRestarted": "Chat redémarré",
+    "restartFailed": "Impossible de redémarrer le chat",
+    "restartError": "Erreur lors du redémarrage du chat",
+    "cameraPreview": "Aperçu de la caméra",
+    "recordingPreview": "Aperçu de l'enregistrement",
+    "blankLabel": "Blank {number}",
+    "previousCard": "Carte précédente",
+    "nextCard": "Carte suivante",
+    "spoilerSolution": "Afficher la solution",
+    "spoilerHint": "Afficher un indice",
+    "spoilerAnswer": "Afficher la réponse",
+    "logoAlt": "Logo",
+    "signatureAlt": "Signature",
+    "aiConfigSaved": "Configuration de classement AI enregistrée avec succès",
+    "unexpectedError": "Une erreur inattendue s'est produite",
+    "selectPersona": "Sélectionner la personne AI",
+    "selectTone": "Sélectionner le ton de rétroaction",
+    "selectDetail": "Sélectionnez le niveau de détail",
+    "graderInstructionsPlaceholder": "Ajouter des instructions spécifiques pour le niveleuse AI...\n\nExemple :\n- Accorder une attention particulière à la qualité du code et aux meilleures pratiques\n- Se concentrer sur la compréhension conceptuelle sur la syntaxe\n- Exiger la citation des sources pour les revendications factuelles\n- Souligner la pensée critique et l'analyse",
+    "questionPlaceholder": "Écris la question...",
+    "markCorrect": "Mark option {number} as correct",
+    "optionPlaceholder": "Option {number}",
+    "explanationPlaceholder": "Explication après la réponse",
+    "searchByName": "Recherche par nom...",
+    "picker": {
+      "callout": "Appel (info)",
+      "spoiler": "Spoiler / Solution",
+      "quiz": "Quiz (MCQ)",
+      "codeBlock": "CodeBlock",
+      "steps": "Étapes",
+      "vocabulary": "Vocabulaire",
+      "definition": "Définition",
+      "beforeAfter": "Comparer (avant/après)"
+    }
+  },
+  "emails": {
+    "authOtp": {
+      "signup": {
+        "subject": "Confirm your email for {school}",
+        "heading": "Confirmez votre email",
+        "body": "Click the button below to confirm your email address and finish setting up your account on <strong>{school}</strong>.",
+        "cta": "Confirmer l'email",
+        "footer": "Si vous n'avez pas créé ce compte, vous pouvez ignorer ce courriel en toute sécurité."
+      },
+      "magiclink": {
+        "subject": "Your sign-in link for {school}",
+        "heading": "Connexion",
+        "body": "Click the button below to sign in to <strong>{school}</strong>. This link expires soon and works only once.",
+        "cta": "Connexion",
+        "footer": "Si vous n'avez pas demandé cela, vous pouvez ignorer en toute sécurité ce courriel."
+      },
+      "recovery": {
+        "subject": "Reset your password for {school}",
+        "heading": "Réinitialiser votre mot de passe",
+        "body": "Click the button below to choose a new password for your <strong>{school}</strong> account.",
+        "cta": "Réinitialiser le mot de passe",
+        "footer": "Si vous n'avez pas demandé cela, vous pouvez ignorer en toute sécurité ce courriel — votre mot de passe ne changera pas."
+      },
+      "invite": {
+        "subject": "You're invited to join {school}",
+        "heading": "Vous êtes invités.",
+        "body": "Click the button below to accept your invitation and create your account on <strong>{school}</strong>.",
+        "cta": "Accepter l'invitation",
+        "footer": "Si vous ne vous attendiez pas à cela, vous pouvez ignorer en toute sécurité ce courriel."
+      },
+      "emailChangeNew": {
+        "subject": "Confirm your new email — {school}",
+        "heading": "Confirmez votre nouveau courriel",
+        "body": "Click the button below to confirm this address as your new email for <strong>{school}</strong>.",
+        "cta": "Confirmer un nouveau courriel",
+        "footer": "Si vous n'avez pas demandé cela, vous pouvez ignorer en toute sécurité ce courriel."
+      },
+      "emailChangeCurrent": {
+        "subject": "Confirm your email change — {school}",
+        "heading": "Confirmez votre changement de courriel",
+        "body": "Someone requested to change the email on your <strong>{school}</strong> account. Click the button below to confirm it was you.",
+        "cta": "Confirmer le changement",
+        "footer": "Si vous n'avez pas demandé cela, sécurisez votre compte et ignorez ce courriel."
+      },
+      "reauthentication": {
+        "subject": "Confirm your identity — {school}",
+        "heading": "Confirmez votre identité",
+        "body": "Use this code to confirm the change to your <strong>{school}</strong> account.",
+        "footer": "Si vous n'avez pas demandé ce changement, ignorez ce courriel. Ne partagez pas le code."
+      }
+    },
+    "common": {
+      "greeting": "Bonjour.",
+      "contactSupport": "Si vous pensez que c'est une erreur, veuillez contacter le support.",
+      "billingFooter": "Facturation",
+      "restoreAccess": "Rétablir l'accès",
+      "manageBilling": "Gérer la facturation"
+    },
+    "accessCutoff": {
+      "scheduled": {
+        "subject": "Action required: student access to {schoolName} will be cut off on {cutoffDate}",
+        "heading": "L'accès au cours sera restreint",
+        "lead": "<strong>{schoolName}</strong> is on the <strong>{planName}</strong> plan and currently exceeds its limits:",
+        "consequence": "If this isn't resolved by <strong>{cutoffDate}</strong>, every student at your school will lose access to all courses — lessons, exams, exercises, and certificates — until usage is brought back within the plan's limits or you upgrade.",
+        "callToAction": "Pour garder l'accès ininterrompu, mettez à jour votre plan ou réduisez l'utilisation (cours d'archives / supprimer les étudiants) avant la date ci-dessus."
+      },
+      "reminder7d": {
+        "subject": "1 week left: student access to {schoolName} will be cut off on {cutoffDate}",
+        "heading": "Une semaine avant que l'accès au cours soit restreint",
+        "lead": "<strong>{schoolName}</strong> is still over the limits of its <strong>{planName}</strong> plan:",
+        "consequence": "In one week — on <strong>{cutoffDate}</strong> — every student at your school will lose access to all courses, including lessons, exams, exercises and certificates. Access returns automatically once usage is back within the plan's limits or you upgrade.",
+        "callToAction": "Il est encore temps de résoudre cela sans interruption pour vos étudiants."
+      },
+      "reminder1d": {
+        "subject": "Tomorrow: student access to {schoolName} will be cut off on {cutoffDate}",
+        "heading": "L'accès au cours est limité demain",
+        "lead": "This is the final notice before access is paused. <strong>{schoolName}</strong> is still over the limits of its <strong>{planName}</strong> plan:",
+        "consequence": "Tomorrow — on <strong>{cutoffDate}</strong> — every student at your school will lose access to all courses, including lessons, exams, exercises and certificates. Nothing is deleted and no enrollment is lost, but no student will be able to open any course until this is resolved.",
+        "callToAction": "La modernisation ou la réduction de l'utilisation empêche aujourd'hui l'interruption complète."
+      },
+      "enforced": {
+        "subject": "Student access to {schoolName} is now paused",
+        "heading": "L'accès au cours est maintenant abandonné",
+        "lead": "As of <strong>{cutoffDate}</strong>, course access for <strong>{schoolName}</strong> is paused because the school is over the limits of its <strong>{planName}</strong> plan:",
+        "consequence": "Chaque élève de votre école a perdu l'accès à tous les cours — leçons, examens, exercices et certificats. Leurs inscriptions, progrès et achats sont intacts et rien n'a été supprimé; l'accès est automatiquement restauré, pour tout le monde à la fois, dès que l'utilisation est de retour dans les limites du plan ou que vous mettez à niveau.",
+        "callToAction": "Restaurer l'accès pour vos étudiants en améliorant votre plan ou en réduisant l'utilisation."
+      }
+    },
+    "courseRemoved": {
+      "subject": "Course \"{course}\" has been removed — {school}",
+      "body": "The course <strong>{course}</strong> that you were enrolled in has been removed from {school}. We're sorry for any inconvenience.",
+      "cta": "Parcourir d'autres cours"
+    },
+    "paymentFailed": {
+      "subject": "Action required: Payment failed for your {planName} plan",
+      "heading": "Échec du paiement",
+      "body": "We were unable to process your payment for the <strong>{planName}</strong> plan on {schoolName}.",
+      "note": "Veuillez mettre à jour votre méthode de paiement pour éviter toute interruption du service de votre école.",
+      "cta": "Mise à jour de la méthode de paiement"
+    },
+    "joinedSchool": {
+      "subject": "Welcome to {schoolName}!",
+      "heading": "Welcome to {schoolName}!",
+      "greeting": "Hi {studentName},",
+      "body": "You've successfully joined <strong>{schoolName}</strong>. Browse available courses and start learning today.",
+      "cta": "Aller au tableau de bord"
+    },
+    "planDowngraded": {
+      "subject": "Your {schoolName} school has moved to the free plan",
+      "heading": "Plan dégradé",
+      "body": "We didn't receive a renewal payment for the <strong>{planName}</strong> plan on {schoolName} before the grace period ended, so your school has been moved to the <strong>free</strong> plan.",
+      "note": "Vos cours et vos données ne sont pas touchés immédiatement, mais des limites de plan gratuit s'appliquent maintenant et les frais de transaction de votre plateforme ont changé en conséquence. Si votre utilisation actuelle dépasse les limites du forfait gratuit, vous recevrez un avis distinct avec une date limite ferme avant que l'accès des étudiants soit limité.",
+      "upgradeNote": "Vous pouvez à nouveau mettre à jour à tout moment à partir du tableau de bord de facturation.",
+      "cta": "Mettre à jour votre plan",
+      "support": "Si vous avez déjà soumis un paiement de renouvellement, veuillez nous contacter afin que nous puissions restaurer votre forfait."
+    },
+    "enrollmentConfirmed": {
+      "subject": "You're enrolled in \"{courseTitle}\" — {schoolName}",
+      "heading": "Welcome to {courseTitle}!",
+      "greeting": "Hi {studentName},",
+      "body": "You're now enrolled in <strong>{courseTitle}</strong> at {schoolName}. You can start learning right away.",
+      "cta": "Aller à mes cours",
+      "support": "Si vous avez des questions, répondez à ce courriel ou contactez le support."
+    },
+    "certificateIssued": {
+      "subject": "Your certificate for \"{courseTitle}\" is ready — {schoolName}",
+      "heading": "Congratulations, {studentName}!",
+      "body": "You've successfully completed <strong>{courseTitle}</strong> and your certificate is ready.",
+      "cta": "Télécharger le certificat",
+      "verify": "Vérifier en ligne",
+      "share": "Partagez vos réalisations avec votre réseau en utilisant le lien de vérification."
+    },
+    "invitation": {
+      "subject": "You're invited to join {schoolName}",
+      "heading": "Vous êtes invités !",
+      "body": "{inviterName} has invited you to join <strong>{schoolName}</strong> as {role}.",
+      "roleAdmin": "un administrateur",
+      "roleTeacher": "un enseignant",
+      "roleStudent": "un étudiant",
+      "nextStep": "Cliquez sur le bouton ci-dessous pour créer votre compte et commencer.",
+      "cta": "Join {schoolName}",
+      "ignore": "Si vous ne vous attendiez pas à cette invitation, vous pouvez ignorer en toute sécurité ce courriel."
+    },
+    "paymentRequestExpired": {
+      "subject": "Your {planName} payment request for {schoolName} has expired",
+      "heading": "Demande de paiement expirée",
+      "body": "The bank transfer request for the <strong>{planName}</strong> plan on {schoolName} ({amount}) has been open for {ttlDays} days without a confirmed payment, so we've closed it.",
+      "note": "Rien n'a été inculpé. Votre plan est inchangé pour le moment, mais cette demande ne le maintient plus — si votre période de facturation a déjà pris fin, votre école passera au plan gratuit selon le calendrier normal.",
+      "action": "Si vous voulez encore ce plan, commencez une nouvelle demande à partir du tableau de bord de facturation. Si vous avez déjà transféré l'argent, contactez le support et nous le ferons correspondre.",
+      "cta": "Allez à Billing"
+    },
+    "renewalReminder": {
+      "overdue": {
+        "subject": "Your {planName} plan payment is overdue for {schoolName}",
+        "heading": "Paiement en souffrance",
+        "intro": "Your <strong>{planName}</strong> plan for {schoolName} lapsed on {periodEnd} and is now in a grace period.",
+        "action": "Pour conserver votre régime actuel, veuillez soumettre votre paiement de renouvellement avant la fin du délai de grâce. Si nous ne le recevons pas, votre école sera déplacée au plan gratuit.",
+        "cta": "Soumettre le paiement de renouvellement"
+      },
+      "due": {
+        "subject": "Renewal due soon: your {planName} plan for {schoolName}",
+        "heading": "Rappel de renouvellement",
+        "intro": "Your <strong>{planName}</strong> plan for {schoolName} is scheduled to renew on {periodEnd}.",
+        "action": "Pour éviter toute interruption, veuillez soumettre votre paiement de renouvellement par l'intermédiaire du tableau de bord de facturation avant la date de renouvellement.",
+        "cta": "Révision de la facturation"
+      },
+      "alreadySubmitted": "Si vous avez déjà soumis votre renouvellement, vous pouvez ignorer ce message — il peut être encore en attente de confirmation."
+    },
+    "downgradeBlocked": {
+      "reverted": {
+        "subject": "Your downgrade to {newPlanName} could not be completed",
+        "heading": "Dégradation non achevée",
+        "lead": "We could not complete the downgrade of <strong>{schoolName}</strong> to the <strong>{newPlanName}</strong> plan because your school currently exceeds that plan's limits. Your subscription remains on the <strong>{oldPlanName}</strong> plan and your billing has not changed.",
+        "next": "To downgrade to {newPlanName}, first reduce your usage below its limits, then change your plan again from the billing page."
+      },
+      "applied": {
+        "subject": "Action required: {schoolName} is over its {newPlanName} plan limits",
+        "heading": "Sur les limites du plan",
+        "lead": "<strong>{schoolName}</strong> was downgraded to the <strong>{newPlanName}</strong> plan, but your school currently exceeds that plan's limits. Please reduce usage or upgrade your plan.",
+        "next": "If this isn't resolved within 14 days, all students at your school will lose access to all courses until usage is brought back within the {newPlanName} plan's limits or you upgrade."
+      }
+    },
+    "paymentInstructions": {
+      "subject": "Payment instructions for {item} — {school}",
+      "heading": "How to pay for {item}",
+      "intro": "<strong>{school}</strong> has sent the payment instructions for your request.",
+      "amount": "Montant",
+      "method": "Méthode",
+      "payBy": "Paiement par",
+      "afterPaying": "Une fois que vous avez payé, téléchargez votre reçu sur votre page de demande afin que l'école puisse le confirmer.",
+      "cta": "Ouvrir ma demande de paiement"
+    },
+    "paymentRequestReminder": {
+      "subject": "Your payment request for {item} expires soon — {school}",
+      "heading": "Your request for {item} is about to expire",
+      "intro": "<strong>{school}</strong> is still waiting on your payment for the request below.",
+      "item": "Point",
+      "amount": "Montant",
+      "expiresToday": "Cette demande expire aujourd'hui.",
+      "expiresIn": "This request expires in {days} days.",
+      "expiresOn": "Expire",
+      "afterExpiry": "S'il s'éteint, rien n'est facturé — mais vous devrez commencer une nouvelle requête pour récupérer cette information.",
+      "cta": "Aller à ma demande de paiement"
+    },
+    "compedExpiry": {
+      "subjectEndedSchool": "Your complimentary {planName} plan has ended",
+      "subjectEndedOwner": "Comped plan ended: {schoolName}",
+      "subjectUpcomingSchool": "Your complimentary {planName} plan ends in {days, plural, one {# jour} other {# jours}}",
+      "subjectUpcomingOwner": "Régime conforme se terminant {days, plural, one {# jour} other {# jours}}: {schoolName}",
+      "headingEnded": "Plan gratuit terminé",
+      "headingUpcoming": "Plan d'élimination gratuit",
+      "graceSuffix": "The school has a {graceDays}-day grace period, after which it moves to the free plan.",
+      "normalBilling": "La facturation normale s'applique maintenant.",
+      "introOwnerEnded": "The complimentary <strong>{planName}</strong> plan for <strong>{schoolName}</strong> ended on {expiryDate}.",
+      "introOwnerUpcoming": "The complimentary <strong>{planName}</strong> plan for <strong>{schoolName}</strong> ends on {expiryDate} ({days, plural, one {# jour} other {# jours}} à gauche).",
+      "introSchoolEnded": "The complimentary <strong>{planName}</strong> plan for {schoolName} ended on {expiryDate}.",
+      "introSchoolUpcoming": "The complimentary <strong>{planName}</strong> plan for {schoolName} ends on {expiryDate}.",
+      "actionOwnerEnded": "Aucune action n'est nécessaire sauf si vous voulez étendre ou recompter cette école à partir de la console de la plate-forme.",
+      "actionOwnerUpcoming": "Pour l'étendre, mettez à jour l'école depuis la console de la plate-forme avant cette date. Sinon, il se convertit en payé et entre dans le délai de grâce normal.",
+      "actionSchoolEnded": "Choisissez un plan avant la fin de la période de grâce pour conserver vos fonctionnalités actuelles.",
+      "actionSchoolUpcoming": "Choisissez un plan avant de conserver vos fonctionnalités sans interruption. Sinon, votre école entre dans un délai de grâce de 7 jours et est ensuite déplacée au plan gratuit.",
+      "cta": "Choisir un plan"
+    },
+    "dailyDigest": {
+      "subject": "Your day at {schoolName}",
+      "greeting": "Hi {name},",
+      "intro": "Voici ce qui vous attend aujourd'hui :",
+      "cards": "{n, plural, one {# carte d'examen due} other {# Cartes d'examen dues}}",
+      "goals": "{n, plural, one {# objectif d'étude laissé cette semaine} other {# objectifs d'étude laissés cette semaine}}",
+      "community": "{n, plural, one {# nouvelle réponse dans la communauté} other {# Nouvelles réponses dans la communauté}}",
+      "streak": "Your {n}-day streak ends tonight",
+      "cta": "Décroche où tu t'es arrêté",
+      "footer": "Quelques minutes aujourd'hui vous tiennent sur la bonne voie."
+    },
+    "streakNudge": {
+      "subject": "Your {streak}-day streak ends tonight",
+      "body": "{name}, one quick practice session before the day ends keeps your {streak}-day streak alive.",
+      "cta": "Sauvez mes traces"
+    },
+    "platformFee": {
+      "footer": "Facturation des plates-formes",
+      "statement": {
+        "subject": "Platform fee statement for {schoolName}",
+        "heading": "Relevé mensuel des frais de plateforme",
+        "body": "We issued the platform fee statement for <strong>{school}</strong>{ref}: <strong>{amount}</strong>, due {due}. This is a statement, not a tax invoice.",
+        "button": "Solde des vues"
+      },
+      "reminder": {
+        "subject": "Reminder: platform fees for {schoolName} are due tomorrow",
+        "heading": "Attendu demain",
+        "body": "The platform fee balance for <strong>{school}</strong> (<strong>{amount}</strong>) is due {due}.",
+        "button": "Solde de rémunération"
+      },
+      "overdue": {
+        "subject": "Platform fees overdue for {schoolName}",
+        "heading": "Paiement en retard",
+        "body": "The platform fee balance for <strong>{school}</strong> (<strong>{amount}</strong>) is overdue. If it is not paid within the grace period, the school will stop accepting new sales and enrollments. Your current students keep their access.",
+        "button": "Solde de rémunération"
+      },
+      "blocked": {
+        "subject": "New sales paused for {schoolName}",
+        "heading": "Nouvelles ventes interrompues",
+        "body": "<strong>{school}</strong> is not accepting new sales or enrollments until the platform fee balance (<strong>{amount}</strong>) is paid. Current students keep their access and renewals continue. Sales resume as soon as you pay.",
+        "button": "Solde de rémunération"
+      },
+      "resumed": {
+        "subject": "Sales resumed for {schoolName}",
+        "heading": "Reprise des ventes",
+        "body": "We received your payment. <strong>{school}</strong> is accepting new sales and enrollments again.",
+        "button": "Solde des vues"
+      }
+    }
+  },
+  "notifications": {
+    "fallbackFirstName": "Voilà.",
+    "summary": {
+      "cards": "{n, plural, one {# carte due} other {# cartes dues}}",
+      "goals": "{n, plural, one {# objectif d'étude laissé cette semaine} other {# objectifs d'étude laissés cette semaine}}",
+      "community": "{n, plural, one {# nouvelle réponse dans la communauté} other {# Nouvelles réponses dans la communauté}}",
+      "streak": "your {n}-day streak ends tonight"
+    },
+    "dailyDigest": {
+      "title": "Your day at {school_name}",
+      "content": "{summary}. A few minutes today keeps you on track."
+    },
+    "streakNudge": {
+      "title": "Your {streak}-day streak ends tonight",
+      "content": "{first_name}, one quick practice session before the day ends keeps your {streak}-day streak alive."
+    }
+  },
+  "actionErrors": {
+    "e8d19f0f3": "Thème ou couleur non valide",
+    "e015e931e": "Impossible de sauvegarder le thème",
+    "e293b3ff3": "Impossible de réinitialiser le thème",
+    "e7ccefc10": "Impossible de récupérer les paramètres",
+    "e7cef8413": "Impossible de récupérer le réglage",
+    "e55e7e0a0": "La valeur de réglage doit être un objet",
+    "ec42234a8": "Impossible de mettre à jour le paramètre",
+    "e0d6ed489": "Impossible de mettre à jour les paramètres",
+    "eeb4b7e32": "Entrée non valide",
+    "e688420e2": "Clé de réglage inconnue",
+    "e72165ade": "Impossible de réinitialiser le réglage",
+    "eb31589f3": "Choisissez un pays dans la liste.",
+    "e40a6d082": "Échec de la mise à jour du pays scolaire",
+    "e9cf28122": "Impossible de récupérer le portefeuille Solana",
+    "e4c8a5cff": "Saisissez une adresse valide du portefeuille Solana (base58, 32 à 44 caractères).",
+    "ed0fc0310": "Impossible de sauver le portefeuille Solana",
+    "e78621b2a": "Entrez votre identifiant de paye de Binance.",
+    "e92726434": "Entrez votre touche API Binance et votre secret.",
+    "e799d5edb": "Entrez à la fois la clé API et le secret API.",
+    "ee72733d8": "PAIEMENT CRÉDENTIELS ENCRYPTION KEY n'est pas configuré",
+    "eeec48510": "Échec de l'enregistrement des lettres de créance",
+    "ed39fda5b": "Impossible de récupérer l'état",
+    "e2fc59369": "Échec de la suppression des justificatifs de la paye de Binance",
+    "e281fb51b": "Impossible de résoudre les fournisseurs activés",
+    "ee6be78db": "Cette page a été changée ailleurs après l'avoir ouverte.",
+    "efb0f9070": "Page d'atterrissage non trouvée",
+    "edd9f5ee2": "Aucun fichier fourni",
+    "e2ceb3aba": "La taille du fichier doit être inférieure à 5 Mo",
+    "ea68d3eb8": "Le type de fichier n'est pas autorisé. Utilisez JPEG, PNG, GIF, WebP ou SVG.",
+    "ed9f504b4": "URL du fichier non valide",
+    "e64343a83": "Accès refusé",
+    "e10d9c06f": "Non autorisé: Accès Admin requis",
+    "ef3d57b2c": "Abonnement non trouvé",
+    "e23c40f30": "Abonnement non trouvé ou accès refusé",
+    "e0e715593": "Une erreur inattendue s'est produite",
+    "e0e2128ed": "L'abonnement n'est pas prévu pour annuler",
+    "e3e9043c2": "Cet abonnement a été annulé auprès du prestataire de paiement et ne peut être repris. L'étudiant peut à nouveau s'abonner une fois qu'il se termine.",
+    "e34caa3b2": "La réactivation du fournisseur a échoué",
+    "e2a87047b": "Poste non trouvé",
+    "e3d82047d": "Commentaire non trouvé",
+    "e0c91acba": "Non authentifiée",
+    "e0febdb39": "Tu ne peux pas te muter",
+    "eb74d4166": "L'expiration doit être à l'avenir",
+    "e9c995b45": "Utilisateur introuvable dans cette école",
+    "e7b7e2f9f": "Drapeau introuvable",
+    "e7d2849dd": "Aucun réglage fourni",
+    "e9d49d7c7": "Transaction non trouvée",
+    "ef58bef1a": "Échec de la confirmation du paiement",
+    "eedc36943": "Impossible d'annuler le paiement",
+    "e99495b63": "Type de notification non valide",
+    "eda252cdc": "Les enseignants peuvent seulement créer des notifications de cours",
+    "e26dca9a8": "Vous ne pouvez créer que des notifications pour vos propres cours",
+    "e542d2da1": "Impossible de créer la notification",
+    "e94f040bf": "Échec de la notification d'expédition",
+    "e89993ca4": "Impossible de récupérer les notifications",
+    "ef802e372": "Échec du marquage comme suit :",
+    "e9b4d0868": "Échec du marquage de tout comme indiqué",
+    "e4ba9f830": "Échec du rejet de la notification",
+    "e3b91a64f": "Notification non trouvée ou accès refusé",
+    "e5e3403e7": "Impossible de mettre à jour l'état",
+    "e939f282d": "Échec de la suppression de la notification",
+    "e24f1253f": "Impossible de récupérer les statistiques",
+    "eccae6794": "Impossible de récupérer les modèles",
+    "e9d6c12e8": "Impossible de récupérer le modèle",
+    "e21a704ee": "Impossible de créer le modèle",
+    "ef03d9116": "Modèle non trouvé ou accès refusé",
+    "e56d2206f": "Impossible de mettre à jour le modèle",
+    "ecd7811a5": "Impossible de supprimer le modèle",
+    "e25504122": "La taille du fichier doit être inférieure à 2MB",
+    "e9029b987": "Super administrateur seulement",
+    "ebfe28e06": "Clé d'état de l'assurance-chômage non valide",
+    "e855f40bd": "Actif non trouvé",
+    "e50a5fe1c": "Seul un administrateur peut supprimer les fichiers téléchargés par d'autres",
+    "e69362442": "Échec de l'achèvement de l'embarquement",
+    "e05f65aea": "Échec à l'examen de fin d'études",
+    "e59bdf967": "Examen non trouvé",
+    "e3f2c815e": "Impossible de mettre à jour la configuration",
+    "e384c5d78": "Vous êtes actuellement muté et ne pouvez pas créer de messages",
+    "eea300382": "Le contenu est requis",
+    "e9ee12865": "ID de cours non valide",
+    "e95da7b58": "ID de leçon non valide",
+    "e9902dad1": "Date d'échéance non valable",
+    "ed931d030": "Type de poste non valide",
+    "e5f77c09c": "Seuls les enseignants et les administrateurs peuvent créer ce type de poste",
+    "eceb3e557": "Seules les invitations de discussion notées peuvent avoir une date d'échéance",
+    "e2f996477": "Pièces jointes non valides",
+    "e87aeb687": "Seuls les postes de cours peuvent être fixés lors de l'affichage",
+    "ecc5b9073": "Seul l'auteur du cours ou un administrateur peut épingler les messages",
+    "e803341a8": "Vous êtes actuellement muté et ne pouvez pas modifier les messages",
+    "e88c587f5": "Vous ne pouvez modifier que vos propres messages",
+    "e61856515": "Les postes de jalon ne peuvent pas être édités",
+    "e8d93bea9": "Le titre est requis pour les sondages",
+    "e3649aeda": "Vous ne pouvez supprimer que vos propres messages",
+    "eb2899c32": "Vous êtes actuellement muet et ne pouvez pas commenter",
+    "ec3849f4a": "Ce post est verrouillé et n'accepte pas les nouveaux commentaires",
+    "e9e24f9d1": "Commentaire parent non trouvé",
+    "eecd05cf7": "Vous pouvez seulement supprimer vos propres commentaires",
+    "e0bb4a6a0": "Réaction non valide",
+    "e2e7264a3": "Vous êtes actuellement muet",
+    "ebdffe9f1": "Vous êtes actuellement muet et ne pouvez pas créer de sondages",
+    "ea45961bd": "Format des options non valide",
+    "e8a8110e3": "Au moins 2 options de sondage sont requises",
+    "ee791b302": "Maximum 10 options de sondage autorisées",
+    "efdeabcb1": "Chaque option de sondage doit être inférieure à 200 caractères",
+    "e2717e4ee": "Les étudiants ne sont pas autorisés à créer des sondages",
+    "ef1382264": "Ce poste n'est pas un sondage",
+    "eabc9a8de": "Option de sondage non trouvée",
+    "e7ccc695c": "Vous avez déjà voté sur ce sondage",
+    "e10ef8666": "La taille du fichier doit être inférieure à 10 Mo",
+    "e1000b531": "Le type de fichier n'est pas autorisé. Utilisez JPEG, PNG, GIF, WebP, MP4, WebM ou PDF.",
+    "e801fe691": "La raison est requise et doit être inférieure à 1000 caractères",
+    "e5c3059d4": "Tu ne peux pas te bloquer",
+    "e8d4fc86c": "Seules les questions ont une réponse acceptée",
+    "e5f13bb4c": "Seule la personne qui a demandé ou un enseignant peut accepter une réponse",
+    "e78d02f93": "Cette réponse n'est plus disponible",
+    "ed3409084": "curseur non valide",
+    "e9affd916": "Poste non valide",
+    "ec5085bd6": "Impossible de rechercher les membres",
+    "e10007098": "Vous n'êtes pas membre de cette école.",
+    "ea7b50ae7": "Type de fichier non autorisé",
+    "e2d1d4c27": "Ressource non trouvée",
+    "e8c75371c": "Cours non trouvé",
+    "e336700dd": "Cours non valable",
+    "ec2ba81a4": "Demande non valable",
+    "e779c0067": "Le score doit être un nombre entier de 0 à 100",
+    "ea1387d14": "La rétroaction est trop longue",
+    "efd68d5cb": "Cette invitation n'est pas notée ou n'existe plus",
+    "e7a2c6ab2": "Impossible d'enregistrer la note",
+    "eeceee888": "Cette invitation n'existe plus",
+    "eb06a62bc": "Sous-domaine non valide",
+    "e4317b07e": "Manque d'ENV",
+    "e3d24273b": "Il existe déjà",
+    "ec378d6a1": "Demande de paiement non trouvée ou accès refusé",
+    "e2947a309": "Demande de paiement non trouvée",
+    "ef6cb4938": "Cette demande n'est plus en attente de paiement",
+    "e950b4dc6": "Cette référence est déjà enregistrée pour un autre paiement dans cette école. Vérifiez le numéro et essayez encore.",
+    "ec486b2c3": "Impossible d'enregistrer vos données de paiement",
+    "e04eb7762": "Préférence non valable",
+    "e487cabef": "Échec de l'enregistrement des préférences"
+  },
+  "libErrors": {
+    "e5fd805fe": "Aucun modèle de certificat actif trouvé pour ce cours",
+    "e223b2574": "Profil utilisateur non trouvé",
+    "e394c3372": "Aucune clé d'émetteur active n'a été trouvée. Veuillez contacter l'administrateur.",
+    "e935841dc": "Erreur dans la vérification de l'admissibilité",
+    "e8c75371c": "Cours non trouvé",
+    "e615b5c93": "Vous êtes déjà membre de cette école.",
+    "ea9939325": "Il a échoué à l'école. Veuillez réessayer.",
+    "e8869b053": "Il a échoué à finaliser l'adhésion à l'école. Veuillez réessayer.",
+    "e7bc0967b": "Impossible de créer l'invitation",
+    "e213a7692": "Communication non trouvée",
+    "e7a3e0c7b": "Présentation déjà notée",
+    "e59bdf967": "Examen non trouvé",
+    "ecc449b42": "Impossible de charger l'examen",
+    "ee9a7b9a6": "Le classement AI n'est pas disponible en ce moment. Veuillez réessayer.",
+    "e5defbf3d": "Impossible d'enregistrer les résultats de classement",
+    "eab9c615c": "La réponse au classement AI a échoué. Veuillez réessayer.",
+    "e2ceb3aba": "La taille du fichier doit être inférieure à 5 Mo",
+    "e89dde603": "Le type de fichier n'est pas autorisé. Utilisez JPEG, PNG, GIF ou WebP."
   }
 }
