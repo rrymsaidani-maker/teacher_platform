@@ -11230,5 +11230,91 @@
       "error": "Nous ne pouvions pas charger les groupes.",
       "retry": "Essaie encore"
     }
+  },
+  "platformAdmin": {
+    "billingHealth": {
+      "title": "Facturation de la santé",
+      "planConfiguration": "Configuration du plan",
+      "planLimitSweep": "Balayage des limites du plan",
+      "platformFeeSweep": "Balayage des droits de la plate-forme",
+      "atRiskSchools": "Écoles à risque",
+      "noSchoolsAtRisk": "Aucune école à risque"
+    },
+    "billing": {
+      "title": "Demandes de paiement",
+      "statusLabel": "État de la demande",
+      "priceChanged": "Le prix du plan a changé après la création de cette demande.",
+      "instructionsSent": "Instructions marquées telles qu'envoiées — notification de l'école",
+      "paymentConfirmed": "Paiement confirmé — transfert de l'école à son nouveau plan",
+      "reasonRequired": "Ajoutez une raison — l'école va la voir",
+      "requestRejected": "Demande rejetée",
+      "rejectionReason": "Motif de rejet",
+      "renewalSubmitted": "Demande de renouvellement présentée",
+      "proofUploaded": "Preuve téléchargée avec succès"
+    },
+    "overview": {
+      "title": "Aperçu général",
+      "needsAttention": "Besoin d'attention",
+      "recentSchools": "Écoles récentes",
+      "noSchoolsYet": "Pas encore d'école",
+      "planMix": "Mélange de plans",
+      "openSchoolSlug": "Open {slug} in a new tab",
+      "openSchoolName": "Open {name} in a new tab"
+    },
+    "plans": {
+      "invalidJson": "JSON non valide dans le champ limites",
+      "planUpdated": "Plan actualisé",
+      "priceRemoved": "Prix enlevé",
+      "actions": "Actions",
+      "removePrice": "Remove {provider} {interval} price",
+      "optional": "Facultatif..."
+    },
+    "revenue": {
+      "title": "Recettes",
+      "feesByMonth": "Frais de plate-forme par mois",
+      "byProvider": "Par le prestataire de paiement",
+      "bySchool": "Par classe"
+    },
+    "tenants": {
+      "title": "Écoles",
+      "createTitle": "Créer une école",
+      "platformSubscription": "Abonnement à la Plateforme",
+      "billingMode": "Mode de facturation",
+      "billingModeHistory": "Historique du mode facturation",
+      "admins": "Administrateurs",
+      "noActiveAdmins": "Aucun administrateur actif",
+      "recentTransactions": "Opérations récentes",
+      "noTransactionsYet": "Pas encore de transactions",
+      "searchByName": "Recherche par nom",
+      "removeFilter": "Supprimer ce filtre",
+      "openSlug": "Open {slug} in a new tab",
+      "openName": "Open {name} in a new tab",
+      "billingModeUpdated": "Mise à jour du mode facturation",
+      "selectMode": "Sélectionner le mode",
+      "selectPlan": "Sélectionner le plan",
+      "compedReasonPlaceholder": "Pourquoi cette école est-elle indépendante ?",
+      "invitationLink": "Lien d'invitation",
+      "selectCountry": "Sélectionner un pays",
+      "autoFromCountry": "Auto du pays",
+      "convertConfirm": "Convert {tenantName} to paid? Normal billing and the plan's fee apply again.",
+      "convertedToPaid": "Converti en salaire"
+    },
+    "forms": {
+      "bankAccountHolder": "Nom complet tel qu'il apparaît sur le compte bancaire",
+      "accountNumber": "Numéro de compte",
+      "categoryCreated": "Catégorie créée avec succès",
+      "categoryUpdated": "Catégorie actualisée avec succès",
+      "categoryDescriptionPlaceholder": "Brève description de cette catégorie...",
+      "openPageInNewTab": "Open {name} in new tab",
+      "actionsFor": "Actions for {name}",
+      "previewMode": "Mode d'aperçu",
+      "selectCourse": "Sélectionnez un cours",
+      "courseSummaryPlaceholder": "Résumez le résultat, l'auditoire et ce que comprend le cours.",
+      "selectCategory": "Sélectionner une catégorie",
+      "moveStepUp": "Déplacez-vous",
+      "moveStepDown": "Déplacer le pas vers le bas",
+      "removeStep": "Supprimer l' étape",
+      "paymentMethodExamples": "Virement bancaire, virement bancaire, espèces, etc."
+    }
   }
 }

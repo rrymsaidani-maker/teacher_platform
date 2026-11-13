@@ -11230,5 +11230,91 @@
       "error": "لا يمكننا تحميل المجموعات",
       "retry": "حاول مرة أخرى"
     }
+  },
+  "platformAdmin": {
+    "billingHealth": {
+      "title": "مشروع قانون الصحة",
+      "planConfiguration": "تشكيلة الخطة",
+      "planLimitSweep": "مسح حدود الخطة",
+      "platformFeeSweep": "مسح رسوم المنبر",
+      "atRiskSchools": "المدارس المعرضة للخطر",
+      "noSchoolsAtRisk": "لا توجد مدارس معرضة للخطر"
+    },
+    "billing": {
+      "title": "طلبات الدفع",
+      "statusLabel": "الطلب",
+      "priceChanged": "وقد تغير سعر الخطة بعد إنشاء هذا الطلب.",
+      "instructionsSent": "Instructions marked as sent - school notified",
+      "paymentConfirmed": "المدفوعات المؤكدة - انتقلت المدرسة إلى خطتها الجديدة",
+      "reasonRequired": "إضافة سبب - ستراه المدرسة",
+      "requestRejected": "الطلب مرفوض",
+      "rejectionReason": "سبب الرفض",
+      "renewalSubmitted": "طلب تجديد مقدم",
+      "proofUploaded": "تم تحميلها بنجاح"
+    },
+    "overview": {
+      "title": "لمحة عامة",
+      "needsAttention": "الحاجة إلى الاهتمام",
+      "recentSchools": "المدارس الأخيرة",
+      "noSchoolsYet": "لا توجد مدارس حتى الآن",
+      "planMix": "مزيج الخطة",
+      "openSchoolSlug": "Open {slug} in a new tab",
+      "openSchoolName": "Open {name} in a new tab"
+    },
+    "plans": {
+      "invalidJson": "Invalid JSON in limits field",
+      "planUpdated": "الخطة المستكملة",
+      "priceRemoved": "تم سحب السعر",
+      "actions": "الإجراءات",
+      "removePrice": "Remove {provider} {interval} price",
+      "optional": "اختياري..."
+    },
+    "revenue": {
+      "title": "الإيرادات",
+      "feesByMonth": "رسوم العمل حسب الشهر",
+      "byProvider": "مقدم مدفوعات",
+      "bySchool": "حسب المدرسة"
+    },
+    "tenants": {
+      "title": "المدارس",
+      "createTitle": "إنشاء المدارس",
+      "platformSubscription": "الاشتراك في المنبر",
+      "billingMode": "طريقة إعداد الفواتير",
+      "billingModeHistory": "تاريخ أسلوب بيلينغ",
+      "admins": "Admins",
+      "noActiveAdmins": "لا إعلانات نشطة",
+      "recentTransactions": "المعاملات الأخيرة",
+      "noTransactionsYet": "لا معاملات بعد",
+      "searchByName": "البحث بالاسم",
+      "removeFilter": "أزيل هذا المرشح",
+      "openSlug": "Open {slug} in a new tab",
+      "openName": "Open {name} in a new tab",
+      "billingModeUpdated": "تحديث طريقة إعداد الفواتير",
+      "selectMode": "نمط اختيار",
+      "selectPlan": "الخطة المختارة",
+      "compedReasonPlaceholder": "لماذا هذه المدرسة محجوزة/ داخلية؟",
+      "invitationLink": "وصلة الدعوة",
+      "selectCountry": "اختيار بلد",
+      "autoFromCountry": "Auto from country",
+      "convertConfirm": "Convert {tenantName} to paid? Normal billing and the plan's fee apply again.",
+      "convertedToPaid": "تحويل إلى دفع"
+    },
+    "forms": {
+      "bankAccountHolder": "الاسم الكامل كما يظهر في الحساب المصرفي",
+      "accountNumber": "رقم الحساب",
+      "categoryCreated": "الفئة التي أُنشئت بنجاح",
+      "categoryUpdated": "الفئة المستكملة بنجاح",
+      "categoryDescriptionPlaceholder": "وصف موجز لهذه الفئة...",
+      "openPageInNewTab": "Open {name} in new tab",
+      "actionsFor": "Actions for {name}",
+      "previewMode": "طريقة العرض",
+      "selectCourse": "اختيار المسار",
+      "courseSummaryPlaceholder": "Summarize the outcome, audience, and what the course includes.",
+      "selectCategory": "الفئة المختارة",
+      "moveStepUp": "تحركوا",
+      "moveStepDown": "تحرك",
+      "removeStep": "الخطوة الأولى",
+      "paymentMethodExamples": "Bank Transfer, Wire Transfer, Cash, etc."
+    }
   }
 }
