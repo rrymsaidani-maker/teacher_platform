@@ -11167,95 +11167,7 @@
         "staffOnly": "Groups are for students. Ask a student for the link or use your own account.",
         "banned": "You were removed from this school and cannot join its groups."
       },
-
-      "platformAdmin": {
-        "billingHealth": {
-          "title": "Billing health",
-          "planConfiguration": "Plan configuration",
-          "planLimitSweep": "Plan-limit sweep",
-          "platformFeeSweep": "Platform fee sweep",
-          "atRiskSchools": "At-risk schools",
-          "noSchoolsAtRisk": "No schools at risk"
-        },
-        "billing": {
-          "title": "Payment requests",
-          "statusLabel": "Request status",
-          "priceChanged": "The plan price changed after this request was created.",
-          "instructionsSent": "Instructions marked as sent — school notified",
-          "paymentConfirmed": "Payment confirmed — school moved to its new plan",
-          "reasonRequired": "Add a reason — the school will see it",
-          "requestRejected": "Request rejected",
-          "rejectionReason": "Rejection reason",
-          "renewalSubmitted": "Renewal request submitted",
-          "proofUploaded": "Proof uploaded successfully"
-        },
-        "overview": {
-          "title": "Overview",
-          "needsAttention": "Needs attention",
-          "recentSchools": "Recent schools",
-          "noSchoolsYet": "No schools yet",
-          "planMix": "Plan mix",
-          "openSchoolSlug": "Open {slug} in a new tab",
-          "openSchoolName": "Open {name} in a new tab"
-        },
-        "plans": {
-          "invalidJson": "Invalid JSON in limits field",
-          "planUpdated": "Plan updated",
-          "priceRemoved": "Price removed",
-          "actions": "Actions",
-          "removePrice": "Remove {provider} {interval} price",
-          "optional": "Optional…"
-        },
-        "revenue": {
-          "title": "Revenue",
-          "feesByMonth": "Platform fees by month",
-          "byProvider": "By payment provider",
-          "bySchool": "By school"
-        },
-        "tenants": {
-          "title": "Schools",
-          "createTitle": "Create school",
-          "platformSubscription": "Platform subscription",
-          "billingMode": "Billing mode",
-          "billingModeHistory": "Billing mode history",
-          "admins": "Admins",
-          "noActiveAdmins": "No active admins",
-          "recentTransactions": "Recent transactions",
-          "noTransactionsYet": "No transactions yet",
-          "searchByName": "Search by name",
-          "removeFilter": "Remove this filter",
-          "openSlug": "Open {slug} in a new tab",
-          "openName": "Open {name} in a new tab",
-          "billingModeUpdated": "Billing mode updated",
-          "selectMode": "Select mode",
-          "selectPlan": "Select plan",
-          "compedReasonPlaceholder": "Why is this school comped / internal?",
-          "invitationLink": "Invitation link",
-          "selectCountry": "Select a country",
-          "autoFromCountry": "Auto from country",
-          "convertConfirm": "Convert {tenantName} to paid? Normal billing and the plan's fee apply again.",
-          "convertedToPaid": "Converted to paid"
-        },
-        "forms": {
-          "bankAccountHolder": "Full name as it appears on the bank account",
-          "accountNumber": "Account number",
-          "categoryCreated": "Category created successfully",
-          "categoryUpdated": "Category updated successfully",
-          "categoryDescriptionPlaceholder": "Brief description of this category...",
-          "openPageInNewTab": "Open {name} in new tab",
-          "actionsFor": "Actions for {name}",
-          "previewMode": "Preview mode",
-          "selectCourse": "Select a course",
-          "courseSummaryPlaceholder": "Summarize the outcome, audience, and what the course includes.",
-          "selectCategory": "Select category",
-          "moveStepUp": "Move step up",
-          "moveStepDown": "Move step down",
-          "removeStep": "Remove step",
-          "paymentMethodExamples": "Bank Transfer, Wire Transfer, Cash, etc."
-        }
-      },
-
-      "page": {       
+      "page": {
         "leaderboard": "Group ranking",
         "rank": "#",
         "name": "Name",
@@ -11317,6 +11229,92 @@
       "loading": "Loading groups…",
       "error": "We could not load the groups.",
       "retry": "Try again"
+    }
+  },
+  "platformAdmin": {
+    "billingHealth": {
+      "title": "Billing health",
+      "planConfiguration": "Plan configuration",
+      "planLimitSweep": "Plan-limit sweep",
+      "platformFeeSweep": "Platform fee sweep",
+      "atRiskSchools": "At-risk schools",
+      "noSchoolsAtRisk": "No schools at risk"
+    },
+    "billing": {
+      "title": "Payment requests",
+      "statusLabel": "Request status",
+      "priceChanged": "The plan price changed after this request was created.",
+      "instructionsSent": "Instructions marked as sent — school notified",
+      "paymentConfirmed": "Payment confirmed — school moved to its new plan",
+      "reasonRequired": "Add a reason — the school will see it",
+      "requestRejected": "Request rejected",
+      "rejectionReason": "Rejection reason",
+      "renewalSubmitted": "Renewal request submitted",
+      "proofUploaded": "Proof uploaded successfully"
+    },
+    "overview": {
+      "title": "Overview",
+      "needsAttention": "Needs attention",
+      "recentSchools": "Recent schools",
+      "noSchoolsYet": "No schools yet",
+      "planMix": "Plan mix",
+      "openSchoolSlug": "Open {slug} in a new tab",
+      "openSchoolName": "Open {name} in a new tab"
+    },
+    "plans": {
+      "invalidJson": "Invalid JSON in limits field",
+      "planUpdated": "Plan updated",
+      "priceRemoved": "Price removed",
+      "actions": "Actions",
+      "removePrice": "Remove {provider} {interval} price",
+      "optional": "Optional…"
+    },
+    "revenue": {
+      "title": "Revenue",
+      "feesByMonth": "Platform fees by month",
+      "byProvider": "By payment provider",
+      "bySchool": "By school"
+    },
+    "tenants": {
+      "title": "Schools",
+      "createTitle": "Create school",
+      "platformSubscription": "Platform subscription",
+      "billingMode": "Billing mode",
+      "billingModeHistory": "Billing mode history",
+      "admins": "Admins",
+      "noActiveAdmins": "No active admins",
+      "recentTransactions": "Recent transactions",
+      "noTransactionsYet": "No transactions yet",
+      "searchByName": "Search by name",
+      "removeFilter": "Remove this filter",
+      "openSlug": "Open {slug} in a new tab",
+      "openName": "Open {name} in a new tab",
+      "billingModeUpdated": "Billing mode updated",
+      "selectMode": "Select mode",
+      "selectPlan": "Select plan",
+      "compedReasonPlaceholder": "Why is this school comped / internal?",
+      "invitationLink": "Invitation link",
+      "selectCountry": "Select a country",
+      "autoFromCountry": "Auto from country",
+      "convertConfirm": "Convert {tenantName} to paid? Normal billing and the plan's fee apply again.",
+      "convertedToPaid": "Converted to paid"
+    },
+    "forms": {
+      "bankAccountHolder": "Full name as it appears on the bank account",
+      "accountNumber": "Account number",
+      "categoryCreated": "Category created successfully",
+      "categoryUpdated": "Category updated successfully",
+      "categoryDescriptionPlaceholder": "Brief description of this category...",
+      "openPageInNewTab": "Open {name} in new tab",
+      "actionsFor": "Actions for {name}",
+      "previewMode": "Preview mode",
+      "selectCourse": "Select a course",
+      "courseSummaryPlaceholder": "Summarize the outcome, audience, and what the course includes.",
+      "selectCategory": "Select category",
+      "moveStepUp": "Move step up",
+      "moveStepDown": "Move step down",
+      "removeStep": "Remove step",
+      "paymentMethodExamples": "Bank Transfer, Wire Transfer, Cash, etc."
     }
   }
 }
