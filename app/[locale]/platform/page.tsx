@@ -20,6 +20,7 @@ import { PlatformEmptyState } from '@/components/platform/empty-state'
 import { RelativeTime } from '@/components/platform/relative-time'
 import { PlanBadge, StatusDot, tenantStatusTone } from '@/components/platform/badges'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server';
 
 interface PlatformStats {
   total_tenants: number
@@ -59,6 +60,7 @@ interface AttentionItem {
 }
 
 export default async function PlatformOverviewPage() {
+  const tr = await getTranslations('platformAdmin');
   const adminClient = createAdminClient()
 
   const [
@@ -248,13 +250,13 @@ export default async function PlatformOverviewPage() {
   return (
     <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8" data-testid="platform-overview">
       <PlatformPageHeader
-        title="Overview"
+        title={tr('overview.title')}
         description="What needs you first, then the numbers. Everything here is live across every school."
       />
 
       {/* ── Needs attention ─────────────────────────────────────────────── */}
       <PlatformSection
-        title="Needs attention"
+        title={tr('overview.needsAttention')}
         className="mb-8"
         data-testid="attention-queue"
         data-count={attention.length}
@@ -324,7 +326,7 @@ export default async function PlatformOverviewPage() {
       <div className="grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
         {/* ── Recent schools ───────────────────────────────────────────── */}
         <PlatformSection
-          title="Recent schools"
+          title={tr('overview.recentSchools')}
           description="Newest sign-ups first."
           action={
             <Link href="/platform/tenants" className="text-primary hover:underline underline-offset-4">
@@ -337,7 +339,7 @@ export default async function PlatformOverviewPage() {
             {recentRows.length === 0 ? (
               <PlatformEmptyState
                 icon={IconSchool}
-                title="No schools yet"
+                title={tr('overview.noSchoolsYet')}
                 description="The first school someone creates will show up here."
               />
             ) : (
@@ -367,8 +369,8 @@ export default async function PlatformOverviewPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-foreground"
-                            title={`Open ${t.slug} in a new tab`}
-                            aria-label={`Open ${t.name} in a new tab`}
+                            title={tr('overview.openSchoolSlug', { slug: t.slug })}
+                            aria-label={tr('overview.openSchoolName', { name: t.name })}
                           >
                             <IconExternalLink className="size-3.5" aria-hidden="true" />
                           </a>
@@ -395,7 +397,7 @@ export default async function PlatformOverviewPage() {
 
         {/* ── Plan mix ─────────────────────────────────────────────────── */}
         <PlatformSection
-          title="Plan mix"
+          title={tr('overview.planMix')}
           description={`Paying schools only (${stats.paying_tenants ?? totalTenants} of ${totalTenants}); comped and internal are counted above`}
           data-testid="plan-distribution"
         >

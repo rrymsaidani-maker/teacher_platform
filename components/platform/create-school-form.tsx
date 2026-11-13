@@ -14,6 +14,7 @@ import type { CreateSchoolOnBehalfResult } from '@/lib/tenant/create-school-on-b
 import type { BillingMode } from '@/lib/billing/billing-mode'
 import { INTERNAL_PLAN_SLUG, type BillingModeField } from '@/lib/billing/billing-mode-input'
 import { SCHOOL_CURRENCIES, defaultCurrencyForCountry, type CountryCode } from '@/lib/countries'
+import { useTranslations } from 'next-intl';
 
 const CREATE_MODES: readonly BillingMode[] = ['paid', 'comped', 'internal']
 
@@ -44,6 +45,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 }
 
 export function CreateSchoolForm() {
+  const tr = useTranslations('platformAdmin');
   const [name, setName] = useState('')
   const [slug, setSlug] = useState('')
   const [slugEdited, setSlugEdited] = useState(false)
@@ -168,7 +170,7 @@ export function CreateSchoolForm() {
               <Input
                 readOnly
                 value={owner.joinUrl}
-                aria-label="Invitation link"
+                aria-label={tr('tenants.invitationLink')}
                 onFocus={(e) => e.currentTarget.select()}
                 data-testid="create-school-join-url"
               />
@@ -247,7 +249,7 @@ export function CreateSchoolForm() {
             id="create-school-country"
             value={country}
             onValueChange={onCountryChange}
-            placeholder="Select a country"
+            placeholder={tr('tenants.selectCountry')}
             emptyText="No country found"
             disabled={pending}
             data-testid="create-school-country"
@@ -272,7 +274,7 @@ export function CreateSchoolForm() {
               aria-invalid={!!errors.currency}
               aria-describedby={describe('currency')}
             >
-              <SelectValue placeholder="Auto from country" />
+              <SelectValue placeholder={tr('tenants.autoFromCountry')} />
             </SelectTrigger>
             <SelectContent>
               {SCHOOL_CURRENCIES.map((c) => (

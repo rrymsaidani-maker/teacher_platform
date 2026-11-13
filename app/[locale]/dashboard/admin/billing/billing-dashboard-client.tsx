@@ -77,6 +77,7 @@ interface BillingDashboardClientProps {
 }
 
 export function BillingDashboardClient({ status, paymentRequests }: BillingDashboardClientProps) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const t = useTranslations('dashboard.admin.billing.overview')
   const tPending = useTranslations('dashboard.admin.billing.pendingRequests')
@@ -135,7 +136,7 @@ export function BillingDashboardClient({ status, paymentRequests }: BillingDashb
     setRenewalLoading(true)
     try {
       await requestManualRenewal()
-      toast.success('Renewal request submitted')
+      toast.success(tr('billing.renewalSubmitted'))
       router.refresh()
     } catch (e) {
       toast.error(e instanceof Error ? e.message : 'Failed to submit renewal request')
@@ -189,7 +190,7 @@ export function BillingDashboardClient({ status, paymentRequests }: BillingDashb
       const formData = new FormData()
       formData.append('file', file)
       await uploadPaymentProof(requestId, formData)
-      toast.success('Proof uploaded successfully')
+      toast.success(tr('billing.proofUploaded'))
       router.refresh()
     } catch (e) {
       toast.error(e instanceof Error ? e.message : 'Failed to upload proof')

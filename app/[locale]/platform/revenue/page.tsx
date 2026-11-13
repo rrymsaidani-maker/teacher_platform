@@ -7,6 +7,7 @@ import { PlanBadge } from '@/components/platform/badges'
 import { BillingModeBadge } from '@/components/platform/billing-mode-badge'
 import { normalizeBillingMode } from '@/lib/billing/billing-mode'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server';
 
 interface ProviderRow {
   provider: string
@@ -59,6 +60,7 @@ function monthLabel(ym: string) {
 }
 
 export default async function PlatformRevenuePage() {
+  const tr = await getTranslations('platformAdmin');
   const adminClient = createAdminClient()
 
   const { data: raw } = await adminClient.rpc('get_platform_revenue')
@@ -92,14 +94,14 @@ export default async function PlatformRevenuePage() {
   return (
     <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8" data-testid="platform-revenue">
       <PlatformPageHeader
-        title="Revenue"
+        title={tr('revenue.title')}
         description="What the platform earns across all schools — fees on student sales plus school subscriptions."
       />
 
       <StatStrip stats={metrics} className="mb-8" data-testid="revenue-metrics" />
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <PlatformSection title="Platform fees by month" data-testid="revenue-monthly">
+        <PlatformSection title={tr('revenue.feesByMonth')} data-testid="revenue-monthly">
           <PlatformPanel className="px-5 py-4">
             {monthly.length === 0 ? (
               <p className="text-sm text-muted-foreground">No fee-bearing sales yet.</p>
@@ -125,7 +127,7 @@ export default async function PlatformRevenuePage() {
           </PlatformPanel>
         </PlatformSection>
 
-        <PlatformSection title="By payment provider" data-testid="revenue-by-provider">
+        <PlatformSection title={tr('revenue.byProvider')} data-testid="revenue-by-provider">
           <PlatformPanel>
             {byProvider.length === 0 ? (
               <p className="px-5 py-4 text-sm text-muted-foreground">No transactions yet.</p>
@@ -158,7 +160,7 @@ export default async function PlatformRevenuePage() {
       </div>
 
       <PlatformSection
-        title="By school"
+        title={tr('revenue.bySchool')}
         description="Platform fees are each school's revenue-split percentage applied to sales through fee-bearing providers (e.g. Stripe Connect). Manual/offline sales settle directly to schools and carry no fee."
         className="mt-8"
         data-testid="revenue-by-tenant"

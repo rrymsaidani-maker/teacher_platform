@@ -9,6 +9,7 @@ import { RelativeTime } from '@/components/platform/relative-time'
 import { StatusDot } from '@/components/platform/badges'
 import { BillingActions } from './billing-actions'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server';
 
 type TabValue = 'pending' | 'confirmed' | 'rejected' | 'all'
 
@@ -47,6 +48,7 @@ export default async function PlatformBillingPage({
 }: {
   searchParams: Promise<{ tab?: string }>
 }) {
+  const tr = await getTranslations('platformAdmin');
   const { tab } = await searchParams
   const activeTab = (tab || 'pending') as TabValue
   const adminClient = createAdminClient()
@@ -84,12 +86,12 @@ export default async function PlatformBillingPage({
   return (
     <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8" data-testid="platform-billing-page">
       <PlatformPageHeader
-        title="Payment requests"
+        title={tr('billing.title')}
         description="Bank transfers schools have asked to pay by. Confirming one upgrades the school; rejecting keeps it where it is."
       />
 
       {/* Tabs */}
-      <nav className="mb-4 flex gap-1 border-b border-border" data-testid="billing-tabs" aria-label="Request status">
+      <nav className="mb-4 flex gap-1 border-b border-border" data-testid="billing-tabs" aria-label={tr('billing.statusLabel')}>
         {tabs.map(t => {
           const isActive = activeTab === t.value
           return (
@@ -189,7 +191,7 @@ export default async function PlatformBillingPage({
                         <span
                           className="mt-0.5 block text-[10px] font-normal text-amber-700 dark:text-amber-400"
                           data-testid="price-drift-note"
-                          title="The plan price changed after this request was created."
+                          title={tr('billing.priceChanged')}
                         >
                           plan now {fmt(currentPlanPrice)}
                         </span>

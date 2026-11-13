@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { updatePlatformPlan, togglePlanActive } from "@/app/actions/platform/plans"
+import { useTranslations } from 'next-intl';
 
 interface Plan {
   plan_id: string
@@ -32,6 +33,7 @@ interface Props {
 }
 
 export function PlanEditor({ plan }: Props) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const [showEdit, setShowEdit] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -51,7 +53,7 @@ export function PlanEditor({ plan }: Props) {
       try {
         parsedLimits = JSON.parse(formData.limits_json)
       } catch {
-        toast.error('Invalid JSON in limits field')
+        toast.error(tr('plans.invalidJson'))
         setLoading(false)
         return
       }
@@ -63,7 +65,7 @@ export function PlanEditor({ plan }: Props) {
         sort_order: Number(formData.sort_order),
         limits: parsedLimits,
       })
-      toast.success('Plan updated')
+      toast.success(tr('plans.planUpdated'))
       setShowEdit(false)
       router.refresh()
     } catch (e: any) {

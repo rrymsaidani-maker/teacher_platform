@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { getRoutingNumberLabel, SUPPORTED_CURRENCIES } from '@/lib/currency'
 import { IconBuildingBank } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl';
 
 interface BankDetails {
   bank_name: string
@@ -36,6 +37,7 @@ const COUNTRIES = [
 ]
 
 export function BankDetailsForm({ initialData, onSave }: BankDetailsFormProps) {
+  const tr = useTranslations('platformAdmin');
   const [details, setDetails] = useState<BankDetails>({
     bank_name: initialData?.bank_name || '',
     account_holder: initialData?.account_holder || '',
@@ -123,7 +125,7 @@ export function BankDetailsForm({ initialData, onSave }: BankDetailsFormProps) {
               id="accountHolder"
               value={details.account_holder}
               onChange={(e) => update('account_holder', e.target.value)}
-              placeholder="Full name as it appears on the bank account"
+              placeholder={tr('forms.bankAccountHolder')}
               required
             />
           </div>
@@ -135,7 +137,7 @@ export function BankDetailsForm({ initialData, onSave }: BankDetailsFormProps) {
                 id="accountNumber"
                 value={details.account_number}
                 onChange={(e) => update('account_number', e.target.value)}
-                placeholder="Account number"
+                placeholder={tr('forms.accountNumber')}
                 required
               />
             </div>

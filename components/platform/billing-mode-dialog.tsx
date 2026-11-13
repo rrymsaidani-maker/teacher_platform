@@ -20,6 +20,7 @@ import {
   validateBillingModeInput,
   type BillingModeField,
 } from '@/lib/billing/billing-mode-input'
+import { useTranslations } from 'next-intl';
 
 export interface BillingModeDialogProps {
   open: boolean
@@ -42,6 +43,7 @@ export function BillingModeDialog({
   currentUntil,
   currentFee,
 }: BillingModeDialogProps) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const initialMode = normalizeBillingMode(currentMode)
   const [mode, setMode] = useState<BillingMode>(initialMode)
@@ -79,7 +81,7 @@ export function BillingModeDialog({
           reason: parsed.value.reason,
         })
       }
-      toast.success('Billing mode updated')
+      toast.success(tr('tenants.billingModeUpdated'))
       onOpenChange(false)
       router.refresh()
     } catch (e) {

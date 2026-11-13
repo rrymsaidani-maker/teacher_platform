@@ -18,6 +18,7 @@ import { normalizeBillingMode } from '@/lib/billing/billing-mode'
 import { BillingModeBadge } from '@/components/platform/billing-mode-badge'
 import { ConvertToPaidButton } from '@/components/platform/convert-to-paid-button'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server';
 
 const TX_TONE: Record<string, 'ok' | 'warn' | 'bad' | 'muted'> = {
   successful: 'ok',
@@ -33,6 +34,7 @@ export default async function TenantDetailPage({
 }: {
   params: Promise<{ locale: string; tenantId: string }>
 }) {
+  const tr = await getTranslations('platformAdmin');
   const { locale, tenantId } = await params
   const adminClient = createAdminClient()
 
@@ -215,7 +217,7 @@ export default async function TenantDetailPage({
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Subscription */}
-        <PlatformSection title="Platform subscription" data-testid="tenant-subscription">
+        <PlatformSection title={tr('tenants.platformSubscription')} data-testid="tenant-subscription">
           <PlatformPanel className="px-5 py-4">
             {subscription ? (
               <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
@@ -271,7 +273,7 @@ export default async function TenantDetailPage({
 
         {/* Billing mode (docs/INTERNAL_COMPED_SCHOOLS.md) */}
         <PlatformSection
-          title="Billing mode"
+          title={tr('tenants.billingMode')}
           description="Whether the platform billing machinery applies to this school."
           action={billingMode === 'comped' ? <ConvertToPaidButton tenantId={tenantId} tenantName={tenant.name} /> : undefined}
           data-testid="tenant-billing-mode-panel"
@@ -313,7 +315,7 @@ export default async function TenantDetailPage({
 
         {/* Admin Users */}
         <PlatformSection
-          title="Admins"
+          title={tr('tenants.admins')}
           description="People who can run this school."
           data-testid="tenant-admins"
         >
@@ -321,7 +323,7 @@ export default async function TenantDetailPage({
             {(!adminUsers || adminUsers.length === 0) ? (
               <PlatformEmptyState
                 icon={IconUsers}
-                title="No active admins"
+                title={tr('tenants.noActiveAdmins')}
                 description="This school has no one who can manage it — likely a half-finished sign-up."
                 className="py-8"
               />
@@ -345,7 +347,7 @@ export default async function TenantDetailPage({
 
         {/* Billing mode history */}
         <PlatformSection
-          title="Billing mode history"
+          title={tr('tenants.billingModeHistory')}
           description="Newest 20 changes."
           className="lg:col-span-2"
           data-testid="billing-mode-history"
@@ -394,7 +396,7 @@ export default async function TenantDetailPage({
 
         {/* Recent Transactions */}
         <PlatformSection
-          title="Recent transactions"
+          title={tr('tenants.recentTransactions')}
           description="Student purchases at this school, newest first."
           className="lg:col-span-2"
           data-testid="tenant-transactions"
@@ -403,7 +405,7 @@ export default async function TenantDetailPage({
             {(!recentTransactions || recentTransactions.length === 0) ? (
               <PlatformEmptyState
                 icon={IconReceipt}
-                title="No transactions yet"
+                title={tr('tenants.noTransactionsYet')}
                 description="Sales show up here once a student buys a product or plan from this school."
                 className="py-8"
               />

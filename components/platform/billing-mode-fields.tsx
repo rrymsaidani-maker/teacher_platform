@@ -10,6 +10,7 @@ import {
   PLAN_SLUGS,
   type BillingModeField,
 } from '@/lib/billing/billing-mode-input'
+import { useTranslations } from 'next-intl';
 
 export const MODE_HELP: Record<BillingMode, string> = {
   paid: 'Normal billing: subscription, fee ledger and cutoffs apply. Keeps the current plan.',
@@ -50,6 +51,7 @@ export function BillingModeFields({
   pinInternalPlan = false,
   disabled,
 }: BillingModeFieldsProps) {
+  const tr = useTranslations('platformAdmin');
   const { mode, plan, until, fee, reason } = value
   const help = helpOverrides?.[mode] ?? MODE_HELP[mode]
 
@@ -71,7 +73,7 @@ export function BillingModeFields({
             aria-invalid={!!errors.mode}
             aria-describedby={errors.mode ? 'billing-mode-help billing-mode-error' : 'billing-mode-help'}
           >
-            <SelectValue placeholder="Select mode" />
+            <SelectValue placeholder={tr('tenants.selectMode')} />
           </SelectTrigger>
           <SelectContent>
             {modes.map((m) => (
@@ -104,7 +106,7 @@ export function BillingModeFields({
               aria-invalid={!!errors.plan}
               aria-describedby={errors.plan ? 'billing-mode-plan-error' : undefined}
             >
-              <SelectValue placeholder="Select plan" />
+              <SelectValue placeholder={tr('tenants.selectPlan')} />
             </SelectTrigger>
             <SelectContent>
               {PLAN_SLUGS.map((p) => (
@@ -165,7 +167,7 @@ export function BillingModeFields({
             value={reason}
             onChange={(e) => onChange({ reason: e.target.value })}
             disabled={disabled}
-            placeholder="Why is this school comped / internal?"
+            placeholder={tr('tenants.compedReasonPlaceholder')}
             data-testid="billing-mode-reason"
             aria-invalid={!!errors.reason}
             aria-describedby={errors.reason ? 'billing-mode-reason-error' : undefined}

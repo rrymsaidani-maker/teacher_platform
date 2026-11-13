@@ -15,6 +15,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { confirmManualPaymentForUi } from "@/app/actions/admin/billing"
 import { rejectManualPayment, sendPaymentInstructions } from "@/app/actions/platform/plans"
+import { useTranslations } from 'next-intl';
 
 interface Props {
   requestId: string
@@ -38,6 +39,7 @@ function errorMessage(e: unknown) {
  * before anyone sent instructions.
  */
 export function BillingActions({ requestId, status }: Props) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const [loadingConfirm, setLoadingConfirm] = useState(false)
   const [showRejectModal, setShowRejectModal] = useState(false)
@@ -50,7 +52,7 @@ export function BillingActions({ requestId, status }: Props) {
     setLoadingInstructions(true)
     try {
       await sendPaymentInstructions(requestId)
-      toast.success('Instructions marked as sent — school notified')
+      toast.success(tr('billing.instructionsSent'))
       router.refresh()
     } catch (e) {
       toast.error(errorMessage(e))
@@ -67,7 +69,7 @@ export function BillingActions({ requestId, status }: Props) {
         toast.error(result.error)
         return
       }
-      toast.success('Payment confirmed — school moved to its new plan')
+      toast.success(tr('billing.paymentConfirmed'))
       router.refresh()
     } catch (e) {
       toast.error(errorMessage(e))
@@ -78,13 +80,13 @@ export function BillingActions({ requestId, status }: Props) {
 
   async function handleReject() {
     if (!reason.trim()) {
-      toast.error('Add a reason — the school will see it')
+      toast.error(tr('billing.reasonRequired'))
       return
     }
     setLoadingReject(true)
     try {
       await rejectManualPayment(requestId, reason)
-      toast.success('Request rejected')
+      toast.success(tr('billing.requestRejected'))
       setShowRejectModal(false)
       router.refresh()
     } catch (e) {
@@ -145,7 +147,7 @@ export function BillingActions({ requestId, status }: Props) {
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               rows={3}
-              aria-label="Rejection reason"
+              aria-label={tr('billing.rejectionReason')}
               data-testid="reject-reason-input"
             />
           </div>

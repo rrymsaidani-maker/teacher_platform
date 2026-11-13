@@ -15,6 +15,7 @@ import { StatStrip, type StatItem } from '@/components/platform/stat-strip'
 import { PlatformPanel, PlatformSection, TD, TH } from '@/components/platform/section'
 import { PlatformEmptyState } from '@/components/platform/empty-state'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server';
 
 const REASON_LABELS: Record<AtRiskReason, string> = {
   tenant_past_due: 'Past due',
@@ -29,6 +30,7 @@ function reasonLabel(reason: AtRiskReason, cutoffActive: boolean): string {
 }
 
 export default async function PlatformBillingHealthPage() {
+  const tr = await getTranslations('platformAdmin');
   const [atRisk, planHealth, sweep, feeHealth] = await Promise.all([
     getAtRiskTenants(),
     getPlanConfigurationHealth(),
@@ -92,7 +94,7 @@ export default async function PlatformBillingHealthPage() {
   return (
     <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8" data-testid="platform-billing-health">
       <PlatformPageHeader
-        title="Billing health"
+        title={tr('billingHealth.title')}
         description="Schools that are past due or over their plan limits, with the countdown to automatic downgrade or access cutoff — and whether the plans themselves can be bought."
       />
 
@@ -102,7 +104,7 @@ export default async function PlatformBillingHealthPage() {
         every school at once, so it outranks any individual school's countdown.
       */}
       <PlatformSection
-        title="Plan configuration"
+        title={tr('billingHealth.planConfiguration')}
         action={
           planProblems === 0 ? (
             <Badge variant="secondary" data-testid="plan-config-status" data-status="ok">
@@ -209,7 +211,7 @@ export default async function PlatformBillingHealthPage() {
         reached the route from the database yet.
       */}
       <PlatformSection
-        title="Plan-limit sweep"
+        title={tr('billingHealth.planLimitSweep')}
         description="Last nightly enforce-plan-limits run from the pg_cron scheduler. Reminders, cutoffs and clearances only happen when this runs."
         data-testid="billing-health-sweep"
         className="mb-8"
@@ -259,7 +261,7 @@ export default async function PlatformBillingHealthPage() {
         anyone paused, and could anyone be" is answerable without SQL.
       */}
       <PlatformSection
-        title="Platform fee sweep"
+        title={tr('billingHealth.platformFeeSweep')}
         description="Last daily enforce-platform-fees run. Issues fee statements, sends reminders and, only in enforce mode, pauses new sales of overdue schools."
         data-testid="billing-health-fee-sweep"
         className="mb-8"
@@ -322,7 +324,7 @@ export default async function PlatformBillingHealthPage() {
       <StatStrip stats={metrics} className="mb-8" data-testid="billing-health-metrics" />
 
       <PlatformSection
-        title="At-risk schools"
+        title={tr('billingHealth.atRiskSchools')}
         description="Red countdowns downgrade within 3 days; amber within a week."
         data-testid="billing-health-by-tenant"
       >
@@ -330,7 +332,7 @@ export default async function PlatformBillingHealthPage() {
           {atRisk.length === 0 ? (
             <PlatformEmptyState
               icon={IconCircleCheck}
-              title="No schools at risk"
+              title={tr('billingHealth.noSchoolsAtRisk')}
               description="Nobody is past due or over their plan limits."
               className="py-8"
             />

@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { createCategory, updateCategory } from '@/app/actions/admin/categories'
+import { useTranslations } from 'next-intl';
 
 interface CategoryFormDialogProps {
   open: boolean
@@ -33,6 +34,7 @@ export function CategoryFormDialog({
   mode,
   initialData
 }: CategoryFormDialogProps) {
+  const tr = useTranslations('platformAdmin');
   const [name, setName] = useState(initialData?.name || '')
   const [description, setDescription] = useState(initialData?.description || '')
   const [loading, setLoading] = useState(false)
@@ -48,7 +50,7 @@ export function CategoryFormDialog({
       : await updateCategory(initialData!.id, name, description)
 
     if (result.success) {
-      toast.success(`Category ${mode === 'create' ? 'created' : 'updated'} successfully`)
+      toast.success(mode === 'create' ? tr('forms.categoryCreated') : tr('forms.categoryUpdated'))
       onOpenChange(false)
       // Reset form
       setName('')
@@ -104,7 +106,7 @@ export function CategoryFormDialog({
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Brief description of this category..."
+                placeholder={tr('forms.categoryDescriptionPlaceholder')}
                 rows={3}
                 disabled={loading}
               />

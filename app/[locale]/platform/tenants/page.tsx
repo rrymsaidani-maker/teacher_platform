@@ -13,6 +13,7 @@ import { ClearFiltersLink, TenantFilters } from './tenant-filters'
 import { isBillingMode, normalizeBillingMode } from '@/lib/billing/billing-mode'
 import { BillingModeBadge } from '@/components/platform/billing-mode-badge'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server';
 
 const PAGE_SIZE = 100
 
@@ -21,6 +22,7 @@ export default async function TenantsPage({
 }: {
   searchParams: Promise<{ q?: string; plan?: string; status?: string; mode?: string }>
 }) {
+  const tr = await getTranslations('platformAdmin');
   const { q, plan, status, mode } = await searchParams
   const adminClient = createAdminClient()
 
@@ -81,7 +83,7 @@ export default async function TenantsPage({
   return (
     <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8" data-testid="platform-tenants-page">
       <PlatformPageHeader
-        title="Schools"
+        title={tr('tenants.title')}
         actions={
           <Button nativeButton={false} render={<Link href="./tenants/new" />} data-testid="create-school-link">
             Create school
@@ -131,8 +133,8 @@ export default async function TenantsPage({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-foreground"
-                        title={`Open ${tenant.slug} in a new tab`}
-                        aria-label={`Open ${tenant.name} in a new tab`}
+                        title={tr('tenants.openSlug', { slug: tenant.slug })}
+                        aria-label={tr('tenants.openName', { name: tenant.name })}
                         data-testid="tenant-open-site"
                       >
                         <IconExternalLink className="size-3.5" aria-hidden="true" />

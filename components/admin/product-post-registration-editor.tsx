@@ -25,6 +25,7 @@ import type {
   ProductPostRegistrationStepInput,
   ProductCreationValidationIssue,
 } from '@/lib/admin/product-creation/types'
+import { useTranslations } from 'next-intl';
 
 const stepTypeLabels: Record<PostRegistrationStepType, string> = {
   whatsapp: 'WhatsApp',
@@ -105,6 +106,7 @@ export function ProductPostRegistrationEditor({
   steps,
   onChange,
 }: ProductPostRegistrationEditorProps) {
+  const tr = useTranslations('platformAdmin');
   function addStep(type: PostRegistrationStepType) {
     onChange(
       normalizeSteps([
@@ -235,7 +237,7 @@ export function ProductPostRegistrationEditor({
                         size="icon"
                         disabled={disabled || index === 0}
                         onClick={() => moveStep(index, -1)}
-                        aria-label="Move step up"
+                        aria-label={tr('forms.moveStepUp')}
                       >
                         <IconArrowUp />
                       </Button>
@@ -245,7 +247,7 @@ export function ProductPostRegistrationEditor({
                         size="icon"
                         disabled={disabled || index === steps.length - 1}
                         onClick={() => moveStep(index, 1)}
-                        aria-label="Move step down"
+                        aria-label={tr('forms.moveStepDown')}
                       >
                         <IconArrowDown />
                       </Button>
@@ -255,7 +257,7 @@ export function ProductPostRegistrationEditor({
                         size="icon"
                         disabled={disabled}
                         onClick={() => removeStep(index)}
-                        aria-label="Remove step"
+                        aria-label={tr('forms.removeStep')}
                       >
                         <IconTrash />
                       </Button>

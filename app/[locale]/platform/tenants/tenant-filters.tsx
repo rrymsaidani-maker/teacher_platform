@@ -7,6 +7,7 @@ import { IconSearch, IconX } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl';
 
 const PLANS = ['free', 'starter', 'pro', 'business', 'enterprise']
 const MODES = [
@@ -39,6 +40,7 @@ export function ClearFiltersLink({ className, children, ...props }: Omit<React.C
 }
 
 export function TenantFilters({ q, plan, status, mode }: { q?: string; plan?: string; status?: string; mode?: string }) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const pathname = usePathname()
   const formRef = useRef<HTMLFormElement>(null)
@@ -92,7 +94,7 @@ export function TenantFilters({ q, plan, status, mode }: { q?: string; plan?: st
           <Input
             name="q"
             defaultValue={q}
-            placeholder="Search by name"
+            placeholder={tr('tenants.searchByName')}
             className="w-56 pl-7"
             data-testid="tenants-search"
           />
@@ -155,7 +157,7 @@ export function TenantFilters({ q, plan, status, mode }: { q?: string; plan?: st
                 'inline-flex items-center gap-1 rounded-full border border-border bg-muted/40 py-0.5 pr-1.5 pl-2 hover:bg-muted',
                 f.capitalize && 'capitalize',
               )}
-              title="Remove this filter"
+              title={tr('tenants.removeFilter')}
             >
               {f.label}
               <IconX className="size-3 text-muted-foreground" aria-hidden="true" />

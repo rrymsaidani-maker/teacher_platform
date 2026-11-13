@@ -192,6 +192,7 @@ export function ProductCreationWizard({
   stripeConnected = false,
   className,
 }: ProductCreationWizardProps) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const tProductForm = useTranslations('dashboard.admin.products.form')
   const tWizard = useTranslations('dashboard.admin.products.wizard')
@@ -525,7 +526,7 @@ export function ProductCreationWizard({
                     data-testid="existing-course-select"
                     className="w-full"
                   >
-                    <SelectValue placeholder="Select a course" />
+                    <SelectValue placeholder={tr('forms.selectCourse')} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -572,7 +573,7 @@ export function ProductCreationWizard({
                 value={input.course.description || ''}
                 disabled={isSaving}
                 rows={5}
-                placeholder="Summarize the outcome, audience, and what the course includes."
+                placeholder={tr('forms.courseSummaryPlaceholder')}
                 onChange={(event) => updateCourse({ description: event.target.value })}
               />
             </Field>
@@ -586,7 +587,7 @@ export function ProductCreationWizard({
                   onValueChange={(value) => updateCourse({ categoryId: Number(value) })}
                 >
                   <SelectTrigger id="offering-category" className="w-full">
-                    <SelectValue placeholder="Select category" />
+                    <SelectValue placeholder={tr('forms.selectCategory')} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>

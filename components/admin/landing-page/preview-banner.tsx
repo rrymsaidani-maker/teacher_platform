@@ -11,6 +11,7 @@ interface Props {
 }
 
 export function PreviewBanner({ status }: Props) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const t = useTranslations('landingPageBuilder.builder')
 
@@ -18,7 +19,7 @@ export function PreviewBanner({ status }: Props) {
     <div
       className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border"
       role="banner"
-      aria-label="Preview mode"
+      aria-label={tr('forms.previewMode')}
     >
       <div className="container mx-auto flex items-center justify-between px-4 h-12">
         <div className="flex items-center gap-3">

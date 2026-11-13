@@ -42,6 +42,7 @@ import {
 } from "@/lib/payments/types"
 import type { PlatformProviderRuntimeStatus } from "@/lib/billing/platform-checkout-availability"
 import { evaluatePlatformCheckoutAvailability } from "@/lib/billing/platform-checkout-availability"
+import { useTranslations } from 'next-intl';
 
 interface Props {
   planId: string
@@ -77,6 +78,7 @@ export function PlanPricesEditor({
   providerDiagnostics = [],
   providerStatuses = {},
 }: Props) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -173,7 +175,7 @@ export function PlanPricesEditor({
     setBusyPriceId(price.priceId)
     try {
       await deletePlatformPlanPrice(price.priceId)
-      toast.success("Price removed")
+      toast.success(tr('plans.priceRemoved'))
       router.refresh()
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Failed to remove price")
@@ -229,7 +231,7 @@ export function PlanPricesEditor({
                         <th className="pb-2 font-medium">Amount</th>
                         <th className="pb-2 font-medium">Status</th>
                         <th className="pb-2 font-medium">Active</th>
-                        <th className="pb-2" aria-label="Actions" />
+                        <th className="pb-2" aria-label={tr('plans.actions')} />
                       </tr>
                     </thead>
                     <tbody>
@@ -291,7 +293,7 @@ export function PlanPricesEditor({
                               variant="ghost"
                               disabled={busyPriceId === price.priceId}
                               onClick={() => handleDelete(price)}
-                              aria-label={`Remove ${providerLabel(price.paymentProvider)} ${price.interval} price`}
+                              aria-label={tr('plans.removePrice', { provider: providerLabel(price.paymentProvider), interval: price.interval })}
                               data-testid="plan-price-delete-btn"
                             >
                               <IconTrash className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
@@ -409,7 +411,7 @@ export function PlanPricesEditor({
                     step="0.01"
                     min="0"
                     inputMode="decimal"
-                    placeholder="Optional…"
+                    placeholder={tr('plans.optional')}
                     value={form.amount}
                     onChange={(e) => setForm((p) => ({ ...p, amount: e.target.value }))}
                     data-testid="plan-price-amount-input"

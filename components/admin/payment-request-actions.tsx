@@ -49,6 +49,7 @@ interface PaymentRequestActionsProps {
 }
 
 export function PaymentRequestActions({ request, defaultInstructions = '' }: PaymentRequestActionsProps) {
+  const tr = useTranslations('platformAdmin');
   const t = useTranslations('dashboard.admin.paymentRequests.detail')
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -206,7 +207,7 @@ export function PaymentRequestActions({ request, defaultInstructions = '' }: Pay
                 id="paymentMethod"
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
-                placeholder="Bank Transfer, Wire Transfer, Cash, etc."
+                placeholder={tr('forms.paymentMethodExamples')}
                 disabled={loading}
               />
             </div>

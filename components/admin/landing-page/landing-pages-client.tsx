@@ -124,6 +124,7 @@ function uniqueSlug(title: string, pages: LandingPage[]): string {
 }
 
 export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = false, tenantId, templates, brandingSettings, landingData, courseIntent = null }: Props) {
+  const tr = useTranslations('platformAdmin');
   const router = useRouter()
   const t = useTranslations('landingPageBuilder')
   const locale = useLocale() === 'es' ? 'es' : 'en'
@@ -428,7 +429,7 @@ export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = f
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
                                   className="p-1 rounded-sm text-muted-foreground hover:text-foreground hover:bg-muted shrink-0 transition-colors"
-                                  aria-label={`Open ${page.name} in new tab`}
+                                  aria-label={tr('forms.openPageInNewTab', { name: page.name })}
                                 >
                                   <IconExternalLink className="w-3.5 h-3.5" />
                                 </a>
@@ -458,7 +459,7 @@ export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = f
                                 <DropdownMenuTrigger
                                   render={<Button variant="ghost" size="icon" className="h-8 w-8" />}
                                   onClick={(e: React.MouseEvent) => e.stopPropagation()}
-                                  aria-label={`Actions for ${page.name}`}
+                                  aria-label={tr('forms.actionsFor', { name: page.name })}
                                 >
                                   <IconDots className="w-4 h-4" />
                                 </DropdownMenuTrigger>
