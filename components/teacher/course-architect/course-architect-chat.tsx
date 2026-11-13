@@ -36,6 +36,7 @@ import { Shimmer } from '@/components/ai-elements/shimmer'
 import { useAiChatSubmit } from '@/hooks/use-ai-chat-submit'
 import { AiErrorNotice, useAiChatErrorToast } from '@/components/ai/ai-error-notice'
 import { parseAiChatError, isAiSetupErrorKind } from '@/lib/ai/chat-error'
+import type { Locale } from '@/i18n'
 import type { ArchitectScope } from './scope'
 
 export interface ContentChange {
@@ -45,7 +46,7 @@ export interface ContentChange {
 
 interface Props {
     scope: ArchitectScope
-    locale: 'en' | 'es'
+    locale: Locale
     onContentChanged?: (change: ContentChange) => void
     className?: string
 }

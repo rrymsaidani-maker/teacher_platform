@@ -8,6 +8,7 @@ import { validateExamCase } from '@/lib/ai/evals/exam-engine'
 import { ExamGraderIncompleteError, previewExamGrading } from '@/lib/exams/grade'
 import { hasPlanFeature } from '@/lib/plans/server'
 import { withTenantAi } from '@/lib/ai/with-tenant-ai'
+import { locales } from '@/i18n'
 
 export const maxDuration = 120
 
@@ -15,7 +16,7 @@ type Params = { params: Promise<{ examId: string }> }
 
 const bodySchema = z.object({
   answers: examAnswersSchema,
-  locale: z.enum(['en', 'es']).optional(),
+  locale: z.enum(locales).optional(),
 })
 
 /**

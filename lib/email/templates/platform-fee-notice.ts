@@ -5,6 +5,7 @@
  * platform bills the school), never sent to students.
  */
 import { escapeHtml } from './school-brand-parts'
+import type { Locale } from '@/i18n'
 
 export type PlatformFeeNoticeKind = 'statement' | 'reminder' | 'overdue' | 'blocked' | 'resumed'
 
@@ -17,7 +18,7 @@ export interface PlatformFeeNoticeData {
   dueLabel: string | null
   /** Where the admin sees the balance (earnings page until the fee page ships). */
   billingUrl: string
-  locale: 'en' | 'es'
+  locale: Locale
   /** Statement reference, e.g. PF-202609-12. */
   statementNumber?: string | null
 }

@@ -29,7 +29,7 @@ function scopeSection(scope: ArchitectScope): string {
 }
 
 export function buildCourseArchitectPrompt({ scope, locale, role }: ArchitectPromptInput): string {
-    const language = locale === 'es' ? 'Spanish' : 'English'
+    const language = ({ en: 'English', es: 'Spanish', fr: 'French', ar: 'Arabic' } as Record<string, string>)[locale] ?? 'English'
     const productLine = role === 'admin'
         ? `Products: after the course is built, offer to sell it. Call lms_create_product only after the teacher has stated the price, currency (usd or eur) and payment provider and said yes; never invent or suggest-and-assume a price. Default payment_provider is manual unless they pick lemonsqueezy (needs the variant id as provider_price_id) or solana (needs a school wallet). Stripe and PayPal products cannot be created here: point to Dashboard > Products. Use lms_list_products first to avoid duplicates, lms_update_product to change name/price/linked courses, lms_archive_product / lms_restore_product to take it off or back on sale. A free course needs no product; just publish it.`
         : `Products: you cannot create or edit products (admin only). If asked, tell the teacher an admin can do it from Dashboard > Products.`

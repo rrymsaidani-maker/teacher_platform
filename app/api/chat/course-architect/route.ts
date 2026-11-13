@@ -16,6 +16,7 @@ import { aiChatRateLimitedResponse, aiChatUsageLimitResponse, checkAiChatUsage }
 import { convertToModelMessages, stepCountIs, streamText, type ToolSet } from 'ai'
 import { propagateAttributes } from '@langfuse/tracing'
 import { z } from 'zod'
+import { locales } from '@/i18n'
 
 export const maxDuration = 300
 
@@ -32,7 +33,7 @@ const scopeSchema = z.discriminatedUnion('type', [
 const bodySchema = z.object({
     messages: z.array(z.any()),
     scope: scopeSchema.default({ type: 'new' }),
-    locale: z.enum(['en', 'es']).default('en'),
+    locale: z.enum(locales).default('en'),
 })
 
 export async function POST(req: Request) {

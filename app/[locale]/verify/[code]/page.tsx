@@ -15,6 +15,7 @@ import type { Metadata } from 'next'
 import { getSeoContext, ogImageUrl } from '@/lib/seo'
 import { resolveCertificateDesign } from '@/lib/certificates/default-design'
 import { getSchoolBrand } from '@/lib/themes/school-brand'
+import { bcp47 } from '@/lib/i18n/locale'
 
 interface PageProps {
     params: Promise<{ code: string; locale: string }>
@@ -96,7 +97,7 @@ export default async function VerificationPage({ params }: PageProps) {
     const t = await getTranslations('verification')
     const locale = await getLocale()
 
-    const dateLocale = locale === 'es' ? 'es-ES' : 'en-US'
+    const dateLocale = bcp47(locale)
 
     const { data: certificate, error } = await supabase
         .from('certificates')

@@ -1,6 +1,6 @@
 import type { SchoolBrand } from '@/lib/themes/school-brand'
 import { escapeHtml, schoolButton, schoolHeadingStyle, schoolLogoHeader } from './school-brand-parts'
-
+import type { Locale } from '@/i18n'
 /**
  * "Your request expires soon" — sent once, `MANUAL_REQUEST_REMINDER_LEAD_DAYS`
  * before a student-facing `payment_requests` row lapses (issue #802).
@@ -12,7 +12,7 @@ import { escapeHtml, schoolButton, schoolHeadingStyle, schoolLogoHeader } from '
  * `reminder_sent_at` — including when the send itself fails, so a missing
  * mailer or a bounced address is not retried on every later tick.
  */
-export type PaymentRequestReminderLocale = 'en' | 'es'
+export type PaymentRequestReminderLocale = Locale
 
 const COPY = {
   en: {

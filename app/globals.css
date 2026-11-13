@@ -330,3 +330,6 @@
   height: auto;
   border-radius: var(--radius);
 }
+:lang(ar) {
+  font-family: var(--font-arabic), sans-serif;
+}

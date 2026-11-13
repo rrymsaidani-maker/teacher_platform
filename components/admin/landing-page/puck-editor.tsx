@@ -53,6 +53,8 @@ import { dispatchOwn, isOwnPuckAction, type PuckApiLike } from '@/components/adm
 import { ThemePreviewScope } from '@/components/admin/landing-page/page-architect/theme-preview'
 import { cn } from '@/lib/utils'
 import styles from './puck-editor.module.css'
+import { toLocale, type Locale } from '@/i18n'
+
 
 interface Props {
   pageId: string
@@ -87,7 +89,7 @@ type ConflictChoice = 'reload' | 'overwrite' | 'cancel'
 
 interface EditorChrome {
   pageId: string
-  locale: 'en' | 'es'
+  locale: Locale
   /** The "describe your page" message, handed out once (`null` after that). */
   takeInitialPrompt: () => string | null
   status: 'draft' | 'published'
@@ -293,7 +295,7 @@ export function PuckEditor({
 }: Props) {
   const t = useTranslations('puck')
   const tp = useTranslations('pageArchitect.panel.editor')
-  const locale: 'en' | 'es' = useLocale() === 'es' ? 'es' : 'en'
+  const locale: Locale = toLocale(useLocale())
   // Blocks dragged in by hand get their default copy in the page's language (#944).
   const config = useMemo(() => createPuckConfig(t, locale) as Config, [t, locale])
 

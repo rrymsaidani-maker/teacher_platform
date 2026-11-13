@@ -139,7 +139,7 @@ export function ExamCaseDialog({ examId, questions, item, onClose, onSave, savin
     setAiError(null)
     const res = await evalRequest<ExamPreviewResult>(`/api/teacher/evals/exam/${examId}/preview`, {
       method: 'POST',
-      body: JSON.stringify({ answers: cleanAnswers(), locale: locale === 'es' ? 'es' : 'en' }),
+      body: JSON.stringify({ answers: cleanAnswers(), locale }),
     })
     setTrying(false)
     if (res.aiError) return setAiError(res.aiError)

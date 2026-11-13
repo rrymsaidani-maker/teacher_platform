@@ -3,6 +3,7 @@ import { gradeExamSubmission } from '@/lib/exams/grade'
 import { AiError, aiErrorBody } from '@/lib/ai/errors'
 import { canConfigureAi } from '@/lib/exercises/ai-failure'
 import { z } from 'zod'
+import { toLocale } from '@/i18n'
 
 export const maxDuration = 120
 
@@ -54,7 +55,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ examId:
             feature: 'exam_grader',
             canConfigure: await canConfigureAi(auth.supabase, auth.user.id, auth.tenantId),
             // Only known locales reach the settings link; the body is not trusted.
-            locale: parsed.data.locale === 'es' ? 'es' : 'en',
+            locale: toLocale(parsed.data.locale),
           }),
           { status: outcome.status, headers: { 'Cache-Control': 'no-store' } },
         )

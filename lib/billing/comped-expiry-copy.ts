@@ -4,7 +4,9 @@
  * request scope; the email is English-only like the other billing emails.
  */
 
-export type CompedLocale = 'en' | 'es'
+export type CompedLocale = Locale
+import { bcp47 } from '@/lib/i18n/locale'
+import type { Locale } from '@/i18n'
 
 export interface CompedCopyParams {
   schoolName: string
@@ -20,7 +22,7 @@ export interface CompedCopy {
 }
 
 export function formatCompedDate(iso: string, locale: CompedLocale): string {
-  return new Date(iso).toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', {
+  return new Date(iso).toLocaleDateString(bcp47(locale), {
     dateStyle: 'long',
     timeZone: 'UTC',
   })

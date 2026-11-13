@@ -1,5 +1,6 @@
 import type { SchoolBrand } from '@/lib/themes/school-brand'
 import { escapeHtml, schoolButton, schoolHeadingStyle, schoolLogoHeader } from './school-brand-parts'
+import type { Locale } from '@/i18n'
 
 /**
  * "Here is how to pay" — sent to a student when the school saves payment
@@ -10,7 +11,7 @@ import { escapeHtml, schoolButton, schoolHeadingStyle, schoolLogoHeader } from '
  * everywhere it is shown, because `sendEmail()` returns `false` (and the flow
  * carries on) when the school has no mailer configured (#676).
  */
-export type PaymentInstructionsLocale = 'en' | 'es'
+export type PaymentInstructionsLocale = Locale
 
 const COPY = {
   en: {

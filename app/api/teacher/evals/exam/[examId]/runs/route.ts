@@ -6,6 +6,7 @@ import { executeEvalRun, freeStaleRuns, runLimitReached } from '@/lib/ai/evals/r
 import { hasPlanFeature } from '@/lib/plans/server'
 import { withTenantAi } from '@/lib/ai/with-tenant-ai'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { toLocale } from '@/i18n'
 
 export const maxDuration = 300
 
@@ -36,7 +37,7 @@ export async function POST(req: Request, { params }: Params) {
   if (ctx instanceof NextResponse) return ctx
   // Grade in the teacher's UI language, like the preview.
   const body = (await req.json().catch(() => ({}))) as { locale?: unknown }
-  const locale = body.locale === 'es' ? 'es' : 'en'
+  const locale = toLocale(body.locale)
 
   if (!(await hasPlanFeature(ctx.tenantId, 'ai_grading'))) {
     return NextResponse.json({ error: 'plan_required' }, { status: 402 })

@@ -13,7 +13,7 @@ import { unstable_cache } from "next/cache";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { locales } from '@/i18n';
+import { locales, isRtl } from '@/i18n';
 import { fontVariables } from '@/lib/themes/fonts';
 import { defaultThemeFor, resolveSchoolTheme, SCHOOL_THEME_SETTING_KEY } from '@/lib/themes/kit';
 import { getSeoContext, ogImageUrl, resolveFaviconIcons } from '@/lib/seo';
@@ -21,6 +21,10 @@ import { OpenPanelComponent } from '@openpanel/nextjs';
 import { isAnalyticsEnvironmentEnabled } from '@/lib/analytics/exclusions';
 import { getSessionReplayConfig } from '@/lib/analytics/replay';
 import { hasPlanFeature } from '@/lib/plans/server';
+import { ogLocale } from '@/lib/i18n/locale';
+import { Noto_Sans_Arabic } from 'next/font/google';
+
+const arabicFont = Noto_Sans_Arabic({ subsets: ['arabic'], variable: '--font-arabic', display: 'swap' });
 
 export async function generateMetadata({
   params,
@@ -50,7 +54,7 @@ export async function generateMetadata({
     openGraph: {
       siteName,
       type: 'website',
-      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      locale: ogLocale(locale),
       title: siteName,
       description,
       images: [
@@ -174,7 +178,7 @@ export default async function RootLayout({
     : undefined;
 
   return (
-    <html lang={locale} className={fontVariables} suppressHydrationWarning>
+    <html lang={locale} dir={isRtl(locale) ? 'rtl' : 'ltr'} className={`${fontVariables} ${arabicFont.variable}`} suppressHydrationWarning>
       <head>
         <TenantCssVarsServer theme={tenantInfo?.theme} />
       </head>

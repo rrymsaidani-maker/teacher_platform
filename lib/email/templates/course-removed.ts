@@ -1,5 +1,6 @@
 import type { SchoolBrand } from '@/lib/themes/school-brand'
 import { escapeHtml, schoolButton, schoolLogoHeader } from './school-brand-parts'
+import type { Locale } from '@/i18n'
 
 /**
  * Sent to each enrolled student when a teacher deletes a course outright.
@@ -8,7 +9,7 @@ import { escapeHtml, schoolButton, schoolLogoHeader } from './school-brand-parts
  * language) — the same compromise `daily-digest.ts` makes, since a student's
  * own preferred language is not stored.
  */
-export type CourseRemovedLocale = 'en' | 'es'
+export type CourseRemovedLocale = Locale
 
 export interface CourseRemovedEmailData {
   courseTitle: string

@@ -262,7 +262,7 @@ export function ExamTestsPanel({ examId, questions, hasUnsavedChanges }: Props) 
     setConfirmRun(false)
     clearErrors()
     setStarting(true)
-    const res = await evalRequest<{ run_id?: string; run?: { id: string } }>(`${base}/runs`, { method: 'POST', body: JSON.stringify({ locale: locale === 'es' ? 'es' : 'en' }) })
+    const res = await evalRequest<{ run_id?: string; run?: { id: string } }>(`${base}/runs`, { method: 'POST', body: JSON.stringify({ locale }) })
     setStarting(false)
     const runId = res.data?.run_id ?? res.data?.run?.id
     if (!res.ok || !runId) return fail(res, 'errors.runFailed')

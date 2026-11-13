@@ -26,12 +26,13 @@ import {
 import type { LandingCourse, LandingPlan, LandingProduct, LandingStats } from '@/lib/puck/types'
 import { parseStoredKitTheme, SCHOOL_THEME_SETTING_KEY } from '@/lib/themes/kit'
 import type { PageData, RefIdSets } from '@lms/core'
+import type { Locale } from '@/i18n'
 
 // The typed builder fights the column lists below; rows are cast at the edge.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AdminClient = any
 
-export type PageLocale = 'en' | 'es'
+export type PageLocale = Locale
 
 /** Columns read for the school profile. Exported so tests can pin them. */
 export const TENANT_PROFILE_COLUMNS = 'id, name, logo_url'

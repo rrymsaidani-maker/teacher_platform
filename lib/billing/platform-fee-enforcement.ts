@@ -48,6 +48,7 @@ import {
   platformFeeNoticeTemplate,
   type PlatformFeeNoticeKind,
 } from '@/lib/email/templates/platform-fee-notice'
+import type { Locale } from '@/i18n'
 
 /** Hard cap on tenants newly blocked in one run (design 3, "Safety rails"). */
 export const FEE_BLOCK_CAP_PER_RUN = 25
@@ -140,7 +141,7 @@ export interface FeeStore {
   /** reevaluate_tenant_fee_standing(): only ever recovers; returns the new state. */
   reevaluate(tenantId: string): Promise<string>
   adminEmails(tenantId: string): Promise<string[]>
-  locale(tenantId: string): Promise<'en' | 'es'>
+  locale(tenantId: string): Promise<Locale>
 }
 
 export interface EnforcementOptions {
@@ -181,12 +182,12 @@ export interface EnforcementResult {
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10)
 
-function dueLabel(iso: string, locale: 'en' | 'es'): string {
+function dueLabel(iso: string, locale: Locale): string {
   const d = new Date(iso)
   return `${new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeZone: 'UTC' }).format(d)} (UTC)`
 }
 
-function amountLabel(amounts: { currency: string; amount: number }[], locale: 'en' | 'es'): string {
+function amountLabel(amounts: { currency: string; amount: number }[], locale: Locale): string {
   return amounts.map((a) => formatCurrency(a.amount, a.currency.toLowerCase(), locale)).join(' + ')
 }
 
@@ -298,7 +299,7 @@ export async function runPlatformFeeEnforcement(store: FeeStore, opts: Enforceme
       let standing: StandingState | null = standingRow?.state ?? null
       let overdueSince = standingRow?.overdueSince ?? null
 
-      let localeCache: 'en' | 'es' | null = null
+      let localeCache: Locale | null = null
       let emailsCache: string[] | null = null
       const notify = async (
         kind: PlatformFeeNoticeKind,
@@ -622,7 +623,7 @@ export function createSupabaseFeeStore(
   admin: SupabaseClient,
   deps: {
     adminEmails: (sb: SupabaseClient, tenantId: string) => Promise<string[]>
-    locale: (sb: SupabaseClient, tenantId: string) => Promise<'en' | 'es'>
+    locale: (sb: SupabaseClient, tenantId: string) => Promise<Locale>
   },
 ): FeeStore {
   return {

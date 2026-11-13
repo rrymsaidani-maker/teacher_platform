@@ -1,6 +1,6 @@
 import type { SchoolBrand } from '@/lib/themes/school-brand'
 import { escapeHtml, schoolButton, schoolHeadingStyle, schoolLogoHeader } from './school-brand-parts'
-
+import type { Locale } from '@/i18n'
 /**
  * Branded replacements for Supabase Auth's built-in emails (issue #776),
  * rendered by `app/api/auth/send-email-hook/route.ts` and never called
@@ -16,7 +16,7 @@ export type AuthOtpKind =
   /** Sent to the CURRENT address — GoTrue field `token_hash_new`. */
   | 'email_change_current'
 
-export type AuthOtpLocale = 'en' | 'es'
+export type AuthOtpLocale = Locale
 
 export function resolveAuthOtpLocale(locale: string | null | undefined): AuthOtpLocale {
   return locale?.toLowerCase().startsWith('es') ? 'es' : 'en'

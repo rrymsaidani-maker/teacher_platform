@@ -45,6 +45,7 @@ import { TEMPLATE_ITEM_KEYS } from '@/lib/puck/template-labels'
 import { ThemePreviewBar } from './theme-preview'
 import { ToolLine, humanizeBlockType, toolNameOf, type ToolPartLike } from './tool-line'
 import { usePageArchitect } from './use-page-architect'
+import type { Locale } from '@/i18n'
 
 const usePuckSelector = createUsePuck()
 
@@ -64,7 +65,7 @@ export function inferPageKind(data: { content?: Array<{ type?: string }> } | und
 
 interface Props {
   pageId: string
-  locale: 'en' | 'es'
+  locale: Locale
   /** The first message of a page started from a description; returns it once, then `null`. */
   takeInitialPrompt?: () => string | null
   onClose: () => void

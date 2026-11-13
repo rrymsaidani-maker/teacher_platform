@@ -1,0 +1,42 @@
+name: Translate messages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Start LibreTranslate (free, no key)
+        run: |
+          docker run -d --name libretranslate -p 5000:5000 \
+            libretranslate/libretranslate --load-only en,ar,fr,es
+          for i in $(seq 1 90); do
+            if curl -fs http://localhost:5000/languages > /dev/null; then
+              echo "LibreTranslate is ready"; exit 0
+            fi
+            sleep 10
+          done
+          docker logs libretranslate | tail -50
+          exit 1
+
+      - name: Translate missing keys
+        env:
+          LT_URL: http://localhost:5000
+        run: node scripts/translate-messages.mjs
+
+      - name: Commit translations
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update ar, fr and es translations"
+          file_pattern: messages/ar.json messages/fr.json messages/es.json

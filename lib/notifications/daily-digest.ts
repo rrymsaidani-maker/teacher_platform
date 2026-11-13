@@ -21,8 +21,10 @@ import { fetchAllRows } from '@/lib/supabase/fetch-all-rows'
 import { fetchAllRowsIn } from '@/lib/supabase/fetch-all-rows-in'
 import { getSchoolBrand } from '@/lib/themes/school-brand'
 
-export type DigestLocale = 'en' | 'es'
+export type DigestLocale = Locale
 export type DigestKind = 'daily_digest' | 'streak_nudge'
+import { toLocale, type Locale } from '@/i18n'
+
 
 export interface DigestSettings {
   sendHour: number
@@ -87,7 +89,7 @@ export function resolveDigestSettings(value: unknown): DigestSettings {
     sendHour: int(v.send_hour) ?? DEFAULT_DIGEST_SETTINGS.sendHour,
     nudgeHour: int(v.nudge_hour) ?? DEFAULT_DIGEST_SETTINGS.nudgeHour,
     timezone: typeof v.timezone === 'string' && v.timezone ? v.timezone : DEFAULT_DIGEST_SETTINGS.timezone,
-    locale: v.locale === 'es' ? 'es' : DEFAULT_DIGEST_SETTINGS.locale,
+    locale: toLocale(v.locale),
   }
 }
 
@@ -217,7 +219,7 @@ export function resolveChannels(row: PreferencesRow | undefined): { inApp: boole
 
 export function firstName(fullName: string | null, locale: DigestLocale): string {
   const first = fullName?.trim().split(/\s+/)[0]
-  return first || (locale === 'es' ? 'estudiante' : 'there')
+  return first || (({ en: 'there', es: 'estudiante', fr: 'vous', ar: 'صديقي' } as Record<string, string>)[locale] ?? 'there')
 }
 
 /** https://{slug}.{platform-domain} — same heuristic as the invitation email. */

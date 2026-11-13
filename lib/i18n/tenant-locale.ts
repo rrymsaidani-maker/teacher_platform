@@ -1,6 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { resolveDigestSettings } from '@/lib/notifications/daily-digest'
-
+import type { Locale } from '@/i18n'
 /**
  * Best-effort per-tenant reading language for crons (no request scope).
  * Nothing stores a per-student locale, and a cron tick runs outside
@@ -12,7 +12,7 @@ import { resolveDigestSettings } from '@/lib/notifications/daily-digest'
  * Extracted from `app/api/cron/expire-payment-requests` for the platform fee
  * cron (#929, design 4.4).
  */
-export async function resolveTenantLocale(admin: SupabaseClient, tenantId: string): Promise<'en' | 'es'> {
+export async function resolveTenantLocale(admin: SupabaseClient, tenantId: string): Promise<Locale> {
   const { data } = await admin
     .from('tenant_settings')
     .select('setting_value')

@@ -21,6 +21,7 @@ import { isKitThemeId } from '@/lib/themes/kit'
 import type { GetPuck } from './apply-op-to-puck'
 import { usePageArchitectContext } from './page-architect-context'
 import { PageArchitectTurn } from './turn'
+import type { Locale } from '@/i18n'
 
 export type PageArchitectMessage = UIMessage<unknown, PageBuilderDataParts>
 
@@ -55,7 +56,7 @@ function prefersReducedMotion(): boolean {
 
 export interface UsePageArchitectOptions {
   pageId: string
-  locale: 'en' | 'es'
+  locale: Locale
   /** A human undo/redo stopped the turn. */
   onHistoryAbort?: () => void
 }

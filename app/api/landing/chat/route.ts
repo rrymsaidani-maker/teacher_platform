@@ -32,6 +32,7 @@ import {
   createPageAgent,
   type PageArchitectUIMessage,
 } from '@/lib/page-builder/agent'
+import { locales } from '@/i18n'
 
 export const maxDuration = 300
 
@@ -45,7 +46,7 @@ const bodySchema = z.object({
   pageId: z.string().min(1).max(100),
   pageData: z.unknown().optional(),
   selectedId: z.string().max(200).nullish(),
-  locale: z.enum(['en', 'es']).default('en'),
+  locale: z.enum(locales).default('en'),
 })
 
 /**
