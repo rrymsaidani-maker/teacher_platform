@@ -9,6 +9,7 @@ import { isTenantBannedError } from '@/lib/tenant/ban'
 import { ANALYTICS_EVENTS } from '@/lib/analytics/events'
 import { track } from '@/lib/analytics/server'
 import { parseInviteToken } from '@/lib/tenant/invitation-token'
+import { getTranslations } from 'next-intl/server'
 
 export const BANNED_MESSAGE = 'You were removed from this school and cannot rejoin. Contact the school if you think this is a mistake.'
 
@@ -48,6 +49,7 @@ export async function joinSchool({
    */
   inviteToken?: string | null
 }): Promise<JoinSchoolOutcome> {
+  const tErr = await getTranslations('libErrors')
   // Read the membership with the admin client, not the caller's RLS client
   // (#550): a removed member's own row may be invisible to them, and a false
   // "no membership" here would fall through to an INSERT that dies on the
@@ -69,7 +71,7 @@ export async function joinSchool({
   }
 
   if (existingMembership?.status === 'active') {
-    return { ok: false, code: 'already_member', error: 'You are already a member of this school' }
+    return { ok: false, code: 'already_member', error: tErr('e615b5c93') }
   }
 
   // A non-active row means the user was removed and is re-joining. That is a
@@ -173,7 +175,7 @@ export async function joinSchool({
       return { ok: false, code: 'banned', error: BANNED_MESSAGE }
     }
     console.error('Failed to join school:', error)
-    return { ok: false, code: 'failed', error: 'Failed to join school. Please try again.' }
+    return { ok: false, code: 'failed', error: tErr('ea9939325') }
   }
 
   // The membership row now exists, so the tenant's student count has changed —
@@ -202,7 +204,7 @@ export async function joinSchool({
     return {
       ok: false,
       code: 'metadata_failed',
-      error: 'Failed to finalize school membership. Please try again.',
+      error: tErr('e8869b053'),
     }
   }
 

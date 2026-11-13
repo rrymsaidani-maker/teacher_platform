@@ -8,6 +8,7 @@ import type { Json } from '@/lib/database.types';
 import { generateAchievementCredential, signCredential } from './open-badges';
 import { getSchoolBrand } from '@/lib/themes/school-brand';
 import { resolveCertificateDesign } from './default-design';
+import { getTranslations } from 'next-intl/server'
 
 // =====================================================
 // Types
@@ -38,6 +39,7 @@ export async function issueCertificate(
     userId: string,
     courseId: number
 ): Promise<IssueCertificateResult> {
+  const tErr = await getTranslations('libErrors')
     try {
         const supabase = await createClient();
 
@@ -70,7 +72,7 @@ export async function issueCertificate(
         if (templateError || !template) {
             return {
                 success: false,
-                error: 'No active certificate template found for this course',
+                error: tErr('e5fd805fe'),
             };
         }
 
@@ -84,7 +86,7 @@ export async function issueCertificate(
         if (profileError || !profile) {
             return {
                 success: false,
-                error: 'User profile not found',
+                error: tErr('e223b2574'),
             };
         }
 
@@ -144,7 +146,7 @@ export async function issueCertificate(
         if (keyError || !issuerKey) {
             return {
                 success: false,
-                error: 'No active issuer key found. Please contact administrator.',
+                error: tErr('e394c3372'),
             };
         }
 
@@ -293,6 +295,7 @@ export async function checkCertificateEligibility(
     completion?: CertificateCompletion;
     reason?: string;
 }> {
+  const tErr = await getTranslations('libErrors')
     try {
         const supabase = await createClient();
 
@@ -314,7 +317,7 @@ export async function checkCertificateEligibility(
         console.error('Eligibility check error:', error);
         return {
             eligible: false,
-            reason: 'Error checking eligibility',
+            reason: tErr('e935841dc'),
         };
     }
 }

@@ -4,6 +4,7 @@ import { invitationTemplate } from '@/lib/email/templates/invitation'
 import { getSchoolBrand } from '@/lib/themes/school-brand'
 import { getTenantSiteUrl } from '@/lib/platform/tenant-site-url'
 import { generateInviteToken, withInviteToken } from '@/lib/tenant/invitation-token'
+import { getTranslations } from 'next-intl/server'
 
 /** How long an invitation link stays valid (`tenant_invitations.expires_at`). */
 export const INVITATION_TTL_DAYS = 14
@@ -64,6 +65,7 @@ export async function issueInvitation({
   sendEmailInvite: boolean
   inviterName?: string
 }): Promise<IssueInvitationResult> {
+  const tErr = await getTranslations('libErrors')
   const normalizedEmail = email.toLowerCase()
 
   const token = generateInviteToken()
@@ -97,7 +99,7 @@ export async function issueInvitation({
 
   if (writeError) {
     console.error('Failed to create invitation:', writeError)
-    return { ok: false, error: 'Failed to create invitation', emailSent: false, joinUrl: '' }
+    return { ok: false, error: tErr('e7bc0967b'), emailSent: false, joinUrl: '' }
   }
 
   const { data: tenant } = await admin.from('tenants').select('name, slug, domain').eq('id', tenantId).single()

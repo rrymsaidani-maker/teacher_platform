@@ -13,6 +13,7 @@ import {
 } from '@/lib/ai/errors'
 import { EXAM_FEEDBACK_CODES } from '@/lib/exams/feedback-codes'
 import { EXAM_GRADING_SECRETS_EMBED, withExamGradingSecrets } from '@/lib/exams/grading-secrets'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Exam grading, shared by the web's server action and
@@ -376,6 +377,7 @@ export async function runExamAiGrader(args: {
 }
 
 export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExamOutcome> {
+  const tErr = await getTranslations('libErrors')
   const startTime = Date.now()
   const { supabase, userId, tenantId, submissionId, examId, locale } = args
   const admin = createAdminClient()
@@ -389,10 +391,10 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
     .eq('tenant_id', tenantId)
     .maybeSingle()
   if (!submission || submission.exam_id !== examId) {
-    return { ok: false, status: 404, error: 'Submission not found' }
+    return { ok: false, status: 404, error: tErr('e213a7692') }
   }
   if (!UNGRADED_STATUSES.has(submission.review_status)) {
-    return { ok: false, status: 409, error: 'Submission already graded' }
+    return { ok: false, status: 409, error: tErr('e7a3e0c7b') }
   }
 
   // 2. The caller can read the exam (entitlement, tenant, publish state — all RLS).
@@ -402,11 +404,11 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
     .eq('exam_id', examId)
     .eq('tenant_id', tenantId)
     .maybeSingle()
-  if (!exam) return { ok: false, status: 404, error: 'Exam not found' }
+  if (!exam) return { ok: false, status: 404, error: tErr('e59bdf967') }
 
   // 3. The key, now that the read above proved the caller may see this exam.
   const loaded = await loadExamQuestions(admin, examId)
-  if (!loaded.ok) return { ok: false, status: 500, error: 'Failed to load exam' }
+  if (!loaded.ok) return { ok: false, status: 500, error: tErr('ecc449b42') }
   const questions = loaded.questions
 
   // 4. What the student actually handed in.
@@ -440,7 +442,7 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
   const aiFailure = (err: AiError): GradeExamOutcome => ({
     ok: false,
     status: err.httpStatus as 402 | 422 | 424 | 429 | 502,
-    error: 'AI grading is unavailable right now. Please try again.',
+    error: tErr('ee9a7b9a6'),
     aiCode: err.code,
   })
 
@@ -455,7 +457,7 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
     const { error } = await save(EXAM_FEEDBACK_CODES.graded, score, autoGradedScores, 'programmatic')
     if (error) {
       console.error('Failed to save exam feedback:', error)
-      return { ok: false, status: 500, error: 'Failed to save grading results' }
+      return { ok: false, status: 500, error: tErr('e5defbf3d') }
     }
     return { ok: true, score, overall_feedback: EXAM_FEEDBACK_CODES.graded, question_feedback: autoGradedScores }
   }
@@ -493,7 +495,7 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
     const { error } = await save(EXAM_FEEDBACK_CODES.pendingTeacherReview, score, allFeedback, 'programmatic')
     if (error) {
       console.error('Failed to save exam feedback:', error)
-      return { ok: false, status: 500, error: 'Failed to save grading results' }
+      return { ok: false, status: 500, error: tErr('e5defbf3d') }
     }
 
     // `save_exam_feedback` just stamped `ai_reviewed`. Flag the row for the
@@ -548,7 +550,7 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
     // The model answered, but not in the schema: retryable, nothing is the school's fault.
     if (NoObjectGeneratedError.isInstance(e) || NoOutputGeneratedError.isInstance(e)) {
       console.error('Exam grader returned no valid object:', e.name)
-      return { ok: false, status: 500, error: 'Failed to parse AI grading response. Please try again.' }
+      return { ok: false, status: 500, error: tErr('eab9c615c') }
     }
     const err = classifyProviderError(e, { feature: 'exam_grader', providerId: grader.providerId })
     console.error('Exam grading AI call failed:', err.code, e instanceof Error ? e.name : typeof e, err.upstreamStatus ?? '-')
@@ -566,7 +568,7 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
   // the submission stays pending.
   if (!coversAllFreeText(aiScores, freeTextQuestions)) {
     console.error('Exam grader skipped free-text questions:', Object.keys(aiScores).length, '/', freeTextQuestions.length)
-    return { ok: false, status: 500, error: 'Failed to parse AI grading response. Please try again.' }
+    return { ok: false, status: 500, error: tErr('eab9c615c') }
   }
 
   const questionFeedback = { ...autoGradedScores, ...aiScores }
@@ -575,7 +577,7 @@ export async function gradeExamSubmission(args: GradeExamArgs): Promise<GradeExa
   const { error: saveError } = await save(overall, score, questionFeedback, grader.modelId)
   if (saveError) {
     console.error('Failed to save exam feedback:', saveError)
-    return { ok: false, status: 500, error: 'Failed to save grading results' }
+    return { ok: false, status: 500, error: tErr('e5defbf3d') }
   }
 
   return { ok: true, score, overall_feedback: overall, question_feedback: questionFeedback }

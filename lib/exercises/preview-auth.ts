@@ -1,12 +1,14 @@
 import { getApiAuthContext } from '@/lib/supabase/api-auth'
 import { aiChatLimiter, AI_CHAT_TURNS_PER_MINUTE } from '@/lib/rate-limit'
 import { checkAiChatUsage, aiChatRateLimitedResponse, aiChatUsageLimitResponse } from '@/lib/ai/chat-usage'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Staff sandbox, authorized against current membership AND the course being edited.
  * `canConfigure` (school admin) shapes the typed AI error: admins get the settings link.
  */
 export async function authorizeExercisePreview(req: Request, courseId: number) {
+  const tErr = await getTranslations('libErrors')
   const auth = await getApiAuthContext(req)
   if (!auth) return Response.json({ error: 'Unauthorized' }, { status: 401 })
   const { supabase, user, tenantId } = auth
@@ -18,7 +20,7 @@ export async function authorizeExercisePreview(req: Request, courseId: number) {
   const { data: course } = await supabase.from('courses').select('author_id')
     .eq('course_id', courseId).eq('tenant_id', tenantId).maybeSingle()
   if (!course || (membership.role !== 'admin' && course.author_id !== user.id)) {
-    return Response.json({ error: 'Course not found' }, { status: 404 })
+    return Response.json({ error: tErr('e8c75371c') }, { status: 404 })
   }
   return { ...auth, canConfigure: membership.role === 'admin' }
 }
