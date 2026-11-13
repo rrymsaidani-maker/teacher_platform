@@ -6,6 +6,7 @@ import { getUserRole, isSuperAdmin } from '@/lib/supabase/get-user-role'
 import {getCurrentTenantId, getCurrentUserId } from '@/lib/supabase/tenant'
 import { revalidatePath } from 'next/cache'
 import { fetchLiveEntitlementKeys, liveEntitlementKey } from '@/lib/services/course-access'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * The types a person may broadcast. `certificate_issued` and `community` (#870)
@@ -67,13 +68,14 @@ export interface AdminNotificationStats {
  * Create a new notification
  */
 export async function createNotification(data: NotificationData): Promise<ActionResponse<{ id: number }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     // Verify permissions
@@ -85,13 +87,13 @@ export async function createNotification(data: NotificationData): Promise<Action
     // policy that keeps community rows (#870) system-written. Types are not
     // enforced on server-action input, so refuse anything but a broadcast type.
     if (!BROADCAST_TYPES.includes(data?.notification_type)) {
-      return { success: false, error: 'Invalid notification type' }
+      return { success: false, error: tErr('e99495b63') }
     }
 
     // Teachers can only create course notifications for their own courses
     if (role === 'teacher') {
       if (data.target_type !== 'course' || !data.target_course_id) {
-        return { success: false, error: 'Teachers can only create course notifications' }
+        return { success: false, error: tErr('eda252cdc') }
       }
 
       // Verify teacher owns the course (tenant-scoped)
@@ -103,7 +105,7 @@ export async function createNotification(data: NotificationData): Promise<Action
         .single()
 
       if (!course || course.author_id !== userId) {
-        return { success: false, error: 'You can only create notifications for your own courses' }
+        return { success: false, error: tErr('e26dca9a8') }
       }
     }
 
@@ -146,7 +148,7 @@ export async function createNotification(data: NotificationData): Promise<Action
     return { success: true, data: notification }
   } catch (error) {
     console.error('Error creating notification:', error)
-    return { success: false, error: 'Failed to create notification' }
+    return { success: false, error: tErr('e542d2da1') }
   }
 }
 
@@ -156,6 +158,7 @@ export async function createNotification(data: NotificationData): Promise<Action
 export async function dispatchNotification(
   notificationId: number
 ): Promise<ActionResponse<{ usersNotified: number }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
@@ -252,7 +255,7 @@ export async function dispatchNotification(
     return { success: true, data: { usersNotified: userIds.length } }
   } catch (error) {
     console.error('Error dispatching notification:', error)
-    return { success: false, error: 'Failed to dispatch notification' }
+    return { success: false, error: tErr('e94f040bf') }
   }
 }
 
@@ -263,6 +266,7 @@ export async function getNotifications(
   status?: NotificationStatus,
   limit = 50
 ): Promise<ActionResponse<AdminNotificationRow[]>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin' && role !== 'teacher') {
@@ -298,7 +302,7 @@ export async function getNotifications(
     return { success: true, data }
   } catch (error) {
     console.error('Error fetching notifications:', error)
-    return { success: false, error: 'Failed to fetch notifications' }
+    return { success: false, error: tErr('e89993ca4') }
   }
 }
 
@@ -308,11 +312,12 @@ export async function getNotifications(
 export async function markNotificationAsRead(
   userNotificationId: number
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     const { error } = await supabase
@@ -330,7 +335,7 @@ export async function markNotificationAsRead(
     return { success: true }
   } catch (error) {
     console.error('Error marking notification as read:', error)
-    return { success: false, error: 'Failed to mark as read' }
+    return { success: false, error: tErr('ef802e372') }
   }
 }
 
@@ -350,11 +355,12 @@ const MARK_ALL_MAX_BATCHES = 50
  * batch.
  */
 export async function markAllNotificationsAsRead(): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
     const tenantId = await getCurrentTenantId()
 
@@ -393,7 +399,7 @@ export async function markAllNotificationsAsRead(): Promise<ActionResponse> {
     return { success: true }
   } catch (error) {
     console.error('Error marking all notifications as read:', error)
-    return { success: false, error: 'Failed to mark all as read' }
+    return { success: false, error: tErr('e9b4d0868') }
   }
 }
 
@@ -403,11 +409,12 @@ export async function markAllNotificationsAsRead(): Promise<ActionResponse> {
 export async function dismissNotification(
   userNotificationId: number
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     const { error } = await supabase
@@ -425,7 +432,7 @@ export async function dismissNotification(
     return { success: true }
   } catch (error) {
     console.error('Error dismissing notification:', error)
-    return { success: false, error: 'Failed to dismiss notification' }
+    return { success: false, error: tErr('e4ba9f830') }
   }
 }
 
@@ -436,6 +443,7 @@ export async function updateNotificationStatus(
   notificationId: number,
   status: NotificationStatus
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
@@ -461,7 +469,7 @@ export async function updateNotificationStatus(
       (!isSuperAdminUser && notification.tenant_id !== tenantId) ||
       notification.notification_type === 'community'
     ) {
-      return { success: false, error: 'Notification not found or access denied' }
+      return { success: false, error: tErr('e3b91a64f') }
     }
 
     const { error } = await adminClient
@@ -476,7 +484,7 @@ export async function updateNotificationStatus(
     return { success: true }
   } catch (error) {
     console.error('Error updating notification status:', error)
-    return { success: false, error: 'Failed to update status' }
+    return { success: false, error: tErr('e5e3403e7') }
   }
 }
 
@@ -484,6 +492,7 @@ export async function updateNotificationStatus(
  * Delete notification
  */
 export async function deleteNotification(notificationId: number): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
@@ -504,7 +513,7 @@ export async function deleteNotification(notificationId: number): Promise<Action
         .single()
 
       if (verifyError || !notification || notification.tenant_id !== tenantId) {
-        return { success: false, error: 'Notification not found or access denied' }
+        return { success: false, error: tErr('e3b91a64f') }
       }
     }
 
@@ -520,7 +529,7 @@ export async function deleteNotification(notificationId: number): Promise<Action
     return { success: true }
   } catch (error) {
     console.error('Error deleting notification:', error)
-    return { success: false, error: 'Failed to delete notification' }
+    return { success: false, error: tErr('e939f282d') }
   }
 }
 
@@ -529,6 +538,7 @@ export async function deleteNotification(notificationId: number): Promise<Action
  * system notifications and are not counted.
  */
 export async function getNotificationStats(): Promise<ActionResponse<AdminNotificationStats>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -570,6 +580,6 @@ export async function getNotificationStats(): Promise<ActionResponse<AdminNotifi
     }
   } catch (error) {
     console.error('Error fetching notification stats:', error)
-    return { success: false, error: 'Failed to fetch stats' }
+    return { success: false, error: tErr('e24f1253f') }
   }
 }

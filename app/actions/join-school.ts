@@ -5,6 +5,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { getCurrentTenantId } from '@/lib/supabase/tenant'
 import { revalidatePath } from 'next/cache'
 import { joinSchool } from '@/lib/tenant/join-school'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Join the current tenant — as a student, or with the invited role when
@@ -12,11 +13,12 @@ import { joinSchool } from '@/lib/tenant/join-school'
  * addressed to the signed-in account's email.
  */
 export async function joinCurrentSchool(inviteToken?: string | null) {
+  const tErr = await getTranslations('actionErrors')
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
-    return { success: false, error: 'Not authenticated' }
+    return { success: false, error: tErr('e0c91acba') }
   }
 
   const tenantId = await getCurrentTenantId()
@@ -79,11 +81,12 @@ export async function getUserSchoolMemberships() {
  * Switch to a different school
  */
 export async function switchSchool(tenantId: string) {
+  const tErr = await getTranslations('actionErrors')
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
-    return { success: false, error: 'Not authenticated' }
+    return { success: false, error: tErr('e0c91acba') }
   }
 
   // Verify user is a member of the target tenant
@@ -96,7 +99,7 @@ export async function switchSchool(tenantId: string) {
     .single()
 
   if (!membership) {
-    return { success: false, error: 'You are not a member of this school' }
+    return { success: false, error: tErr('e10007098') }
   }
 
   // Update preferred tenant

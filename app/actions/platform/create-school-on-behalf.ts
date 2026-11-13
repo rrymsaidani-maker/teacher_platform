@@ -9,6 +9,7 @@ import {
   type CreateSchoolOnBehalfInput,
   type CreateSchoolOnBehalfResult,
 } from '@/lib/tenant/create-school-on-behalf'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Super admin: create a school on someone's behalf, already in a billing mode,
@@ -16,9 +17,10 @@ import {
  * validation failures; the form renders the returned `errors`.
  */
 export async function createSchoolOnBehalf(input: CreateSchoolOnBehalfInput): Promise<CreateSchoolOnBehalfResult> {
+  const tErr = await getTranslations('actionErrors')
   const superAdminId = await getCurrentUserId()
   if (!superAdminId || !(await isSuperAdmin())) {
-    return { ok: false, errors: {}, error: 'Super admin only' }
+    return { ok: false, errors: {}, error: tErr('e9029b987') }
   }
 
   const result = await createSchoolOnBehalfCore({ admin: createAdminClient(), superAdminId, input })

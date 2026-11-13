@@ -3,7 +3,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { getCurrentUserId, getCurrentTenantId } from '@/lib/supabase/tenant'
 import { isPlanFeatureError, planFeatureErrorMessage, requirePlanFeature } from '@/lib/plans/server'
-import { getLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import type { AiErrorCode } from '@/lib/ai/errors'
 import {
   AI_PERSONAS,
@@ -49,6 +49,7 @@ export async function gradeExamWithAI(params: {
   examId: number
   submissionId: number
 }): Promise<ExamGradingResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const userId = await getCurrentUserId()
     if (!userId) return { success: false, error: 'Unauthorized' }
@@ -75,7 +76,7 @@ export async function gradeExamWithAI(params: {
       Sentry.captureException(error, { extra: { examId: params.examId, submissionId: params.submissionId } })
     } catch {}
     // Never echo error.message: a provider failure can carry request detail.
-    return { success: false, error: 'Failed to grade exam' }
+    return { success: false, error: tErr('e05f65aea') }
   }
 }
 
@@ -90,6 +91,7 @@ export async function updateExamAIConfig(params: {
   aiFeedbackTone?: FeedbackTone
   aiFeedbackDetailLevel?: DetailLevel
 }) {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
 
@@ -107,7 +109,7 @@ export async function updateExamAIConfig(params: {
       .single()
 
     if (!exam) {
-      return { success: false, error: 'Exam not found' }
+      return { success: false, error: tErr('e59bdf967') }
     }
 
     // Check if user is course author or admin
@@ -151,13 +153,13 @@ export async function updateExamAIConfig(params: {
       })
 
     if (upsertError) {
-      return { success: false, error: 'Failed to update configuration' }
+      return { success: false, error: tErr('e3f2c815e') }
     }
 
     return { success: true }
   } catch (error) {
     console.error('Error updating exam AI config:', error)
-    return { success: false, error: 'Failed to update configuration' }
+    return { success: false, error: tErr('e3f2c815e') }
   }
 }
 

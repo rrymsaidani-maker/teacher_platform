@@ -2,6 +2,7 @@
 
 import { requireAdmin } from '@/lib/actions/utils';
 import { requirePlanFeature } from '@/lib/plans/server';
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Creates a dedicated proxied A record for a school subdomain.
@@ -13,13 +14,14 @@ import { requirePlanFeature } from '@/lib/plans/server';
  * is genuinely required. The school-creation form no longer calls it.
  */
 export async function createCloudflareSubdomain(slug: string) {
+  const tErr = await getTranslations('actionErrors')
   // Custom / vanity domains are a Business+ feature (#662), and creating DNS
   // records is an admin act. Nothing calls this today; the gate is here so
   // the future flow cannot forget it.
   const ctx = await requireAdmin();
   await requirePlanFeature(ctx.tenantId, 'custom_domain');
   if (!/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(slug)) {
-    return { success: false, reason: 'Invalid subdomain' };
+    return { success: false, reason: tErr('eb06a62bc') };
   }
 
   const zoneId = process.env.CLOUDFLARE_ZONE_ID;
@@ -30,7 +32,7 @@ export async function createCloudflareSubdomain(slug: string) {
   if (!zoneId || !apiToken || !serverIp || !platformDomain) {
     console.error("Missing Cloudflare or server environment variables");
     // If not configured, we just return safely, assuming local dev or wildcards
-    return { success: false, reason: "Missing ENV vars" };
+    return { success: false, reason: tErr('e4317b07e') };
   }
 
   const fullRecordName = `${slug}.${platformDomain}`;
@@ -60,7 +62,7 @@ export async function createCloudflareSubdomain(slug: string) {
       // If the record already exists (error 81057), that's fine, we can ignore it
       const alreadyExists = errorData.errors?.some((e: any) => e.code === 81057);
       if (alreadyExists) {
-        return { success: true, reason: "Already exists" };
+        return { success: true, reason: tErr('e3d24273b') };
       }
 
       throw new Error(`Cloudflare API failed: ${response.statusText}`);

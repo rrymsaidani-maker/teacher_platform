@@ -7,6 +7,7 @@ import { ANALYTICS_EVENTS } from '@/lib/analytics/events'
 import { track, safeAnalytics } from '@/lib/analytics/server'
 import type { Data } from '@measured/puck'
 import { summarizeValidationErrors, validateLandingPuckData } from './landing-page-validation'
+import { getTranslations } from 'next-intl/server'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -282,6 +283,7 @@ export async function updateLandingPage(
   updates: { name?: string; slug?: string; puck_data?: Data },
   options: UpdateLandingPageOptions = {}
 ): Promise<SaveLandingPageResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -332,8 +334,8 @@ export async function updateLandingPage(
     const row = Array.isArray(data) ? data[0] : null
     if (!row) {
       return options.expectedUpdatedAt
-        ? { success: false, error: 'This page was changed somewhere else after you opened it.', code: 'conflict' }
-        : { success: false, error: 'Landing page not found', code: 'not_found' }
+        ? { success: false, error: tErr('ee6be78db'), code: 'conflict' }
+        : { success: false, error: tErr('efb0f9070'), code: 'not_found' }
     }
     revalidatePath('/[locale]/dashboard/admin/landing-page', 'page')
     return { success: true, data: mapRow(row) }

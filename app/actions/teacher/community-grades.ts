@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { requireTeacherOrAdmin, verifyCourseOwnership, type ActionResult } from '@/lib/actions/utils'
 import { gradeErrorKey, normalizeGradeFeedback, parseGradeScore } from '@/lib/community/prompt-grades'
+import { getTranslations } from 'next-intl/server'
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
@@ -39,16 +40,17 @@ export async function savePromptGrade(input: {
   score: number | string
   feedback?: string | null
 }): Promise<ActionResult<SavedPromptGrade>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const ctx = await requireTeacherOrAdmin()
 
-    if (!Number.isInteger(input.courseId) || input.courseId <= 0) return { success: false, error: 'Invalid course' }
-    if (!UUID.test(input.postId) || !UUID.test(input.studentId)) return { success: false, error: 'Invalid request' }
+    if (!Number.isInteger(input.courseId) || input.courseId <= 0) return { success: false, error: tErr('e336700dd') }
+    if (!UUID.test(input.postId) || !UUID.test(input.studentId)) return { success: false, error: tErr('ec2ba81a4') }
 
     const score = parseGradeScore(input.score)
-    if (score === null) return { success: false, error: 'The score must be a whole number from 0 to 100' }
+    if (score === null) return { success: false, error: tErr('e779c0067') }
     const feedback = normalizeGradeFeedback(input.feedback)
-    if (feedback === 'invalid') return { success: false, error: 'Feedback is too long' }
+    if (feedback === 'invalid') return { success: false, error: tErr('ea1387d14') }
 
     await verifyCourseOwnership(ctx, input.courseId)
 
@@ -64,7 +66,7 @@ export async function savePromptGrade(input: {
       .eq('is_graded', true)
       .eq('is_hidden', false)
       .maybeSingle()
-    if (!post) return { success: false, error: 'This prompt is not graded or no longer exists' }
+    if (!post) return { success: false, error: tErr('efd68d5cb') }
 
     // Update first; a first grade inserts. A teacher grading the same student
     // at the same moment loses the insert race (23505) and updates instead.
@@ -109,7 +111,7 @@ export async function savePromptGrade(input: {
       saved = inserted
     }
 
-    if (!saved) return { success: false, error: 'Failed to save the grade' }
+    if (!saved) return { success: false, error: tErr('e7a2c6ab2') }
 
     revalidatePath(`/dashboard/teacher/courses/${input.courseId}/community`)
     revalidatePath(`/dashboard/student/courses/${input.courseId}`)
@@ -134,10 +136,11 @@ export async function removePromptGrade(input: {
   postId: string
   studentId: string
 }): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const ctx = await requireTeacherOrAdmin()
-    if (!Number.isInteger(input.courseId) || input.courseId <= 0) return { success: false, error: 'Invalid course' }
-    if (!UUID.test(input.postId) || !UUID.test(input.studentId)) return { success: false, error: 'Invalid request' }
+    if (!Number.isInteger(input.courseId) || input.courseId <= 0) return { success: false, error: tErr('e336700dd') }
+    if (!UUID.test(input.postId) || !UUID.test(input.studentId)) return { success: false, error: tErr('ec2ba81a4') }
 
     await verifyCourseOwnership(ctx, input.courseId)
 
@@ -150,7 +153,7 @@ export async function removePromptGrade(input: {
       .eq('tenant_id', ctx.tenantId)
       .eq('course_id', input.courseId)
       .maybeSingle()
-    if (!post) return { success: false, error: 'This prompt no longer exists' }
+    if (!post) return { success: false, error: tErr('eeceee888') }
 
     const { error } = await ctx.supabase
       .from('community_prompt_grades')

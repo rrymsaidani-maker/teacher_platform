@@ -4,6 +4,7 @@ import { verifyAdminAccess, createAdminClient, type ActionResult } from '@/lib/s
 import { getCurrentTenantId } from '@/lib/supabase/tenant'
 import { recordAssetUploader } from '@/lib/assets/record-uploader'
 import { nanoid } from 'nanoid'
+import { getTranslations } from 'next-intl/server'
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']
@@ -11,21 +12,22 @@ const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'im
 export async function uploadLandingPageAsset(
   formData: FormData
 ): Promise<ActionResult<{ url: string }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
     const file = formData.get('file') as File | null
 
     if (!file) {
-      return { success: false, error: 'No file provided' }
+      return { success: false, error: tErr('edd9f5ee2') }
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return { success: false, error: 'File size must be under 5MB' }
+      return { success: false, error: tErr('e2ceb3aba') }
     }
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return { success: false, error: 'File type not allowed. Use JPEG, PNG, GIF, WebP, or SVG.' }
+      return { success: false, error: tErr('ea68d3eb8') }
     }
 
     const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg'
@@ -62,6 +64,7 @@ export async function uploadLandingPageAsset(
 export async function deleteLandingPageAsset(
   fileUrl: string
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -70,14 +73,14 @@ export async function deleteLandingPageAsset(
     const url = new URL(fileUrl)
     const pathMatch = url.pathname.match(/landing-page-assets\/(.+)$/)
     if (!pathMatch) {
-      return { success: false, error: 'Invalid file URL' }
+      return { success: false, error: tErr('ed9f504b4') }
     }
 
     const filePath = decodeURIComponent(pathMatch[1])
 
     // Verify file belongs to this tenant
     if (!filePath.startsWith(`${tenantId}/`)) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     const adminClient = createAdminClient()

@@ -21,6 +21,7 @@ import {
   normalizeCountry,
   type CountryCode,
 } from '@/lib/countries'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * A `tenant_settings.setting_value` JSONB payload. Every setting is stored as
@@ -83,6 +84,7 @@ interface WalletResponse {
  * Get all tenant settings or settings filtered by key prefix
  */
 export async function getSettings(category?: string): Promise<SettingsResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -124,7 +126,7 @@ export async function getSettings(category?: string): Promise<SettingsResponse> 
     return { success: true, data: settings }
   } catch (error) {
     console.error('Error fetching settings:', error)
-    return { success: false, error: 'Failed to fetch settings' }
+    return { success: false, error: tErr('e7ccefc10') }
   }
 }
 
@@ -132,6 +134,7 @@ export async function getSettings(category?: string): Promise<SettingsResponse> 
  * Get a single setting by key
  */
 export async function getSetting(key: string): Promise<SettingsResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -153,7 +156,7 @@ export async function getSetting(key: string): Promise<SettingsResponse> {
     return { success: true, data: data.setting_value }
   } catch (error) {
     console.error('Error fetching setting:', error)
-    return { success: false, error: 'Failed to fetch setting' }
+    return { success: false, error: tErr('e7cef8413') }
   }
 }
 
@@ -198,6 +201,7 @@ export async function updateSetting(
   key: string,
   value: SettingValue
 ): Promise<SettingsResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -205,7 +209,7 @@ export async function updateSetting(
     }
 
     if (typeof value !== 'object' || value === null) {
-      return { success: false, error: 'Setting value must be an object' }
+      return { success: false, error: tErr('e55e7e0a0') }
     }
 
     if (key === SCHOOL_THEME_SETTING_KEY) return THEME_KEY_REFUSAL
@@ -236,7 +240,7 @@ export async function updateSetting(
     return { success: true, data: data.setting_value }
   } catch (error) {
     console.error('Error updating setting:', error)
-    return { success: false, error: 'Failed to update setting' }
+    return { success: false, error: tErr('ec42234a8') }
   }
 }
 
@@ -246,6 +250,7 @@ export async function updateSetting(
 export async function updateSettings(
   settings: Record<string, SettingValue>
 ): Promise<SettingsResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -281,7 +286,7 @@ export async function updateSettings(
     return { success: true, data: settings }
   } catch (error) {
     console.error('Error updating settings:', error)
-    return { success: false, error: 'Failed to update settings' }
+    return { success: false, error: tErr('e0d6ed489') }
   }
 }
 
@@ -296,11 +301,12 @@ export async function updateChallengeSettings(input: {
   /** Friend groups (#1050). Omitted = leave the stored value alone. */
   groupsEnabled?: boolean
 }): Promise<{ success: boolean; error?: string }> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') return { success: false, error: 'Unauthorized' }
 
-    if (typeof input.enabled !== 'boolean') return { success: false, error: 'Invalid input' }
+    if (typeof input.enabled !== 'boolean') return { success: false, error: tErr('eeb4b7e32') }
     const cap = input.guestMonthlyCap
     if (cap !== null && (!Number.isInteger(cap) || cap < 0 || cap > 1_000_000)) {
       return { success: false, error: 'invalid_cap' }
@@ -337,7 +343,7 @@ export async function updateChallengeSettings(input: {
     return { success: true }
   } catch (error) {
     console.error('Error updating challenge settings:', error)
-    return { success: false, error: 'Failed to update settings' }
+    return { success: false, error: tErr('e0d6ed489') }
   }
 }
 
@@ -345,6 +351,7 @@ export async function updateChallengeSettings(input: {
  * Reset a setting to its default value
  */
 export async function resetSetting(key: string): Promise<SettingsResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -385,13 +392,13 @@ export async function resetSetting(key: string): Promise<SettingsResponse> {
 
     const defaultValue = defaults[key]
     if (!defaultValue) {
-      return { success: false, error: 'Unknown setting key' }
+      return { success: false, error: tErr('e688420e2') }
     }
 
     return updateSetting(key, defaultValue)
   } catch (error) {
     console.error('Error resetting setting:', error)
-    return { success: false, error: 'Failed to reset setting' }
+    return { success: false, error: tErr('e72165ade') }
   }
 }
 
@@ -409,6 +416,7 @@ export async function updateSchoolCountry(country: string): Promise<{
   currencyFilled?: string | null
   error?: string
 }> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -417,7 +425,7 @@ export async function updateSchoolCountry(country: string): Promise<{
 
     const code = normalizeCountry(country)
     if (!code) {
-      return { success: false, error: 'Choose a country from the list.' }
+      return { success: false, error: tErr('eb31589f3') }
     }
 
     const tenantId = await getCurrentTenantId()
@@ -457,7 +465,7 @@ export async function updateSchoolCountry(country: string): Promise<{
     return { success: true, country: code, currencyFilled }
   } catch (error) {
     console.error('Error updating school country:', error)
-    return { success: false, error: 'Failed to update the school country' }
+    return { success: false, error: tErr('e40a6d082') }
   }
 }
 
@@ -468,6 +476,7 @@ export async function updateSchoolCountry(country: string): Promise<{
  * `solana_subs` provider, so we read the `solana` row as the source of truth.
  */
 export async function getSolanaWallet(): Promise<WalletResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -489,7 +498,7 @@ export async function getSolanaWallet(): Promise<WalletResponse> {
     return { success: true, data: { wallet_address: data?.wallet_address || '' } }
   } catch (error) {
     console.error('Error fetching Solana wallet:', error)
-    return { success: false, error: 'Failed to fetch Solana wallet' }
+    return { success: false, error: tErr('e9cf28122') }
   }
 }
 
@@ -503,6 +512,7 @@ export async function getSolanaWallet(): Promise<WalletResponse> {
  * validated above and the rows are written with this tenant's id only.
  */
 export async function setSolanaWallet(walletAddress: string): Promise<WalletResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -512,7 +522,7 @@ export async function setSolanaWallet(walletAddress: string): Promise<WalletResp
     const address = (walletAddress || '').trim()
     // Solana addresses are base58, 32–44 chars (no 0, O, I, l).
     if (!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address)) {
-      return { success: false, error: 'Enter a valid Solana wallet address (base58, 32–44 characters).' }
+      return { success: false, error: tErr('e4c8a5cff') }
     }
 
     const tenantId = await getCurrentTenantId()
@@ -574,7 +584,7 @@ export async function setSolanaWallet(walletAddress: string): Promise<WalletResp
     return { success: true, data: { wallet_address: address } }
   } catch (error) {
     console.error('Error saving Solana wallet:', error)
-    return { success: false, error: 'Failed to save Solana wallet' }
+    return { success: false, error: tErr('ed0fc0310') }
   }
 }
 
@@ -595,6 +605,7 @@ export async function setBinancePersonalCredentials(
   apiKey: string,
   apiSecret: string
 ): Promise<WalletResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -603,7 +614,7 @@ export async function setBinancePersonalCredentials(
 
     const id = (payId || '').trim()
     if (!id) {
-      return { success: false, error: 'Enter your Binance Pay ID.' }
+      return { success: false, error: tErr('e78621b2a') }
     }
 
     const key = (apiKey || '').trim()
@@ -631,7 +642,7 @@ export async function setBinancePersonalCredentials(
 
     // Require key+secret on first save; allow Pay-ID-only updates afterwards.
     if (!hasExistingCredentials && (!key || !secret)) {
-      return { success: false, error: 'Enter your Binance API key and secret.' }
+      return { success: false, error: tErr('e92726434') }
     }
 
     // Only the save that first makes the rail usable counts as a connection —
@@ -645,14 +656,14 @@ export async function setBinancePersonalCredentials(
     let credentials = existingCredentials
     if (key || secret) {
       if (!key || !secret) {
-        return { success: false, error: 'Enter both the API key and the API secret.' }
+        return { success: false, error: tErr('e799d5edb') }
       }
       // Never store plaintext — fail closed if the encryption key is unset.
       let encryptionKey: string
       try {
         encryptionKey = getPaymentCredentialsKey()
       } catch {
-        return { success: false, error: 'PAYMENT_CREDENTIALS_ENCRYPTION_KEY is not configured' }
+        return { success: false, error: tErr('ee72733d8') }
       }
       credentials = {
         api_key: encryptCredential(key, encryptionKey),
@@ -696,7 +707,7 @@ export async function setBinancePersonalCredentials(
     return { success: true, data: { wallet_address: id } }
   } catch (error) {
     console.error('Error saving Binance personal credentials:', error)
-    return { success: false, error: 'Failed to save Binance Pay credentials' }
+    return { success: false, error: tErr('eeec48510') }
   }
 }
 
@@ -712,6 +723,7 @@ export async function getBinancePersonalStatus(): Promise<{
   hasCredentials: boolean
   error?: string
 }> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -738,7 +750,7 @@ export async function getBinancePersonalStatus(): Promise<{
     }
   } catch (error) {
     console.error('Error fetching Binance personal status:', error)
-    return { success: false, payId: null, hasCredentials: false, error: 'Failed to fetch status' }
+    return { success: false, payId: null, hasCredentials: false, error: tErr('ed39fda5b') }
   }
 }
 
@@ -753,6 +765,7 @@ export async function removeBinancePersonalCredentials(): Promise<{
   success: boolean
   error?: string
 }> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -774,7 +787,7 @@ export async function removeBinancePersonalCredentials(): Promise<{
     return { success: true }
   } catch (error) {
     console.error('Error removing Binance personal credentials:', error)
-    return { success: false, error: 'Failed to remove Binance Pay credentials' }
+    return { success: false, error: tErr('e2fc59369') }
   }
 }
 
@@ -796,6 +809,7 @@ export async function removeBinancePersonalCredentials(): Promise<{
  * and a ready Connect account keeps Stripe (see the note inline).
  */
 export async function getEnabledPaymentProviders(): Promise<{ success: boolean; data: string[]; error?: string }> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -910,7 +924,7 @@ export async function getEnabledPaymentProviders(): Promise<{ success: boolean; 
   } catch (error) {
     console.error('Error resolving enabled payment providers:', error)
     // Never block the form entirely — offline always works.
-    return { success: false, data: ['manual'], error: 'Failed to resolve enabled providers' }
+    return { success: false, data: ['manual'], error: tErr('e281fb51b') }
   }
 }
 
@@ -996,6 +1010,7 @@ export async function getManualPaymentAccounts(): Promise<ManualPaymentAccount[]
  * Get all settings grouped by category (for the settings page)
  */
 export async function getAllSettingsByCategory(): Promise<CategorySettingsResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -1041,6 +1056,6 @@ export async function getAllSettingsByCategory(): Promise<CategorySettingsRespon
     return { success: true, data: grouped }
   } catch (error) {
     console.error('Error fetching settings by category:', error)
-    return { success: false, error: 'Failed to fetch settings' }
+    return { success: false, error: tErr('e7ccefc10') }
   }
 }

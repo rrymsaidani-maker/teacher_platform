@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { getCurrentUserId } from '@/lib/supabase/tenant'
+import { getTranslations } from 'next-intl/server'
 
 // Community notification preferences (issue #870). `notification_preferences`
 // is global per user — one row, every school — and RLS lets a user insert and
@@ -27,14 +28,15 @@ export async function setCommunityNotificationPreference(
   key: CommunityPreferenceKey,
   enabled: boolean
 ): Promise<{ success: true } | { success: false; error: string }> {
+  const tErr = await getTranslations('actionErrors')
   if (!Object.hasOwn(COLUMN, key) || typeof enabled !== 'boolean') {
-    return { success: false, error: 'Invalid preference' }
+    return { success: false, error: tErr('e04eb7762') }
   }
 
   try {
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     const supabase = await createClient()
@@ -44,13 +46,13 @@ export async function setCommunityNotificationPreference(
 
     if (error) {
       console.error('setCommunityNotificationPreference:', error)
-      return { success: false, error: 'Failed to save preference' }
+      return { success: false, error: tErr('e487cabef') }
     }
 
     revalidatePath('/[locale]/dashboard/notifications', 'page')
     return { success: true }
   } catch (error) {
     console.error('setCommunityNotificationPreference:', error)
-    return { success: false, error: 'Failed to save preference' }
+    return { success: false, error: tErr('e487cabef') }
   }
 }

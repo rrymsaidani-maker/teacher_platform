@@ -5,6 +5,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { getCurrentTenantId } from '@/lib/supabase/tenant'
 import { getUserRole } from '@/lib/supabase/get-user-role'
 import { errorMessage } from '@/lib/supabase/error-message'
+import { getTranslations } from 'next-intl/server'
 
 export type AssetKind = 'image' | 'video' | 'document' | 'other'
 export type AssetSource =
@@ -245,6 +246,7 @@ export async function listTenantAssets(opts: {
  * can delete anything in the school; teachers only what they uploaded.
  */
 export async function deleteTenantAsset(assetId: string): Promise<Result<object>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { role, tenantId } = await requireStaff()
     const supabase = await createClient()
@@ -257,11 +259,11 @@ export async function deleteTenantAsset(assetId: string): Promise<Result<object>
       .eq('tenant_id', tenantId)
       .maybeSingle()
     if (lookupError) throw lookupError
-    if (!asset) return { success: false, error: 'Asset not found' }
+    if (!asset) return { success: false, error: tErr('e855f40bd') }
     if (role !== 'admin' && asset.uploaded_by !== user?.id) {
-      return { success: false, error: 'Only an admin can delete files uploaded by others' }
+      return { success: false, error: tErr('e50a5fe1c') }
     }
-    if (!asset.path.startsWith(`${tenantId}/`)) return { success: false, error: 'Access denied' }
+    if (!asset.path.startsWith(`${tenantId}/`)) return { success: false, error: tErr('e64343a83') }
 
     const admin = createAdminClient()
     const { error } = await admin.storage.from(asset.bucket).remove([asset.path])

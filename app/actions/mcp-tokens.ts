@@ -7,6 +7,7 @@ import { randomBytes, createHash } from 'crypto'
 import { getCurrentTenantId, getCurrentUserId } from '@/lib/supabase/tenant'
 import { ANALYTICS_EVENTS } from '@/lib/analytics/events'
 import { track, safeAnalytics } from '@/lib/analytics/server'
+import { getTranslations } from 'next-intl/server'
 
 export interface McpToken {
   id: number
@@ -71,6 +72,7 @@ export async function createMcpToken(name: string, expiresInDays?: number) {
 }
 
 export async function listMcpTokens(): Promise<{ data: McpToken[] | null; error: string | null }> {
+  const tErr = await getTranslations('actionErrors')
   const role = await getUserRole()
   if (role !== 'teacher' && role !== 'admin') {
     return { data: null, error: 'Unauthorized' }
@@ -78,7 +80,7 @@ export async function listMcpTokens(): Promise<{ data: McpToken[] | null; error:
 
   const supabase = await createClient()
   const userId = await getCurrentUserId()
-  if (!userId) return { data: null, error: 'Not authenticated' }
+  if (!userId) return { data: null, error: tErr('e0c91acba') }
 
   const { data, error } = await supabase
     .from('mcp_api_tokens')

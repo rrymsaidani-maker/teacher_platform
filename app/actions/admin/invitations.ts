@@ -8,6 +8,7 @@ import { issueInvitation, buildJoinUrl } from '@/lib/tenant/invitations'
 import { ANALYTICS_EVENTS } from '@/lib/analytics/events'
 import { track } from '@/lib/analytics/server'
 import { revalidatePath } from 'next/cache'
+import { getTranslations } from 'next-intl/server'
 
 export interface CreateInvitationResult {
   success: boolean
@@ -37,6 +38,7 @@ export async function createInvitation({
   role: 'student' | 'teacher'
   sendEmailInvite: boolean
 }): Promise<CreateInvitationResult> {
+  const tErr = await getTranslations('actionErrors')
   const userRole = await getUserRole()
   if (userRole !== 'admin') {
     return { success: false, error: 'Unauthorized' }
@@ -48,7 +50,7 @@ export async function createInvitation({
 
   const userId = await getCurrentUserId()
   if (!userId) {
-    return { success: false, error: 'Not authenticated' }
+    return { success: false, error: tErr('e0c91acba') }
   }
 
   const tenantId = await getCurrentTenantId()

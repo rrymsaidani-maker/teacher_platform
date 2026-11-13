@@ -8,6 +8,7 @@ import { PROVIDER_CAPABILITIES } from '@/lib/payments/types'
 import { ANALYTICS_EVENTS } from '@/lib/analytics/events'
 import { track, safeAnalytics } from '@/lib/analytics/server'
 import { revalidatePath } from 'next/cache'
+import { getTranslations } from 'next-intl/server'
 
 interface ActionResponse {
   success: boolean
@@ -40,6 +41,7 @@ export interface PendingBinancePersonalTransaction {
 export async function confirmBinancePersonalTransaction(
   transactionId: number
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -61,7 +63,7 @@ export async function confirmBinancePersonalTransaction(
 
     if (loadError) throw loadError
     if (!tx || tx.tenant_id !== tenantId || tx.payment_provider !== 'binance_personal') {
-      return { success: false, error: 'Transaction not found' }
+      return { success: false, error: tErr('e9d49d7c7') }
     }
 
     const { data: flipped, error: updateError } = await supabase
@@ -149,7 +151,7 @@ export async function confirmBinancePersonalTransaction(
     return { success: true }
   } catch (error) {
     console.error('Error confirming Binance personal transaction:', error)
-    return { success: false, error: 'Failed to confirm payment' }
+    return { success: false, error: tErr('ef58bef1a') }
   }
 }
 
@@ -161,6 +163,7 @@ export async function confirmBinancePersonalTransaction(
 export async function cancelBinancePersonalTransaction(
   transactionId: number
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin') {
@@ -178,7 +181,7 @@ export async function cancelBinancePersonalTransaction(
 
     if (loadError) throw loadError
     if (!tx || tx.tenant_id !== tenantId || tx.payment_provider !== 'binance_personal') {
-      return { success: false, error: 'Transaction not found' }
+      return { success: false, error: tErr('e9d49d7c7') }
     }
 
     const { error: updateError } = await supabase
@@ -196,7 +199,7 @@ export async function cancelBinancePersonalTransaction(
     return { success: true }
   } catch (error) {
     console.error('Error canceling Binance personal transaction:', error)
-    return { success: false, error: 'Failed to cancel payment' }
+    return { success: false, error: tErr('eedc36943') }
   }
 }
 

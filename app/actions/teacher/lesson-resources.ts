@@ -6,6 +6,7 @@ import {getCurrentTenantId, getCurrentUserId } from '@/lib/supabase/tenant'
 import { getUserRole } from '@/lib/supabase/get-user-role'
 import { signLessonResourceDownload } from '@/lib/lessons/resource-download'
 import { nanoid } from 'nanoid'
+import { getTranslations } from 'next-intl/server'
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
 const ALLOWED_TYPES = [
@@ -53,20 +54,21 @@ export async function uploadLessonResource(
   lessonId: number,
   formData: FormData
 ): Promise<ActionResult<{ id: number; file_name: string; file_size: number; mime_type: string }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId, tenantId } = await verifyLessonOwnership(lessonId)
     const file = formData.get('file') as File | null
 
     if (!file) {
-      return { success: false, error: 'No file provided' }
+      return { success: false, error: tErr('edd9f5ee2') }
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return { success: false, error: 'File size must be under 10MB' }
+      return { success: false, error: tErr('e10ef8666') }
     }
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return { success: false, error: 'File type not allowed' }
+      return { success: false, error: tErr('ea7b50ae7') }
     }
 
     const ext = file.name.split('.').pop()?.toLowerCase() || 'bin'
@@ -123,6 +125,7 @@ export async function uploadLessonResource(
 export async function deleteLessonResource(
   resourceId: number
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const tenantId = await getCurrentTenantId()
     const role = await getUserRole()
@@ -139,7 +142,7 @@ export async function deleteLessonResource(
       .single()
 
     if (!resource || resource.tenant_id !== tenantId) {
-      return { success: false, error: 'Resource not found' }
+      return { success: false, error: tErr('e2d1d4c27') }
     }
 
     const course = (resource.lessons as unknown as { courses: { author_id: string | null } | null } | null)
@@ -148,7 +151,7 @@ export async function deleteLessonResource(
     const isAdmin = role === 'admin'
 
     if (!isOwner && !isAdmin) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     // Remove from storage
@@ -243,6 +246,7 @@ export async function toggleSequentialCompletion(
   courseId: number,
   enabled: boolean
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
     const tenantId = await getCurrentTenantId()
@@ -257,13 +261,13 @@ export async function toggleSequentialCompletion(
       .eq('tenant_id', tenantId)
       .single()
 
-    if (!course) return { success: false, error: 'Course not found' }
+    if (!course) return { success: false, error: tErr('e8c75371c') }
 
     const isOwner = course.author_id === userId
     const isAdmin = role === 'admin'
 
     if (!isOwner && !isAdmin) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     const { error } = await supabase

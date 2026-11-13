@@ -14,6 +14,7 @@ import {
   type KitThemeId,
   type StoredKitTheme,
 } from '@/lib/themes/kit'
+import { getTranslations } from 'next-intl/server'
 
 export interface ThemeActionResult {
   success: boolean
@@ -51,13 +52,14 @@ async function trackThemeCustomized(
  * `tenant_settings` directly under RLS.
  */
 export async function applyKitTheme(input: { theme: string; brand: string }): Promise<ThemeActionResult> {
+  const tErr = await getTranslations('actionErrors')
   const role = await getUserRole()
   if (role !== 'admin') return { success: false, error: 'Unauthorized' }
 
   // Server actions take untrusted input: validate the whole shape, not the types.
   const raw = (input ?? {}) as Partial<Record<'theme' | 'brand', unknown>>
   const stored = parseStoredKitTheme({ type: 'kit', theme: raw.theme, brand: raw.brand })
-  if (!stored) return { success: false, error: 'Invalid theme or colour' }
+  if (!stored) return { success: false, error: tErr('e8d19f0f3') }
 
   const tenantId = await getCurrentTenantId()
   const custom = !isKitSwatch(stored.theme, stored.brand)
@@ -78,7 +80,7 @@ export async function applyKitTheme(input: { theme: string; brand: string }): Pr
     )
   if (error) {
     console.error('applyKitTheme failed:', error)
-    return { success: false, error: 'Failed to save theme' }
+    return { success: false, error: tErr('e015e931e') }
   }
 
   await trackThemeCustomized(tenantId, { theme: stored.theme, custom, change: 'theme' })
@@ -88,6 +90,7 @@ export async function applyKitTheme(input: { theme: string; brand: string }): Pr
 
 /** Remove the school's theme so it renders the platform palette. Open to every plan. */
 export async function resetSchoolTheme(): Promise<ThemeActionResult> {
+  const tErr = await getTranslations('actionErrors')
   const role = await getUserRole()
   if (role !== 'admin') return { success: false, error: 'Unauthorized' }
 
@@ -99,7 +102,7 @@ export async function resetSchoolTheme(): Promise<ThemeActionResult> {
     .eq('setting_key', SCHOOL_THEME_SETTING_KEY)
   if (error) {
     console.error('resetSchoolTheme failed:', error)
-    return { success: false, error: 'Failed to reset theme' }
+    return { success: false, error: tErr('e293b3ff3') }
   }
 
   await trackThemeCustomized(tenantId, { theme: null, custom: false, change: 'reset' })

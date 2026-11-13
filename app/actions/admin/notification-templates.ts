@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { getUserRole, isSuperAdmin } from '@/lib/supabase/get-user-role'
 import {getCurrentTenantId, getCurrentUserId } from '@/lib/supabase/tenant'
 import { revalidatePath } from 'next/cache'
+import { getTranslations } from 'next-intl/server'
 
 type TemplateCategory = 'system' | 'course' | 'payment' | 'enrollment' | 'exam' | 'custom'
 
@@ -28,6 +29,7 @@ interface ActionResponse<T = any> {
 export async function getNotificationTemplates(
   category?: TemplateCategory
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin' && role !== 'teacher') {
@@ -53,7 +55,7 @@ export async function getNotificationTemplates(
     return { success: true, data }
   } catch (error) {
     console.error('Error fetching templates:', error)
-    return { success: false, error: 'Failed to fetch templates' }
+    return { success: false, error: tErr('eccae6794') }
   }
 }
 
@@ -61,6 +63,7 @@ export async function getNotificationTemplates(
  * Get single template
  */
 export async function getNotificationTemplate(id: number): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     if (role !== 'admin' && role !== 'teacher') {
@@ -80,7 +83,7 @@ export async function getNotificationTemplate(id: number): Promise<ActionRespons
     return { success: true, data }
   } catch (error) {
     console.error('Error fetching template:', error)
-    return { success: false, error: 'Failed to fetch template' }
+    return { success: false, error: tErr('e9d6c12e8') }
   }
 }
 
@@ -90,6 +93,7 @@ export async function getNotificationTemplate(id: number): Promise<ActionRespons
 export async function createNotificationTemplate(
   data: TemplateData
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
@@ -101,7 +105,7 @@ export async function createNotificationTemplate(
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     const adminClient = createAdminClient()
@@ -123,7 +127,7 @@ export async function createNotificationTemplate(
     return { success: true, data: template }
   } catch (error) {
     console.error('Error creating template:', error)
-    return { success: false, error: 'Failed to create template' }
+    return { success: false, error: tErr('e21a704ee') }
   }
 }
 
@@ -134,6 +138,7 @@ export async function updateNotificationTemplate(
   id: number,
   data: Partial<TemplateData>
 ): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
@@ -154,7 +159,7 @@ export async function updateNotificationTemplate(
         .single()
 
       if (verifyError || !template || template.tenant_id !== tenantId) {
-        return { success: false, error: 'Template not found or access denied' }
+        return { success: false, error: tErr('ef03d9116') }
       }
     }
 
@@ -172,7 +177,7 @@ export async function updateNotificationTemplate(
     return { success: true, data: template }
   } catch (error) {
     console.error('Error updating template:', error)
-    return { success: false, error: 'Failed to update template' }
+    return { success: false, error: tErr('e56d2206f') }
   }
 }
 
@@ -180,6 +185,7 @@ export async function updateNotificationTemplate(
  * Delete notification template
  */
 export async function deleteNotificationTemplate(id: number): Promise<ActionResponse> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const role = await getUserRole()
     const tenantId = await getCurrentTenantId()
@@ -200,7 +206,7 @@ export async function deleteNotificationTemplate(id: number): Promise<ActionResp
         .single()
 
       if (verifyError || !template || template.tenant_id !== tenantId) {
-        return { success: false, error: 'Template not found or access denied' }
+        return { success: false, error: tErr('ef03d9116') }
       }
     }
 
@@ -216,7 +222,7 @@ export async function deleteNotificationTemplate(id: number): Promise<ActionResp
     return { success: true }
   } catch (error) {
     console.error('Error deleting template:', error)
-    return { success: false, error: 'Failed to delete template' }
+    return { success: false, error: tErr('ecd7811a5') }
   }
 }
 

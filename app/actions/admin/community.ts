@@ -6,6 +6,7 @@ import { getUserRole } from '@/lib/supabase/get-user-role'
 import { canPinInCourse } from '@/lib/community/access'
 import { revalidatePath } from 'next/cache'
 import { isCommunitySettingKey, type CommunitySettingKey } from '@/lib/community/setting-keys'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Who may pin or unpin a post (#868): an admin anywhere in the school, or the
@@ -90,6 +91,7 @@ export async function unpinPost(postId: string): Promise<ActionResult> {
  * Lock a post to prevent new comments
  */
 export async function lockPost(postId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -102,11 +104,11 @@ export async function lockPost(postId: string): Promise<ActionResult> {
       .single()
 
     if (fetchError || !post) {
-      return { success: false, error: 'Post not found' }
+      return { success: false, error: tErr('e2a87047b') }
     }
 
     if (post.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     const { error } = await adminClient
@@ -133,6 +135,7 @@ export async function lockPost(postId: string): Promise<ActionResult> {
  * Unlock a post to allow new comments
  */
 export async function unlockPost(postId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -145,11 +148,11 @@ export async function unlockPost(postId: string): Promise<ActionResult> {
       .single()
 
     if (fetchError || !post) {
-      return { success: false, error: 'Post not found' }
+      return { success: false, error: tErr('e2a87047b') }
     }
 
     if (post.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     const { error } = await adminClient
@@ -176,6 +179,7 @@ export async function unlockPost(postId: string): Promise<ActionResult> {
  * Hide a post (admin moderation)
  */
 export async function hidePost(postId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -188,11 +192,11 @@ export async function hidePost(postId: string): Promise<ActionResult> {
       .single()
 
     if (fetchError || !post) {
-      return { success: false, error: 'Post not found' }
+      return { success: false, error: tErr('e2a87047b') }
     }
 
     if (post.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     const { error } = await adminClient
@@ -219,6 +223,7 @@ export async function hidePost(postId: string): Promise<ActionResult> {
  * Hide a comment (admin moderation)
  */
 export async function hideComment(commentId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -231,11 +236,11 @@ export async function hideComment(commentId: string): Promise<ActionResult> {
       .single()
 
     if (fetchError || !comment) {
-      return { success: false, error: 'Comment not found' }
+      return { success: false, error: tErr('e3d82047d') }
     }
 
     if (comment.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     const { error } = await adminClient
@@ -266,6 +271,7 @@ export async function muteUser(
   reason?: string,
   mutedUntil?: string
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -274,17 +280,17 @@ export async function muteUser(
     // Get admin user for muted_by field
     const adminUserId = await getCurrentUserId()
     if (!adminUserId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     // Cannot mute yourself
     if (userId === adminUserId) {
-      return { success: false, error: 'You cannot mute yourself' }
+      return { success: false, error: tErr('e0febdb39') }
     }
 
     // Validate muted_until is in the future if provided
     if (mutedUntil && new Date(mutedUntil) <= new Date()) {
-      return { success: false, error: 'Mute expiration must be in the future' }
+      return { success: false, error: tErr('eb74d4166') }
     }
 
     // Verify user belongs to this tenant
@@ -296,7 +302,7 @@ export async function muteUser(
       .single()
 
     if (!tenantUser) {
-      return { success: false, error: 'User not found in this school' }
+      return { success: false, error: tErr('e9c995b45') }
     }
 
     // Upsert mute record (in case user was previously muted)
@@ -361,6 +367,7 @@ export async function reviewFlag(
   flagId: string,
   status: 'reviewed' | 'dismissed'
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -374,17 +381,17 @@ export async function reviewFlag(
       .single()
 
     if (fetchError || !flag) {
-      return { success: false, error: 'Flag not found' }
+      return { success: false, error: tErr('e7b7e2f9f') }
     }
 
     if (flag.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     // Get the admin user ID for reviewed_by
     const reviewerUserId = await getCurrentUserId()
     if (!reviewerUserId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     const { error } = await adminClient
@@ -417,6 +424,7 @@ export async function reviewFlag(
 export async function updateCommunitySettings(
   settings: Partial<Record<CommunitySettingKey, boolean>>
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -431,7 +439,7 @@ export async function updateCommunitySettings(
       }))
 
     if (rows.length === 0) {
-      return { success: false, error: 'No settings provided' }
+      return { success: false, error: tErr('e7d2849dd') }
     }
 
     const { error } = await adminClient

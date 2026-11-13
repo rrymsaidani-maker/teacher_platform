@@ -5,6 +5,7 @@ import { getCurrentTenantId } from '@/lib/supabase/tenant'
 import { getUserRole } from '@/lib/supabase/get-user-role'
 import { recordAssetUploader } from '@/lib/assets/record-uploader'
 import { nanoid } from 'nanoid'
+import { getTranslations } from 'next-intl/server'
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024 // 2MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']
@@ -19,6 +20,7 @@ async function verifyTeacherOrAdminAccess() {
 export async function uploadCertificateAsset(
   formData: FormData
 ): Promise<ActionResult<{ url: string }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     await verifyTeacherOrAdminAccess()
     const tenantId = await getCurrentTenantId()
@@ -26,15 +28,15 @@ export async function uploadCertificateAsset(
     const assetType = formData.get('type') as string | null // 'logo' | 'signature'
 
     if (!file) {
-      return { success: false, error: 'No file provided' }
+      return { success: false, error: tErr('edd9f5ee2') }
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return { success: false, error: 'File size must be under 2MB' }
+      return { success: false, error: tErr('e25504122') }
     }
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return { success: false, error: 'File type not allowed. Use JPEG, PNG, GIF, WebP, or SVG.' }
+      return { success: false, error: tErr('ea68d3eb8') }
     }
 
     const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg'

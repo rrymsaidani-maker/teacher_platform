@@ -32,6 +32,7 @@ import { assertSalesOpen } from '@/lib/billing/sales-gate'
 import { isSalesBlockedError, SalesBlockedError } from '@/lib/billing/sales-block-error'
 import { formatDateTime } from '@/lib/format-date-time'
 import { getTenantTimeZone } from '@/lib/tenant-timezone'
+import { getTranslations } from 'next-intl/server'
 
 export interface PaymentRequestFormData {
   productId?: number
@@ -764,6 +765,7 @@ export async function updatePaymentRequest(
     adminNotes?: string
   }
 ) {
+  const tErr = await getTranslations('actionErrors')
   const supabase = await createClient()
   const userId = await getCurrentUserId()
   const role = await getUserRole()
@@ -783,7 +785,7 @@ export async function updatePaymentRequest(
     .single()
 
   if (!request || (request.tenant_id !== tenantId && !superAdmin)) {
-    return { success: false, error: 'Payment request not found or access denied' }
+    return { success: false, error: tErr('ec378d6a1') }
   }
 
   // Emailed only when the instructions text actually changed: re-saving the
@@ -894,6 +896,7 @@ export async function confirmPaymentAndEnroll(requestId: number) {
  * Generate invoice number for payment request
  */
 export async function generateInvoice(requestId: number) {
+  const tErr = await getTranslations('actionErrors')
   const supabase = await createClient()
   const userId = await getCurrentUserId()
   const role = await getUserRole()
@@ -913,7 +916,7 @@ export async function generateInvoice(requestId: number) {
       .single()
 
     if (!request || (request.tenant_id !== tenantId && !superAdmin)) {
-      return { success: false, error: 'Payment request not found or access denied' }
+      return { success: false, error: tErr('ec378d6a1') }
     }
 
     if (request.invoice_number) {
@@ -1157,12 +1160,13 @@ export async function reportManualPayment(
   requestId: number,
   report: ManualPaymentReportInput,
 ): Promise<{ success: true; error?: never } | { error: string; success?: never }> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     const tenantId = await getCurrentTenantId()
 
-    if (!userId) return { error: 'Not authenticated' }
+    if (!userId) return { error: tErr('e0c91acba') }
 
     const { data: request } = await supabase
       .from('payment_requests')
@@ -1172,12 +1176,12 @@ export async function reportManualPayment(
       .eq('tenant_id', tenantId)
       .single()
 
-    if (!request) return { error: 'Payment request not found' }
+    if (!request) return { error: tErr('e2947a309') }
 
     // Reporting against a settled request would be a no-op at best and a second
     // claim on the same transfer at worst.
     if (request.status !== 'pending' && request.status !== 'contacted') {
-      return { error: 'This request is no longer awaiting payment' }
+      return { error: tErr('ef6cb4938') }
     }
 
     const normalized = normalizeManualPaymentReport({
@@ -1200,10 +1204,10 @@ export async function reportManualPayment(
     if (error) {
       // `payment_requests_reference_unique` — one transfer settles one request.
       if (error.code === '23505') {
-        return { error: 'That reference is already registered for another payment at this school. Check the number and try again.' }
+        return { error: tErr('e950b4dc6') }
       }
       console.error('Failed to report manual payment:', error)
-      return { error: 'Failed to save your payment details' }
+      return { error: tErr('ec486b2c3') }
     }
 
     await notifyAdminsPaymentReported({
@@ -1223,6 +1227,6 @@ export async function reportManualPayment(
   } catch (err) {
     if (err instanceof ManualPaymentReportError) return { error: err.message }
     console.error('Failed to report manual payment:', err)
-    return { error: 'Failed to save your payment details' }
+    return { error: tErr('ec486b2c3') }
   }
 }

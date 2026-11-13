@@ -7,6 +7,7 @@ import { applySubscriptionCancellation, cancelProviderSubscription, resumeProvid
 import { getCurrentTenantId } from '@/lib/supabase/tenant'
 import { isSuperAdmin } from '@/lib/supabase/get-user-role'
 import { revalidatePath } from 'next/cache'
+import { getTranslations } from 'next-intl/server'
 
 /**
  * Cancel a subscription (immediately or at period end)
@@ -15,11 +16,12 @@ export async function cancelSubscription(
   subscriptionId: number,
   immediate: boolean = false
 ) {
+  const tErr = await getTranslations('actionErrors')
   try {
     // Verify admin access
     const hasAccess = await verifyAdminAccess()
     if (!hasAccess) {
-      return { success: false, error: 'Unauthorized: Admin access required' }
+      return { success: false, error: tErr('e10d9c06f') }
     }
 
     const tenantId = await getCurrentTenantId()
@@ -35,12 +37,12 @@ export async function cancelSubscription(
       .single()
 
     if (fetchError || !subscription) {
-      return { success: false, error: 'Subscription not found' }
+      return { success: false, error: tErr('ef3d57b2c') }
     }
 
     // Verify subscription belongs to tenant (unless super_admin)
     if (!isSuperAdminUser && subscription.tenant_id !== tenantId) {
-      return { success: false, error: 'Subscription not found or access denied' }
+      return { success: false, error: tErr('e23c40f30') }
     }
 
     // If the subscription is managed by an external provider, cancel it there
@@ -84,7 +86,7 @@ export async function cancelSubscription(
     return { success: true, providerCancelError }
   } catch (error) {
     console.error('Cancel subscription error:', error)
-    return { success: false, error: 'An unexpected error occurred' }
+    return { success: false, error: tErr('e0e715593') }
   }
 }
 
@@ -92,11 +94,12 @@ export async function cancelSubscription(
  * Reactivate a subscription that was scheduled to cancel
  */
 export async function reactivateSubscription(subscriptionId: number) {
+  const tErr = await getTranslations('actionErrors')
   try {
     // Verify admin access
     const hasAccess = await verifyAdminAccess()
     if (!hasAccess) {
-      return { success: false, error: 'Unauthorized: Admin access required' }
+      return { success: false, error: tErr('e10d9c06f') }
     }
 
     const tenantId = await getCurrentTenantId()
@@ -112,17 +115,17 @@ export async function reactivateSubscription(subscriptionId: number) {
       .single()
 
     if (fetchError || !subscription) {
-      return { success: false, error: 'Subscription not found' }
+      return { success: false, error: tErr('ef3d57b2c') }
     }
 
     // Verify subscription belongs to tenant (unless super_admin)
     if (!isSuperAdminUser && subscription.tenant_id !== tenantId) {
-      return { success: false, error: 'Subscription not found or access denied' }
+      return { success: false, error: tErr('e23c40f30') }
     }
 
     // Only reactivate if it was scheduled to cancel
     if (!subscription.cancel_at_period_end) {
-      return { success: false, error: 'Subscription is not scheduled to cancel' }
+      return { success: false, error: tErr('e0e2128ed') }
     }
 
     if (!['active', 'renewed', 'past_due'].includes(subscription.subscription_status)
@@ -135,7 +138,7 @@ export async function reactivateSubscription(subscriptionId: number) {
     if (subscription.provider_subscription_id && cancelIsFinalAtProvider(subscription.payment_provider)) {
       return {
         success: false,
-        error: 'This subscription was cancelled at the payment provider and cannot be resumed. The student can subscribe again once it ends.',
+        error: tErr('e3e9043c2'),
       }
     }
 
@@ -150,7 +153,7 @@ export async function reactivateSubscription(subscriptionId: number) {
         await resumeProviderSubscription(provider, subscription.provider_subscription_id)
       } catch (providerError) {
         console.error('Provider reactivateSubscription failed:', providerError)
-        return { success: false, error: 'Provider reactivation failed' }
+        return { success: false, error: tErr('e34caa3b2') }
       }
     }
 
@@ -179,7 +182,7 @@ export async function reactivateSubscription(subscriptionId: number) {
     return { success: true }
   } catch (error) {
     console.error('Reactivate subscription error:', error)
-    return { success: false, error: 'An unexpected error occurred' }
+    return { success: false, error: tErr('e0e715593') }
   }
 }
 
@@ -187,10 +190,11 @@ export async function reactivateSubscription(subscriptionId: number) {
  * Get subscription details with full information
  */
 export async function getSubscriptionDetails(subscriptionId: number) {
+  const tErr = await getTranslations('actionErrors')
   try {
     const hasAccess = await verifyAdminAccess()
     if (!hasAccess) {
-      return { success: false, error: 'Unauthorized: Admin access required', data: null }
+      return { success: false, error: tErr('e10d9c06f'), data: null }
     }
 
     const tenantId = await getCurrentTenantId()
@@ -221,17 +225,17 @@ export async function getSubscriptionDetails(subscriptionId: number) {
       .single()
 
     if (error) {
-      return { success: false, error: 'Subscription not found', data: null }
+      return { success: false, error: tErr('ef3d57b2c'), data: null }
     }
 
     // Verify subscription belongs to tenant (unless super_admin)
     if (!isSuperAdminUser && data.tenant_id !== tenantId) {
-      return { success: false, error: 'Subscription not found or access denied', data: null }
+      return { success: false, error: tErr('e23c40f30'), data: null }
     }
 
     return { success: true, data, error: null }
   } catch (error) {
     console.error('Get subscription details error:', error)
-    return { success: false, error: 'An unexpected error occurred', data: null }
+    return { success: false, error: tErr('e0e715593'), data: null }
   }
 }

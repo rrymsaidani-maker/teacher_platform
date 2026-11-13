@@ -20,6 +20,7 @@ import { parseDueAt } from '@/lib/community/prompt-grades'
 import type { CommunityPost } from '@/components/community/community-feed'
 import { MENTION_CANDIDATE_LIMIT, type MentionCandidate } from '@/lib/community/mentions'
 import type { Database } from '@/lib/database.types'
+import { getTranslations } from 'next-intl/server'
 
 type ProfileSummary = { id: string; full_name: string | null; avatar_url: string | null }
 type CommentRow = {
@@ -188,6 +189,7 @@ function parsePositiveId(raw: FormDataEntryValue | null): number | null | 'inval
 export async function createPost(
   formData: FormData
 ): Promise<ActionResult<{ id: string; xp: CommunityXpEarned }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { supabase, userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -195,7 +197,7 @@ export async function createPost(
 
     // Check mute status
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted and cannot create posts' }
+      return { success: false, error: tErr('e384c5d78') }
     }
 
     const content = formData.get('content') as string
@@ -208,30 +210,30 @@ export async function createPost(
     const dueAt = parseDueAt(formData.get('due_at'))
 
     if (!content || content.trim().length === 0) {
-      return { success: false, error: 'Content is required' }
+      return { success: false, error: tErr('eea300382') }
     }
 
     if (content.length > MAX_CONTENT_LENGTH) {
       return { success: false, error: `Content must be under ${MAX_CONTENT_LENGTH} characters` }
     }
 
-    if (courseId === 'invalid') return { success: false, error: 'Invalid course ID' }
-    if (lessonId === 'invalid') return { success: false, error: 'Invalid lesson ID' }
-    if (dueAt === 'invalid') return { success: false, error: 'Invalid due date' }
+    if (courseId === 'invalid') return { success: false, error: tErr('e9ee12865') }
+    if (lessonId === 'invalid') return { success: false, error: tErr('e95da7b58') }
+    if (dueAt === 'invalid') return { success: false, error: tErr('e9902dad1') }
 
     // Polls go through createPoll (they need options); milestones are system posts.
     if (postType !== 'standard' && postType !== 'discussion_prompt' && postType !== 'question') {
-      return { success: false, error: 'Invalid post type' }
+      return { success: false, error: tErr('ed931d030') }
     }
 
     // Students cannot create discussion prompts or graded posts
     if (role === 'student' && (postType === 'discussion_prompt' || isGraded)) {
-      return { success: false, error: 'Only teachers and admins can create this type of post' }
+      return { success: false, error: tErr('e5f77c09c') }
     }
 
     // #873: only a graded discussion prompt has a due date (a CHECK enforces it).
     if (dueAt && !(isGraded && postType === 'discussion_prompt')) {
-      return { success: false, error: 'Only graded discussion prompts can have a due date' }
+      return { success: false, error: tErr('eceb3e557') }
     }
 
     const media = parsePostMedia(formData.get('media_urls') as string | null, {
@@ -240,7 +242,7 @@ export async function createPost(
       userId,
     })
     if (media === null) {
-      return { success: false, error: 'Invalid attachments' }
+      return { success: false, error: tErr('e2f996477') }
     }
 
     const targetError = await checkPostTarget(tenantId, userId, role, courseId, lessonId)
@@ -251,10 +253,10 @@ export async function createPost(
     // RLS refuses a pinned insert from members outright, so this service-role
     // insert is the only way in and this check is its gate.
     if (pin && courseId === null) {
-      return { success: false, error: 'Only course posts can be pinned when posting' }
+      return { success: false, error: tErr('e87aeb687') }
     }
     if (pin && courseId !== null && !(await canPinInCourse({ tenantId, userId, role, courseId }))) {
-      return { success: false, error: 'Only the course author or an admin can pin posts' }
+      return { success: false, error: tErr('ecc5b9073') }
     }
 
     // Use admin client to bypass RLS for insert (JWT tenant_id may not match header tenant_id)
@@ -330,6 +332,7 @@ export async function updatePost(
   content: string,
   title?: string
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -339,7 +342,7 @@ export async function updatePost(
     }
 
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted and cannot edit posts' }
+      return { success: false, error: tErr('e803341a8') }
     }
 
     const adminClient = createAdminClient()
@@ -351,21 +354,21 @@ export async function updatePost(
       .maybeSingle()
 
     if (!post || post.is_hidden) {
-      return { success: false, error: 'Post not found' }
+      return { success: false, error: tErr('e2a87047b') }
     }
     if (post.author_id !== userId) {
-      return { success: false, error: 'You can only edit your own posts' }
+      return { success: false, error: tErr('e88c587f5') }
     }
     // The database writes milestones (#871); RLS refuses edits to them too.
     if (post.post_type === 'milestone') {
-      return { success: false, error: 'Milestone posts cannot be edited' }
+      return { success: false, error: tErr('e61856515') }
     }
 
     const trimmedTitle = title?.trim() || null
     if (post.post_type === 'poll') {
-      if (!trimmedTitle) return { success: false, error: 'Title is required for polls' }
+      if (!trimmedTitle) return { success: false, error: tErr('e8d93bea9') }
     } else if (content.trim().length === 0) {
-      return { success: false, error: 'Content is required' }
+      return { success: false, error: tErr('eea300382') }
     }
 
     const { error } = await adminClient
@@ -396,6 +399,7 @@ export async function updatePost(
  * Delete (soft) a post by setting is_hidden = true
  */
 export async function deletePost(postId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { supabase, userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -410,15 +414,15 @@ export async function deletePost(postId: string): Promise<ActionResult> {
       .single()
 
     if (fetchError || !post) {
-      return { success: false, error: 'Post not found' }
+      return { success: false, error: tErr('e2a87047b') }
     }
 
     if (post.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     if (post.author_id !== userId && role !== 'admin' && role !== 'teacher') {
-      return { success: false, error: 'You can only delete your own posts' }
+      return { success: false, error: tErr('e3649aeda') }
     }
 
     const { error } = await adminClient
@@ -455,6 +459,7 @@ export async function createComment(
   parentCommentId?: string,
   options?: { surface?: 'feed' | 'lesson' }
 ): Promise<ActionResult<{ id: string; xp: CommunityXpEarned }>> {
+  const tErr = await getTranslations('actionErrors')
   // From the wire: anything but 'lesson' is the feed.
   const surface = options?.surface === 'lesson' ? 'lesson' : 'feed'
   try {
@@ -462,7 +467,7 @@ export async function createComment(
     const tenantId = await getCurrentTenantId()
 
     if (!content || content.trim().length === 0) {
-      return { success: false, error: 'Content is required' }
+      return { success: false, error: tErr('eea300382') }
     }
 
     if (content.length > MAX_COMMENT_LENGTH) {
@@ -471,14 +476,14 @@ export async function createComment(
 
     // Check mute status
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted and cannot comment' }
+      return { success: false, error: tErr('eb2899c32') }
     }
 
     const post = await resolveReachablePost(postId, tenantId, userId, await getActiveMemberRole())
     if (typeof post === 'string') return { success: false, error: post }
 
     if (post.is_locked) {
-      return { success: false, error: 'This post is locked and does not accept new comments' }
+      return { success: false, error: tErr('ec3849f4a') }
     }
 
     // If replying to a parent comment, verify it exists
@@ -492,7 +497,7 @@ export async function createComment(
         .maybeSingle()
 
       if (!parentComment) {
-        return { success: false, error: 'Parent comment not found' }
+        return { success: false, error: tErr('e9e24f9d1') }
       }
     }
 
@@ -549,6 +554,7 @@ export async function createComment(
  * Delete (soft) a comment by setting is_hidden = true
  */
 export async function deleteComment(commentId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { supabase, userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -563,15 +569,15 @@ export async function deleteComment(commentId: string): Promise<ActionResult> {
       .single()
 
     if (fetchError || !comment) {
-      return { success: false, error: 'Comment not found' }
+      return { success: false, error: tErr('e3d82047d') }
     }
 
     if (comment.tenant_id !== tenantId) {
-      return { success: false, error: 'Access denied' }
+      return { success: false, error: tErr('e64343a83') }
     }
 
     if (comment.author_id !== userId && role !== 'admin' && role !== 'teacher') {
-      return { success: false, error: 'You can only delete your own comments' }
+      return { success: false, error: tErr('eecd05cf7') }
     }
 
     const { error } = await adminClient
@@ -601,17 +607,18 @@ export async function toggleReaction(
   targetId: string,
   reactionType: 'like' | 'helpful' | 'insightful' | 'fire'
 ): Promise<ActionResult<{ added: boolean }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
 
     if (!REACTION_TYPES.includes(reactionType)) {
-      return { success: false, error: 'Invalid reaction' }
+      return { success: false, error: tErr('e0bb4a6a0') }
     }
 
     // Muted users cannot react
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted' }
+      return { success: false, error: tErr('e2e7264a3') }
     }
 
     const adminClient = createAdminClient()
@@ -625,7 +632,7 @@ export async function toggleReaction(
         .eq('id', targetId)
         .eq('tenant_id', tenantId)
         .maybeSingle()
-      if (!comment || comment.is_hidden) return { success: false, error: 'Comment not found' }
+      if (!comment || comment.is_hidden) return { success: false, error: tErr('e3d82047d') }
       postId = comment.post_id
     }
     const post = await resolveReachablePost(postId, tenantId, userId, await getActiveMemberRole())
@@ -704,6 +711,7 @@ export async function toggleReaction(
  * Create a poll (post with poll options)
  */
 export async function createPoll(formData: FormData): Promise<ActionResult<{ id: string }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -711,7 +719,7 @@ export async function createPoll(formData: FormData): Promise<ActionResult<{ id:
 
     // Check mute status
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted and cannot create polls' }
+      return { success: false, error: tErr('ebdffe9f1') }
     }
 
     const title = formData.get('title') as string
@@ -719,10 +727,10 @@ export async function createPoll(formData: FormData): Promise<ActionResult<{ id:
     const optionsRaw = formData.get('options') as string
     const courseId = parsePositiveId(formData.get('course_id'))
 
-    if (courseId === 'invalid') return { success: false, error: 'Invalid course ID' }
+    if (courseId === 'invalid') return { success: false, error: tErr('e9ee12865') }
 
     if (!title || title.trim().length === 0) {
-      return { success: false, error: 'Title is required for polls' }
+      return { success: false, error: tErr('e8d93bea9') }
     }
 
     // The question is the title; the body is optional context.
@@ -732,26 +740,26 @@ export async function createPoll(formData: FormData): Promise<ActionResult<{ id:
     try {
       options = JSON.parse(optionsRaw)
     } catch {
-      return { success: false, error: 'Invalid options format' }
+      return { success: false, error: tErr('ea45961bd') }
     }
 
     if (!Array.isArray(options)) {
-      return { success: false, error: 'Invalid options format' }
+      return { success: false, error: tErr('ea45961bd') }
     }
 
     // Filter out empty options, then re-validate minimum count
     options = options.filter((o) => typeof o === 'string' && o.trim().length > 0)
 
     if (options.length < 2) {
-      return { success: false, error: 'At least 2 poll options are required' }
+      return { success: false, error: tErr('e8a8110e3') }
     }
 
     if (options.length > 10) {
-      return { success: false, error: 'Maximum 10 poll options allowed' }
+      return { success: false, error: tErr('ee791b302') }
     }
 
     if (options.some((o) => o.length > 200)) {
-      return { success: false, error: 'Each poll option must be under 200 characters' }
+      return { success: false, error: tErr('efdeabcb1') }
     }
 
     if (title.length > 200 || body.length > MAX_CONTENT_LENGTH) {
@@ -769,7 +777,7 @@ export async function createPoll(formData: FormData): Promise<ActionResult<{ id:
         .maybeSingle()
 
       if ((setting?.setting_value as { enabled?: boolean } | null)?.enabled === false) {
-        return { success: false, error: 'Students are not allowed to create polls' }
+        return { success: false, error: tErr('e2717e4ee') }
       }
     }
 
@@ -856,13 +864,14 @@ export async function createPoll(formData: FormData): Promise<ActionResult<{ id:
  * Cast a vote on a poll option
  */
 export async function castVote(postId: string, optionId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
 
     // Muted users cannot vote
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted' }
+      return { success: false, error: tErr('e2e7264a3') }
     }
 
     const adminClient = createAdminClient()
@@ -871,7 +880,7 @@ export async function castVote(postId: string, optionId: string): Promise<Action
     if (typeof post === 'string') return { success: false, error: post }
 
     if (post.post_type !== 'poll') {
-      return { success: false, error: 'This post is not a poll' }
+      return { success: false, error: tErr('ef1382264') }
     }
 
     // Verify the option belongs to this post
@@ -883,7 +892,7 @@ export async function castVote(postId: string, optionId: string): Promise<Action
       .single()
 
     if (!option) {
-      return { success: false, error: 'Poll option not found' }
+      return { success: false, error: tErr('eabc9a8de') }
     }
 
     // Check if user already voted on this poll
@@ -896,7 +905,7 @@ export async function castVote(postId: string, optionId: string): Promise<Action
       .single()
 
     if (existingVote) {
-      return { success: false, error: 'You have already voted on this poll' }
+      return { success: false, error: tErr('e7ccc695c') }
     }
 
     // Insert vote
@@ -937,6 +946,7 @@ export async function castVote(postId: string, optionId: string): Promise<Action
 export async function uploadCommunityAsset(
   formData: FormData
 ): Promise<ActionResult<{ url: string }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -944,12 +954,12 @@ export async function uploadCommunityAsset(
     const file = formData.get('file') as File | null
 
     if (!file) {
-      return { success: false, error: 'No file provided' }
+      return { success: false, error: tErr('edd9f5ee2') }
     }
 
     const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
     if (file.size > MAX_FILE_SIZE) {
-      return { success: false, error: 'File size must be under 10MB' }
+      return { success: false, error: tErr('e10ef8666') }
     }
 
     const ALLOWED_TYPES = [
@@ -966,7 +976,7 @@ export async function uploadCommunityAsset(
     if (!ALLOWED_TYPES.includes(file.type)) {
       return {
         success: false,
-        error: 'File type not allowed. Use JPEG, PNG, GIF, WebP, MP4, WebM, or PDF.',
+        error: tErr('e1000b531'),
       }
     }
 
@@ -1011,12 +1021,13 @@ export async function createFlag(
   targetId: string,
   reason: string
 ): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
 
     if (!reason.trim() || reason.length > 1000) {
-      return { success: false, error: 'Reason is required and must be under 1000 characters' }
+      return { success: false, error: tErr('e801fe691') }
     }
 
     const adminClient = createAdminClient()
@@ -1052,10 +1063,11 @@ export async function createFlag(
  * Written through RLS — the row can only ever name the caller as blocker.
  */
 export async function blockUser(blockedId: string): Promise<ActionResult> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { supabase, userId } = await getAuthenticatedUser()
     if (blockedId === userId) {
-      return { success: false, error: 'You cannot block yourself' }
+      return { success: false, error: tErr('e5c3059d4') }
     }
 
     const { error } = await supabase
@@ -1222,6 +1234,7 @@ export async function setAcceptedAnswer(
   postId: string,
   commentId: string | null
 ): Promise<ActionResult<{ acceptedCommentId: string | null }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
@@ -1229,14 +1242,14 @@ export async function setAcceptedAnswer(
 
     const post = await resolveReachablePost(postId, tenantId, userId, role)
     if (typeof post === 'string') return { success: false, error: post }
-    if (post.post_type !== 'question') return { success: false, error: 'Only questions have an accepted answer' }
+    if (post.post_type !== 'question') return { success: false, error: tErr('e8d4fc86c') }
 
     if (!canAcceptAnswers({ viewerId: userId, viewerRole: role, questionAuthorId: post.author_id })) {
-      return { success: false, error: 'Only the person who asked or a teacher can accept an answer' }
+      return { success: false, error: tErr('e5f13bb4c') }
     }
 
     if (await isUserMuted(tenantId, userId)) {
-      return { success: false, error: 'You are currently muted' }
+      return { success: false, error: tErr('e2e7264a3') }
     }
 
     const adminClient = createAdminClient()
@@ -1251,7 +1264,7 @@ export async function setAcceptedAnswer(
         .is('parent_comment_id', null)
         .eq('is_hidden', false)
         .maybeSingle()
-      if (!comment) return { success: false, error: 'That answer is no longer available' }
+      if (!comment) return { success: false, error: tErr('e78d02f93') }
     }
 
     const { error } = await adminClient
@@ -1263,9 +1276,9 @@ export async function setAcceptedAnswer(
     if (error) {
       const key = acceptAnswerErrorKey(error)
       if (key === 'acceptNotAllowed') {
-        return { success: false, error: 'Only the person who asked or a teacher can accept an answer' }
+        return { success: false, error: tErr('e5f13bb4c') }
       }
-      if (key === 'acceptInvalid') return { success: false, error: 'That answer is no longer available' }
+      if (key === 'acceptInvalid') return { success: false, error: tErr('e78d02f93') }
       throw error
     }
 
@@ -1326,13 +1339,14 @@ export async function loadMorePosts(
   courseId?: number,
   questionFilter?: string | null
 ): Promise<ActionResult<{ posts: CommunityPost[]; hasMore: boolean }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
     const role = await getActiveMemberRole()
 
     if (Number.isNaN(Date.parse(cursor))) {
-      return { success: false, error: 'Invalid cursor' }
+      return { success: false, error: tErr('ed3409084') }
     }
 
     const denied = await checkFeedAccess(scope, courseId, tenantId, userId, role)
@@ -1369,13 +1383,14 @@ export async function loadNewPosts(
   courseId?: number,
   questionFilter?: string | null
 ): Promise<ActionResult<{ posts: CommunityPost[] }>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const { userId } = await getAuthenticatedUser()
     const tenantId = await getCurrentTenantId()
     const role = await getActiveMemberRole()
 
     if (typeof since !== 'string' || Number.isNaN(Date.parse(since))) {
-      return { success: false, error: 'Invalid cursor' }
+      return { success: false, error: tErr('ed3409084') }
     }
 
     const denied = await checkFeedAccess(scope, courseId, tenantId, userId, role)
@@ -1416,19 +1431,20 @@ export async function searchMentionCandidates(input: {
   courseId?: number | null
   postId?: string | null
 }): Promise<ActionResult<MentionCandidate[]>> {
+  const tErr = await getTranslations('actionErrors')
   try {
     const userId = await getCurrentUserId()
-    if (!userId) return { success: false, error: 'Not authenticated' }
+    if (!userId) return { success: false, error: tErr('e0c91acba') }
     const tenantId = await getCurrentTenantId()
 
     const query = typeof input?.query === 'string' ? input.query.trim().slice(0, 50) : ''
     const postId = input?.postId ?? null
     const courseId = input?.courseId ?? null
     if (postId !== null && (typeof postId !== 'string' || !UUID_RE.test(postId))) {
-      return { success: false, error: 'Invalid post' }
+      return { success: false, error: tErr('e9affd916') }
     }
     if (courseId !== null && !(Number.isInteger(courseId) && courseId > 0)) {
-      return { success: false, error: 'Invalid course ID' }
+      return { success: false, error: tErr('e9ee12865') }
     }
 
     const supabase = await createClient()
@@ -1453,6 +1469,6 @@ export async function searchMentionCandidates(input: {
     }
   } catch (err) {
     console.error('Failed to search mention candidates:', err)
-    return { success: false, error: 'Failed to search members' }
+    return { success: false, error: tErr('ec5085bd6') }
   }
 }

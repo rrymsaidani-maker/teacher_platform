@@ -8,6 +8,7 @@ import { track } from '@/lib/analytics/server'
 import { revalidatePath } from 'next/cache'
 import { bestEffortLocale } from '@/lib/i18n/best-effort-locale'
 import { getUserRole } from '@/lib/supabase/get-user-role'
+import { getTranslations } from 'next-intl/server'
 
 interface OnboardingData {
   schoolName: string
@@ -16,18 +17,19 @@ interface OnboardingData {
 }
 
 export async function completeOnboarding(data: OnboardingData) {
+  const tErr = await getTranslations('actionErrors')
   try {
     const supabase = await createClient()
     const userId = await getCurrentUserId()
     if (!userId) {
-      return { success: false, error: 'Not authenticated' }
+      return { success: false, error: tErr('e0c91acba') }
     }
 
     // The wizard rewrites the school's name/description/logo through the admin
     // client, so it is an admin-only mutation. The creator passes: they get an
     // active admin tenant_users row in createSchoolForUser before /onboarding.
     if ((await getUserRole()) !== 'admin') {
-      return { success: false, error: 'Unauthorized: Admin access required' }
+      return { success: false, error: tErr('e10d9c06f') }
     }
 
     const tenantId = await getCurrentTenantId()
@@ -79,6 +81,6 @@ export async function completeOnboarding(data: OnboardingData) {
     return { success: true }
   } catch (error) {
     console.error('Onboarding error:', error)
-    return { success: false, error: 'Failed to complete onboarding' }
+    return { success: false, error: tErr('e69362442') }
   }
 }
