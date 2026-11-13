@@ -4,21 +4,23 @@ import React from "react"
 import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { IconPlus } from "@tabler/icons-react"
+import { useTranslations } from 'next-intl';
 
 interface PickerProps {
   onInsert: (snippet: string) => void
 }
 
 export function LessonComponentPicker({ onInsert }: PickerProps) {
+  const tr = useTranslations('learning');
   const components = [
-    { label: "Callout (info)", snippet: '<Callout type="info">Tu mensaje aquí</Callout>\n' },
-    { label: "Spoiler / Solution", snippet: '<Spoiler label="Mostrar solución">Respuesta aquí</Spoiler>\n' },
-    { label: "Quiz (MCQ)", snippet: "<Quiz question=\"Pregunta?\" options={JSON.parse('[\"A\",\"B\",\"C\"]')} correctIndex={1} explanation=\"Explicación\" />\n" },
-    { label: "CodeBlock", snippet: '```javascript\nconsole.log("Hola")\n```\n' },
-    { label: "Steps", snippet: '<Steps>\n  <Step title="Paso 1">Descripción</Step>\n</Steps>\n' },
-    { label: "Vocabulary", snippet: '<Vocabulary word="Hola" translation="Hello" audioUrl="/audio/hola.mp3" />\n' },
-    { label: "Definition", snippet: '<Definition term="API">Definición aquí</Definition>\n' },
-    { label: "Compare (Before/After)", snippet: '<BeforeAfter before="Antes" after="Después" />\n' },
+    { labelKey: "callout", snippet: '<Callout type="info">Tu mensaje aquí</Callout>\n' },
+    { labelKey: "spoiler", snippet: '<Spoiler label="Mostrar solución">Respuesta aquí</Spoiler>\n' },
+    { labelKey: "quiz", snippet: "<Quiz question=\"Pregunta?\" options={JSON.parse('[\"A\",\"B\",\"C\"]')} correctIndex={1} explanation=\"Explicación\" />\n" },
+    { labelKey: "codeBlock", snippet: '```javascript\nconsole.log("Hola")\n```\n' },
+    { labelKey: "steps", snippet: '<Steps>\n  <Step title="Paso 1">Descripción</Step>\n</Steps>\n' },
+    { labelKey: "vocabulary", snippet: '<Vocabulary word="Hola" translation="Hello" audioUrl="/audio/hola.mp3" />\n' },
+    { labelKey: "definition", snippet: '<Definition term="API">Definición aquí</Definition>\n' },
+    { labelKey: "beforeAfter", snippet: '<BeforeAfter before="Antes" after="Después" />\n' },
   ]
 
   const [showQuizForm, setShowQuizForm] = React.useState(false)
@@ -76,10 +78,10 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
           <div className="flex flex-col gap-2">
             {components.map((c) => (
               <button
-                key={c.label}
+                key={c.labelKey}
                 type="button"
                 onClick={() => {
-                  if (c.label.startsWith("Quiz")) {
+                  if (c.labelKey === "quiz") {
                     setShowQuizForm(true)
                     return
                   }
@@ -87,7 +89,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
                 }}
                 className="text-sm text-left rounded px-2 py-1 hover:bg-muted"
               >
-                {c.label}
+                {tr('picker.' + c.labelKey)}
               </button>
             ))}
           </div>
@@ -98,7 +100,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
               className="input"
               value={qQuestion}
               onChange={(e) => setQQuestion(e.target.value)}
-              placeholder="Escribe la pregunta..."
+              placeholder={tr('questionPlaceholder')}
             />
 
             <label className="text-sm">Opciones</label>
@@ -110,13 +112,13 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
                     name="correct"
                     checked={qCorrectIndex === idx}
                     onChange={() => setQCorrectIndex(idx)}
-                    aria-label={`Marcar opción ${idx + 1} como correcta`}
+                    aria-label={tr('markCorrect', { number: idx + 1 })}
                   />
                   <input
                     className="input flex-1"
                     value={opt}
                     onChange={(e) => updateOption(idx, e.target.value)}
-                    placeholder={`Opción ${idx + 1}`}
+                    placeholder={tr('optionPlaceholder', { number: idx + 1 })}
                   />
                 </div>
               ))}
@@ -132,7 +134,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
               className="input"
               value={qExplanation}
               onChange={(e) => setQExplanation(e.target.value)}
-              placeholder="Explicación mostrada tras la respuesta"
+              placeholder={tr('explanationPlaceholder')}
             />
 
             <div className="flex justify-end gap-2">

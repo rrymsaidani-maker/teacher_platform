@@ -1,10 +1,12 @@
 import { PageSkeleton } from '@/components/skeletons'
 import { Skeleton } from '@/components/ui/skeleton'
+import { getTranslations } from 'next-intl/server';
 
 // Mirrors the lesson preview: banner, lesson header, content, nav footer, sidebar.
-export default function Loading() {
+export default async function Loading() {
+  const tr = await getTranslations('learning');
   return (
-    <PageSkeleton label="Loading lesson" className="flex h-[calc(100svh-4rem)] flex-col space-y-0 overflow-hidden bg-background p-0 lg:p-0">
+    <PageSkeleton label={tr('loadingLesson')} className="flex h-[calc(100svh-4rem)] flex-col space-y-0 overflow-hidden bg-background p-0 lg:p-0">
       <div className="sticky top-0 z-50 shrink-0 border-b bg-background bg-linear-to-r from-warning/10 to-warning/10 px-4 py-2">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3">
           <Skeleton className="h-4 w-56" />

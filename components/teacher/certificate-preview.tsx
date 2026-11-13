@@ -35,6 +35,7 @@ export function CertificatePreview({
     signatureImageUrl,
     logoUrl
 }: CertificatePreviewProps) {
+  const tr = useTranslations('learning');
     const t = useTranslations('dashboard.teacher.manageCourse.certificates.templates')
     const locale = useLocale()
 
@@ -93,7 +94,7 @@ export function CertificatePreview({
                 {logoUrl ? (
                     <img
                         src={logoUrl}
-                        alt="Logo"
+                        alt={tr('logoAlt')}
                         className="h-16 w-16 object-contain"
                     />
                 ) : (
@@ -154,7 +155,7 @@ export function CertificatePreview({
                         {signatureImageUrl ? (
                             <img
                                 src={signatureImageUrl}
-                                alt="Signature"
+                                alt={tr('signatureAlt')}
                                 className="h-8 w-auto object-contain mb-1"
                             />
                         ) : null}

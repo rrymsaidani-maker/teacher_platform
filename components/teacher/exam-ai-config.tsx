@@ -17,6 +17,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { IconSparkles, IconInfoCircle, IconDeviceFloppy } from '@tabler/icons-react'
 import { updateExamAIConfig, getAIConfigOptions } from '@/app/actions/exam-grading'
 import { toast } from 'sonner'
+import { useTranslations } from 'next-intl';
 
 interface ExamAIConfigProps {
   examId: number
@@ -30,6 +31,7 @@ interface ExamAIConfigProps {
 }
 
 export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
+  const tr = useTranslations('learning');
   const [aiEnabled, setAiEnabled] = useState(initialConfig?.aiGradingEnabled ?? true)
   const [customPrompt, setCustomPrompt] = useState(initialConfig?.aiGradingPrompt ?? '')
   const [persona, setPersona] = useState(initialConfig?.aiPersona ?? 'professional_educator')
@@ -57,12 +59,12 @@ export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
       })
 
       if (result.success) {
-        toast.success('AI grading configuration saved successfully')
+        toast.success(tr('aiConfigSaved'))
       } else {
         toast.error(result.error || 'Failed to save configuration')
       }
     } catch (error) {
-      toast.error('An unexpected error occurred')
+      toast.error(tr('unexpectedError'))
     } finally {
       setIsSaving(false)
     }
@@ -100,7 +102,7 @@ export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
               <Label htmlFor="persona">AI Persona</Label>
               <Select value={persona} onValueChange={(v) => setPersona(v || 'balanced')}>
                 <SelectTrigger id="persona">
-                  <SelectValue placeholder="Select AI persona" />
+                  <SelectValue placeholder={tr('selectPersona')} />
                 </SelectTrigger>
                 <SelectContent>
                   {configOptions.personas.map((option: any) => (
@@ -123,7 +125,7 @@ export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
               <Label htmlFor="tone">Feedback Tone</Label>
               <Select value={tone} onValueChange={(v) => setTone(v || 'encouraging')}>
                 <SelectTrigger id="tone">
-                  <SelectValue placeholder="Select feedback tone" />
+                  <SelectValue placeholder={tr('selectTone')} />
                 </SelectTrigger>
                 <SelectContent>
                   {configOptions.tones.map((option: any) => (
@@ -143,7 +145,7 @@ export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
               <Label htmlFor="detail-level">Feedback Detail Level</Label>
               <Select value={detailLevel} onValueChange={(v) => setDetailLevel(v || 'detailed')}>
                 <SelectTrigger id="detail-level">
-                  <SelectValue placeholder="Select detail level" />
+                  <SelectValue placeholder={tr('selectDetail')} />
                 </SelectTrigger>
                 <SelectContent>
                   {configOptions.detailLevels.map((option: any) => (
@@ -165,13 +167,7 @@ export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
                 id="custom-prompt"
                 value={customPrompt}
                 onChange={(e) => setCustomPrompt(e.target.value)}
-                placeholder="Add specific instructions for the AI grader...
-
-Example:
-- Pay special attention to code quality and best practices
-- Focus on conceptual understanding over syntax
-- Require citation of sources for factual claims
-- Emphasize critical thinking and analysis"
+                placeholder={tr('graderInstructionsPlaceholder')}
                 rows={8}
                 className="font-mono text-sm"
               />

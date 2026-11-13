@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { IconChevronDown, IconEye, IconEyeOff } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl';
 
 interface SpoilerProps {
   title?: string
@@ -66,12 +67,12 @@ export function Spoiler({
 }
 
 // Alias para uso en MDX
-export const Solution = (props: Omit<SpoilerProps, 'title'>) => (
-  <Spoiler title="Ver solución" {...props} />
-)
-export const Hint = (props: Omit<SpoilerProps, 'title'>) => (
-  <Spoiler title="Ver pista" {...props} />
-)
-export const Answer = (props: Omit<SpoilerProps, 'title'>) => (
-  <Spoiler title="Ver respuesta" {...props} />
-)
+export const Solution = (props: Omit<SpoilerProps, 'title'>) => { const tr = useTranslations('learning'); return (
+  <Spoiler title={tr('spoilerSolution')} {...props} />
+); }
+export const Hint = (props: Omit<SpoilerProps, 'title'>) => { const tr = useTranslations('learning'); return (
+  <Spoiler title={tr('spoilerHint')} {...props} />
+); }
+export const Answer = (props: Omit<SpoilerProps, 'title'>) => { const tr = useTranslations('learning'); return (
+  <Spoiler title={tr('spoilerAnswer')} {...props} />
+); }

@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { IconTemplate, IconSearch, IconSparkles } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl';
 
 interface Template {
   id: number
@@ -25,6 +26,7 @@ interface PromptTemplateSelectorProps {
 }
 
 export function PromptTemplateSelector({ category, onSelect }: PromptTemplateSelectorProps) {
+  const tr = useTranslations('learning');
   const [open, setOpen] = useState(false)
   const [templates, setTemplates] = useState<Template[]>([])
   const [search, setSearch] = useState('')
@@ -79,7 +81,7 @@ export function PromptTemplateSelector({ category, onSelect }: PromptTemplateSel
                   id="search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search by name..."
+                  placeholder={tr('searchByName')}
                   className="pl-10"
                 />
               </div>

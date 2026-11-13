@@ -50,6 +50,7 @@ export function LessonContent({
   courseId,
   embedMode = 'trusted',
 }: LessonContentProps) {
+  const tr = useTranslations('learning');
   const t = useTranslations('components.lessons')
   const tc = useTranslations('components.checkpoints')
   const checkpointsCtx = useCheckpoints()
@@ -130,7 +131,7 @@ export function LessonContent({
         <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-lg ring-1 ring-border">
           <iframe
             src={videoEmbedUrl}
-            title="Video"
+            title={tr('video')}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="h-full w-full"
@@ -144,7 +145,7 @@ export function LessonContent({
           <iframe
             srcDoc={`<style>html,body{margin:0;height:100%}</style>${embedCode}`}
             sandbox="allow-scripts allow-popups"
-            title="Embedded content"
+            title={tr('embeddedContent')}
             className="aspect-video w-full overflow-hidden rounded-xl border-0 shadow-lg"
           />
         ) : (

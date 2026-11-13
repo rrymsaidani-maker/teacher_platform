@@ -61,6 +61,7 @@ function InnerExerciseChat({
     initialMessages,
     isExerciseCompleted: initialCompleted,
 }: ExerciseChatProps) {
+  const tr = useTranslations('learning');
     const router = useRouter();
     const tGamification = useTranslations("gamification");
     const t = useTranslations("exercises.coach");
@@ -110,7 +111,7 @@ function InnerExerciseChat({
                     colors: ['#3b82f6', '#10b981', '#f59e0b']
                 });
 
-                toast.success("Exercise Completed!", {
+                toast.success(tr('exerciseCompleted'), {
                     description: feedback,
                 });
                 toast.success(tGamification("xpAwarded.exercise_completion"));
@@ -127,7 +128,7 @@ function InnerExerciseChat({
     };
 
     const handleRestart = async () => {
-        if (!confirm("Are you sure you want to restart? This will clear your chat history.")) return;
+        if (!confirm(tr('restartConfirm'))) return;
 
         setIsRestarting(true);
         try {
@@ -139,12 +140,12 @@ function InnerExerciseChat({
 
             if (res.ok) {
                 setMessages([]);
-                toast.success("Chat restarted");
+                toast.success(tr('chatRestarted'));
             } else {
-                toast.error("Failed to restart chat");
+                toast.error(tr('restartFailed'));
             }
         } catch {
-            toast.error("Error restarting chat");
+            toast.error(tr('restartError'));
         } finally {
             setIsRestarting(false);
         }

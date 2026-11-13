@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl';
 
 interface FlashcardSetProps {
   cards: { front: string; back: string }[]
@@ -10,6 +11,7 @@ interface FlashcardSetProps {
 }
 
 export function FlashcardSet({ cards, className }: FlashcardSetProps) {
+  const tr = useTranslations('learning');
   const [currentIndex, setCurrentIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -84,7 +86,7 @@ export function FlashcardSet({ cards, className }: FlashcardSetProps) {
           onClick={() => goTo(currentIndex - 1)}
           disabled={currentIndex === 0}
           className="rounded-md border p-2 text-muted-foreground hover:bg-muted disabled:opacity-30"
-          aria-label="Tarjeta anterior"
+          aria-label={tr('previousCard')}
         >
           <IconChevronLeft className="h-4 w-4" />
         </button>
@@ -96,7 +98,7 @@ export function FlashcardSet({ cards, className }: FlashcardSetProps) {
           onClick={() => goTo(currentIndex + 1)}
           disabled={currentIndex === cards.length - 1}
           className="rounded-md border p-2 text-muted-foreground hover:bg-muted disabled:opacity-30"
-          aria-label="Siguiente tarjeta"
+          aria-label={tr('nextCard')}
         >
           <IconChevronRight className="h-4 w-4" />
         </button>

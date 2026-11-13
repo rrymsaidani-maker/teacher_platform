@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { IconCheck, IconX, IconRefresh } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl';
 
 interface FillInTheBlankProps {
   segments: { type: 'text' | 'blank'; value: string }[]
@@ -11,6 +12,7 @@ interface FillInTheBlankProps {
 }
 
 export function FillInTheBlank({ segments, explanation, className }: FillInTheBlankProps) {
+  const tr = useTranslations('learning');
   const blankIndices = useMemo(
     () => segments.map((s, i) => (s.type === 'blank' ? i : -1)).filter((i) => i !== -1),
     [segments]
@@ -66,7 +68,7 @@ export function FillInTheBlank({ segments, explanation, className }: FillInTheBl
                 checked && isCorrect && 'border-success text-success',
                 checked && isCorrect === false && 'border-destructive text-destructive'
               )}
-              aria-label={`Espacio en blanco ${blankIndices.indexOf(index) + 1}`}
+              aria-label={tr('blankLabel', { number: blankIndices.indexOf(index) + 1 })}
             />
           )
         })}

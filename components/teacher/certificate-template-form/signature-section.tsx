@@ -8,6 +8,7 @@ import { IconSignature, IconLoader2, IconUpload, IconX } from '@tabler/icons-rea
 import { useCertificateTemplate } from './certificate-template-context'
 
 export function SignatureSection() {
+  const tr = useTranslations('learning');
     const t = useTranslations('dashboard.teacher.manageCourse.certificates.templates')
     const { formData, setFormData, signatureInputRef, uploadingSignature, handleFileChange, certificateTier } = useCertificateTemplate()
 
@@ -62,7 +63,7 @@ export function SignatureSection() {
                                     printed on the certificate's paper, not on a themed surface. */}
                                 <img
                                     src={formData.signature_image_url}
-                                    alt="Signature"
+                                    alt={tr('signatureAlt')}
                                     className="h-12 w-32 rounded-lg object-contain border bg-white p-1"
                                 />
                                 <button

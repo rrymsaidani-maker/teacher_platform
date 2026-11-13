@@ -72,6 +72,7 @@ export function VideoRecorderComponent({
   minDurationSeconds = 5,
   disabled = false,
 }: VideoRecorderProps) {
+  const tr = useTranslations('learning');
   const t = useTranslations('exercises.video')
   const [state, setState] = useState<RecorderState>('idle')
   const [countdown, setCountdown] = useState(3)
@@ -266,7 +267,7 @@ export function VideoRecorderComponent({
           muted
           playsInline
           className={cn('w-full h-full object-cover', !showLiveVideo && 'hidden')}
-          aria-label="Camera preview"
+          aria-label={tr('cameraPreview')}
         />
 
         {/* Countdown overlay */}
@@ -302,7 +303,7 @@ export function VideoRecorderComponent({
             controls
             playsInline
             className="w-full h-full object-contain"
-            aria-label="Recording preview"
+            aria-label={tr('recordingPreview')}
           />
         </div>
       )}

@@ -8,6 +8,7 @@ import { IconBuilding, IconLoader2, IconUpload, IconX, IconPhoto } from '@tabler
 import { useCertificateTemplate } from './certificate-template-context'
 
 export function IssuerSection() {
+  const tr = useTranslations('learning');
     const t = useTranslations('dashboard.teacher.manageCourse.certificates.templates')
     const { formData, setFormData, logoInputRef, uploadingLogo, handleFileChange } = useCertificateTemplate()
 
@@ -61,7 +62,7 @@ export function IssuerSection() {
                                     transparency, and it prints on the certificate's paper, not on a themed surface. */}
                                 <img
                                     src={formData.logo_url}
-                                    alt="Logo"
+                                    alt={tr('logoAlt')}
                                     className="h-16 w-16 rounded-lg object-contain border bg-white p-1"
                                 />
                                 <button

@@ -1,9 +1,11 @@
 import { PageShell, PageHeaderSkeleton } from '@/components/dashboard/page-shell'
 import { Skeleton } from '@/components/ui/skeleton'
+import { getTranslations } from 'next-intl/server';
 
-export default function Loading() {
+export default async function Loading() {
+  const tr = await getTranslations('learning');
   return (
-    <PageShell variant="wide" skeleton label="Loading submissions">
+    <PageShell variant="wide" skeleton label={tr('loadingSubmissions')}>
       <PageHeaderSkeleton back />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (

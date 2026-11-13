@@ -1,11 +1,13 @@
 import { PageSkeleton } from "@/components/skeletons"
 import { Skeleton } from "@/components/ui/skeleton"
+import { getTranslations } from 'next-intl/server';
 
-export default function Loading() {
+export default async function Loading() {
+  const tr = await getTranslations('learning');
   // 4rem offsets the dashboard layout's h-16 header, matching page.tsx
   return (
     <PageSkeleton
-      label="Loading lesson"
+      label={tr('loadingLesson')}
       className="p-0 lg:p-0 space-y-0 flex-none flex h-[calc(100dvh-4rem)] bg-background overflow-hidden"
     >
       <main className="flex flex-1 flex-col overflow-hidden w-full">
