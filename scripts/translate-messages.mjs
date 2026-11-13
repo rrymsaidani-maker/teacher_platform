@@ -1,11 +1,13 @@
-// يترجم المفاتيح الناقصة من messages/en.json إلى ar.json و fr.json و es.json
-// المحرك: LibreTranslate يعمل داخل GitHub Actions (مجاني، بلا مفتاح وبلا بطاقة)
+// يترجم messages/en.json إلى ar.json و fr.json عبر DeepL مع حماية المتغيرات و ICU
 import fs from 'node:fs/promises'
 
 const SRC = 'messages/en.json'
-const TARGETS = { ar: 'ar', fr: 'fr', es: 'es' }
-const LT_URL = process.env.LT_URL || 'http://localhost:5000'
+const TARGETS = { ar: 'AR', fr: 'FR', es: 'ES' }
+const KEY = process.env.DEEPL_API_KEY
 const MOCK = process.env.MOCK === '1'
+const API = KEY && KEY.endsWith(':fx')
+  ? 'https://api-free.deepl.com/v2/translate'
+  : 'https://api.deepl.com/v2/translate'
 
 // ---------- تحليل ICU ----------
 function matchClose(s, start) {
@@ -17,6 +19,7 @@ function matchClose(s, start) {
   throw new Error('Unbalanced braces: ' + s)
 }
 
+// يقسم النص إلى أجزاء: نص عادي أو بلوك plural/select
 function parseTop(s) {
   const parts = []
   let buf = ''
@@ -29,7 +32,7 @@ function parseTop(s) {
       if (head) {
         if (buf) { parts.push({ kind: 'text', s: buf }); buf = '' }
         const branches = []
-        const rest = inner.slice(head[0].length)
+        let rest = inner.slice(head[0].length)
         let j = 0
         while (j < rest.length) {
           const m = rest.slice(j).match(/^\s*(=?\w+)\s*\{/)
@@ -53,7 +56,7 @@ function parseTop(s) {
   return parts
 }
 
-// يحمي المتغيرات {name} بوسوم <x id="n"/>
+// يحمي المتغيرات البسيطة {name} بوسوم <x id="n"/>
 function protect(s) {
   const vars = []
   const tpl = s.replace(/\{[^{}]*\}/g, (m) => {
@@ -62,51 +65,56 @@ function protect(s) {
   })
   return { tpl, vars }
 }
-
 function restore(tpl, vars) {
   return tpl.replace(/<x id="(\d+)"\/>/g, (_, n) => vars[Number(n)])
 }
 
-// الترجمة سليمة فقط إذا بقيت كل الوسوم كما هي، وإلا نعود للإنجليزية لهذه القطعة
-function isSafe(translated, count) {
-  for (let n = 0; n < count; n++) {
-    if (!translated.includes(`<x id="${n}"/>`)) return false
-  }
-  return true
-}
-
-// ---------- الترجمة عبر LibreTranslate ----------
+// ---------- الترجمة ----------
 async function translateBatch(texts, target) {
   if (MOCK) return texts
   const out = []
-  for (let i = 0; i < texts.length; i += 40) {
-    const chunk = texts.slice(i, i + 40)
-    const res = await fetch(`${LT_URL}/translate`, {
+  for (let i = 0; i < texts.length; i += 50) {
+    const chunk = texts.slice(i, i + 50)
+    const res = await fetch(API, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ q: chunk, source: 'en', target, format: 'html' }),
+      headers: {
+        Authorization: `DeepL-Auth-Key ${KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: chunk,
+        source_lang: 'EN',
+        target_lang: target,
+        tag_handling: 'xml',
+        ignore_tags: ['x'],
+      }),
     })
-    if (!res.ok) throw new Error(`LibreTranslate ${res.status}: ${await res.text()}`)
+    if (!res.ok) throw new Error(`DeepL ${res.status}: ${await res.text()}`)
     const data = await res.json()
-    const translated = Array.isArray(data.translatedText) ? data.translatedText : [data.translatedText]
-    if (translated.length !== chunk.length) throw new Error('LibreTranslate returned a different count')
-    out.push(...translated)
+    out.push(...data.translations.map((t) => t.text))
   }
   return out
 }
 
-// ---------- بناء الشجرة وترجمتها ----------
+// يجمع كل القطع التي تحتاج ترجمة، ثم يعيد بناء النص
+function collectSegments(value) {
+  if (typeof value !== 'string' || value.trim() === '') return null
+  return parseTop(value)
+}
+
 async function translateTree(obj, target) {
+  // المرحلة 1: جمع القطع
+  const pending = [] // { template, vars, apply(text) }
   const build = (value) => {
     if (typeof value !== 'string' || value.trim() === '') return value
     const parts = parseTop(value)
     const slots = []
     const pieces = parts.map((p) => {
       if (p.kind === 'text') {
-        if (!p.s.trim()) return { kind: 'text', raw: p.s }
         const lead = p.s.match(/^\s*/)[0]
         const trail = p.s.match(/\s*$/)[0]
         const { tpl, vars } = protect(p.s.trim())
+        if (!p.s.trim()) return { kind: 'text', lead, trail, raw: p.s }
         slots.push({ tpl, vars })
         return { kind: 'text', lead, trail, slot: slots.length - 1 }
       }
@@ -146,28 +154,21 @@ async function translateTree(obj, target) {
   collect(tree)
 
   const translated = await translateBatch(allSlots.map((s) => s.tpl), target)
-  allSlots.forEach((s, idx) => {
-    const t = translated[idx]
-    s.translated = t && isSafe(t, s.vars.length) ? t : s.tpl
-  })
 
   const render = (node) => {
     if (Array.isArray(node)) return node.map(render)
     if (node && typeof node === 'object') {
       if (node.__slots) {
         const { __slots: slots, __pieces: pieces } = node
+        const text = (slot) => restore(translated[slot.index], slot.vars)
         return pieces.map((p) => {
           if (p.kind === 'text') {
             if (p.raw !== undefined) return p.raw
-            const slot = slots[p.slot]
-            return p.lead + restore(slot.translated, slot.vars).trim() + p.trail
+            return p.lead + restore(translated[globalIndex(slots, p.slot)], slots[p.slot].vars).trim() + p.trail
           }
-          const br = p.branches
-            .map((b) => {
-              const slot = slots[b.slot]
-              return `${b.key} {${restore(slot.translated, slot.vars)}}`
-            })
-            .join(' ')
+          const br = p.branches.map(
+            (b) => `${b.key} {${restore(translated[globalIndex(slots, b.slot)], slots[b.slot].vars)}}`,
+          ).join(' ')
           return `{${p.head} ${br}}`
         }).join('')
       }
@@ -177,12 +178,18 @@ async function translateTree(obj, target) {
     }
     return node
   }
+
+  // نعيد فهرسة الترجمات حسب الترتيب العام
+  let cursor = 0
+  allSlots.forEach((s) => { s.index = cursor++ })
+  const globalIndex = (slots, local) => slots[local].index
   return render(tree)
 }
 
-// ---------- الدمج: نترجم فقط ما هو ناقص ----------
+// ---------- الدمج والمفاتيح الناقصة ----------
 function isObj(v) { return typeof v === 'object' && v !== null && !Array.isArray(v) }
 
+// يرجع فقط المفاتيح الموجودة في المصدر وغير الموجودة في الملف الهدف
 function pickMissing(src, dst) {
   const out = {}
   for (const k of Object.keys(src)) {
@@ -216,5 +223,5 @@ for (const [locale, target] of Object.entries(TARGETS)) {
   const translated = await translateTree(missing, target)
   const merged = deepMerge(existing, translated)
   await fs.writeFile(`messages/${locale}.json`, JSON.stringify(merged, null, 2) + '\n', 'utf8')
-  console.log(`messages/${locale}.json: translated missing keys`)
+  console.log(`messages/${locale}.json: translated ${Object.keys(missing).length} top-level groups`)
 }
