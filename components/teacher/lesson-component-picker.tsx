@@ -11,6 +11,7 @@ interface PickerProps {
 }
 
 export function LessonComponentPicker({ onInsert }: PickerProps) {
+  const tr = useTranslations('uiMisc');
   const tr = useTranslations('learning');
   const components = [
     { labelKey: "callout", snippet: '<Callout type="info">Tu mensaje aquí</Callout>\n' },
@@ -95,7 +96,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
           </div>
         ) : (
           <div className="flex flex-col gap-2">
-            <label className="text-sm">Pregunta</label>
+            <label className="text-sm">{tr('question')}</label>
             <input
               className="input"
               value={qQuestion}
@@ -103,7 +104,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
               placeholder={tr('questionPlaceholder')}
             />
 
-            <label className="text-sm">Opciones</label>
+            <label className="text-sm">{tr('options')}</label>
             <div className="flex flex-col gap-1">
               {qOptions.map((opt, idx) => (
                 <div key={idx} className="flex items-center gap-2">
@@ -141,7 +142,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
               <Button variant="ghost" onClick={() => { resetQuizForm(); setShowQuizForm(false); }}>
                 Cancelar
               </Button>
-              <Button onClick={submitQuiz}>Insertar Quiz</Button>
+              <Button onClick={submitQuiz}>{tr('insertQuiz')}</Button>
             </div>
           </div>
         )}

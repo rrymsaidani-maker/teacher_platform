@@ -20,6 +20,7 @@ interface Props {
 }
 
 export async function SchoolLandingPage({ tenant, products }: Props) {
+  const tr = await getTranslations('uiMisc');
   const t = await getTranslations('schoolLanding')
   // The school's theme reaches this page as `--primary`: the root layout has
   // already resolved the stored kit theme against the plan (#763), so there is
@@ -39,7 +40,7 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
       </div>
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-36" aria-label="School hero">
+      <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-36" aria-label={tr('schoolHero')}>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-8">
 
@@ -90,7 +91,7 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
       </section>
 
       {/* ── Courses Grid ─────────────────────────────────────── */}
-      <section className="py-24 relative" aria-label="Available courses">
+      <section className="py-24 relative" aria-label={tr('availableCourses')}>
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-foreground text-center mb-12">{t('availableCourses')}</h2>
 
@@ -154,7 +155,7 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
       </section>
 
       {/* ── Join CTA Strip ───────────────────────────────────── */}
-      <section className="py-20 relative overflow-hidden" aria-label="Join call to action">
+      <section className="py-20 relative overflow-hidden" aria-label={tr('joinCta')}>
         <div className="container mx-auto px-4 md:px-6">
           {/* A solid brand fill with its own ink: every theme swatch picks
               --primary-foreground for AA on --primary, which a translucent

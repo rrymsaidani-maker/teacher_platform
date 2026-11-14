@@ -75,6 +75,7 @@ export function CheckoutForm({
     solanaCurrencies,
     feeIncluded = false,
 }: CheckoutFormProps) {
+  const tr = useTranslations('uiMisc');
     const [isPending, startTransition] = useTransition();
     const [offlineData, setOfflineData] = useState({
         name: userName || '',
@@ -600,7 +601,7 @@ export function CheckoutForm({
                                 /* eslint-disable-next-line @next/next/no-img-element */
                                 <img
                                     src={instructionsQr}
-                                    alt="Binance Pay ID QR"
+                                    alt={tr('binancePayQr')}
                                     width={240}
                                     height={240}
                                     className="rounded-lg border border-border bg-white p-2 box-content"
@@ -891,7 +892,7 @@ export function CheckoutForm({
                 <Label htmlFor="offlineName" className="text-xs font-medium">{t('payment.contactName')}</Label>
                 <Input
                     id="offlineName"
-                    placeholder="Your Name"
+                    placeholder={tr('yourName')}
                     value={offlineData.name}
                     onChange={e => setOfflineData({ ...offlineData, name: e.target.value })}
                     disabled={isPending}

@@ -20,6 +20,7 @@ import {
     IconExternalLink
 } from "@tabler/icons-react"
 import { toast } from "sonner"
+import { useTranslations } from 'next-intl';
 
 interface SocialShareModalProps {
     isOpen: boolean
@@ -28,6 +29,7 @@ interface SocialShareModalProps {
 }
 
 export function SocialShareModal({ isOpen, onOpenChange, certificate }: SocialShareModalProps) {
+  const tr = useTranslations('uiMisc');
     const [copied, setCopied] = useState(false)
     const origin = typeof window !== 'undefined' ? window.location.origin : ''
     const shareUrl = `${origin}/verify/${certificate.verification_code}`
@@ -39,7 +41,7 @@ export function SocialShareModal({ isOpen, onOpenChange, certificate }: SocialSh
     const handleCopy = () => {
         navigator.clipboard.writeText(shareUrl)
         setCopied(true)
-        toast.success("Link copied to clipboard!")
+        toast.success(tr('linkCopied'))
         setTimeout(() => setCopied(false), 2000)
     }
 
@@ -62,7 +64,7 @@ export function SocialShareModal({ isOpen, onOpenChange, certificate }: SocialSh
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Share Achievement</DialogTitle>
+                    <DialogTitle>{tr('shareAchievement')}</DialogTitle>
                     <DialogDescription>
                         Congratulations on earning your certificate! Share your success with your network.
                     </DialogDescription>
@@ -117,7 +119,7 @@ export function SocialShareModal({ isOpen, onOpenChange, certificate }: SocialSh
                         <IconExternalLink />
                     </div>
                     <div className="space-y-1">
-                        <p className="text-sm font-bold leading-none">Public Verification</p>
+                        <p className="text-sm font-bold leading-none">{tr('publicVerification')}</p>
                         <p className="text-xs text-muted-foreground">Anyone with this link can verify your certificate's authenticity.</p>
                     </div>
                 </div>

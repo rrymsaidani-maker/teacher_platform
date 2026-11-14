@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 import { PlatformPageHeader } from '@/components/platform/page-header'
 import { PlatformPanel } from '@/components/platform/section'
 import { CreateSchoolForm } from '@/components/platform/create-school-form'
@@ -6,6 +7,7 @@ import { CreateSchoolForm } from '@/components/platform/create-school-form'
 export const metadata = { title: 'Create school' }
 
 export default async function NewTenantPage() {
+  const tr = await getTranslations('platformAdmin')
   return (
     <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8" data-testid="platform-tenant-new-page">
       <PlatformPageHeader

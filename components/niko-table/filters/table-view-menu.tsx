@@ -50,6 +50,7 @@ import { cn } from "@/lib/utils"
 import { formatLabel } from "../lib/format"
 
 import type { DataTableColumn, DataTableInstance } from "../types"
+import { useTranslations } from 'next-intl';
 function getColumnTitle<TData extends RowData>(
   column: DataTableColumn<TData, unknown>,
 ): string {
@@ -130,6 +131,7 @@ export function TableViewMenu<TData extends RowData>({
   trigger,
   resetLabel,
 }: TableViewMenuProps<TData>) {
+  const tr = useTranslations('uiMisc');
   // Controlled search. cmdk's built-in filter hides non-matching `CommandItem`s
   // but still renders all of them — at 200+ columns that's the bottleneck.
   // Filtering at this layer means non-matching rows skip rendering entirely.
@@ -178,7 +180,7 @@ export function TableViewMenu<TData extends RowData>({
       <PopoverTrigger>
         {trigger ?? (
           <Button
-            aria-label="Toggle columns"
+            aria-label={tr('toggleColumns')}
             role="combobox"
             variant="outline"
             size="sm"
@@ -193,12 +195,12 @@ export function TableViewMenu<TData extends RowData>({
       <PopoverContent align="end" className="w-fit p-0">
         <Command shouldFilter={false}>
           <CommandInput
-            placeholder="Search columns..."
+            placeholder={tr('searchColumns')}
             value={search}
             onValueChange={setSearch}
           />
           <CommandList>
-            <CommandEmpty>No columns found.</CommandEmpty>
+            <CommandEmpty>{tr('noColumnsFound')}</CommandEmpty>
             <CommandGroup>
               {visibleColumns.map(column => (
                 <MenuRow
@@ -221,7 +223,7 @@ export function TableViewMenu<TData extends RowData>({
                 onClick={onReset}
               >
                 <RotateCcw className="size-4" />
-                {resetLabel ?? "Reset to defaults"}
+                {resetLabel ?? tr('resetDefaults')}
               </Button>
             </>
           ) : null}

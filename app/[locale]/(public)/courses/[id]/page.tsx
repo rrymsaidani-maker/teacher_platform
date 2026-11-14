@@ -98,6 +98,7 @@ export default async function CourseDetailsPage(props: {
     params: Promise<{ id: string; locale: string }>;
     searchParams: Promise<{ enroll?: string }>;
 }) {
+  const tr = await getTranslations('uiMisc');
     const [params, searchParams, t, supabase, userId, tenantId] = await Promise.all([
         props.params,
         props.searchParams,
@@ -329,7 +330,7 @@ export default async function CourseDetailsPage(props: {
         <div className="min-h-screen bg-background text-foreground font-sans">
             <JsonLd data={structuredData} />
             {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumb" className="border-b border-border">
+            <nav aria-label={tr('breadcrumb')} className="border-b border-border">
                 <div className="container mx-auto px-4 py-3 flex items-center gap-2 text-sm text-muted-foreground">
                     <Link href="/" className="hover:text-brand-text transition-colors duration-150">{t('breadcrumbs.home')}</Link>
                     <ChevronRight className="w-3 h-3 shrink-0" aria-hidden="true" />

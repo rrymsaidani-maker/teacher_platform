@@ -23,6 +23,7 @@ import { DEFAULT_MAX_COLUMN_SIZE, DEFAULT_MIN_COLUMN_SIZE } from "./constants"
 
 import type { RowData } from "@tanstack/react-table"
 import type { DataTableHeader } from "../types"
+import { useTranslations } from 'next-intl';
 /** Room for cell chrome the text measurement doesn't cover. */
 const AUTOSIZE_CELL_PADDING = 24 // horizontal padding + buffer
 const AUTOSIZE_HEADER_CHROME = 52 // sort/menu trigger + resize grip
@@ -113,6 +114,7 @@ export function DataTableColumnResizeHandle<TData extends RowData>({
   isFlex = false,
   setResizePreview,
 }: DataTableColumnResizeHandleProps<TData>) {
+  const tr = useTranslations('uiMisc');
   const isResizing = header.column.getIsResizing()
   const resize = header.getResizeHandler()
   const def = header.column.columnDef
@@ -203,7 +205,7 @@ export function DataTableColumnResizeHandle<TData extends RowData>({
       data-slot="column-resize-handle"
       role="separator"
       aria-orientation="vertical"
-      aria-label="Resize column (arrow keys, or double-click to fit)"
+      aria-label={tr('resizeColumn')}
       aria-valuenow={ariaValueNow}
       aria-valuemin={min}
       // A flex column can legitimately render wider than the declared
