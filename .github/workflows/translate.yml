@@ -30,6 +30,14 @@ jobs:
           docker logs libretranslate | tail -50
           exit 1
 
+      - name: Test the engine
+        run: |
+          curl -s -X POST http://localhost:5000/translate -H "Content-Type: application/json" -d '{"q":"Edit profile","source":"en","target":"ar","format":"text"}'
+          echo
+          curl -s -X POST http://localhost:5000/translate -H "Content-Type: application/json" -d '{"q":"Edit profile","source":"en","target":"fr","format":"text"}'
+          echo
+          docker logs libretranslate 2>&1 | grep -i "load\|error\|model\|language" | tail -30
+
       - name: Translate missing and English-copied keys
         env:
           LT_URL: http://localhost:5000

@@ -79,6 +79,8 @@ function isSafe(translated, count) {
 async function translateBatch(texts, target) {
   if (MOCK) return texts
   const out = []
+  let unchanged = 0
+  let sample = null
   for (let i = 0; i < texts.length; i += 40) {
     const chunk = texts.slice(i, i + 40)
     const res = await fetch(`${LT_URL}/translate`, {
@@ -90,7 +92,17 @@ async function translateBatch(texts, target) {
     const data = await res.json()
     const translated = Array.isArray(data.translatedText) ? data.translatedText : [data.translatedText]
     if (translated.length !== chunk.length) throw new Error('LibreTranslate returned a different count')
+    chunk.forEach((src, j) => {
+      if (translated[j] === src) { unchanged++; sample ??= src }
+    })
     out.push(...translated)
+  }
+  console.log(`${target}: ${unchanged} of ${texts.length} strings came back unchanged`)
+  if (texts.length >= 20 && unchanged / texts.length > 0.8) {
+    throw new Error(
+      `The engine returned English unchanged for ${target} (example: "${sample}"). ` +
+      `The language model is not loaded. Read the "Start LibreTranslate" logs.`
+    )
   }
   return out
 }
