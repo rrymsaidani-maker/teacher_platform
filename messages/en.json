@@ -11809,5 +11809,18 @@
     "eab9c615c": "Failed to parse AI grading response. Please try again.",
     "e2ceb3aba": "File size must be under 5MB",
     "e89dde603": "File type not allowed. Use JPEG, PNG, GIF, or WebP."
+  },
+  "aiElements": {
+    "enterUrl": "Enter URL...",
+    "preview": "Preview",
+    "modelContextUsage": "Model context usage",
+    "toggleValueVisibility": "Toggle value visibility",
+    "copy": "Copy",
+    "previous": "Previous",
+    "next": "Next",
+    "searchMicrophones": "Search microphones...",
+    "previousBranch": "Previous branch",
+    "nextBranch": "Next branch",
+    "uploadFiles": "Upload files"
   }
 }

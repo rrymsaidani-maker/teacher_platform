@@ -1,3 +1,5 @@
+// يترجم المفاتيح الناقصة من messages/en.json إلى ar.json و fr.json و es.json
+// المحرك: LibreTranslate يعمل داخل GitHub Actions (مجاني، بلا مفتاح وبلا بطاقة)
 import fs from 'node:fs/promises'
 
 const SRC = 'messages/en.json'
@@ -5,6 +7,7 @@ const TARGETS = { ar: 'ar', fr: 'fr', es: 'es' }
 const LT_URL = process.env.LT_URL || 'http://localhost:5000'
 const MOCK = process.env.MOCK === '1'
 
+// ---------- تحليل ICU ----------
 function matchClose(s, start) {
   let depth = 0
   for (let i = start; i < s.length; i++) {
@@ -50,6 +53,7 @@ function parseTop(s) {
   return parts
 }
 
+// يحمي المتغيرات {name} بوسوم <x id="n"/>
 function protect(s) {
   const vars = []
   const tpl = s.replace(/\{[^{}]*\}/g, (m) => {
@@ -63,6 +67,7 @@ function restore(tpl, vars) {
   return tpl.replace(/<x id="(\d+)"\/>/g, (_, n) => vars[Number(n)])
 }
 
+// الترجمة سليمة فقط إذا بقيت كل الوسوم كما هي، وإلا نعود للإنجليزية لهذه القطعة
 function isSafe(translated, count) {
   for (let n = 0; n < count; n++) {
     if (!translated.includes(`<x id="${n}"/>`)) return false
@@ -70,6 +75,7 @@ function isSafe(translated, count) {
   return true
 }
 
+// ---------- الترجمة عبر LibreTranslate ----------
 async function translateBatch(texts, target) {
   if (MOCK) return texts
   const out = []
@@ -89,6 +95,7 @@ async function translateBatch(texts, target) {
   return out
 }
 
+// ---------- بناء الشجرة وترجمتها ----------
 async function translateTree(obj, target) {
   const build = (value) => {
     if (typeof value !== 'string' || value.trim() === '') return value
@@ -173,15 +180,17 @@ async function translateTree(obj, target) {
   return render(tree)
 }
 
+// ---------- الدمج: نترجم فقط ما هو ناقص ----------
 function isObj(v) { return typeof v === 'object' && v !== null && !Array.isArray(v) }
 
+// يختار المفاتيح الناقصة + المفاتيح التي بقيت كما هي بالإنجليزية (نسخ غير مترجمة)
 function pickMissing(src, dst) {
   const out = {}
   for (const k of Object.keys(src)) {
     if (isObj(src[k])) {
       const sub = pickMissing(src[k], isObj(dst?.[k]) ? dst[k] : {})
       if (Object.keys(sub).length) out[k] = sub
-    } else if (typeof src[k] === 'string' && typeof dst?.[k] !== 'string') {
+    } else if (typeof src[k] === 'string' && (typeof dst?.[k] !== 'string' || dst[k] === src[k])) {
       out[k] = src[k]
     } else if (Array.isArray(src[k]) && dst?.[k] === undefined) {
       out[k] = src[k]
@@ -198,6 +207,7 @@ function deepMerge(base, over) {
   return out
 }
 
+// ---------- التشغيل ----------
 const en = JSON.parse(await fs.readFile(SRC, 'utf8'))
 for (const [locale, target] of Object.entries(TARGETS)) {
   let existing = {}

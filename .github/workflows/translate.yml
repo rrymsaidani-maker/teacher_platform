@@ -9,7 +9,7 @@ permissions:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -30,13 +30,17 @@ jobs:
           docker logs libretranslate | tail -50
           exit 1
 
-      - name: Translate missing keys
+      - name: Translate missing and English-copied keys
         env:
           LT_URL: http://localhost:5000
         run: node scripts/translate-messages.mjs
 
+      - name: Check translations
+        run: node scripts/check-translations.mjs
+
       - name: Commit translations
+        if: success()
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update ar, fr and es translations" 
+          commit_message: "chore: update ar, fr and es translations"
           file_pattern: messages/ar.json messages/fr.json messages/es.json
