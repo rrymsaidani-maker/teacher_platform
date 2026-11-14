@@ -379,7 +379,7 @@ export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = f
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead className="border-b">
-                      <tr className="text-left text-sm text-muted-foreground">
+                      <tr className="text-start text-sm text-muted-foreground">
                         <th className="pb-3 font-medium">Page</th>
                         <th className="pb-3 font-medium hidden md:table-cell">URL</th>
                         <th className="pb-3 font-medium">Status</th>
@@ -465,7 +465,7 @@ export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = f
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
                                   <DropdownMenuItem onClick={() => setEditingPage(page)}>
-                                    <IconEdit className="w-4 h-4 mr-2" /> {t('pageCard.edit')}
+                                    <IconEdit className="w-4 h-4 me-2" /> {t('pageCard.edit')}
                                   </DropdownMenuItem>
                                   {page.status === 'published' && (
                                     <DropdownMenuItem
@@ -477,19 +477,19 @@ export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = f
                                         />
                                       }
                                     >
-                                      <IconEye className="w-4 h-4 mr-2" /> {t('pageCard.preview')}
+                                      <IconEye className="w-4 h-4 me-2" /> {t('pageCard.preview')}
                                     </DropdownMenuItem>
                                   )}
                                   <DropdownMenuSeparator />
                                   <DropdownMenuItem onClick={() => handleToggleActive(page)} disabled={isLoading}>
                                     {page.is_active ? (
-                                      <><IconEye className="w-4 h-4 mr-2" /> {t('pageCard.deactivate')}</>
+                                      <><IconEye className="w-4 h-4 me-2" /> {t('pageCard.deactivate')}</>
                                     ) : (
-                                      <><IconWorldUpload className="w-4 h-4 mr-2" /> {t('pageCard.activate')}</>
+                                      <><IconWorldUpload className="w-4 h-4 me-2" /> {t('pageCard.activate')}</>
                                     )}
                                   </DropdownMenuItem>
                                   <DropdownMenuItem onClick={() => handleDuplicate(page)} disabled={isLoading || atFreePageLimit}>
-                                    <IconCopy className="w-4 h-4 mr-2" /> {t('pageCard.duplicate')}
+                                    <IconCopy className="w-4 h-4 me-2" /> {t('pageCard.duplicate')}
                                   </DropdownMenuItem>
                                   <DropdownMenuSeparator />
                                   <DropdownMenuItem
@@ -497,7 +497,7 @@ export function LandingPagesClient({ pages: initialPages, plan, aiConfigured = f
                                     disabled={isLoading || page.is_active}
                                     className="text-destructive focus:text-destructive"
                                   >
-                                    <IconTrash className="w-4 h-4 mr-2" /> {t('pageCard.delete')}
+                                    <IconTrash className="w-4 h-4 me-2" /> {t('pageCard.delete')}
                                   </DropdownMenuItem>
                                 </DropdownMenuContent>
                               </DropdownMenu>

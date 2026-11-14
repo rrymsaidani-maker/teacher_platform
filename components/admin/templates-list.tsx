@@ -132,7 +132,7 @@ export function TemplatesList({ templates, onEdit, onUse }: TemplatesListProps) 
                 className="flex-1"
                 onClick={() => onUse(template)}
               >
-                <IconCopy className="h-4 w-4 mr-1" />
+                <IconCopy className="h-4 w-4 me-1" />
                 {t('templates.table.actions')}
               </Button>
               <Button

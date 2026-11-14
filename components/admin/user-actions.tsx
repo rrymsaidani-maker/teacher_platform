@@ -141,18 +141,18 @@ export function UserActions({
               onClick={() => setShowLiftBanDialog(true)}
               data-testid="lift-ban-action"
             >
-              <IconCheck className="mr-2 h-4 w-4" />
+              <IconCheck className="me-2 h-4 w-4" />
               {t('liftBan')}
             </DropdownMenuItem>
           ) : (
             <>
           <DropdownMenuItem onClick={() => setShowRoleDialog(true)}>
-            <IconSettings className="mr-2 h-4 w-4" />
+            <IconSettings className="me-2 h-4 w-4" />
             {t('manageRoles')}
           </DropdownMenuItem>
           {isDeactivated ? (
             <DropdownMenuItem onClick={() => setShowReactivateDialog(true)}>
-              <IconCheck className="mr-2 h-4 w-4" />
+              <IconCheck className="me-2 h-4 w-4" />
               {t('reactivate')}
             </DropdownMenuItem>
           ) : (
@@ -160,7 +160,7 @@ export function UserActions({
               onClick={() => setShowDeactivateDialog(true)}
               className="text-destructive"
             >
-              <IconBan className="mr-2 h-4 w-4" />
+              <IconBan className="me-2 h-4 w-4" />
               {t('deactivate')}
             </DropdownMenuItem>
           )}
@@ -168,7 +168,7 @@ export function UserActions({
             onClick={() => setShowRemoveDialog(true)}
             className="text-destructive"
           >
-            <IconUserMinus className="mr-2 h-4 w-4" />
+            <IconUserMinus className="me-2 h-4 w-4" />
             {t('removeFromSchool')}
           </DropdownMenuItem>
               <DropdownMenuItem
@@ -176,7 +176,7 @@ export function UserActions({
                 className="text-destructive"
                 data-testid="ban-action"
               >
-                <IconUserOff className="mr-2 h-4 w-4" />
+                <IconUserOff className="me-2 h-4 w-4" />
                 {t('banFromSchool')}
               </DropdownMenuItem>
             </>

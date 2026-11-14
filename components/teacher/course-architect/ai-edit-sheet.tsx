@@ -45,7 +45,7 @@ export function AiEditSheet({ scope, className }: Props) {
                 {t('editWithAi')}
             </SheetTrigger>
             <SheetContent side="right" className="w-full gap-0 sm:max-w-xl">
-                <SheetHeader className="border-b pr-12">
+                <SheetHeader className="border-b pe-12">
                     <SheetTitle>{t(`editSheet.${scope.type}.title`)}</SheetTitle>
                     <SheetDescription>{t(`editSheet.${scope.type}.description`)}</SheetDescription>
                 </SheetHeader>

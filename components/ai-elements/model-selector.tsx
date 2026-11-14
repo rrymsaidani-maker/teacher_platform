@@ -207,5 +207,5 @@ export const ModelSelectorName = ({
   className,
   ...props
 }: ModelSelectorNameProps) => (
-  <span className={cn("flex-1 truncate text-left", className)} {...props} />
+  <span className={cn("flex-1 truncate text-start", className)} {...props} />
 );

@@ -57,7 +57,7 @@ export function ChallengeLeaderboard({ rows, windowed = false, heading = false, 
             <TableBody>
               {shown.map((r) => (
                 <TableRow key={r.key} data-me={r.isMe ? 'true' : undefined} className={cn(r.isMe && 'bg-brand-tint/40')}>
-                  <TableCell className="w-10 px-3 py-2 text-right font-semibold tabular-nums text-muted-foreground">{r.rank}</TableCell>
+                  <TableCell className="w-10 px-3 py-2 text-end font-semibold tabular-nums text-muted-foreground">{r.rank}</TableCell>
                   <TableCell className="max-w-0 px-3 py-2">
                     <span className="flex items-center gap-2">
                       <span className="truncate font-medium">{r.label === null ? t('guest') : r.label || t('student')}</span>
@@ -69,7 +69,7 @@ export function ChallengeLeaderboard({ rows, windowed = false, heading = false, 
                       ) : null}
                     </span>
                   </TableCell>
-                  <TableCell className="w-16 px-3 py-2 text-right font-semibold tabular-nums">{r.score}</TableCell>
+                  <TableCell className="w-16 px-3 py-2 text-end font-semibold tabular-nums">{r.score}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

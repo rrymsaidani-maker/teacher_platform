@@ -18,7 +18,7 @@ export function LessonPreviewPanel() {
   return (
     <div
       className={cn(
-        'hidden lg:flex flex-col border-l bg-muted/20 transition-all duration-300 overflow-hidden',
+        'hidden lg:flex flex-col border-s bg-muted/20 transition-all duration-300 overflow-hidden',
         showPreview ? 'w-1/2 opacity-100' : 'w-0 opacity-0'
       )}
     >

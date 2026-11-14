@@ -9,7 +9,7 @@ interface ComparisonProps {
 
 function PointsList({ points }: { points: string[] }) {
   return (
-    <ul className="list-disc pl-4 space-y-1">
+    <ul className="list-disc ps-4 space-y-1">
       {points.map((point, i) => (
         <li key={i} className="text-sm">{point}</li>
       ))}

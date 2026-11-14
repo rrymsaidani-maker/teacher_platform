@@ -19,7 +19,7 @@ export function Definition({
   return (
     <div
       className={cn(
-        'my-4 rounded-lg border-l-4 border-primary bg-muted/30 p-4',
+        'my-4 rounded-lg border-s-4 border-primary bg-muted/30 p-4',
         className
       )}
     >

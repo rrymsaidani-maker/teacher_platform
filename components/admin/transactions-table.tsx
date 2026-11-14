@@ -142,9 +142,9 @@ export function TransactionsTable({ transactions }: { transactions: TransactionR
               }
               className={`text-[10px] ${status === 'successful' ? 'bg-success/10 text-success border-success/30' : status === 'pending' ? 'bg-warning/10 text-warning border-warning/30' : ''}`}
             >
-              {status === 'successful' && <IconCheck className="mr-1 h-3 w-3" />}
-              {status === 'pending' && <IconClock className="mr-1 h-3 w-3" />}
-              {(status === 'failed' || status === 'canceled') && <IconX className="mr-1 h-3 w-3" />}
+              {status === 'successful' && <IconCheck className="me-1 h-3 w-3" />}
+              {status === 'pending' && <IconClock className="me-1 h-3 w-3" />}
+              {(status === 'failed' || status === 'canceled') && <IconX className="me-1 h-3 w-3" />}
               {tm(`recentActivity.status.${status}`)}
             </Badge>
           )

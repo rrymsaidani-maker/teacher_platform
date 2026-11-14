@@ -157,8 +157,8 @@ function InnerAIPreviewModal({ type, config, evals }: AIPreviewModalProps) {
                   <p className="text-xs text-muted-foreground">{t('modalSubtitle')}</p>
                 </div>
               </div>
-              {/* pr-8 keeps clear of the dialog's own close button */}
-              <div className="flex items-center gap-2 pr-8">
+              {/* pe-8 keeps clear of the dialog's own close button */}
+              <div className="flex items-center gap-2 pe-8">
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-warning/10 rounded-lg border border-warning/30">
                   <div className="w-1.5 h-1.5 rounded-full bg-warning motion-safe:animate-pulse" />
                   <span className="text-[10px] font-bold uppercase tracking-wider text-warning">

@@ -63,7 +63,7 @@ export function TenantSwitcher({ tenants }: { tenants: TenantOption[] }) {
               onClick={() => handleSwitch(t.id, t.slug)}
               className={t.id === currentTenant?.id ? 'bg-accent' : ''}
             >
-              <School className="mr-2 h-4 w-4" />
+              <School className="me-2 h-4 w-4" />
               <span className="flex-1 truncate">{t.name}</span>
               <span className="text-xs text-muted-foreground capitalize">{t.role}</span>
             </DropdownMenuItem>
@@ -71,7 +71,7 @@ export function TenantSwitcher({ tenants }: { tenants: TenantOption[] }) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => window.location.href = '/create-school'}>
-          <Plus className="mr-2 h-4 w-4" />
+          <Plus className="me-2 h-4 w-4" />
           Create New School
         </DropdownMenuItem>
       </DropdownMenuContent>

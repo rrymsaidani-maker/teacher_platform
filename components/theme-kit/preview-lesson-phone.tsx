@@ -32,7 +32,7 @@ export function PreviewLessonPhone({ theme, brand, mode, className }: KitPreview
           aria-hidden="true"
           className="flex flex-col overflow-hidden rounded-[1.5rem]"
         >
-          <div className="flex h-15 items-center gap-2.5 border-b border-border pr-2 pl-5">
+          <div className="flex h-15 items-center gap-2.5 border-b border-border pe-2 ps-5">
             <span className="flex size-7.5 shrink-0 items-center justify-center rounded-input bg-primary font-heading text-sm font-bold text-primary-foreground">
               {school.initial}
             </span>

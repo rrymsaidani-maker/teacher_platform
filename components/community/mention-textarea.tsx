@@ -162,7 +162,7 @@ export function MentionTextarea({
           role="listbox"
           aria-label={t('listLabel')}
           data-testid="mention-candidates"
-          className="absolute left-0 top-full z-50 mt-1 max-h-72 w-72 max-w-full overflow-y-auto rounded-lg border bg-popover p-1 text-popover-foreground shadow-md"
+          className="absolute start-0 top-full z-50 mt-1 max-h-72 w-72 max-w-full overflow-y-auto rounded-lg border bg-popover p-1 text-popover-foreground shadow-md"
         >
           {candidates.length === 0 ? (
             <li className="px-2 py-1.5 text-xs text-muted-foreground" role="presentation">

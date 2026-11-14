@@ -135,13 +135,13 @@ export default function EmailSettingsForm({ settings }: EmailSettingsFormProps) 
               defaultValue={smtpPassword}
               placeholder="••••••••"
               autoComplete="current-password"
-              className="pr-10"
+              className="pe-10"
             />
             <Button
               type="button"
               variant="ghost"
               size="sm"
-              className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
+              className="absolute end-0 top-0 h-full px-3 hover:bg-transparent"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
@@ -196,7 +196,7 @@ export default function EmailSettingsForm({ settings }: EmailSettingsFormProps) 
       {/* Submit Button */}
       <div className="flex justify-end">
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {isSubmitting && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
           {isSubmitting ? t('saving') : t('saveChanges')}
         </Button>
       </div>

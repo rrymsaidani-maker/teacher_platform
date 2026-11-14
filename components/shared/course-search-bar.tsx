@@ -93,20 +93,20 @@ export function CourseSearchBar({
     >
       {/* Search input */}
       <div className="relative max-w-md">
-        <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
+        <IconSearch className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
         <Input
           type="text"
           placeholder={t('placeholder')}
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          className="pl-9 pr-9 h-10 bg-muted/40 border-transparent focus:border-primary/30 focus:bg-background rounded-xl text-sm"
+          className="ps-9 pe-9 h-10 bg-muted/40 border-transparent focus:border-primary/30 focus:bg-background rounded-xl text-sm"
           aria-label={t('placeholder')}
         />
         {searchValue && (
           <button
             type="button"
             onClick={handleClearSearch}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            className="absolute end-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
             aria-label={t('clearFilters')}
           >
             <IconX className="w-3.5 h-3.5" />

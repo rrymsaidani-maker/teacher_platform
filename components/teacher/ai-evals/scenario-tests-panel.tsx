@@ -276,7 +276,7 @@ function SavedScenarioTests({ surface, exerciseId, hasUnsavedChanges }: { surfac
               <IconPlayerPlay aria-hidden="true" className="h-4 w-4" />
               {starting ? tc('run.starting') : tc('run.button', { count: totalCases })}
             </Button>
-            <p className="max-w-64 text-right text-xs text-muted-foreground">{tc('run.allKinds')}</p>
+            <p className="max-w-64 text-end text-xs text-muted-foreground">{tc('run.allKinds')}</p>
           </div>
         }
       />

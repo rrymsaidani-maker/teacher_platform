@@ -319,7 +319,7 @@ export function FeedbackButton() {
       <span
         ref={safeAreaProbeRef}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 h-0 w-0"
+        className="pointer-events-none fixed top-0 start-0 h-0 w-0"
         style={{
           paddingTop: 'env(safe-area-inset-top)',
           paddingRight: 'env(safe-area-inset-right)',
@@ -343,7 +343,7 @@ export function FeedbackButton() {
           className={cn(
             // `fixed` at the origin and moved with `transform` only: position never
             // touches a layout property, so snapping stays on the compositor.
-            'fixed top-0 left-0 z-40 grid place-items-center rounded-full',
+            'fixed top-0 start-0 z-40 grid place-items-center rounded-full',
             'border border-border/60 bg-card/80 text-muted-foreground shadow-sm backdrop-blur-sm',
             'cursor-grab touch-none select-none',
             // The guided tour's overlay (driver.js, z-index 10000) swallows every pointer

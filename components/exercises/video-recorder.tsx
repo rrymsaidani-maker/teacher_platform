@@ -282,12 +282,12 @@ export function VideoRecorderComponent({
 
         {/* Recording indicator */}
         {state === 'recording' && (
-          <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1.5">
+          <div className="absolute top-3 start-3 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1.5">
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-destructive" />
             <span className="text-xs font-mono font-bold text-white tabular-nums">
               {formatTime(elapsed)}
             </span>
-            <span className="text-xs text-white/60 ml-1">
+            <span className="text-xs text-white/60 ms-1">
               / {t('maxDuration', { time: formatTime(maxDurationSeconds) })}
             </span>
           </div>

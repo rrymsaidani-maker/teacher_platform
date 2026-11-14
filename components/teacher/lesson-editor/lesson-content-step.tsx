@@ -29,7 +29,7 @@ export function LessonContentStep() {
 
         <div className="flex items-center gap-2">
           <GenerateQuestionsDialog />
-          <span className="text-xs text-muted-foreground mr-1">
+          <span className="text-xs text-muted-foreground me-1">
             {t('editorMode')}
           </span>
           <div data-tour="lesson-editor-mode" className="inline-flex items-center rounded-lg border bg-muted/40 p-0.5">

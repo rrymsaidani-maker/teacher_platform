@@ -84,7 +84,7 @@ export function ChallengeSettingsForm({ settings }: Props) {
       </div>
       <div className="flex justify-end">
         <Button type="submit" disabled={saving}>
-          {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {saving && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
           {saving ? t('saving') : t('save')}
         </Button>
       </div>

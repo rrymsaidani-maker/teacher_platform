@@ -158,7 +158,7 @@ export default function NotificationsList({ notifications }: NotificationsListPr
                 )}
                 {notification.scheduled_for && !notification.sent_at && (
                   <span>
-                    <IconClock className="inline h-3 w-3 mr-1" />
+                    <IconClock className="inline h-3 w-3 me-1" />
                     {t('list.metadata.scheduled')}: {new Date(notification.scheduled_for).toLocaleString()}
                   </span>
                 )}

@@ -97,7 +97,7 @@ export function SocialShareModal({ isOpen, onOpenChange, certificate }: SocialSh
                                 logShare('linkedin')
                             }}
                         >
-                            <IconBrandLinkedin className="mr-2 h-5 w-5" />
+                            <IconBrandLinkedin className="me-2 h-5 w-5" />
                             LinkedIn
                         </Button>
                         <Button
@@ -108,7 +108,7 @@ export function SocialShareModal({ isOpen, onOpenChange, certificate }: SocialSh
                                 logShare('twitter')
                             }}
                         >
-                            <IconBrandTwitter className="mr-2 h-5 w-5" />
+                            <IconBrandTwitter className="me-2 h-5 w-5" />
                             Twitter
                         </Button>
                     </div>

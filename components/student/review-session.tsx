@@ -139,7 +139,7 @@ export function ReviewSession({ userId, tenantId, cards, totalDue }: ReviewSessi
         value={Math.round((finished.size / cards.length) * 100)}
         aria-label={t('progress', { done: finished.size, total: cards.length })}
       >
-        <span className="text-xs text-muted-foreground tabular-nums ml-auto">
+        <span className="text-xs text-muted-foreground tabular-nums ms-auto">
           {t('progress', { done: finished.size, total: cards.length })}
         </span>
       </Progress>

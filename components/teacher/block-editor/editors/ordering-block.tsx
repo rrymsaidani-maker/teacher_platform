@@ -72,7 +72,7 @@ export function OrderingBlockEditor({ block, onChange }: OrderingBlockEditorProp
         onClick={addItem}
         className="w-full"
       >
-        <IconPlus className="h-4 w-4 mr-2" />
+        <IconPlus className="h-4 w-4 me-2" />
         {t('ordering.addItem')}
       </Button>
 

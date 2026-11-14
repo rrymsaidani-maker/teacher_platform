@@ -49,7 +49,7 @@ export function DiscussionPromptCard({ post, canGrade = false }: DiscussionPromp
       : null
 
   return (
-    <div className="border-l-4 border-primary pl-4 space-y-2">
+    <div className="border-s-4 border-primary ps-4 space-y-2">
       <div className="flex items-center gap-2 flex-wrap">
         <Badge variant="secondary" className="gap-1">
           <IconBulb size={10} />

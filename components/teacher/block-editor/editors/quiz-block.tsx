@@ -103,7 +103,7 @@ export function QuizBlockEditor({ block, onChange }: QuizBlockEditorProps) {
           onClick={addOption}
           className="w-full"
         >
-          <IconPlus className="h-4 w-4 mr-2" />
+          <IconPlus className="h-4 w-4 me-2" />
           {t('quiz.addOption')}
         </Button>
       </div>

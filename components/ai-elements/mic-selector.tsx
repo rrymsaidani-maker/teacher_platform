@@ -255,7 +255,7 @@ export const MicSelectorValue = ({
 
   if (!currentDevice) {
     return (
-      <span className={cn("flex-1 text-left", className)} {...props}>
+      <span className={cn("flex-1 text-start", className)} {...props}>
         Select microphone...
       </span>
     );
@@ -263,7 +263,7 @@ export const MicSelectorValue = ({
 
   return (
     <MicSelectorLabel
-      className={cn("flex-1 text-left", className)}
+      className={cn("flex-1 text-start", className)}
       device={currentDevice}
       {...props}
     />

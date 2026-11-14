@@ -36,7 +36,7 @@ export function FilterSidebar() {
                                 {cat.label}
                             </span>
                             {cat.id === "dev" && (
-                                <span className="ml-auto text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
+                                <span className="ms-auto text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
                                     {t('courseCount', { count: 124 })}
                                 </span>
                             )}

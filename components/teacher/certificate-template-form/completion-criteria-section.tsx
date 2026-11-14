@@ -22,7 +22,7 @@ export function CompletionCriteriaSection() {
                 </h2>
             </div>
 
-            <div className="space-y-5 pl-[42px]">
+            <div className="space-y-5 ps-[42px]">
                 {/* Min lesson completion */}
                 <div className="space-y-3">
                     <div className="flex items-center justify-between">

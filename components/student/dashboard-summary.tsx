@@ -35,7 +35,7 @@ export function DashboardSummary({
             {/* Main Welcome Banner */}
             <Card className="lg:col-span-2 overflow-hidden border-none shadow-soft bg-primary text-primary-foreground group">
                 <CardContent className="p-8 md:p-10 relative">
-                    <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                    <div className="absolute top-0 end-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
                         <IconRocket size={200} stroke={1} />
                     </div>
 
@@ -81,7 +81,7 @@ export function DashboardSummary({
             <div className="grid grid-cols-1 gap-6">
                 <Card className="border-none shadow-soft bg-primary text-primary-foreground overflow-hidden relative group">
                     <CardContent className="p-6 flex flex-col justify-between h-full">
-                        <div className="absolute top-2 right-2 opacity-20">
+                        <div className="absolute top-2 end-2 opacity-20">
                             <IconFlame size={80} />
                         </div>
                         <div className="space-y-1">
@@ -96,7 +96,7 @@ export function DashboardSummary({
 
                 <Card className="border-none shadow-soft bg-primary text-primary-foreground overflow-hidden relative group">
                     <CardContent className="p-6 flex flex-col justify-between h-full">
-                        <div className="absolute top-2 right-2 opacity-20 transition-transform group-hover:rotate-12">
+                        <div className="absolute top-2 end-2 opacity-20 transition-transform group-hover:rotate-12">
                             <IconTrophy size={80} />
                         </div>
                         <div className="space-y-1">

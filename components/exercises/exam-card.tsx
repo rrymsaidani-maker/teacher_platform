@@ -94,14 +94,14 @@ export default function ExamCard({ exam, courseId }: ExamCardProps) {
 
                         <div className="flex flex-col items-stretch sm:items-end gap-2.5 sm:gap-3 w-full sm:w-auto sm:min-w-[140px]">
                             {isCompleted ? (
-                                <div className="text-center sm:text-right">
+                                <div className="text-center sm:text-end">
                                     <div className="text-2xl sm:text-3xl font-black text-success">
                                         {Math.round(score)}%
                                     </div>
                                     <p className="text-[10px] sm:text-xs text-muted-foreground font-medium uppercase tracking-wider">Final Score</p>
                                 </div>
                             ) : isSubmitted ? (
-                                <div className="text-center sm:text-right">
+                                <div className="text-center sm:text-end">
                                     <div className="text-base sm:text-lg font-bold text-warning">
                                         Awaiting Grade
                                     </div>
@@ -112,7 +112,7 @@ export default function ExamCard({ exam, courseId }: ExamCardProps) {
                                     </p>
                                 </div>
                             ) : (
-                                <div className="text-center sm:text-right">
+                                <div className="text-center sm:text-end">
                                     <Badge variant="secondary" className="mb-1">Not Started</Badge>
                                     <p className="text-[10px] sm:text-xs text-muted-foreground">Ready to begin?</p>
                                 </div>

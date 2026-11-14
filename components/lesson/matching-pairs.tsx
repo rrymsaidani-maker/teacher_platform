@@ -147,7 +147,7 @@ export function MatchingPairs({ pairs, explanation, className }: MatchingPairsPr
                 onClick={() => handleTermClick(termIdx)}
                 disabled={checked}
                 className={cn(
-                  'w-full rounded-md border p-3 text-left text-sm transition-colors',
+                  'w-full rounded-md border p-3 text-start text-sm transition-colors',
                   !checked && !color && !isSelected && 'hover:bg-muted/50',
                   isSelected && 'ring-2 ring-primary',
                   color && color,
@@ -175,7 +175,7 @@ export function MatchingPairs({ pairs, explanation, className }: MatchingPairsPr
                 onClick={() => handleMatchClick(originalIdx)}
                 disabled={checked}
                 className={cn(
-                  'w-full rounded-md border p-3 text-left text-sm transition-colors',
+                  'w-full rounded-md border p-3 text-start text-sm transition-colors',
                   !checked && !color && !isSelected && 'hover:bg-muted/50',
                   isSelected && 'ring-2 ring-primary',
                   color && color,

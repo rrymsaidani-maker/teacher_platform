@@ -35,7 +35,7 @@ export function CreateGroupForm() {
       </div>
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
       <Button type="submit" disabled={pending} data-testid="create-group-submit">
-        {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {pending && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
         {pending ? t('creating') : t('create')}
       </Button>
     </form>

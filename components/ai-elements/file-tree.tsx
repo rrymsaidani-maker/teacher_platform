@@ -121,7 +121,7 @@ export const FileTreeFolder = ({
           {...props}
         >
           <CollapsibleTrigger render={<button className={cn(
-                                  "flex w-full items-center gap-1 rounded px-2 py-1 text-left transition-colors hover:bg-muted/50",
+                                  "flex w-full items-center gap-1 rounded px-2 py-1 text-start transition-colors hover:bg-muted/50",
                                   isSelected && "bg-muted"
                                 )} onClick={() => onSelect?.(path)} type="button" />}><ChevronRightIcon
                                   className={cn(
@@ -136,7 +136,7 @@ export const FileTreeFolder = ({
                                   )}
                                 </FileTreeIcon><FileTreeName>{name}</FileTreeName></CollapsibleTrigger>
           <CollapsibleContent>
-            <div className="ml-4 border-l pl-2">{children}</div>
+            <div className="ms-4 border-s ps-2">{children}</div>
           </CollapsibleContent>
         </div>
       </Collapsible>
@@ -237,7 +237,7 @@ export const FileTreeActions = ({
   // biome-ignore lint/a11y/noNoninteractiveElementInteractions: stopPropagation required for nested interactions
   // biome-ignore lint/a11y/useSemanticElements: fieldset doesn't fit this UI pattern
   <div
-    className={cn("ml-auto flex items-center gap-1", className)}
+    className={cn("ms-auto flex items-center gap-1", className)}
     onClick={(e) => e.stopPropagation()}
     onKeyDown={(e) => e.stopPropagation()}
     role="group"

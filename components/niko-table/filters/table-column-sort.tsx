@@ -180,9 +180,9 @@ export function TableColumnSortOptions<TData extends RowData, TValue>({
           sortState === "asc" && "bg-accent text-accent-foreground",
         )}
       >
-        <icons.asc className="mr-2 size-4 text-muted-foreground/70" />
+        <icons.asc className="me-2 size-4 text-muted-foreground/70" />
         <span className="flex-1">{sortLabel(labels.asc)}</span>
-        {sortState === "asc" && <Check className="ml-2 size-4" />}
+        {sortState === "asc" && <Check className="ms-2 size-4" />}
       </DropdownMenuItem>
       <DropdownMenuItem
         onClick={e => handleSort("desc", e)}
@@ -191,13 +191,13 @@ export function TableColumnSortOptions<TData extends RowData, TValue>({
           sortState === "desc" && "bg-accent text-accent-foreground",
         )}
       >
-        <icons.desc className="mr-2 size-4 text-muted-foreground/70" />
+        <icons.desc className="me-2 size-4 text-muted-foreground/70" />
         <span className="flex-1">{sortLabel(labels.desc)}</span>
-        {sortState === "desc" && <Check className="ml-2 size-4" />}
+        {sortState === "desc" && <Check className="ms-2 size-4" />}
       </DropdownMenuItem>
       {sortState && (
         <DropdownMenuItem onClick={() => column.clearSorting()}>
-          <icons.unsorted className="mr-2 size-4 text-muted-foreground/70" />
+          <icons.unsorted className="me-2 size-4 text-muted-foreground/70" />
           {t("clearSort")}
         </DropdownMenuItem>
       )}
@@ -265,7 +265,7 @@ export function TableColumnSortMenu<TData extends RowData, TValue>({
                     )} />}><div className="relative flex items-center justify-center">
                       <SortIcon className="size-4" />
                       {showSortBadge && (
-                        <span className="absolute -top-1 -right-2 flex size-3 items-center justify-center rounded-full bg-primary text-[9px] text-primary-foreground">
+                        <span className="absolute -top-1 -end-2 flex size-3 items-center justify-center rounded-full bg-primary text-[9px] text-primary-foreground">
                           {sortIndex + 1}
                         </span>
                       )}

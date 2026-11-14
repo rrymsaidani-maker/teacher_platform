@@ -317,7 +317,7 @@ export function MediaRecorderComponent({
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       {error && (
-        <p className="flex items-start gap-2 text-left text-sm text-destructive" role="alert">
+        <p className="flex items-start gap-2 text-start text-sm text-destructive" role="alert">
           <IconAlertTriangle size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
           {error}
         </p>

@@ -62,7 +62,7 @@ export function CancelPaymentButton({ requestId }: CancelPaymentButtonProps) {
           <AlertDialogAction onClick={handleCancel} disabled={loading} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
             {loading ? (
               <>
-                <IconLoader2 className="w-4 h-4 mr-2 animate-spin" />
+                <IconLoader2 className="w-4 h-4 me-2 animate-spin" />
                 {t('cancelling')}
               </>
             ) : (

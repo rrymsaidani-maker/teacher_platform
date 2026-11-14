@@ -30,7 +30,7 @@ export function Spoiler({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+        className="flex w-full items-center justify-between gap-2 px-4 py-3 text-start text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
         aria-expanded={isOpen}
       >
         <span className="flex items-center gap-2">

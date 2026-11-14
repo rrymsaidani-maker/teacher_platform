@@ -141,7 +141,7 @@ export default function ExerciseManageList({
                                                     </div>
                                                 </div>
                                             </div>
-                                            <IconChevronRight className="ml-4 h-4 w-4 shrink-0 text-muted-foreground/50 transition-colors group-hover:text-brand-text" />
+                                            <IconChevronRight className="ms-4 h-4 w-4 shrink-0 text-muted-foreground/50 transition-colors group-hover:text-brand-text" />
                                         </CardContent>
                                     </Card>
                                 </Link>

@@ -204,7 +204,7 @@ export function TemplatePicker({ open, onClose, templates, onSelect, onDescribe,
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-7 w-7 -ml-1"
+                    className="h-7 w-7 -ms-1"
                     onClick={() => setStep(step === 'binding' ? 'template' : 'slug')}
                     aria-label={tT('binding.back')}
                   >
@@ -232,7 +232,7 @@ export function TemplatePicker({ open, onClose, templates, onSelect, onDescribe,
                         role="radio"
                         aria-checked={isSelected}
                         className={cn(
-                          'flex items-center gap-3 rounded-lg border px-3.5 py-3 text-left transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                          'flex items-center gap-3 rounded-lg border px-3.5 py-3 text-start transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                           isSelected
                             ? 'border-primary bg-primary/5 ring-1 ring-primary/30'
                             : 'border-border hover:border-foreground/20 bg-card'
@@ -260,7 +260,7 @@ export function TemplatePicker({ open, onClose, templates, onSelect, onDescribe,
                     role="radio"
                     aria-checked={selectedSlug === 'custom'}
                     className={cn(
-                      'flex items-center gap-3 rounded-lg border px-3.5 py-3 text-left transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                      'flex items-center gap-3 rounded-lg border px-3.5 py-3 text-start transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                       selectedSlug === 'custom'
                         ? 'border-primary bg-primary/5 ring-1 ring-primary/30'
                         : 'border-border hover:border-foreground/20 bg-card'
@@ -355,7 +355,7 @@ export function TemplatePicker({ open, onClose, templates, onSelect, onDescribe,
                       key={template.id}
                       type="button"
                       role="listitem"
-                      className="group relative flex flex-col rounded-lg border border-border bg-card text-left transition-colors motion-reduce:transition-none hover:border-foreground/20  overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="group relative flex flex-col rounded-lg border border-border bg-card text-start transition-colors motion-reduce:transition-none hover:border-foreground/20  overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       onClick={() => handleSelectTemplate(template)}
                       disabled={!!loading}
                     >
@@ -482,13 +482,13 @@ function BindingStep({
         ) : (
           <>
             <div className="relative mb-3">
-              <IconSearch aria-hidden="true" className="pointer-events-none absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+              <IconSearch aria-hidden="true" className="pointer-events-none absolute start-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={tT('search')}
                 aria-label={tT('search')}
-                className="pl-8 text-sm"
+                className="ps-8 text-sm"
               />
             </div>
             <div role="radiogroup" aria-label={kind === 'course' ? tT('chooseCourse') : tT('chooseProduct')} className="flex flex-col gap-1.5">
@@ -502,7 +502,7 @@ function BindingStep({
                     aria-checked={isSelected}
                     onClick={() => setSelectedId(o.id)}
                     className={cn(
-                      'flex items-center gap-3 rounded-lg border px-3.5 py-2.5 text-left transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                      'flex items-center gap-3 rounded-lg border px-3.5 py-2.5 text-start transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                       isSelected
                         ? 'border-primary bg-primary/5 ring-1 ring-primary/30'
                         : 'border-border hover:border-foreground/20 bg-card'

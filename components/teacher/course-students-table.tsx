@@ -194,7 +194,7 @@ export function CourseStudentsTable({
                   }}
                   title={r.displayName}
                   aria-label={tl('table.detailsFor', { name: r.displayName })}
-                  className="block max-w-full truncate text-left font-medium hover:underline focus-visible:outline-none focus-visible:underline"
+                  className="block max-w-full truncate text-start font-medium hover:underline focus-visible:outline-none focus-visible:underline"
                 >
                   {r.displayName}
                 </button>
@@ -315,7 +315,7 @@ export function CourseStudentsTable({
           <AlertTitle>{tl('warnings.title')}</AlertTitle>
           <AlertDescription>
             <p>{tl('warnings.desc')}</p>
-            <ul className="mt-1 list-disc pl-4">
+            <ul className="mt-1 list-disc ps-4">
               {report.warnings.map((w) => (
                 <li key={w} className="font-mono text-xs">
                   {w}

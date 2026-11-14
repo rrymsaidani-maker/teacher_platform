@@ -96,7 +96,7 @@ function AchievementCard({ achievement }: { achievement: Achievement }) {
 
                     {/* Badge indicator */}
                     {isEarned && (
-                        <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-success flex items-center justify-center border-2 border-background shadow-sm">
+                        <div className="absolute -top-1 -end-1 h-5 w-5 rounded-full bg-success flex items-center justify-center border-2 border-background shadow-sm">
                             <IconCheck size={12} className="text-success-foreground stroke-[4]" />
                         </div>
                     )}
@@ -139,7 +139,7 @@ function AchievementCard({ achievement }: { achievement: Achievement }) {
 
             {/* Background Decorative element */}
             <div className={cn(
-                "absolute -bottom-2 -right-2 opacity-[0.03] transition-transform group-hover:scale-150 duration-700",
+                "absolute -bottom-2 -end-2 opacity-[0.03] transition-transform group-hover:scale-150 duration-700",
                 isEarned ? "text-brand-text" : "text-muted-foreground"
             )}>
                 <IconAward size={80} />

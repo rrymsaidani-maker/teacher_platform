@@ -120,7 +120,7 @@ function ResultDetail({ result, nextStep = false }: { result: GradedRunResult; n
         {(out?.strengths?.length ?? 0) > 0 && (
           <div>
             <h4 className="mb-1 font-semibold">{t('strengths')}</h4>
-            <ul className="list-disc space-y-0.5 pl-4 text-muted-foreground">
+            <ul className="list-disc space-y-0.5 ps-4 text-muted-foreground">
               {out?.strengths?.map((s, i) => <li key={i}>{s}</li>)}
             </ul>
           </div>
@@ -128,7 +128,7 @@ function ResultDetail({ result, nextStep = false }: { result: GradedRunResult; n
         {(out?.improvements?.length ?? 0) > 0 && (
           <div>
             <h4 className="mb-1 font-semibold">{t(nextStep ? 'nextStep' : 'improvements')}</h4>
-            <ul className="list-disc space-y-0.5 pl-4 text-muted-foreground">
+            <ul className="list-disc space-y-0.5 ps-4 text-muted-foreground">
               {out?.improvements?.map((s, i) => <li key={i}>{s}</li>)}
             </ul>
           </div>
@@ -168,7 +168,7 @@ export function GradedResultsTable({ results, nextStep = false }: { results: Gra
                       aria-expanded={expanded}
                       onClick={() => setOpen(expanded ? null : r.id)}
                       title={r.case_name}
-                      className="flex w-full min-w-0 items-center gap-1.5 rounded text-left text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
+                      className="flex w-full min-w-0 items-center gap-1.5 rounded text-start text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
                     >
                       <Chevron aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
                       <span className="min-w-0 truncate">{r.case_name}</span>

@@ -208,7 +208,7 @@ export function TemplateForm({ initialData, id }: TemplateFormProps) {
             </div>
             <div className="flex flex-wrap gap-2">
               {formData.variables.map((variable: string) => (
-                <Badge key={variable} variant="secondary" className="gap-1 py-1 pr-1">
+                <Badge key={variable} variant="secondary" className="gap-1 py-1 pe-1">
                   {variable}
                   <button
                     onClick={() => handleRemoveVariable(variable)}

@@ -529,7 +529,7 @@ export function CheckoutForm({
                         </p>
                     )}
                 </div>
-                <div className="shrink-0 text-right">
+                <div className="shrink-0 text-end">
                     <span className="text-2xl font-extrabold tabular-nums tracking-tight">
                         {isFree ? t('free') : displayPrice}
                     </span>
@@ -570,7 +570,7 @@ export function CheckoutForm({
                         onClick={handleEnroll}
                         disabled={isPending}
                     >
-                        {isPending && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        {isPending && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
                         {isPending ? t('enrollment.enrolling') : t('enrollment.button')}
                     </Button>
                 </div>
@@ -607,7 +607,7 @@ export function CheckoutForm({
                                     className="rounded-lg border border-border bg-white p-2 box-content"
                                 />
                             )}
-                            <div className="w-full space-y-3 text-left">
+                            <div className="w-full space-y-3 text-start">
                                 {/* School Pay ID */}
                                 <div className="space-y-1">
                                     <p className="text-xs font-medium text-muted-foreground">{t('payment.binancePersonalPayId')}</p>
@@ -656,7 +656,7 @@ export function CheckoutForm({
                                 {t('payment.binancePersonalWaiting')}
                             </p>
                             <Button type="button" variant="outline" className="w-full" onClick={checkPaymentNow} disabled={checkingNow}>
-                                {checkingNow && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {checkingNow && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
                                 {checkingNow ? t('payment.binancePersonalChecking') : t('payment.binancePersonalPaid')}
                             </Button>
                             {checkedNotFound && !checkingNow && (
@@ -674,7 +674,7 @@ export function CheckoutForm({
                     ) : solanaQr ? (
                         <div className="flex flex-col items-center gap-4 text-center">
                             {solanaPaymentDetails && (
-                                <div className="w-full max-w-xs rounded-lg border border-border bg-muted/30 px-4 py-3 text-left">
+                                <div className="w-full max-w-xs rounded-lg border border-border bg-muted/30 px-4 py-3 text-start">
                                     <div className="flex items-center justify-between gap-4 text-sm">
                                         <span className="text-muted-foreground">{t('payment.solanaAmount')}</span>
                                         <span className="font-semibold tabular-nums">
@@ -711,10 +711,10 @@ export function CheckoutForm({
                                 height={240}
                                 className="rounded-lg border border-border bg-white p-2 box-content"
                             />
-                            <ol className="w-full max-w-xs space-y-2 text-left text-xs leading-relaxed text-muted-foreground">
-                                <li><span className="mr-2 font-semibold text-foreground">1.</span>{t('payment.solanaStepScan')}</li>
-                                <li><span className="mr-2 font-semibold text-foreground">2.</span>{t('payment.solanaStepReview')}</li>
-                                <li><span className="mr-2 font-semibold text-foreground">3.</span>{t('payment.solanaStepWait')}</li>
+                            <ol className="w-full max-w-xs space-y-2 text-start text-xs leading-relaxed text-muted-foreground">
+                                <li><span className="me-2 font-semibold text-foreground">1.</span>{t('payment.solanaStepScan')}</li>
+                                <li><span className="me-2 font-semibold text-foreground">2.</span>{t('payment.solanaStepReview')}</li>
+                                <li><span className="me-2 font-semibold text-foreground">3.</span>{t('payment.solanaStepWait')}</li>
                             </ol>
                             {solanaPaymentUrl && (
                                 <a
@@ -815,7 +815,7 @@ export function CheckoutForm({
                         {isQrProvider && phantomAvailable ? (
                             <div className="space-y-2">
                                 <Button className="w-full" onClick={payWithPhantom} disabled={isPending || phantomBusy}>
-                                    <IconWallet className="mr-2 h-4 w-4" />
+                                    <IconWallet className="me-2 h-4 w-4" />
                                     {phantomError ? t('payment.phantomRetry') : t('payment.payWithPhantom')}
                                 </Button>
                                 {/* One-time can fall back to QR; subscriptions can't. */}
@@ -826,7 +826,7 @@ export function CheckoutForm({
                                         onClick={handleEnroll}
                                         disabled={isPending || phantomBusy}
                                     >
-                                        <IconQrcode className="mr-2 h-4 w-4" />
+                                        <IconQrcode className="me-2 h-4 w-4" />
                                         {t('payment.payByQr')}
                                     </Button>
                                 )}
@@ -834,13 +834,13 @@ export function CheckoutForm({
                             </div>
                         ) : showDevnetSimulator ? (
                             <Button className="w-full" onClick={simulateDevnetWallet} disabled={isPending || simulatorBusy}>
-                                {simulatorBusy && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {simulatorBusy && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
                                 {simulatorBusy ? t('payment.simulatorProcessing') : t('payment.simulatorButton')}
                             </Button>
                         ) : subsNeedsWallet ? null : (
                             /* Lemon Squeezy redirect, or one-time Solana via QR. */
                             <Button className="w-full" onClick={handleEnroll} disabled={isPending}>
-                                {isPending && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {isPending && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
                                 {isPending
                                     ? t('payment.processing')
                                     : isInstructionsProvider
@@ -926,7 +926,7 @@ export function CheckoutForm({
                 onClick={handleEnroll}
                 disabled={isPending}
             >
-                {isPending && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isPending && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
                 {isPending ? t('payment.processing') : t('payment.requestButton')}
             </Button>
         </div>

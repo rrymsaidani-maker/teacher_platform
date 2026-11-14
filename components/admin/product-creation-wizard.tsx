@@ -439,7 +439,7 @@ export function ProductCreationWizard({
                   onClick={() => goToStep(index)}
                   aria-current={isCurrent ? 'step' : undefined}
                   className={cn(
-                    'flex w-full items-start gap-3 rounded-lg px-3 py-2 text-left transition-colors',
+                    'flex w-full items-start gap-3 rounded-lg px-3 py-2 text-start transition-colors',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                     isCurrent
                       ? 'bg-muted text-foreground'

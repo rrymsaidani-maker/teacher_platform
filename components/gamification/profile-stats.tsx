@@ -28,7 +28,7 @@ export function ProfileGamificationStats() {
                     {summary.coins.toLocaleString()}
                 </p>
             </div>
-            <div className="space-y-1 text-right">
+            <div className="space-y-1 text-end">
                 <div className="flex items-center justify-end gap-1.5 text-brand-text">
                     <IconFlame size={14} className="stroke-[3]" />
                     <span className="text-[10px] font-black uppercase tracking-wider">{t('streak')}</span>

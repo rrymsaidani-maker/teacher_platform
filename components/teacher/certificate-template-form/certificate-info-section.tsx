@@ -22,7 +22,7 @@ export function CertificateInfoSection() {
                 </h2>
             </div>
 
-            <div className="space-y-4 pl-[42px]">
+            <div className="space-y-4 ps-[42px]">
                 <div className="space-y-2">
                     <Label htmlFor="template_name" className="text-sm font-medium">
                         {t('nameLabel')}

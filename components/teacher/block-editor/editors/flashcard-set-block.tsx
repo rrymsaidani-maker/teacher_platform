@@ -72,7 +72,7 @@ export function FlashcardSetBlockEditor({ block, onChange }: FlashcardSetBlockEd
         onClick={addCard}
         className="w-full"
       >
-        <IconPlus className="h-4 w-4 mr-2" />
+        <IconPlus className="h-4 w-4 me-2" />
         {t('flashcards.addCard')}
       </Button>
     </div>

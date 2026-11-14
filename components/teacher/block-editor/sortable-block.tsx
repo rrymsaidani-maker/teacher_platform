@@ -81,7 +81,7 @@ export function SortableBlock({
         )}
       >
         {/* Block type indicator strip */}
-        <div className={cn('absolute left-0 top-3 bottom-3 w-1 rounded-full', iconData ? 'bg-primary/40' : 'bg-muted')} />
+        <div className={cn('absolute start-0 top-3 bottom-3 w-1 rounded-full', iconData ? 'bg-primary/40' : 'bg-muted')} />
 
         {/* Header bar — visible on hover */}
         <div className="flex items-center gap-1 px-4 pt-2 pb-0 opacity-0 group-hover/block:opacity-100 transition-opacity duration-150">
@@ -140,12 +140,12 @@ export function SortableBlock({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-40">
                 <DropdownMenuItem onClick={onDuplicate}>
-                  <IconCopy className="mr-2 h-3.5 w-3.5" />
+                  <IconCopy className="me-2 h-3.5 w-3.5" />
                   {t('duplicate')}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={onDelete} className="text-destructive focus:text-destructive">
-                  <IconTrash className="mr-2 h-3.5 w-3.5" />
+                  <IconTrash className="me-2 h-3.5 w-3.5" />
                   {t('remove')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -154,7 +154,7 @@ export function SortableBlock({
         </div>
 
         {/* Block content area */}
-        <div className="px-5 pb-4 pt-2 pl-6">{children}</div>
+        <div className="px-5 pb-4 pt-2 ps-6">{children}</div>
       </div>
 
       {/* Between-block inserter */}

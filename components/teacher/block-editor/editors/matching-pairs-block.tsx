@@ -78,7 +78,7 @@ export function MatchingPairsBlockEditor({ block, onChange }: MatchingPairsBlock
         onClick={addPair}
         className="w-full"
       >
-        <IconPlus className="h-4 w-4 mr-2" />
+        <IconPlus className="h-4 w-4 me-2" />
         {t('matchingPairs.addPair')}
       </Button>
 

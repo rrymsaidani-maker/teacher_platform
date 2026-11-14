@@ -82,7 +82,7 @@ export function LessonAiAuditDialog({ lessonId, studentId, lessonTitle }: Lesson
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="truncate pr-6">{lessonTitle}</DialogTitle>
+          <DialogTitle className="truncate pe-6">{lessonTitle}</DialogTitle>
         </DialogHeader>
 
         {state.status === 'idle' || state.status === 'loading' ? (

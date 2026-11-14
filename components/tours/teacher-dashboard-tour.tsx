@@ -26,7 +26,7 @@ export function TeacherDashboardTour({ userId, completed, toursEnabled }: Teache
 
   return (
     <>
-      {toursEnabled !== false && <div className="fixed right-4 top-4 z-40">
+      {toursEnabled !== false && <div className="fixed end-4 top-4 z-40">
         <TourTrigger
           onRestart={handleRestart}
         />

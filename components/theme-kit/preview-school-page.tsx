@@ -38,7 +38,7 @@ export function PreviewSchoolPage({ theme, brand, mode, className }: KitPreviewP
             <span className="min-w-0 truncate font-heading text-base font-semibold tracking-tight @3xl:text-xl">
               {school.name}
             </span>
-            <div className="ml-auto flex shrink-0 items-center gap-6 text-sm text-muted-foreground">
+            <div className="ms-auto flex shrink-0 items-center gap-6 text-sm text-muted-foreground">
               <span className="hidden @2xl:inline">{t('school.navCourses')}</span>
               <span className="hidden @2xl:inline">{t('school.navAbout')}</span>
               <span className="hidden @2xl:inline">{t('school.navSignIn')}</span>

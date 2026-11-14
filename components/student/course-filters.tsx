@@ -110,19 +110,19 @@ export function CourseFilters({
       {/* Search & Sort Row */}
       <div className="flex items-center gap-2 sm:gap-3">
         <form onSubmit={handleSearchSubmit} className="relative flex-1 sm:max-w-sm">
-          <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
+          <IconSearch className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
           <Input
             type="text"
             placeholder={t('searchPlaceholder')}
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="pl-9 pr-9 h-10 bg-muted/40 border-transparent focus:border-primary/30 focus:bg-background rounded-xl text-sm"
+            className="ps-9 pe-9 h-10 bg-muted/40 border-transparent focus:border-primary/30 focus:bg-background rounded-xl text-sm"
           />
           {searchValue && (
             <button
               type="button"
               onClick={handleClearSearch}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute end-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <IconX className="w-3.5 h-3.5" />
             </button>
@@ -141,13 +141,13 @@ export function CourseFilters({
           {sortOpen && (
             <>
               <div className="fixed inset-0 z-40" onClick={() => setSortOpen(false)} />
-              <div className="absolute right-0 top-full mt-1.5 z-50 bg-popover border rounded-xl shadow-xl py-1 min-w-[160px] animate-in fade-in slide-in-from-top-1 duration-150">
+              <div className="absolute end-0 top-full mt-1.5 z-50 bg-popover border rounded-xl shadow-xl py-1 min-w-[160px] animate-in fade-in slide-in-from-top-1 duration-150">
                 {sortOptions.map((opt) => (
                   <button
                     key={opt.value}
                     onClick={() => handleSortChange(opt.value)}
                     className={cn(
-                      "w-full text-left px-3.5 py-2.5 sm:py-2 text-sm transition-colors",
+                      "w-full text-start px-3.5 py-2.5 sm:py-2 text-sm transition-colors",
                       currentSort === opt.value
                         ? "text-foreground font-semibold bg-muted/50"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted/30"

@@ -130,11 +130,11 @@ export function TableBlockEditor({ block, onChange }: TableBlockEditorProps) {
 
       <div className="flex gap-2">
         <Button type="button" variant="outline" size="sm" onClick={addRow} className="flex-1">
-          <IconPlus className="h-4 w-4 mr-1" />
+          <IconPlus className="h-4 w-4 me-1" />
           {t('table.addRow')}
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={addColumn} className="flex-1">
-          <IconPlus className="h-4 w-4 mr-1" />
+          <IconPlus className="h-4 w-4 me-1" />
           {t('table.addColumn')}
         </Button>
       </div>

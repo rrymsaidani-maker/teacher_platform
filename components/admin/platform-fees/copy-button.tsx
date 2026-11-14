@@ -17,7 +17,7 @@ function legacyCopy(value: string, anchor: HTMLElement | null): boolean {
   area.readOnly = false
   area.setAttribute('aria-hidden', 'true')
   area.tabIndex = -1
-  area.className = 'pointer-events-none fixed left-0 top-0 size-px opacity-0'
+  area.className = 'pointer-events-none fixed start-0 top-0 size-px opacity-0'
   host.appendChild(area)
   try {
     area.focus({ preventScroll: true })

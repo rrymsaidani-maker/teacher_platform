@@ -35,7 +35,7 @@ export async function PlatformLanding() {
       {/* Hero */}
       <section className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-14 px-6 pb-24 pt-32 lg:pt-36" aria-labelledby="home-hero-title">
         <div className="min-w-0 flex-[1_1_480px]">
-          <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-card py-2 pl-2.5 pr-4 text-sm font-medium text-muted-foreground">
+          <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-card py-2 ps-2.5 pe-4 text-sm font-medium text-muted-foreground">
             <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">{t("hero.tag")}</span>
             {t("hero.tagText")}
           </p>
@@ -75,7 +75,7 @@ export async function PlatformLanding() {
                 <div key={k} className="flex items-center gap-3 rounded-2xl bg-muted px-3.5 py-3">
                   <span className="inline-flex size-7 items-center justify-center rounded-lg bg-primary text-[13px] font-bold text-primary-foreground">{i + 1}</span>
                   <span className="font-medium">{t(`mock.${k}`)}</span>
-                  {i === 1 && <span className="ml-auto text-[13px] text-muted-foreground">{t("mock.exercise")}</span>}
+                  {i === 1 && <span className="ms-auto text-[13px] text-muted-foreground">{t("mock.exercise")}</span>}
                 </div>
               ))}
               <div className="flex items-center gap-3 rounded-2xl border-[1.5px] border-dashed border-border px-3.5 py-3 text-muted-foreground">
@@ -84,7 +84,7 @@ export async function PlatformLanding() {
               </div>
             </div>
           </div>
-          <div className="relative -mt-7 ml-9 flex flex-wrap gap-4">
+          <div className="relative -mt-7 ms-9 flex flex-wrap gap-4">
             <div className="min-w-[180px] flex-1 rounded-[20px] bg-foreground px-5 py-[18px] text-background">
               <div className="text-[13px] opacity-70">{t("mock.paid")}</div>
               <div className={cn(display.className, "mt-0.5 text-3xl font-bold")}>$29.00</div>

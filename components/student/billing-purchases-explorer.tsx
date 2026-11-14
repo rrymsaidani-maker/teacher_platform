@@ -84,7 +84,7 @@ function ProviderIcon({ provider }: { provider: string | null }) {
   }
 }
 
-const TH = 'px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground'
+const TH = 'px-4 py-3 text-start text-[11px] font-semibold uppercase tracking-wider text-muted-foreground'
 
 /** Search / status filter / sort for the student's purchase history table. */
 export function BillingPurchasesExplorer({ rows }: { rows: PurchaseRow[] }) {
@@ -172,7 +172,7 @@ export function BillingPurchasesExplorer({ rows }: { rows: PurchaseRow[] }) {
                 <th className={`${TH} hidden sm:table-cell`}>{t('purchases.table.provider')}</th>
                 <th className={`${TH} hidden sm:table-cell`}>{t('purchases.table.date')}</th>
                 <th className={TH}>{t('purchases.table.status')}</th>
-                <th className={`${TH} hidden sm:table-cell text-right`}>{t('purchases.table.amount')}</th>
+                <th className={`${TH} hidden sm:table-cell text-end`}>{t('purchases.table.amount')}</th>
               </tr>
             </thead>
             <tbody className="divide-y">
@@ -219,7 +219,7 @@ export function BillingPurchasesExplorer({ rows }: { rows: PurchaseRow[] }) {
                         )}
                       </div>
                     </td>
-                    <td className="hidden px-4 py-3 text-right align-top font-medium tabular-nums sm:table-cell">
+                    <td className="hidden px-4 py-3 text-end align-top font-medium tabular-nums sm:table-cell">
                       {formatCurrency(tx.amount, tx.currency ?? 'USD')}
                     </td>
                   </tr>

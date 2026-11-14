@@ -200,7 +200,7 @@ export default function OnboardingWizard({
                 size="lg"
               >
                 {t('welcome.getStarted')}
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ms-2 w-4 h-4" />
               </Button>
             </div>
           </CardContent>
@@ -247,7 +247,7 @@ export default function OnboardingWizard({
 
             <div className="flex justify-between pt-4">
               <Button variant="ghost" onClick={goBack} className="text-muted-foreground">
-                <ArrowLeft className="mr-2 w-4 h-4" />
+                <ArrowLeft className="me-2 w-4 h-4" />
                 {t('back')}
               </Button>
               <Button
@@ -255,7 +255,7 @@ export default function OnboardingWizard({
                 disabled={!schoolName.trim()}
               >
                 {t('next')}
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ms-2 w-4 h-4" />
               </Button>
             </div>
           </CardContent>
@@ -312,7 +312,7 @@ export default function OnboardingWizard({
                   <p className="text-sm text-foreground/80">{t('payment.whyDescription')}</p>
                 </div>
               </div>
-              <ul className="space-y-2 ml-8">
+              <ul className="space-y-2 ms-8">
                 {[
                   t('payment.benefit1'),
                   t('payment.benefit2'),
@@ -320,7 +320,7 @@ export default function OnboardingWizard({
                   t('payment.benefit4'),
                 ].map((benefit, i) => (
                   <li key={i} className="text-sm text-foreground flex items-start">
-                    <span className="text-brand-text mr-2">•</span>
+                    <span className="text-brand-text me-2">•</span>
                     <span>{benefit}</span>
                   </li>
                 ))}
@@ -357,9 +357,9 @@ export default function OnboardingWizard({
                 size="lg"
               >
                 {isConnectingStripe ? (
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  <Loader2 className="me-2 h-5 w-5 animate-spin" />
                 ) : (
-                  <CreditCard className="mr-2 h-5 w-5" />
+                  <CreditCard className="me-2 h-5 w-5" />
                 )}
                 {t('payment.connectStripe')}
               </Button>
@@ -375,7 +375,7 @@ export default function OnboardingWizard({
 
             <div className="flex justify-between pt-4 border-t border-border">
               <Button variant="ghost" onClick={goBack} className="text-muted-foreground">
-                <ArrowLeft className="mr-2 w-4 h-4" />
+                <ArrowLeft className="me-2 w-4 h-4" />
                 {t('back')}
               </Button>
               <Button
@@ -383,7 +383,7 @@ export default function OnboardingWizard({
                 variant="outline"
               >
                 {t('payment.skipForNow')}
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ms-2 w-4 h-4" />
               </Button>
             </div>
           </CardContent>
@@ -411,7 +411,7 @@ export default function OnboardingWizard({
               </div>
               <div className="flex justify-between items-center gap-4">
                 <span className="text-muted-foreground text-sm">{t('ready.theme')}</span>
-                <span className="text-foreground text-sm text-right" data-testid="onboarding-ready-theme">
+                <span className="text-foreground text-sm text-end" data-testid="onboarding-ready-theme">
                   {themeSummary}
                 </span>
               </div>
@@ -425,9 +425,9 @@ export default function OnboardingWizard({
                 size="lg"
               >
                 {isSubmitting ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="me-2 h-4 w-4 animate-spin" />
                 ) : (
-                  <Rocket className="mr-2 w-4 h-4" />
+                  <Rocket className="me-2 w-4 h-4" />
                 )}
                 {t('ready.createCourse')}
               </Button>
@@ -447,7 +447,7 @@ export default function OnboardingWizard({
               className="text-muted-foreground"
               size="sm"
             >
-              <ArrowLeft className="mr-2 w-3 h-3" />
+              <ArrowLeft className="me-2 w-3 h-3" />
               {t('back')}
             </Button>
           </CardContent>

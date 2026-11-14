@@ -233,7 +233,7 @@ export function PaymentRequestsTable({
                 <div className="text-xs font-medium text-brand-text">
                   {t('table.reported')}
                   {request.payment_reference && (
-                    <span className="ml-1 font-mono text-muted-foreground">
+                    <span className="ms-1 font-mono text-muted-foreground">
                       {request.payment_reference}
                     </span>
                   )}

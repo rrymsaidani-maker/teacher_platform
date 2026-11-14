@@ -150,7 +150,7 @@ export function PaymentRequestActions({ request, defaultInstructions = '' }: Pay
           className="w-full"
           variant="default"
         >
-          <IconSend className="mr-2 h-4 w-4" />
+          <IconSend className="me-2 h-4 w-4" />
           {t('actions.sendInstructions')}
         </Button>
       )}
@@ -163,7 +163,7 @@ export function PaymentRequestActions({ request, defaultInstructions = '' }: Pay
           className="w-full"
           variant="default"
         >
-          <IconCheck className="mr-2 h-4 w-4" />
+          <IconCheck className="me-2 h-4 w-4" />
           {t('actions.confirmPayment')}
         </Button>
       )}
@@ -175,7 +175,7 @@ export function PaymentRequestActions({ request, defaultInstructions = '' }: Pay
           onClick={() => setCompleteDialogOpen(true)}
           className="w-full bg-success text-success-foreground hover:bg-success/90"
         >
-          <IconCircleCheck className="mr-2 h-4 w-4" />
+          <IconCircleCheck className="me-2 h-4 w-4" />
           {t('actions.completeEnroll')}
         </Button>
       )}
@@ -187,7 +187,7 @@ export function PaymentRequestActions({ request, defaultInstructions = '' }: Pay
           className="w-full"
           variant="destructive"
         >
-          <IconX className="mr-2 h-4 w-4" />
+          <IconX className="me-2 h-4 w-4" />
           {t('actions.cancel')}
         </Button>
       )}

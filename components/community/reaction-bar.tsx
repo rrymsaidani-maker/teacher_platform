@@ -93,7 +93,7 @@ export function ReactionBar({
         )
       })}
       {optimisticCount > 0 && (
-        <span className="text-[11px] text-muted-foreground ml-1">{optimisticCount}</span>
+        <span className="text-[11px] text-muted-foreground ms-1">{optimisticCount}</span>
       )}
     </div>
   )

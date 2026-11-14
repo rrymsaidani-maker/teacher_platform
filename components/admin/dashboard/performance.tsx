@@ -127,7 +127,7 @@ export async function Performance({
                   <span className="block text-sm">{t(m.key)}</span>
                   {m.detail && <span className="block text-xs text-muted-foreground">{m.detail}</span>}
                 </span>
-                <span className="shrink-0 text-right">
+                <span className="shrink-0 text-end">
                   <span className="block text-lg font-semibold tabular-nums" data-testid={m.testId}>
                     {m.value ?? '—'}
                   </span>

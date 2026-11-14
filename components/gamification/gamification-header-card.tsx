@@ -42,7 +42,7 @@ export function GamificationHeaderCard() {
                     <div className="h-6 w-6 md:h-7 md:w-7 rounded-md bg-brand-tint flex items-center justify-center">
                         <IconStar className="size-3.5 md:size-4 text-brand-text" />
                     </div>
-                    <div className="absolute -top-1 -right-1.5 h-3.5 w-3.5 rounded-full bg-foreground text-[8px] font-bold flex items-center justify-center text-background border border-background">
+                    <div className="absolute -top-1 -end-1.5 h-3.5 w-3.5 rounded-full bg-foreground text-[8px] font-bold flex items-center justify-center text-background border border-background">
                         {summary.level}
                     </div>
                 </div>

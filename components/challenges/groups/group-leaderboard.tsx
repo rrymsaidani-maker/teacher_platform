@@ -18,9 +18,9 @@ export async function GroupLeaderboard({ rows }: { rows: GroupLeaderboardRow[] }
           <TableRow>
             <TableHead className="w-10">{t('page.rank')}</TableHead>
             <TableHead>{t('page.name')}</TableHead>
-            <TableHead className="text-right">{t('page.average')}</TableHead>
-            <TableHead className="text-right">{t('page.won')}</TableHead>
-            <TableHead className="text-right">{t('page.played')}</TableHead>
+            <TableHead className="text-end">{t('page.average')}</TableHead>
+            <TableHead className="text-end">{t('page.won')}</TableHead>
+            <TableHead className="text-end">{t('page.played')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -29,11 +29,11 @@ export async function GroupLeaderboard({ rows }: { rows: GroupLeaderboardRow[] }
               <TableCell className="tabular-nums">{r.rank ?? '—'}</TableCell>
               <TableCell>
                 {label(r)}
-                {r.isMe && <Badge variant="secondary" className="ml-2">{t('you')}</Badge>}
+                {r.isMe && <Badge variant="secondary" className="ms-2">{t('you')}</Badge>}
               </TableCell>
-              <TableCell className="text-right tabular-nums" data-testid="group-average">{r.average ?? '—'}</TableCell>
-              <TableCell className="text-right tabular-nums" data-testid="group-won">{r.won}</TableCell>
-              <TableCell className="text-right tabular-nums">{r.played}</TableCell>
+              <TableCell className="text-end tabular-nums" data-testid="group-average">{r.average ?? '—'}</TableCell>
+              <TableCell className="text-end tabular-nums" data-testid="group-won">{r.won}</TableCell>
+              <TableCell className="text-end tabular-nums">{r.played}</TableCell>
             </TableRow>
           ))}
         </TableBody>

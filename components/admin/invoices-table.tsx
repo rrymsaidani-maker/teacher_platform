@@ -182,7 +182,7 @@ export function InvoicesTable({ rows, locale }: { rows: InvoiceRow[]; locale: st
         enableSorting: false,
         enableHiding: false,
         cell: ({ row }) => (
-          <div className="text-right">
+          <div className="text-end">
             <Link
               href={`/api/invoices/${row.original.invoiceNumber}`}
               target="_blank"

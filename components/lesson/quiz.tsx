@@ -113,7 +113,7 @@ export function Quiz({
               onClick={() => handleSelect(index)}
               disabled={submitted}
               className={cn(
-                'flex w-full items-start gap-3 rounded-md border p-3 text-left text-sm transition-colors',
+                'flex w-full items-start gap-3 rounded-md border p-3 text-start text-sm transition-colors',
                 !submitted && 'hover:bg-muted/50',
                 isSelected && !submitted && 'border-primary bg-primary/5',
                 showResult && isCorrectOption && 'border-success bg-success/10',

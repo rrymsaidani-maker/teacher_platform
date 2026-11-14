@@ -211,7 +211,7 @@ export function WeeklyLeague() {
                                     />
                                 )}
 
-                                <div className="text-right">
+                                <div className="text-end">
                                     <p className="text-xs font-black text-foreground">
                                         {row.weekly_xp.toLocaleString()}
                                     </p>

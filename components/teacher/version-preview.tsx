@@ -300,7 +300,7 @@ function ExamPreview({ snapshot }: { snapshot: Record<string, unknown> }) {
                     </div>
                   </div>
                   {(q.options as Array<Record<string, unknown>> | undefined)?.length ? (
-                    <div className="ml-10 grid grid-cols-1 gap-1.5">
+                    <div className="ms-10 grid grid-cols-1 gap-1.5">
                       {(q.options as Array<Record<string, unknown>>).map((o, j) => (
                         <div
                           key={j}

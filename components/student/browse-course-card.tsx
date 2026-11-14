@@ -68,7 +68,7 @@ export function BrowseCourseCard({
 
           {/* Enrolled badge */}
           {isEnrolled && (
-            <div className="absolute top-3 right-3">
+            <div className="absolute top-3 end-3">
               <Badge className="gap-1 bg-success text-success-foreground hover:bg-success/90">
                 <IconCheck className="w-3 h-3" />
                 {t('enrolled')}

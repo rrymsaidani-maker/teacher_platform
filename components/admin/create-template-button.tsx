@@ -146,7 +146,7 @@ export function CreateTemplateButton({ template, mode = "create" }: CreateTempla
             <>{t('form.submit.update')}</>
           ) : (
             <>
-              <IconPlus className="h-4 w-4 mr-2" />
+              <IconPlus className="h-4 w-4 me-2" />
               {t('create')}
             </>
           )}

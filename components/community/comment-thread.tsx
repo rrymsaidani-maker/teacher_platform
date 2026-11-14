@@ -787,7 +787,7 @@ function CommentItem({
                 )}
                 onClick={() => setReplyingTo(isReplying ? null : comment.id)}
               >
-                <IconMessageCircle size={isLearner ? 16 : 12} className="mr-1" />
+                <IconMessageCircle size={isLearner ? 16 : 12} className="me-1" />
                 {t('reply')}
               </Button>
             )}
@@ -803,7 +803,7 @@ function CommentItem({
                 )}
                 onClick={() => onHelpful(comment.id)}
               >
-                <IconBulb size={isLearner ? 16 : 12} className="mr-1" />
+                <IconBulb size={isLearner ? 16 : 12} className="me-1" />
                 {comment.helpful_count > 0
                   ? t('questions.helpfulCount', { count: comment.helpful_count })
                   : t('questions.helpful')}
@@ -821,7 +821,7 @@ function CommentItem({
                 )}
                 onClick={() => onAccept(isAccepted ? null : comment.id)}
               >
-                <IconCircleCheck size={isLearner ? 16 : 12} className="mr-1" />
+                <IconCircleCheck size={isLearner ? 16 : 12} className="me-1" />
                 {isAccepted ? t('questions.unaccept') : t('questions.accept')}
               </Button>
             )}

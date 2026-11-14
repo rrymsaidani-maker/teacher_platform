@@ -128,7 +128,7 @@ export function EnrolledCourseCard({ enrollment, userId, access }: EnrolledCours
 
           {/* Status chip on thumbnail */}
           {isCompleted && (
-            <div className="absolute top-2.5 left-2.5">
+            <div className="absolute top-2.5 start-2.5">
               <div className="flex items-center gap-1 bg-success text-success-foreground text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-md">
                 <IconCheck size={10} stroke={3} />
                 {t('completed')}
@@ -174,7 +174,7 @@ export function EnrolledCourseCard({ enrollment, userId, access }: EnrolledCours
               <span
                 data-testid={`course-progress-${course.course_id}`}
                 className={cn(
-                  "ml-auto text-xs font-bold tabular-nums",
+                  "ms-auto text-xs font-bold tabular-nums",
                   isCompleted ? "text-success" : isInProgress ? "text-brand-text" : "text-muted-foreground"
                 )}
               >

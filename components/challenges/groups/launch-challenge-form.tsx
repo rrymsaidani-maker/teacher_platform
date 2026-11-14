@@ -52,7 +52,7 @@ export function LaunchChallengeForm({ groupId, options, disabled }: { groupId: s
       </div>
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
       <Button onClick={launch} disabled={!exerciseId || pending || disabled} data-testid="launch-submit">
-        {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {pending && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
         {pending ? t('launching') : t('launch')}
       </Button>
     </div>

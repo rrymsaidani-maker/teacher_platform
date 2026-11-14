@@ -82,7 +82,7 @@ export function FillInTheBlankBlockEditor({ block, onChange }: FillInTheBlankBlo
           onClick={() => addSegment('text')}
           className="flex-1"
         >
-          <IconPlus className="h-4 w-4 mr-2" />
+          <IconPlus className="h-4 w-4 me-2" />
           {t('fillInTheBlank.addText')}
         </Button>
         <Button
@@ -92,7 +92,7 @@ export function FillInTheBlankBlockEditor({ block, onChange }: FillInTheBlankBlo
           onClick={() => addSegment('blank')}
           className="flex-1"
         >
-          <IconPlus className="h-4 w-4 mr-2" />
+          <IconPlus className="h-4 w-4 me-2" />
           {t('fillInTheBlank.addBlank')}
         </Button>
       </div>

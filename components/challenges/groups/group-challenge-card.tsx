@@ -41,8 +41,8 @@ export async function GroupChallengeCard({ challenge }: { challenge: GroupChalle
               <li key={p.key} className="flex items-center justify-between gap-2 px-3 py-2 text-sm">
                 <span>
                   {name(p.label)}
-                  {p.isMe && <Badge variant="secondary" className="ml-2">{t('you')}</Badge>}
-                  {p.won && <Badge className="ml-2">{t('page.winner')}</Badge>}
+                  {p.isMe && <Badge variant="secondary" className="ms-2">{t('you')}</Badge>}
+                  {p.won && <Badge className="ms-2">{t('page.winner')}</Badge>}
                 </span>
                 <span className="font-semibold tabular-nums">{p.score}</span>
               </li>
@@ -62,8 +62,8 @@ export async function GroupChallengeCard({ challenge }: { challenge: GroupChalle
             <div className="mt-2 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-xs text-muted-foreground">
-                    <th scope="col" className="py-1 pr-3 font-medium" />
+                  <tr className="text-start text-xs text-muted-foreground">
+                    <th scope="col" className="py-1 pe-3 font-medium" />
                     {challenge.played.map((p) => (
                       <th key={p.key} scope="col" className="px-2 py-1 text-center font-medium">{p.isMe ? t('you') : name(p.label)}</th>
                     ))}
@@ -72,7 +72,7 @@ export async function GroupChallengeCard({ challenge }: { challenge: GroupChalle
                 <tbody>
                   {challenge.criteria.map((c, i) => (
                     <tr key={c.id} className="border-t">
-                      <th scope="row" className="py-1 pr-3 text-left font-normal">{t('page.criterion', { n: i + 1 })}</th>
+                      <th scope="row" className="py-1 pe-3 text-start font-normal">{t('page.criterion', { n: i + 1 })}</th>
                       {c.byParticipant.map((b) => (
                         <td key={b.key} className="px-2 py-1 text-center">
                           {b.met === null ? '—' : b.met ? (
@@ -94,7 +94,7 @@ export async function GroupChallengeCard({ challenge }: { challenge: GroupChalle
           <section className="space-y-1" data-testid="group-challenge-tips">
             <h4 className="text-xs font-medium uppercase text-muted-foreground">{t('page.myTips')}</h4>
             {challenge.myFeedback.improvements.length ? (
-              <ul className="list-disc space-y-1 pl-5 text-sm">
+              <ul className="list-disc space-y-1 ps-5 text-sm">
                 {challenge.myFeedback.improvements.map((tip, i) => <li key={i}>{tip}</li>)}
               </ul>
             ) : (

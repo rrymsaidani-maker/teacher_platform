@@ -391,7 +391,7 @@ export const VoiceSelectorName = ({
   ...props
 }: VoiceSelectorNameProps) => (
   <span
-    className={cn("flex-1 truncate text-left font-medium", className)}
+    className={cn("flex-1 truncate text-start font-medium", className)}
     {...props}
   />
 );

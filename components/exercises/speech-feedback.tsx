@@ -23,7 +23,7 @@ function Metric({ label, value, hint }: { label: string; value: string | number;
   return (
     <div className="flex items-baseline gap-1.5">
       <dd className={cn('text-base font-semibold tabular-nums', hint && 'text-warning')}>
-        {hint && <IconAlertTriangle size={14} className="mr-1 inline -translate-y-px" aria-hidden="true" />}
+        {hint && <IconAlertTriangle size={14} className="me-1 inline -translate-y-px" aria-hidden="true" />}
         {value}
       </dd>
       <dt className="text-sm text-muted-foreground">

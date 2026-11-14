@@ -81,7 +81,7 @@ export const DataTableHeader = React.memo(function DataTableHeader({
         sticky && "sticky top-0 z-30 bg-background",
         // Ensure border is visible when sticky using pseudo-element
         sticky &&
-          "after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:bg-border",
+          "after:absolute after:end-0 after:bottom-0 after:start-0 after:h-px after:bg-border",
         className,
       )}
     >

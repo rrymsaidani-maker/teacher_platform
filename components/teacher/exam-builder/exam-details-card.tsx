@@ -50,7 +50,7 @@ export function ExamDetailsCard() {
                 type="button"
                 variant="destructive"
                 size="sm"
-                className="absolute right-2 top-2 h-7 w-7 p-0"
+                className="absolute end-2 top-2 h-7 w-7 p-0"
                 aria-label={t('removeImage')}
                 onClick={() => updateField('image', '')}
               >
@@ -63,7 +63,7 @@ export function ExamDetailsCard() {
               onSelect={(url) => updateField('image', url)}
               trigger={
                 <Button type="button" variant="outline">
-                  <IconUpload className="mr-2 h-4 w-4" />
+                  <IconUpload className="me-2 h-4 w-4" />
                   {t('uploadImage')}
                 </Button>
               }

@@ -229,7 +229,7 @@ export function CheckpointBlockEditor({ block, onChange, checkpointContext }: Ch
             className="w-full"
             onClick={() => setShowCreateForm(true)}
           >
-            <IconPlus className="mr-2 h-3.5 w-3.5" />
+            <IconPlus className="me-2 h-3.5 w-3.5" />
             {t('createNew')}
           </Button>
         </div>
@@ -297,9 +297,9 @@ export function CheckpointBlockEditor({ block, onChange, checkpointContext }: Ch
             disabled={!newExerciseId || saving}
           >
             {saving ? (
-              <IconLoader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+              <IconLoader2 className="me-2 h-3.5 w-3.5 animate-spin" />
             ) : (
-              <IconPencil className="mr-2 h-3.5 w-3.5" />
+              <IconPencil className="me-2 h-3.5 w-3.5" />
             )}
             {t('save')}
           </Button>

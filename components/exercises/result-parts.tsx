@@ -87,7 +87,7 @@ export function ResultVerdict({ score, passed, passingScore, meta = [], classNam
               />
               <div
                 className="absolute -top-1 h-3.5 w-0.5 rounded-full bg-foreground"
-                style={{ left: `${Math.min(100, Math.max(0, passingScore))}%` }}
+                style={{ insetInlineStart: `${Math.min(100, Math.max(0, passingScore))}%` }}
               />
             </div>
           )}

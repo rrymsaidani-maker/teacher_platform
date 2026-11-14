@@ -84,7 +84,7 @@ function FencedCode({ node, copyLabel }: { node?: HastElement; copyLabel: string
       <CodeBlockCopyButton
         aria-label={copyLabel}
         title={copyLabel}
-        className="absolute top-1 right-1 z-10 size-7 bg-background/80 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+        className="absolute top-1 end-1 z-10 size-7 bg-background/80 opacity-70 hover:opacity-100 focus-visible:opacity-100"
       />
     </CodeBlock>
   )
@@ -117,11 +117,11 @@ function buildComponents(copyLabel: string): Components {
     h5: ({ children }) => <h4 className="mt-3 mb-1 font-semibold text-foreground">{children}</h4>,
     h6: ({ children }) => <h4 className="mt-3 mb-1 font-semibold text-foreground">{children}</h4>,
     strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
-    ul: ({ children }) => <ul className="my-2 list-disc space-y-1 pl-5">{children}</ul>,
-    ol: ({ children }) => <ol className="my-2 list-decimal space-y-1 pl-5">{children}</ol>,
-    li: ({ children }) => <li className="pl-0.5">{children}</li>,
+    ul: ({ children }) => <ul className="my-2 list-disc space-y-1 ps-5">{children}</ul>,
+    ol: ({ children }) => <ol className="my-2 list-decimal space-y-1 ps-5">{children}</ol>,
+    li: ({ children }) => <li className="ps-0.5">{children}</li>,
     blockquote: ({ children }) => (
-      <blockquote className="my-2 border-l-2 border-border pl-3 text-muted-foreground">{children}</blockquote>
+      <blockquote className="my-2 border-s-2 border-border ps-3 text-muted-foreground">{children}</blockquote>
     ),
     hr: () => <hr className="my-3 border-border" />,
     code: ({ children }) => (
@@ -130,7 +130,7 @@ function buildComponents(copyLabel: string): Components {
     pre: ({ node }) => <FencedCode node={node} copyLabel={copyLabel} />,
     table: ({ children }) => (
       <div className="my-2 overflow-x-auto">
-        <table className="w-full border-collapse text-left">{children}</table>
+        <table className="w-full border-collapse text-start">{children}</table>
       </div>
     ),
     th: ({ children, style }) => (

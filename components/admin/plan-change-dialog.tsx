@@ -209,7 +209,7 @@ export function PlanChangeDialog({ open, onOpenChange, target, onConfirmed }: Pl
           </AlertDialogCancel>
           {!blocked && (
             <Button onClick={handleConfirm} disabled={confirming || preview.kind === 'loading'}>
-              {confirming && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {confirming && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
               {t('confirm')}
             </Button>
           )}

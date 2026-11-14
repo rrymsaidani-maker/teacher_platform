@@ -241,7 +241,7 @@ function GradingRowItem({
         </div>
         <div className={cn('flex flex-wrap items-center justify-end gap-2 sm:col-span-2')}>
           {row.grade && (
-            <span className="mr-auto text-[11px] text-muted-foreground">
+            <span className="me-auto text-[11px] text-muted-foreground">
               {t('gradedOn', { date: format.dateTime(new Date(row.grade.graded_at), { dateStyle: 'medium' }) })}
             </span>
           )}

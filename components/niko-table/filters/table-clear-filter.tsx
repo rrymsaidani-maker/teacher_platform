@@ -142,7 +142,7 @@ export function TableClearFilter<TData extends RowData>({
       onClick={handleClearAll}
       className={cn("h-8", className)}
     >
-      {showIcon && <X className="mr-2 h-4 w-4" />}
+      {showIcon && <X className="me-2 h-4 w-4" />}
       {children || t("reset")}
     </Button>
   )

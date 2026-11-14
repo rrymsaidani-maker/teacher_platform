@@ -15,7 +15,7 @@ export function AristotleTrigger() {
         <Button
             onClick={aristotle.toggle}
             className={cn(
-                'fixed bottom-6 right-6 z-40 h-13 gap-2 rounded-full px-5 shadow-lg transition-all hover:shadow-xl active:scale-95',
+                'fixed bottom-6 end-6 z-40 h-13 gap-2 rounded-full px-5 shadow-lg transition-all hover:shadow-xl active:scale-95',
                 aristotle.isOpen
                     ? 'bg-muted text-muted-foreground hover:bg-muted/80'
                     : 'bg-amber-600 text-white hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 dark:text-amber-950'

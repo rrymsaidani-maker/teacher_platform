@@ -147,7 +147,7 @@ export function ImprovedTemplateSelector({ category, onApply, additionalTemplate
                     setStep('select')
                     setSelectedTemplate(null)
                   }}
-                  className="gap-1.5 -ml-2 text-muted-foreground hover:text-foreground"
+                  className="gap-1.5 -ms-2 text-muted-foreground hover:text-foreground"
                 >
                   <IconArrowLeft className="h-4 w-4" />
                 </Button>
@@ -222,7 +222,7 @@ export function ImprovedTemplateSelector({ category, onApply, additionalTemplate
                       {templates.map((template) => (
                         <button
                           key={template.id}
-                          className="group text-left p-5 rounded-xl border bg-background hover:border-primary/50 hover:shadow-md transition-all outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          className="group text-start p-5 rounded-xl border bg-background hover:border-primary/50 hover:shadow-md transition-all outline-none focus-visible:ring-2 focus-visible:ring-primary"
                           onClick={() => handleTemplateSelect(template)}
                         >
                           <div className="flex items-start justify-between gap-3 mb-3">

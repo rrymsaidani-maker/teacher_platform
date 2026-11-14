@@ -119,7 +119,7 @@ export function AssetLibrary({ mode = 'manage', kind, onSelect, className }: Ass
 
       <div className="flex flex-wrap items-center gap-2">
         <div className="relative min-w-48 flex-1">
-          <IconSearch className="pointer-events-none absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <IconSearch className="pointer-events-none absolute start-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             value={search}
             onChange={(e) => {
@@ -128,7 +128,7 @@ export function AssetLibrary({ mode = 'manage', kind, onSelect, className }: Ass
             }}
             placeholder={t('searchPlaceholder')}
             aria-label={t('searchPlaceholder')}
-            className="pl-8"
+            className="ps-8"
           />
         </div>
         <div className="flex flex-wrap gap-1" role="group" aria-label={t('filterBySource')}>
@@ -190,7 +190,7 @@ export function AssetLibrary({ mode = 'manage', kind, onSelect, className }: Ass
               <button
                 type="button"
                 onClick={() => (mode === 'pick' ? onSelect?.(asset.url) : setSelected(asset))}
-                className="block w-full text-left focus-visible:outline-2 focus-visible:outline-ring"
+                className="block w-full text-start focus-visible:outline-2 focus-visible:outline-ring"
                 aria-label={mode === 'pick' ? t('select', { name: asset.name }) : t('details', { name: asset.name })}
               >
                 {asset.kind === 'image' ? (

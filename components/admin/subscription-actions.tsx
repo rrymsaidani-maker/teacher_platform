@@ -116,7 +116,7 @@ export function SubscriptionActions({
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => router.push(`/dashboard/admin/users/${userId}`)}>
-            <IconEye className="mr-2 h-4 w-4" />
+            <IconEye className="me-2 h-4 w-4" />
             {t('actions.viewUser')}
           </DropdownMenuItem>
 
@@ -127,7 +127,7 @@ export function SubscriptionActions({
               onClick={() => setCancelDialogOpen(true)}
               className="text-warning"
             >
-              <IconX className="mr-2 h-4 w-4" />
+              <IconX className="me-2 h-4 w-4" />
               {t('actions.cancel')}
             </DropdownMenuItem>
           )}
@@ -137,14 +137,14 @@ export function SubscriptionActions({
               onClick={() => setReactivateDialogOpen(true)}
               className="text-success"
             >
-              <IconRefresh className="mr-2 h-4 w-4" />
+              <IconRefresh className="me-2 h-4 w-4" />
               {t('actions.reactivate')}
             </DropdownMenuItem>
           )}
 
           {isCancelled && (
             <DropdownMenuItem disabled className="text-muted-foreground">
-              <IconRefresh className="mr-2 h-4 w-4" />
+              <IconRefresh className="me-2 h-4 w-4" />
               {t('actions.cannotReactivate')}
             </DropdownMenuItem>
           )}

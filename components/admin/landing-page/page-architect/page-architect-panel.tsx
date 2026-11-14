@@ -215,7 +215,7 @@ function Inner({ pageId, locale, takeInitialPrompt, onClose, className }: Props)
   return (
     <aside
       aria-label={t('title')}
-      className={cn('flex h-full min-h-0 flex-col border-l bg-background text-foreground', className)}
+      className={cn('flex h-full min-h-0 flex-col border-s bg-background text-foreground', className)}
       data-testid="page-architect-panel"
     >
       <header className="flex shrink-0 items-start gap-2 border-b px-4 py-3">
@@ -347,7 +347,7 @@ function Inner({ pageId, locale, takeInitialPrompt, onClose, className }: Props)
                 <Suggestion
                   suggestion={s}
                   variant="ghost"
-                  className="h-auto w-full justify-start whitespace-normal rounded-md px-2 py-1.5 text-left text-xs font-normal text-muted-foreground hover:text-foreground"
+                  className="h-auto w-full justify-start whitespace-normal rounded-md px-2 py-1.5 text-start text-xs font-normal text-muted-foreground hover:text-foreground"
                   onClick={(text) => void sendMessage({ text })}
                 />
               </li>
@@ -361,7 +361,7 @@ function Inner({ pageId, locale, takeInitialPrompt, onClose, className }: Props)
             <Button
               variant="ghost"
               size="icon-sm"
-              className="ml-auto size-6"
+              className="ms-auto size-6"
               onClick={clearSelection}
               disabled={isBusy}
               aria-label={t('clearSelection')}

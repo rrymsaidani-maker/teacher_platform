@@ -90,7 +90,7 @@ export function StudentProgressSheet({
         {student && p && (
           <>
             <SheetHeader className="gap-3 border-b pb-4">
-              <div className="flex items-center gap-3 pr-8">
+              <div className="flex items-center gap-3 pe-8">
                 <Avatar size="sm">
                   {student.avatarUrl && <AvatarImage src={student.avatarUrl} alt={student.displayName} />}
                   <AvatarFallback>{getInitials(student.displayName)}</AvatarFallback>

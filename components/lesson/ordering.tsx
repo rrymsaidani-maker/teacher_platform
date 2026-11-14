@@ -84,7 +84,7 @@ export function Ordering({ items, explanation, className }: OrderingProps) {
               onClick={() => handleItemClick(index)}
               disabled={checked}
               className={cn(
-                'flex w-full items-center gap-3 rounded-md border p-3 text-left text-sm transition-colors',
+                'flex w-full items-center gap-3 rounded-md border p-3 text-start text-sm transition-colors',
                 !checked && !isSelected && 'hover:bg-muted/50',
                 isSelected && 'ring-2 ring-primary bg-primary/5',
                 checked && results[index] && 'border-success bg-success/10',

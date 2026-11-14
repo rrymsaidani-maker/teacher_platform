@@ -108,7 +108,7 @@ export function BillingOverview({
             <div className="flex shrink-0 flex-wrap gap-2">
               {lifecycle && !isFree && onManageClick && (
                 <Button variant="outline" size="sm" onClick={onManageClick}>
-                  <IconCreditCard className="mr-2 h-4 w-4" />
+                  <IconCreditCard className="me-2 h-4 w-4" />
                   {t('manage')}
                 </Button>
               )}
@@ -126,7 +126,7 @@ export function BillingOverview({
                   onClick={onCancelClick}
                   className="text-muted-foreground hover:text-destructive"
                 >
-                  <IconX className="mr-2 h-4 w-4" />
+                  <IconX className="me-2 h-4 w-4" />
                   {t('cancelPlan')}
                 </Button>
               )}
@@ -139,7 +139,7 @@ export function BillingOverview({
                   school subscribes again. */}
               {lifecycle && !isFree && onReactivateClick && subscription?.status === 'active' && subscription?.cancelAtPeriodEnd && !cancelIsFinal && (
                 <Button size="sm" variant="outline" onClick={onReactivateClick} disabled={reactivateLoading}>
-                  <IconRefresh className="mr-2 h-4 w-4" />
+                  <IconRefresh className="me-2 h-4 w-4" />
                   {t('reactivatePlan')}
                 </Button>
               )}
@@ -192,7 +192,7 @@ export function BillingOverview({
                   </p>
                 </div>
               </div>
-              <div className="text-left sm:text-right">
+              <div className="text-start sm:text-end">
                 <p className="font-semibold tabular-nums">{formattedUpcomingAmount}</p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {upcomingPayment.paymentProvider === 'manual' ? t('bankTransfer') : t('cardPayment')}
@@ -258,7 +258,7 @@ export function BillingOverview({
                   className="shrink-0"
                 >
                   <IconRefresh
-                    className={`mr-1.5 h-4 w-4 ${recheckLoading ? 'animate-spin' : ''}`}
+                    className={`me-1.5 h-4 w-4 ${recheckLoading ? 'animate-spin' : ''}`}
                     aria-hidden="true"
                   />
                   {recheckLoading ? t('recheckLoading') : t('recheck')}

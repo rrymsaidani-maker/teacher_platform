@@ -82,7 +82,7 @@ function SideEditor({
       </div>
 
       <Button type="button" variant="outline" size="sm" onClick={addPoint} className="w-full">
-        <IconPlus className="h-3.5 w-3.5 mr-1" />
+        <IconPlus className="h-3.5 w-3.5 me-1" />
         {t('comparison.addPoint')}
       </Button>
     </div>

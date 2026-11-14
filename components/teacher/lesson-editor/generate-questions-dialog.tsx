@@ -371,12 +371,12 @@ export function GenerateQuestionsDialog() {
                 <IconCircleCheck className="h-5 w-5 text-success" />
                 {t('savedSummary', { count: saved.length })}
               </p>
-              <ul className="ml-7 list-disc space-y-1 text-sm text-muted-foreground">
+              <ul className="ms-7 list-disc space-y-1 text-sm text-muted-foreground">
                 {saved.map((item) => (
                   <li key={item.exerciseId}>
                     {item.title}
                     {item.checkpointCreated && (
-                      <Badge variant="secondary" className="ml-2">
+                      <Badge variant="secondary" className="ms-2">
                         {t('checkpointBadge')}
                       </Badge>
                     )}

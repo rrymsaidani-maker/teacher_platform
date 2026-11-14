@@ -30,16 +30,16 @@ export const mdxComponents = {
     <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />
   ),
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />
+    <ul className="my-6 ms-6 list-disc [&>li]:mt-2" {...props} />
   ),
   ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />
+    <ol className="my-6 ms-6 list-decimal [&>li]:mt-2" {...props} />
   ),
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className="mt-2" {...props} />
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
-    <blockquote className="mt-6 border-l-2 pl-6 italic" {...props} />
+    <blockquote className="mt-6 border-s-2 ps-6 italic" {...props} />
   ),
   img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
     <SafeImage className="rounded-md border max-w-full h-auto" alt={alt} {...props} />
@@ -56,10 +56,10 @@ export const mdxComponents = {
     <tr className="m-0 border-t p-0 even:bg-muted" {...props} />
   ),
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
-    <th className="border px-2.5 py-1.5 text-left align-bottom font-bold hyphens-auto sm:px-4 sm:py-2 sm:hyphens-manual [&[align=center]]:text-center [&[align=right]]:text-right" {...props} />
+    <th className="border px-2.5 py-1.5 text-start align-bottom font-bold hyphens-auto sm:px-4 sm:py-2 sm:hyphens-manual [&[align=center]]:text-center [&[align=right]]:text-end" {...props} />
   ),
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td className="border px-2.5 py-1.5 text-left align-top hyphens-auto sm:px-4 sm:py-2 sm:hyphens-manual [&[align=center]]:text-center [&[align=right]]:text-right" {...props} />
+    <td className="border px-2.5 py-1.5 text-start align-top hyphens-auto sm:px-4 sm:py-2 sm:hyphens-manual [&[align=center]]:text-center [&[align=right]]:text-end" {...props} />
   ),
   pre: ({ className, ...props }: React.ComponentProps<"pre">) => (
     <pre className="mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4 px-4 text-white" {...props} />

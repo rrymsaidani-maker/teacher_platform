@@ -19,7 +19,7 @@ export async function StaffAttemptList({ attempts, locale, limited }: { attempts
               <span className="font-medium">{a.playerName ?? (a.isGuest ? t('guest') : t('member'))}</span>
               <Badge variant="outline">{a.isGuest ? t('guest') : t('member')}</Badge>
               <Badge variant={a.isOfficial ? 'default' : 'secondary'}>{a.isOfficial ? t('official') : t('practice')}</Badge>
-              <span className="ml-auto text-sm font-semibold tabular-nums">{t('score', { score: a.score })}</span>
+              <span className="ms-auto text-sm font-semibold tabular-nums">{t('score', { score: a.score })}</span>
             </div>
             <p className="text-xs text-muted-foreground">
               <time dateTime={a.createdAt}>{fmt.format(new Date(a.createdAt))}</time>

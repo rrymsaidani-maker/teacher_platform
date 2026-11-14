@@ -377,7 +377,7 @@ function DialogBody({
                   disabled={saving || removingKey}
                   onClick={() => void handleRemoveKey()}
                 >
-                  {removingKey && <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />}
+                  {removingKey && <Loader2 className="me-2 h-3.5 w-3.5 animate-spin" />}
                   {t('binanceAuto.removeKey')}
                 </Button>
               </div>
@@ -419,7 +419,7 @@ function DialogBody({
             disabled={saving}
             onClick={() => void handleSave()}
           >
-            {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {saving && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
             {t('save')}
           </Button>
         </div>
@@ -454,7 +454,7 @@ function FieldShell({
     <div className="space-y-1.5">
       <Label htmlFor={id} className="text-xs font-medium">
         {label}
-        {required && <span className="ml-0.5 text-destructive">*</span>}
+        {required && <span className="ms-0.5 text-destructive">*</span>}
       </Label>
       {children}
       {error && (

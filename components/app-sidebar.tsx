@@ -119,14 +119,14 @@ function NavEntry({ item }: { item: NavItem }) {
                     // Collapsed to icons the chip is hidden: the tooltip and the
                     // dot on the icon carry the count instead.
                     tooltip={badge > 0 ? `${item.title} (${formatBadgeCount(badge)})` : item.title}
-                    className={badge > 0 ? "pr-9" : undefined}
+                    className={badge > 0 ? "pe-9" : undefined}
                 >
                     <span className="relative flex shrink-0">
                         <item.icon />
                         {badge > 0 && (
                             <span
                                 aria-hidden
-                                className="absolute -top-0.5 -right-0.5 hidden size-1.5 rounded-full bg-primary ring-1 ring-sidebar group-data-[collapsible=icon]:block"
+                                className="absolute -top-0.5 -end-0.5 hidden size-1.5 rounded-full bg-primary ring-1 ring-sidebar group-data-[collapsible=icon]:block"
                             />
                         )}
                     </span>
@@ -187,7 +187,7 @@ function NavSubEntry({ sub, active }: { sub: NavSubItem; active: boolean }) {
                     <span
                         aria-hidden
                         data-testid="sidebar-community-badge"
-                        className="ml-auto flex h-5 min-w-5 items-center justify-center rounded-[calc(var(--radius-sm)-2px)] bg-brand-tint px-1 text-xs font-medium tabular-nums text-brand-text"
+                        className="ms-auto flex h-5 min-w-5 items-center justify-center rounded-[calc(var(--radius-sm)-2px)] bg-brand-tint px-1 text-xs font-medium tabular-nums text-brand-text"
                     >
                         {formatBadgeCount(badge)}
                     </span>

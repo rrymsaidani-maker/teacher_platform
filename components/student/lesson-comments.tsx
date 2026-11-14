@@ -243,7 +243,7 @@ export function LessonComments({ lessonId, userId, initialComments = [] }: Lesso
                 disabled={submitting || !newComment.trim()}
               >
                 {submitting ? t('posting') : t('post')}
-                <IconSend className="ml-2 h-4 w-4" />
+                <IconSend className="ms-2 h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -427,7 +427,7 @@ function CommentItem({
             className={cn("h-auto px-0 py-1 hover:bg-transparent hover:text-foreground", isLiked ? "text-red-500" : "text-muted-foreground")}
             onClick={() => handleReaction(comment.id, 'like')}
           >
-            <IconHeart className={cn("mr-1.5 h-3.5 w-3.5", isLiked && "fill-current")} />
+            <IconHeart className={cn("me-1.5 h-3.5 w-3.5", isLiked && "fill-current")} />
             <span className="text-xs">{likesCount || t('like')}</span>
           </Button>
 
@@ -437,7 +437,7 @@ function CommentItem({
             className="h-auto px-0 py-1 hover:bg-transparent text-muted-foreground hover:text-foreground"
             onClick={() => setReplyingTo(isReplying ? null : comment.id)}
           >
-            <IconMessageCircle className="mr-1.5 h-3.5 w-3.5" />
+            <IconMessageCircle className="me-1.5 h-3.5 w-3.5" />
             <span className="text-xs">{t('reply')}</span>
           </Button>
         </div>
@@ -458,7 +458,7 @@ function CommentItem({
 
         {/* Nested Replies */}
         {comment.replies && comment.replies.length > 0 && (
-          <div className="pl-2 md:pl-0 space-y-4 pt-2">
+          <div className="ps-2 md:ps-0 space-y-4 pt-2">
             {comment.replies.map(reply => (
               <CommentItem
                 key={reply.id}

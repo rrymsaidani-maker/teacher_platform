@@ -129,9 +129,9 @@ function LineDiff({ oldText, newText }: { oldText: string; newText: string }) {
                 )}
               >
                 {/* Line numbers */}
-                <div className="flex shrink-0 select-none text-muted-foreground border-r">
-                  <span className="w-10 px-2 text-right tabular-nums">{leftNum}</span>
-                  <span className="w-10 px-2 text-right tabular-nums border-l">{rightNum}</span>
+                <div className="flex shrink-0 select-none text-muted-foreground border-e">
+                  <span className="w-10 px-2 text-end tabular-nums">{leftNum}</span>
+                  <span className="w-10 px-2 text-end tabular-nums border-s">{rightNum}</span>
                 </div>
                 {/* Change indicator */}
                 <div className={cn(
@@ -217,7 +217,7 @@ function DiffFieldSection({
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger className="flex w-full items-center justify-between p-3.5 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-left group outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+      <CollapsibleTrigger className="flex w-full items-center justify-between p-3.5 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-start group outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
         <div className="flex items-center gap-2.5">
           <IconArrowsDiff aria-hidden="true" className="h-4 w-4 text-warning" />
           <span className="font-semibold text-sm">{label}</span>
@@ -253,7 +253,7 @@ function UnchangedFieldSection({ label, value }: { label: string; value: unknown
     <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg border border-dashed text-muted-foreground">
       <IconEqual aria-hidden="true" className="h-4 w-4 shrink-0 opacity-50" />
       <span className="text-sm font-medium">{label}</span>
-      <span className="text-xs truncate flex-1 text-right opacity-50 font-mono">{truncated}</span>
+      <span className="text-xs truncate flex-1 text-end opacity-50 font-mono">{truncated}</span>
     </div>
   )
 }
@@ -409,7 +409,7 @@ export function VersionDiffPanel({
             <div className="w-3 h-3 rounded bg-success/20 border border-success/40" />
             <span className="text-muted-foreground">{t('added')}</span>
           </div>
-          <div className="ml-auto text-muted-foreground">
+          <div className="ms-auto text-muted-foreground">
             {t('changes', { count: totalChanges })}
           </div>
         </div>
@@ -427,7 +427,7 @@ export function VersionDiffPanel({
             variant="ghost"
             size="sm"
             onClick={onBack}
-            className="gap-1.5 -ml-2 mb-3 text-muted-foreground hover:text-foreground"
+            className="gap-1.5 -ms-2 mb-3 text-muted-foreground hover:text-foreground"
           >
             <IconArrowLeft aria-hidden="true" className="h-4 w-4" />
             {t('back')}
@@ -445,7 +445,7 @@ export function VersionDiffPanel({
                 {t('versusCurrent', { date: versionDate })}
               </p>
             </div>
-            <div className="text-right">
+            <div className="text-end">
               <div className="text-3xl font-bold tabular-nums">{totalChanges}</div>
               <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                 {t('changesLabel', { count: totalChanges })}

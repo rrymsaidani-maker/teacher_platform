@@ -20,7 +20,7 @@ export function PostSkeleton() {
             <Skeleton className="h-6 w-16 rounded-full" />
             <Skeleton className="h-6 w-16 rounded-full" />
             <Skeleton className="h-6 w-16 rounded-full" />
-            <Skeleton className="h-6 w-20 rounded-full ml-auto" />
+            <Skeleton className="h-6 w-20 rounded-full ms-auto" />
           </div>
         </div>
       ))}

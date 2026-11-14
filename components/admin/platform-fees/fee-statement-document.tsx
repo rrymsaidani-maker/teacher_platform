@@ -115,18 +115,18 @@ export async function FeeStatementDocument({
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm" data-testid="fee-statement-lines">
-                <thead className="border-b text-left text-[11px] uppercase tracking-wider text-muted-foreground">
+                <thead className="border-b text-start text-[11px] uppercase tracking-wider text-muted-foreground">
                   <tr>
-                    <th scope="col" className="py-2 pr-4 font-medium">{t('headers.currency')}</th>
-                    <th scope="col" className="py-2 pr-4 text-right font-medium">{t('headers.count')}</th>
-                    <th scope="col" className="py-2 pr-4 text-right font-medium">{t('headers.sales')}</th>
-                    <th scope="col" className="py-2 text-right font-medium">{t('headers.fee')}</th>
+                    <th scope="col" className="py-2 pe-4 font-medium">{t('headers.currency')}</th>
+                    <th scope="col" className="py-2 pe-4 text-end font-medium">{t('headers.count')}</th>
+                    <th scope="col" className="py-2 pe-4 text-end font-medium">{t('headers.sales')}</th>
+                    <th scope="col" className="py-2 text-end font-medium">{t('headers.fee')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y">
                   {statement.lines.map((l) => (
                     <tr key={l.currency} className="align-top" data-currency={l.currency}>
-                      <td className="py-2 pr-4">
+                      <td className="py-2 pe-4">
                         <span className="font-medium">{l.currency}</span>
                         {l.converted && (
                           <div className="mt-1 space-y-0.5 text-xs text-muted-foreground">
@@ -139,9 +139,9 @@ export async function FeeStatementDocument({
                           </div>
                         )}
                       </td>
-                      <td className="py-2 pr-4 text-right tabular-nums">{l.salesCount}</td>
-                      <td className="py-2 pr-4 text-right tabular-nums">{money(l.salesTotal, l.currency)}</td>
-                      <td className="py-2 text-right tabular-nums">{money(l.fee, statement.currency)}</td>
+                      <td className="py-2 pe-4 text-end tabular-nums">{l.salesCount}</td>
+                      <td className="py-2 pe-4 text-end tabular-nums">{money(l.salesTotal, l.currency)}</td>
+                      <td className="py-2 text-end tabular-nums">{money(l.fee, statement.currency)}</td>
                     </tr>
                   ))}
                 </tbody>

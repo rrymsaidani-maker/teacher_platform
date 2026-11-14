@@ -829,7 +829,7 @@ export function CheckpointVideoPlayer({
                 'absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-background',
                 marker.completed ? 'bg-primary' : 'bg-muted-foreground/60'
               )}
-              style={{ left: `${Math.min(100, Math.max(0, (marker.timeSeconds / duration) * 100))}%` }}
+              style={{ insetInlineStart: `${Math.min(100, Math.max(0, (marker.timeSeconds / duration) * 100))}%` }}
               title={marker.label ?? `Checkpoint at ${formatTime(marker.timeSeconds)}`}
             />
           ))}

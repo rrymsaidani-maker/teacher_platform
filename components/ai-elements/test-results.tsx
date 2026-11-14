@@ -251,7 +251,7 @@ export const TestSuiteName = ({
   return (
     <CollapsibleTrigger
       className={cn(
-        "group flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-muted/50",
+        "group flex w-full items-center gap-2 px-4 py-3 text-start transition-colors hover:bg-muted/50",
         className
       )}
       {...props}
@@ -278,7 +278,7 @@ export const TestSuiteStats = ({
   ...props
 }: TestSuiteStatsProps) => (
   <div
-    className={cn("ml-auto flex items-center gap-2 text-xs", className)}
+    className={cn("ms-auto flex items-center gap-2 text-xs", className)}
     {...props}
   >
     {children ?? (
@@ -422,7 +422,7 @@ export const TestDuration = ({
 
   return (
     <span
-      className={cn("ml-auto text-muted-foreground text-xs", className)}
+      className={cn("ms-auto text-muted-foreground text-xs", className)}
       {...props}
     >
       {children ?? `${duration}ms`}

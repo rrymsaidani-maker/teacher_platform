@@ -224,7 +224,7 @@ export function PostComposer({ scope, courseId, userRole, canCreatePoll, onPostC
 
       {/* Media preview */}
       {!isPoll && mediaFiles.length > 0 && (
-        <div className="flex flex-wrap gap-2 pl-12">
+        <div className="flex flex-wrap gap-2 ps-12">
           {mediaFiles.map((media, i) => (
             <div
               key={i}
@@ -245,7 +245,7 @@ export function PostComposer({ scope, courseId, userRole, canCreatePoll, onPostC
                 type="button"
                 onClick={() => removeMedia(i)}
                 aria-label={t('removeAttachment')}
-                className="absolute top-0.5 right-0.5 h-5 w-5 rounded-full bg-background/80 flex items-center justify-center opacity-0 group-hover/media:opacity-100 group-focus-within/media:opacity-100 focus-visible:opacity-100 transition-opacity"
+                className="absolute top-0.5 end-0.5 h-5 w-5 rounded-full bg-background/80 flex items-center justify-center opacity-0 group-hover/media:opacity-100 group-focus-within/media:opacity-100 focus-visible:opacity-100 transition-opacity"
               >
                 <IconX size={10} />
               </button>
@@ -255,7 +255,7 @@ export function PostComposer({ scope, courseId, userRole, canCreatePoll, onPostC
       )}
 
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pl-12">
+      <div className="flex flex-wrap items-center justify-between gap-2 ps-12">
         <div className="flex flex-wrap items-center gap-1">
           {!showTitle && !isPoll && !isQuestion && (
             <Button
@@ -331,7 +331,7 @@ export function PostComposer({ scope, courseId, userRole, canCreatePoll, onPostC
           size="sm"
           onClick={handleSubmit}
           disabled={submitting || uploading || !canSubmit}
-          className="ml-auto gap-1"
+          className="ms-auto gap-1"
         >
           {submitting ? t('posting') : t('post')}
           <IconSend size={12} />

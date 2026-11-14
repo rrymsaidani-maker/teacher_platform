@@ -76,13 +76,13 @@ export function PromptTemplateSelector({ category, onSelect }: PromptTemplateSel
             <div>
               <Label htmlFor="search">Search Templates</Label>
               <div className="relative">
-                <IconSearch className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <IconSearch className="absolute start-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder={tr('searchByName')}
-                  className="pl-10"
+                  className="ps-10"
                 />
               </div>
             </div>

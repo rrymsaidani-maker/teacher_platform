@@ -206,7 +206,7 @@ export const WebPreviewConsole = ({
       open={consoleOpen}
       {...props}
     >
-      <CollapsibleTrigger render={<Button className="flex w-full items-center justify-between p-4 text-left font-medium hover:bg-muted/50" variant="ghost" />}>Console
+      <CollapsibleTrigger render={<Button className="flex w-full items-center justify-between p-4 text-start font-medium hover:bg-muted/50" variant="ghost" />}>Console
                     <ChevronDownIcon
                       className={cn(
                         "h-4 w-4 transition-transform duration-200",

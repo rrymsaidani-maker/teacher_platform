@@ -185,7 +185,7 @@ export function QuickProductCreate({ limitInfo, className }: QuickProductCreateP
                 <FieldLabel htmlFor="quick-price">{t('priceLabel')}</FieldLabel>
                 <FieldContent>
                   <div className="relative">
-                    <span className="absolute inset-y-0 left-3 flex items-center text-sm text-muted-foreground">
+                    <span className="absolute inset-y-0 start-3 flex items-center text-sm text-muted-foreground">
                       $
                     </span>
                     <Input
@@ -197,7 +197,7 @@ export function QuickProductCreate({ limitInfo, className }: QuickProductCreateP
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
                       placeholder="19.99"
-                      className="pl-7"
+                      className="ps-7"
                       disabled={atLimit}
                     />
                   </div>

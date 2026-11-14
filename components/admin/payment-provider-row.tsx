@@ -116,7 +116,7 @@ export function PaymentProviderRow({
               <li
                 key={fact.id}
                 className={cn(
-                  'text-xs before:mr-1.5 before:text-muted-foreground/50 before:content-["·"] first:before:hidden first:before:mr-0',
+                  'text-xs before:me-1.5 before:text-muted-foreground/50 before:content-["·"] first:before:hidden first:before:me-0',
                   FACT_TONE[fact.tone]
                 )}
               >

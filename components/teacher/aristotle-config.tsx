@@ -246,12 +246,12 @@ export function AristotleConfig({ courseId, tenantId, initialConfig, modelState 
                 >
                     {isSaving ? (
                         <>
-                            <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />
+                            <IconLoader2 className="me-2 h-4 w-4 animate-spin" />
                             {t('saving')}
                         </>
                     ) : (
                         <>
-                            <IconDeviceFloppy className="mr-2 h-4 w-4" />
+                            <IconDeviceFloppy className="me-2 h-4 w-4" />
                             {t('save')}
                         </>
                     )}

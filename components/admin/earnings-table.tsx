@@ -165,7 +165,7 @@ export function EarningsTable({
         cell: ({ row }) => {
           const r = row.original
           return (
-            <div className="text-right tabular-nums">
+            <div className="text-end tabular-nums">
               {formatMoney(r.kept, r.currencyCode, locale)}
               {r.fxRateToUsd != null && r.fxRateToUsd > 0 && (
                 // #929: the rate frozen at sale time, so the school can reconcile in its own currency.
@@ -187,7 +187,7 @@ export function EarningsTable({
         header: sortHeaderRight,
         meta: { label: t('table.headers.commission'), variant: 'number' },
         cell: ({ row }) => (
-          <div className="text-right tabular-nums text-muted-foreground">
+          <div className="text-end tabular-nums text-muted-foreground">
             {formatMoney(row.original.commission, row.original.currencyCode, locale)}
           </div>
         ),
@@ -198,7 +198,7 @@ export function EarningsTable({
         header: sortHeaderRight,
         meta: { label: t('table.headers.net'), variant: 'number' },
         cell: ({ row }) => (
-          <div className="text-right font-semibold tabular-nums">
+          <div className="text-end font-semibold tabular-nums">
             {formatMoney(row.original.net, row.original.currencyCode, locale)}
           </div>
         ),

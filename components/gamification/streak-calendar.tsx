@@ -32,9 +32,9 @@ export function StreakCalendar() {
                     </div>
                     <h3 className="font-bold text-sm">{t('activeStreak')}</h3>
                 </div>
-                <div className="text-right">
+                <div className="text-end">
                     <span className="text-sm font-black text-foreground">{summary.streak.current}</span>
-                    <span className="text-[10px] text-muted-foreground uppercase ml-1">{t('days')}</span>
+                    <span className="text-[10px] text-muted-foreground uppercase ms-1">{t('days')}</span>
                 </div>
             </div>
 

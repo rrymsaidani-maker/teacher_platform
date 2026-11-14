@@ -103,7 +103,7 @@ export const TranscriptionSegment = ({
   return (
     <button
       className={cn(
-        "inline text-left",
+        "inline text-start",
         isActive && "text-primary",
         isPast && "text-muted-foreground",
         !(isActive || isPast) && "text-muted-foreground/60",

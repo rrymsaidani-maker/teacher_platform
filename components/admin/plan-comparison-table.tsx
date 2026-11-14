@@ -163,10 +163,10 @@ export function PlanComparisonTable({
               data-preselected={isPreselected || undefined}
             >
               {isPreselected && (
-                <Badge className="absolute -top-3 right-5 shadow-sm">{t('yourSelection')}</Badge>
+                <Badge className="absolute -top-3 end-5 shadow-sm">{t('yourSelection')}</Badge>
               )}
               {isPopular && (
-                <Badge className="absolute -top-3 left-5 gap-1.5 shadow-sm">
+                <Badge className="absolute -top-3 start-5 gap-1.5 shadow-sm">
                   <IconSparkles className="size-3" />
                   {t('mostPopular')}
                 </Badge>
@@ -225,7 +225,7 @@ export function PlanComparisonTable({
                     </li>
                   ))}
                   {remainingFeatureCount > 0 && (
-                    <li className="pl-6 text-sm text-muted-foreground">{t('moreInComparison', { count: remainingFeatureCount })}</li>
+                    <li className="ps-6 text-sm text-muted-foreground">{t('moreInComparison', { count: remainingFeatureCount })}</li>
                   )}
                 </ul>
               </CardContent>
@@ -292,14 +292,14 @@ export function PlanComparisonTable({
             <table className="min-w-[720px] w-full text-sm">
               <thead className="bg-muted/20">
                 <tr className="border-b">
-                  <th scope="col" className="w-48 px-5 py-3 text-left text-xs font-medium text-muted-foreground">{t('featureColumn')}</th>
+                  <th scope="col" className="w-48 px-5 py-3 text-start text-xs font-medium text-muted-foreground">{t('featureColumn')}</th>
                   {plans.map((plan) => <th key={plan.plan_id} scope="col" className="px-4 py-3 text-center text-xs font-semibold">{plan.name}</th>)}
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {featureKeys.map((key) => (
                   <tr key={key} className="hover:bg-muted/20">
-                    <th scope="row" className="px-5 py-3 text-left font-medium">{featureLabel(key)}</th>
+                    <th scope="row" className="px-5 py-3 text-start font-medium">{featureLabel(key)}</th>
                     {plans.map((plan) => (
                       <td key={plan.plan_id} className="px-4 py-3 text-center"><FeatureValue value={plan.features[key]} includedLabel={t('included')} notIncludedLabel={t('notIncluded')} /></td>
                     ))}

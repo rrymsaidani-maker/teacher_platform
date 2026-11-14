@@ -16,7 +16,7 @@ export function Table({ headers, rows, striped, className }: TableProps) {
             {headers.map((header, i) => (
               <th
                 key={i}
-                className="px-4 py-2 text-left font-semibold"
+                className="px-4 py-2 text-start font-semibold"
               >
                 {header}
               </th>

@@ -53,7 +53,7 @@ export function CourseCard({ course }: CourseCardProps) {
                         black scrim, white ink and white hairline stay hardcoded:
                         they sit on arbitrary photography, not on a themed surface. */}
                     {course.category && (
-                        <div className="absolute top-3 left-3">
+                        <div className="absolute top-3 start-3">
                             <span className="bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-medium text-white border border-white/10">
                                 {course.category.name}
                             </span>
@@ -63,7 +63,7 @@ export function CourseCard({ course }: CourseCardProps) {
                     {/* Price badge — the paid branch is the same overlay-on-image
                         scrim as the category badge and stays hardcoded for the same
                         reason; the free branch is a status, so it is tokenised. */}
-                    <div className="absolute top-3 right-3">
+                    <div className="absolute top-3 end-3">
                         <span className={`px-2.5 py-1 rounded-md text-xs font-bold border ${isFree
                                 ? 'bg-success text-success-foreground border-success/30'
                                 : 'bg-black/70 backdrop-blur-md text-white border-white/10'
@@ -77,7 +77,7 @@ export function CourseCard({ course }: CourseCardProps) {
                         they get rather than what it costs. A status, hence
                         tokenised rather than scrimmed like the badges above. */}
                     {course.previewLessonCount > 0 && (
-                        <div className="absolute bottom-3 left-3">
+                        <div className="absolute bottom-3 start-3">
                             <span className="flex items-center gap-1 rounded-md border border-primary/25 bg-brand-tint px-2.5 py-1 text-xs font-semibold text-brand-text">
                                 <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" />
                                 {t('startFree')}

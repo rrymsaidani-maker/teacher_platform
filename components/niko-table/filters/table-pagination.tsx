@@ -220,7 +220,7 @@ export function TablePagination<TData extends RowData>({
       </div>
 
       <div
-        className="flex-1 text-right text-sm whitespace-nowrap text-muted-foreground md:text-center"
+        className="flex-1 text-end text-sm whitespace-nowrap text-muted-foreground md:text-center"
         role="status"
         aria-live="polite"
         aria-atomic="true"
@@ -230,7 +230,7 @@ export function TablePagination<TData extends RowData>({
           : t("itemRange", { start: startItem, end: endItem, total: totalRows })}
       </div>
 
-      <div className="ml-auto flex items-center space-x-4">
+      <div className="ms-auto flex items-center space-x-4">
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
           <label htmlFor="page-number-input" className="sr-only">
             {t("pageNumber")}

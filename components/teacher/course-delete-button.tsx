@@ -79,7 +79,7 @@ export function CourseDeleteButton({ courseId, courseTitle }: CourseDeleteButton
   return (
     <AlertDialog open={open} onOpenChange={handleOpenChange}>
       <AlertDialogTrigger render={<Button variant="destructive" size="sm" />}>
-        <IconTrash className="mr-2 h-4 w-4" />
+        <IconTrash className="me-2 h-4 w-4" />
         {t('triggerButton')}
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -113,9 +113,9 @@ export function CourseDeleteButton({ courseId, courseTitle }: CourseDeleteButton
               disabled={isPending}
             >
               {isPending ? (
-                <IconLoader className="mr-2 h-4 w-4 motion-safe:animate-spin" />
+                <IconLoader className="me-2 h-4 w-4 motion-safe:animate-spin" />
               ) : (
-                <IconArchive className="mr-2 h-4 w-4" />
+                <IconArchive className="me-2 h-4 w-4" />
               )}
               {t('archiveInstead')}
             </Button>
@@ -126,9 +126,9 @@ export function CourseDeleteButton({ courseId, courseTitle }: CourseDeleteButton
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
             {isPending ? (
-              <IconLoader className="mr-2 h-4 w-4 motion-safe:animate-spin" />
+              <IconLoader className="me-2 h-4 w-4 motion-safe:animate-spin" />
             ) : (
-              <IconTrash className="mr-2 h-4 w-4" />
+              <IconTrash className="me-2 h-4 w-4" />
             )}
             {hasEnrollments ? t('deleteAnyway') : t('delete')}
           </AlertDialogAction>

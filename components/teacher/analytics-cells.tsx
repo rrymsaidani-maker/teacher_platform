@@ -48,7 +48,7 @@ export function SeverityBar({ value, label }: { value: number; label: string }) 
         : 'bg-muted-foreground/60'
 
   return (
-    <div className="w-28 shrink-0 text-right">
+    <div className="w-28 shrink-0 text-end">
       <div className="text-sm font-bold tabular-nums">{value}</div>
       <div
         className="mt-1 h-1.5 overflow-hidden rounded-full bg-muted"
@@ -88,19 +88,19 @@ export function DifficultyDelta({
   const delta = rating - BASELINE_RATING
   return (
     <div className="flex items-center gap-4">
-      <div className="text-right">
+      <div className="text-end">
         <Badge variant={declared ? 'outline' : 'ghost'}>{labels.declared}</Badge>
       </div>
       {/* Wide enough for a four-digit signed delta: at w-20 "−210" wrapped onto
           its own line and read as a separate number. */}
-      <div className="w-28 text-right">
+      <div className="w-28 text-end">
         <div className="text-sm font-bold tabular-nums">{rating}</div>
         <div className="whitespace-nowrap text-[10px] uppercase tracking-wide text-muted-foreground">
           {labels.measured}
           {delta !== 0 && (
             <span
               className={cn(
-                'ml-1 tabular-nums',
+                'ms-1 tabular-nums',
                 delta > 0 ? 'text-destructive' : 'text-muted-foreground'
               )}
             >
@@ -110,7 +110,7 @@ export function DifficultyDelta({
           )}
         </div>
       </div>
-      <div className="w-32 shrink-0 text-right">
+      <div className="w-32 shrink-0 text-end">
         {mismatch && (
           <Badge variant={mismatch === 'harder_than_labeled' ? 'destructive' : 'secondary'}>
             {mismatch === 'harder_than_labeled' ? labels.harder : labels.easier}

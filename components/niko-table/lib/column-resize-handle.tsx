@@ -260,10 +260,10 @@ export function DataTableColumnResizeHandle<TData extends RowData>({
           autosizeColumn(header, e.currentTarget)
         }
       }}
-      className="group/resize absolute top-0 right-0 z-10 flex h-full w-2 cursor-col-resize touch-none justify-end outline-none select-none"
+      className="group/resize absolute top-0 end-0 z-10 flex h-full w-2 cursor-col-resize touch-none justify-end outline-none select-none"
     >
       {/* Idle: invisible — an always-on grip bar reads as a header divider
-          and drifts 1–2px from real cell `border-r`. Show on hover/focus/drag. */}
+          and drifts 1–2px from real cell `border-e`. Show on hover/focus/drag. */}
       <div
         className={cn(
           "my-1.5 w-px rounded bg-border opacity-0 transition-all",

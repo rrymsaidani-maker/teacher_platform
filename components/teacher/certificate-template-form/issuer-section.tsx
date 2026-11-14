@@ -23,7 +23,7 @@ export function IssuerSection() {
                 </h2>
             </div>
 
-            <div className="space-y-4 pl-[42px]">
+            <div className="space-y-4 ps-[42px]">
                 <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                         <Label htmlFor="issuer_name" className="text-sm font-medium">
@@ -68,7 +68,7 @@ export function IssuerSection() {
                                 <button
                                     type="button"
                                     onClick={() => setFormData(prev => ({ ...prev, logo_url: '' }))}
-                                    className="absolute -top-1.5 -right-1.5 h-5 w-5 rounded-full bg-destructive text-destructive-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                                    className="absolute -top-1.5 -end-1.5 h-5 w-5 rounded-full bg-destructive text-destructive-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                                 >
                                     <IconX className="h-3 w-3" />
                                 </button>

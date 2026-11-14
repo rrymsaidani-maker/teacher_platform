@@ -315,7 +315,7 @@ export function BulkContentManager({
               {pending ? t('saving') : t('selected', { count: selected.size })}
             </span>
             {selected.size > 0 && (
-              <div className="flex flex-wrap gap-2 sm:ml-auto">
+              <div className="flex flex-wrap gap-2 sm:ms-auto">
                 <Button
                   size="sm"
                   disabled={pending}

@@ -56,7 +56,7 @@ export default function ExerciseCard({ exercise, courseId }: ExerciseCardProps) 
                         </div>
                         <span className="text-sm font-medium text-foreground truncate">{typeLabel}</span>
                         {exercise.difficulty_level && (
-                            <Badge variant="outline" className={cn("ml-auto shrink-0 rounded-md px-2 py-0 text-xs", difficultyColor)}>
+                            <Badge variant="outline" className={cn("ms-auto shrink-0 rounded-md px-2 py-0 text-xs", difficultyColor)}>
                                 {["easy", "medium", "hard"].includes(exercise.difficulty_level)
                                     ? tDifficulty(exercise.difficulty_level as "easy" | "medium" | "hard")
                                     : exercise.difficulty_level}

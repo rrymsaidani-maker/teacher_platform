@@ -161,7 +161,7 @@ export function ProgressExplorer({ courses }: { courses: ProgressCourse[] }) {
 
               <div className="flex items-center gap-3">
                 <Progress value={course.percentage} className="flex-1" />
-                <span className="text-sm font-medium w-12 text-right">{course.percentage}%</span>
+                <span className="text-sm font-medium w-12 text-end">{course.percentage}%</span>
               </div>
 
               {course.examScores.length > 0 && (

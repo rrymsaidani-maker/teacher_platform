@@ -26,7 +26,7 @@ export function JoinGroupButton({ token }: { token: string }) {
   return (
     <div className="space-y-2">
       <Button onClick={join} disabled={pending} className="w-full" data-testid="join-group">
-        {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {pending && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
         {pending ? t('join.joining') : t('join.cta')}
       </Button>
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}

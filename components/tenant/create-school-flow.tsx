@@ -312,11 +312,11 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
                 data-testid="create-school-google"
               >
                 {socialLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                  <Loader2 className="me-2 h-4 w-4 animate-spin" aria-hidden="true" />
                 ) : (
                   /* Google's own mark. The four path colours are fixed by Google's brand
                      guidelines, so they are content and must not follow the school theme. */
-                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="me-2 h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
@@ -406,13 +406,13 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
               >
                 {loading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2 className="me-2 h-4 w-4 animate-spin" />
                     {t('creatingAccount')}
                   </>
                 ) : (
                   <>
                     {t('createAccount')}
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ms-2 w-4 h-4" />
                   </>
                 )}
               </Button>
@@ -448,7 +448,7 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
                 <Link href={`/auth/login?redirectTo=${encodeURIComponent(`/create-school${planQuery}`)}`}>
                   <Button className="w-full">
                     {t('goToLogin')}
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ms-2 w-4 h-4" />
                   </Button>
                 </Link>
                 <Button
@@ -457,7 +457,7 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
                   onClick={() => { setEmailConfirmationNeeded(false); setError(null) }}
                   className="w-full text-muted-foreground"
                 >
-                  <ArrowLeft className="mr-2 w-4 h-4" />
+                  <ArrowLeft className="me-2 w-4 h-4" />
                   {t('backToSignUp')}
                 </Button>
               </div>
@@ -503,11 +503,11 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
                     value={slug}
                     onChange={(e) => setSlug(generateSlug(e.target.value))}
                     placeholder={t('schoolUrlPlaceholder')}
-                    className="rounded-r-none"
+                    className="rounded-e-none"
                     required
                     disabled={loading}
                   />
-                  <span className="px-3 py-2 bg-muted border border-l-0 border-input rounded-r-input text-foreground text-sm whitespace-nowrap">
+                  <span className="px-3 py-2 bg-muted border border-s-0 border-input rounded-r-input text-foreground text-sm whitespace-nowrap">
                     .{process.env.NEXT_PUBLIC_PLATFORM_DOMAIN || 'lmsplatform.com'}
                   </span>
                 </div>
@@ -539,13 +539,13 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
               >
                 {loading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2 className="me-2 h-4 w-4 animate-spin" />
                     {t('creatingSchool')}
                   </>
                 ) : (
                   <>
                     {t('createSchool')}
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ms-2 w-4 h-4" />
                   </>
                 )}
               </Button>
@@ -558,7 +558,7 @@ export function CreateSchoolFlow({ user, plan, interval, initialCountry = null }
                   className="w-full text-muted-foreground"
                   disabled={loading}
                 >
-                  <ArrowLeft className="mr-2 w-4 h-4" />
+                  <ArrowLeft className="me-2 w-4 h-4" />
                   {t('back')}
                 </Button>
               )}

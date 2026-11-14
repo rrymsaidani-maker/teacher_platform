@@ -59,7 +59,7 @@ export function ExamBuilderHeader() {
         </span>
       </div>
       {initialData?.exam_id && (
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ms-auto flex items-center gap-2">
           <ExamTestsDialog examId={initialData.exam_id} questions={testQuestions} hasUnsavedChanges={hasUnsavedChanges} />
           <VersionHistorySheet
             contentType="exam"

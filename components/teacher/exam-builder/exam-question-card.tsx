@@ -45,7 +45,7 @@ export function ExamQuestionCard({ question: q, index: qIdx }: ExamQuestionCardP
   return (
     <div ref={setNodeRef} style={style}>
       <Card className="relative overflow-hidden group">
-        <div className="absolute left-0 top-0 h-full w-1 bg-primary" />
+        <div className="absolute start-0 top-0 h-full w-1 bg-primary" />
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">

@@ -83,7 +83,7 @@ export function BinancePersonalPendingTable({
             <TableHead>{t('table.headers.student')}</TableHead>
             <TableHead>{t('table.headers.amount')}</TableHead>
             <TableHead>{t('table.headers.date')}</TableHead>
-            <TableHead className="text-right">{t('table.headers.actions')}</TableHead>
+            <TableHead className="text-end">{t('table.headers.actions')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

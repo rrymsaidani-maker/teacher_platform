@@ -22,7 +22,7 @@ export default function CreateNotificationButton() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger render={
         <Button>
-          <IconPlus className="mr-2 h-4 w-4" />
+          <IconPlus className="me-2 h-4 w-4" />
           {t('buttons.create')}
         </Button>
       } />

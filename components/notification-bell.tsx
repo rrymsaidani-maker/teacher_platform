@@ -118,7 +118,7 @@ export function NotificationBell({ role }: { role: ViewerRole }) {
           <span
             aria-hidden
             data-testid="notification-bell-count"
-            className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-tint px-1 text-[10px] font-medium tabular-nums text-brand-text ring-2 ring-background"
+            className="absolute -top-1 -end-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-tint px-1 text-[10px] font-medium tabular-nums text-brand-text ring-2 ring-background"
           >
             {formatBadgeCount(unread)}
           </span>

@@ -174,7 +174,7 @@ export function NotificationItem({ row, role, variant, onOpened, onNavigate, onM
   )
 
   const rowClass = cn(
-    'flex min-w-0 flex-1 items-start gap-2.5 rounded-md text-left text-xs outline-none',
+    'flex min-w-0 flex-1 items-start gap-2.5 rounded-md text-start text-xs outline-none',
     variant === 'compact' ? 'px-3 py-2.5' : 'px-4 py-3'
   )
 
@@ -204,7 +204,7 @@ export function NotificationItem({ row, role, variant, onOpened, onNavigate, onM
     >
       {main}
       {(showMarkRead || showDismiss) && (
-        <div className={cn('flex shrink-0 gap-0.5', variant === 'compact' ? 'py-2 pr-2' : 'py-2.5 pr-3')}>
+        <div className={cn('flex shrink-0 gap-0.5', variant === 'compact' ? 'py-2 pe-2' : 'py-2.5 pe-3')}>
           {showMarkRead && (
             <Button
               variant="ghost"

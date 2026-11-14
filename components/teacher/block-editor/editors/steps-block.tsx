@@ -42,7 +42,7 @@ export function StepsBlockEditor({ block, onChange }: StepsBlockEditorProps) {
 
       <div className="space-y-3">
         {block.steps.map((step, index) => (
-          <div key={index} className="flex gap-2 pl-4 border-l-2 border-primary/30">
+          <div key={index} className="flex gap-2 ps-4 border-s-2 border-primary/30">
             <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               {index + 1}
             </div>
@@ -74,7 +74,7 @@ export function StepsBlockEditor({ block, onChange }: StepsBlockEditorProps) {
       </div>
 
       <Button type="button" variant="outline" size="sm" onClick={addStep} className="w-full">
-        <IconPlus className="h-4 w-4 mr-2" />
+        <IconPlus className="h-4 w-4 me-2" />
         {t('steps.addStep')}
       </Button>
     </div>

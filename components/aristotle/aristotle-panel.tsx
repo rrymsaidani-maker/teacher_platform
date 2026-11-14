@@ -134,7 +134,7 @@ function InnerAristotlePanel() {
 
             <div
                 className={cn(
-                    'fixed top-0 right-0 z-50 h-full w-full sm:w-[400px] border-l bg-background shadow-2xl transition-transform duration-200 ease-out flex flex-col',
+                    'fixed top-0 end-0 z-50 h-full w-full sm:w-[400px] border-s bg-background shadow-2xl transition-transform duration-200 ease-out flex flex-col',
                     isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
                 )}
                 role="dialog"

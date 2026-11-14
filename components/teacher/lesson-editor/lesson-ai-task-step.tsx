@@ -310,7 +310,7 @@ export function LessonAITaskStep() {
             <ol className="space-y-2">
               {structured.requirements.map((requirement, index) => (
                 <li key={requirement.id} className="flex items-center gap-2">
-                  <span className="w-5 shrink-0 text-right text-xs font-medium tabular-nums text-muted-foreground">
+                  <span className="w-5 shrink-0 text-end text-xs font-medium tabular-nums text-muted-foreground">
                     {index + 1}.
                   </span>
                   <Input
@@ -364,7 +364,7 @@ export function LessonAITaskStep() {
           <div className="space-y-1.5">
             <Label htmlFor="ai_task_closing_phase" className="text-sm font-medium">
               {t('aiTaskClosingPhaseLabel')}
-              <span className="ml-1.5 text-xs font-normal text-muted-foreground">{t('aiTaskOptionalHint')}</span>
+              <span className="ms-1.5 text-xs font-normal text-muted-foreground">{t('aiTaskOptionalHint')}</span>
             </Label>
             <textarea
               id="ai_task_closing_phase"

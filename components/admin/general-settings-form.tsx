@@ -212,7 +212,7 @@ export default function GeneralSettingsForm({ settings, tenantName, country: sav
       {/* Submit Button */}
       <div className="flex justify-end">
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting && <IconLoader2 className="mr-2 h-4 w-4 motion-safe:animate-spin" />}
+          {isSubmitting && <IconLoader2 className="me-2 h-4 w-4 motion-safe:animate-spin" />}
           {isSubmitting ? t('saving') : t('saveChanges')}
         </Button>
       </div>

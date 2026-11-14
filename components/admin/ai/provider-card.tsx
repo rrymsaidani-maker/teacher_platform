@@ -246,7 +246,7 @@ function KeyDialog({
                 required
                 minLength={8}
                 maxLength={512}
-                className="pr-8 font-mono"
+                className="pe-8 font-mono"
                 aria-invalid={error ? true : undefined}
                 aria-describedby={error ? `${inputId}-error` : undefined}
                 data-testid="ai-key-input"
@@ -255,7 +255,7 @@ function KeyDialog({
                 type="button"
                 variant="ghost"
                 size="icon-sm"
-                className="absolute top-1/2 right-0.5 -translate-y-1/2"
+                className="absolute top-1/2 end-0.5 -translate-y-1/2"
                 onClick={() => setReveal((v) => !v)}
                 aria-label={reveal ? t('providers.dialog.hide') : t('providers.dialog.show')}
                 aria-pressed={reveal}

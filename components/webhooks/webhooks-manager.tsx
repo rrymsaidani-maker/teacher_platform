@@ -170,7 +170,7 @@ export function WebhooksManager({ scope, endpoints, deliveries, events }: Props)
                           {t(`deliveries.statuses.${d.status}`)}
                         </Badge>
                         {d.status !== 'success' && (d.lastStatusCode || d.lastError) && (
-                          <span className="ml-2 text-xs text-muted-foreground">
+                          <span className="ms-2 text-xs text-muted-foreground">
                             {d.lastStatusCode ? `HTTP ${d.lastStatusCode}` : d.lastError}
                           </span>
                         )}
@@ -197,7 +197,7 @@ export function WebhooksManager({ scope, endpoints, deliveries, events }: Props)
 
       <section className="rounded-lg border bg-muted/30 p-4" aria-labelledby="wh-help">
         <h2 id="wh-help" className="text-sm font-semibold">{t('help.title')}</h2>
-        <ol className="mt-2 list-decimal space-y-1 pl-5 text-xs text-muted-foreground">
+        <ol className="mt-2 list-decimal space-y-1 ps-5 text-xs text-muted-foreground">
           <li>{t('help.step1')}</li>
           <li>{t('help.step2')}</li>
           <li>{t('help.step3')}</li>

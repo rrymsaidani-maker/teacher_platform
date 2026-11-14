@@ -155,7 +155,7 @@ const DropzoneContent = ({ className }: { className?: string }) => {
         )
       })}
       {exceedMaxFiles && (
-        <p className="text-sm text-left mt-2 text-destructive">
+        <p className="text-sm text-start mt-2 text-destructive">
           You may upload only up to {maxFiles} files, please remove {files.length - maxFiles} file
           {files.length - maxFiles > 1 ? 's' : ''}.
         </p>
@@ -169,7 +169,7 @@ const DropzoneContent = ({ className }: { className?: string }) => {
           >
             {loading ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="me-2 h-4 w-4 animate-spin" />
                 Uploading...
               </>
             ) : (

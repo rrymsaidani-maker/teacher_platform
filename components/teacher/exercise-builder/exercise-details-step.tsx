@@ -133,7 +133,7 @@ export function ExerciseDetailsStep() {
           {/* Difficulty */}
           <div className="rounded-xl border bg-card p-4 transition-shadow hover:shadow-sm">
             <Label className="mb-2 block text-xs font-medium text-muted-foreground">
-              <IconFlame className="mr-1 inline h-3 w-3" />
+              <IconFlame className="me-1 inline h-3 w-3" />
               {t('difficultyLabel')}
             </Label>
             <div className="flex gap-2">
@@ -158,7 +158,7 @@ export function ExerciseDetailsStep() {
           {/* Time Limit */}
           <div className="rounded-xl border bg-card p-4 transition-shadow hover:shadow-sm">
             <Label className="mb-2 block text-xs font-medium text-muted-foreground">
-              <IconClock className="mr-1 inline h-3 w-3" />
+              <IconClock className="me-1 inline h-3 w-3" />
               {t('timeLimitLabel')}
             </Label>
             <div className="flex items-center gap-2">

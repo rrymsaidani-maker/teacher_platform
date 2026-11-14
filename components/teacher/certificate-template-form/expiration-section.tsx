@@ -22,7 +22,7 @@ export function ExpirationSection() {
                 </h2>
             </div>
 
-            <div className="space-y-4 pl-[42px]">
+            <div className="space-y-4 ps-[42px]">
                 <div className="flex items-center justify-between p-4 rounded-xl border bg-muted/20">
                     <div className="space-y-0.5">
                         <Label className="text-sm font-medium">{t('enableExpiration')}</Label>

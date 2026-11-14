@@ -33,10 +33,10 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
       {/* Background glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10" aria-hidden="true">
         <div
-          className="absolute top-[-10%] right-[-10%] w-[700px] h-[700px] rounded-full blur-[140px]"
+          className="absolute top-[-10%] end-[-10%] w-[700px] h-[700px] rounded-full blur-[140px]"
           style={{ backgroundColor: `color-mix(in oklch, ${accentColor} 8%, transparent)` }}
         />
-        <div className="absolute bottom-[30%] left-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[30%] start-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
       </div>
 
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -75,7 +75,7 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
                 render={<Link href="/auth/sign-up?next=/join-school" />}
               >
                 {t('join', { name: tenant.name })}
-                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
+                <ArrowRight className="ms-2 w-5 h-5" aria-hidden="true" />
               </Button>
               <Button
                 size="lg"
@@ -164,7 +164,7 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
             className="rounded-[2.5rem] p-12 md:p-16 text-center relative overflow-hidden bg-primary"
           >
             <div
-              className="absolute top-0 right-0 w-80 h-80 bg-primary-foreground/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+              className="absolute top-0 end-0 w-80 h-80 bg-primary-foreground/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
               aria-hidden="true"
             />
             <div className="relative z-10 max-w-2xl mx-auto space-y-6">
@@ -184,7 +184,7 @@ export async function SchoolLandingPage({ tenant, products }: Props) {
                 render={<Link href="/auth/sign-up?next=/join-school" />}
               >
                 {t('ctaButton', { name: tenant.name })}
-                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
+                <ArrowRight className="ms-2 w-5 h-5" aria-hidden="true" />
               </Button>
             </div>
           </div>

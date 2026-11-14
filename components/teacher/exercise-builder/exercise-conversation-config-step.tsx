@@ -181,7 +181,7 @@ export function ExerciseConversationConfigStep() {
           </div>
           <div className="rounded-xl border bg-card p-4">
             <Label htmlFor="conv_max_minutes" className="mb-2 block text-xs font-medium text-muted-foreground">
-              <IconClock className="mr-1 inline h-3 w-3" />
+              <IconClock className="me-1 inline h-3 w-3" />
               {t('conversationMaxMinutes')}
             </Label>
             <Input

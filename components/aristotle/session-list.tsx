@@ -63,7 +63,7 @@ export function SessionList({ courseId }: SessionListProps) {
             {sessions.map((session) => (
                 <div
                     key={session.session_id}
-                    className="rounded-lg p-2.5 text-left hover:bg-muted/50 transition-colors"
+                    className="rounded-lg p-2.5 text-start hover:bg-muted/50 transition-colors"
                 >
                     <p className="text-[11px] text-muted-foreground mb-0.5">
                         {new Date(session.started_at).toLocaleDateString(undefined, {

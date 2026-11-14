@@ -257,7 +257,7 @@ export function VersionHistorySheet({ contentType, contentId, onRestore, current
           {/* Main layout: sidebar + content */}
           <div className="flex flex-1 min-h-0">
             {/* Timeline sidebar */}
-            <div className="w-72 shrink-0 border-r flex flex-col bg-muted/20">
+            <div className="w-72 shrink-0 border-e flex flex-col bg-muted/20">
               <ScrollArea className="flex-1">
                 {loading ? (
                   <div className="flex flex-col items-center justify-center py-20 gap-3">
@@ -295,7 +295,7 @@ export function VersionHistorySheet({ contentType, contentId, onRestore, current
                                 key={v.id}
                                 onClick={() => setSelectedVersion(v)}
                                 className={cn(
-                                  'w-full text-left px-3 py-3 rounded-lg transition-all outline-none',
+                                  'w-full text-start px-3 py-3 rounded-lg transition-all outline-none',
                                   'focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset',
                                   isSelected
                                     ? 'bg-primary text-primary-foreground shadow-sm'
@@ -367,7 +367,7 @@ export function VersionHistorySheet({ contentType, contentId, onRestore, current
                       {formatDate(selectedVersion.created_at, locale)}
                     </span>
                     {viewMode === 'diff' && (
-                      <span className="text-xs text-muted-foreground ml-auto">
+                      <span className="text-xs text-muted-foreground ms-auto">
                         {t('comparingWithCurrent')}
                       </span>
                     )}

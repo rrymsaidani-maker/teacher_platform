@@ -399,7 +399,7 @@ function InnerLessonAIChat({
 
                 {/* Completion Banner - Positioned at bottom, doesn't block messages */}
                 {isCompleted && (
-                    <div className="absolute bottom-0 left-0 right-0 z-50 p-2 sm:p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-gradient-to-t from-background via-background to-transparent pointer-events-none">
+                    <div className="absolute bottom-0 start-0 end-0 z-50 p-2 sm:p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-gradient-to-t from-background via-background to-transparent pointer-events-none">
                         <div className="pointer-events-auto bg-success rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 space-y-3 sm:space-y-4 animate-in slide-in-from-bottom duration-500 motion-reduce:animate-none">
                             {/* Success Header */}
                             <div className="flex items-center gap-3 sm:gap-4">

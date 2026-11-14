@@ -286,7 +286,7 @@ export function TableFacetedFilterContent({
   const t = useTranslations("dataTable")
   return (
     <Command>
-      <CommandInput placeholder={title} className="pl-2" />
+      <CommandInput placeholder={title} className="ps-2" />
       <CommandList className="max-h-full">
         <CommandEmpty>{t("noResults")}</CommandEmpty>
         <CommandGroup className="max-h-75 overflow-x-hidden overflow-y-auto">
@@ -301,7 +301,7 @@ export function TableFacetedFilterContent({
               >
                 <div
                   className={cn(
-                    "mr-2 flex size-4 items-center justify-center rounded-sm border border-primary dark:border-muted-foreground",
+                    "me-2 flex size-4 items-center justify-center rounded-sm border border-primary dark:border-muted-foreground",
                     isSelected
                       ? "bg-primary text-primary-foreground dark:border-primary"
                       : "opacity-50 [&_svg]:invisible",
@@ -309,10 +309,10 @@ export function TableFacetedFilterContent({
                 >
                   <Check className="size-4" />
                 </div>
-                {option.icon && <option.icon className="mr-2 size-4" />}
+                {option.icon && <option.icon className="me-2 size-4" />}
                 <span className="truncate">{option.label}</span>
                 {option.count !== undefined && (
-                  <span className="ml-auto font-mono text-xs">
+                  <span className="ms-auto font-mono text-xs">
                     {option.count}
                   </span>
                 )}

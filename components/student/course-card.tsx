@@ -48,7 +48,7 @@ export function CourseCard({ course, progress }: CourseCardProps) {
             <CardTitle className="line-clamp-2 text-lg">{course.title}</CardTitle>
             {progressPercent === 100 && (
               <Badge variant="default" className="shrink-0 bg-success text-success-foreground">
-                <IconCheck className="mr-1 h-3 w-3" />
+                <IconCheck className="me-1 h-3 w-3" />
                 Done
               </Badge>
             )}

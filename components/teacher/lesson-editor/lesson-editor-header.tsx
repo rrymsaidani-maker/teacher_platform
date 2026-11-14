@@ -47,15 +47,15 @@ export function LessonEditorHeader() {
             <span className="font-medium text-foreground truncate">
               {initialData ? t('editTitle') : t('createTitle')}
             </span>
-            <span className="ml-2 shrink-0">
+            <span className="ms-2 shrink-0">
               <ContentStatusBadge
                 status={status}
                 label={status === 'published' ? t('statusPublished') : status === 'archived' ? t('statusArchived') : t('statusDraft')}
               />
             </span>
             {formData.publish_at && (
-              <Badge variant="secondary" className="ml-2 text-[10px] shrink-0">
-                <IconCalendarEvent className="mr-1 h-3 w-3" />
+              <Badge variant="secondary" className="ms-2 text-[10px] shrink-0">
+                <IconCalendarEvent className="me-1 h-3 w-3" />
                 {t('scheduledFor', { date: new Date(formData.publish_at).toLocaleDateString() })}
               </Badge>
             )}

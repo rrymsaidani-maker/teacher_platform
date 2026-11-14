@@ -143,7 +143,7 @@ export function CourseForm({ categories, initialData }: CourseFormProps) {
           <div className="flex gap-3">
             <Link href="/dashboard/teacher" className="flex-1">
               <Button type="button" variant="outline" className="w-full">
-                <IconArrowLeft className="mr-2 h-4 w-4" />
+                <IconArrowLeft className="me-2 h-4 w-4" />
                 {t('actions.cancel')}
               </Button>
             </Link>
@@ -254,7 +254,7 @@ export function CourseForm({ categories, initialData }: CourseFormProps) {
                   type="button"
                   variant="destructive"
                   size="sm"
-                  className="absolute right-2 top-2 h-7 w-7 p-0"
+                  className="absolute end-2 top-2 h-7 w-7 p-0"
                   aria-label={t('removeImage')}
                   onClick={() => setFormData({ ...formData, thumbnail_url: '' })}
                 >
@@ -267,7 +267,7 @@ export function CourseForm({ categories, initialData }: CourseFormProps) {
                 onSelect={(url) => setFormData((prev) => ({ ...prev, thumbnail_url: url }))}
                 trigger={
                   <Button type="button" variant="outline">
-                    <IconUpload className="mr-2 h-4 w-4" />
+                    <IconUpload className="me-2 h-4 w-4" />
                     {t('uploadImage')}
                   </Button>
                 }
@@ -354,12 +354,12 @@ export function CourseForm({ categories, initialData }: CourseFormProps) {
           <div className="flex gap-3 pt-4">
             <Link href="/dashboard/teacher" className="flex-1">
               <Button type="button" variant="outline" className="w-full" disabled={loading}>
-                <IconArrowLeft className="mr-2 h-4 w-4" />
+                <IconArrowLeft className="me-2 h-4 w-4" />
                 {t('actions.cancel')}
               </Button>
             </Link>
             <Button type="submit" className="flex-1" disabled={loading}>
-              {loading && <IconLoader2 className="mr-2 h-4 w-4 motion-safe:animate-spin" />}
+              {loading && <IconLoader2 className="me-2 h-4 w-4 motion-safe:animate-spin" />}
               {initialData ? t('actions.update') : t('actions.create')}
             </Button>
           </div>

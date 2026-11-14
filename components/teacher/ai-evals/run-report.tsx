@@ -218,7 +218,7 @@ export function ResultsTable({ results, threshold }: { results: RunResult[]; thr
                       type="button"
                       aria-expanded={expanded}
                       onClick={() => setOpen(expanded ? null : r.id)}
-                      className="flex items-center gap-1.5 rounded text-left text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
+                      className="flex items-center gap-1.5 rounded text-start text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring/30"
                     >
                       <Chevron aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
                       <span className="truncate">{r.case_name}</span>

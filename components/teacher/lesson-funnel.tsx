@@ -44,7 +44,7 @@ export function LessonFunnel({
         const sharp = prev > 0 && drop / prev >= 1 / 3 && drop >= 2
         return (
           <li key={step.id} className="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-x-3 text-sm">
-            <span className="text-right tabular-nums text-muted-foreground">
+            <span className="text-end tabular-nums text-muted-foreground">
               {step.sequence ?? i + 1}
             </span>
             <div className="min-w-0">
@@ -70,7 +70,7 @@ export function LessonFunnel({
             </div>
             <span
               className={cn(
-                'w-10 text-right text-xs tabular-nums',
+                'w-10 text-end text-xs tabular-nums',
                 sharp ? 'font-semibold text-warning' : 'text-muted-foreground'
               )}
               aria-hidden={drop === 0}

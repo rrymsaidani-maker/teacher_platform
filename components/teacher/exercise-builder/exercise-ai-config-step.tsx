@@ -50,7 +50,7 @@ export function ExerciseAIConfigStep() {
             variant="outline"
             className="text-[10px] border-success/30 bg-success/10 text-success"
           >
-            <IconEye className="mr-1 h-2.5 w-2.5" />
+            <IconEye className="me-1 h-2.5 w-2.5" />
             {t('visibleToStudents')}
           </Badge>
         </div>

@@ -70,7 +70,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
       <div>
         <PopoverTrigger>
           <Button variant="ghost">
-            <IconPlus className="mr-2" /> Insertar componente
+            <IconPlus className="me-2" /> Insertar componente
           </Button>
         </PopoverTrigger>
       </div>
@@ -88,7 +88,7 @@ export function LessonComponentPicker({ onInsert }: PickerProps) {
                   }
                   onInsert(c.snippet)
                 }}
-                className="text-sm text-left rounded px-2 py-1 hover:bg-muted"
+                className="text-sm text-start rounded px-2 py-1 hover:bg-muted"
               >
                 {tr('picker.' + c.labelKey)}
               </button>

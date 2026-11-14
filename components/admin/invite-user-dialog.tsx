@@ -188,7 +188,7 @@ export function InviteUserDialog({ joinUrl }: InviteUserDialogProps) {
             </p>
 
             {!result.emailSent && (
-              <div className="mt-4 flex items-center gap-2 text-left">
+              <div className="mt-4 flex items-center gap-2 text-start">
                 <Input
                   readOnly
                   value={result.joinUrl}

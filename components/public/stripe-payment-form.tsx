@@ -122,7 +122,7 @@ export function StripePaymentForm({
                 {hasManualFallback && (
                     <Link href={manualHref} className="block">
                         <Button variant="outline" className="w-full">
-                            <IconBuildingBank className="mr-2 h-4 w-4" />
+                            <IconBuildingBank className="me-2 h-4 w-4" />
                             {t('stripe.tryManual')}
                         </Button>
                     </Link>
@@ -219,7 +219,7 @@ function StripeCheckoutInner({
                 onClick={handleSubmit}
                 disabled={!stripe || !elements || submitting}
             >
-                {submitting && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {submitting && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
                 {submitting
                     ? t('payment.processing')
                     : t('stripe.payButton', { price: displayPrice })}

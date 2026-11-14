@@ -17,7 +17,7 @@ export function PreviewBanner({ status }: Props) {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border"
+      className="fixed top-0 start-0 end-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border"
       role="banner"
       aria-label={tr('forms.previewMode')}
     >

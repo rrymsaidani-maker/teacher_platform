@@ -43,7 +43,7 @@ export function LessonCheckpoint({ checkpointId }: LessonCheckpointProps) {
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left"
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-start"
         aria-expanded={expanded}
       >
         <div className="flex items-center gap-2 min-w-0">

@@ -151,14 +151,14 @@ export function TableSearchFilter<TData extends RowData>({
       role="search"
     >
       <Search
-        className="absolute left-3 h-4 w-4 text-muted-foreground"
+        className="absolute start-3 h-4 w-4 text-muted-foreground"
         aria-hidden="true"
       />
       <Input
         placeholder={placeholder ?? t("search")}
         value={currentValue}
         onChange={handleChange}
-        className="pr-9 pl-9"
+        className="pe-9 ps-9"
         aria-label={t("searchTable")}
       />
       {hasValue && showClearButton && (
@@ -166,7 +166,7 @@ export function TableSearchFilter<TData extends RowData>({
           variant="ghost"
           size="sm"
           onClick={handleClear}
-          className="absolute right-1 h-7 w-7 p-0 hover:bg-muted"
+          className="absolute end-1 h-7 w-7 p-0 hover:bg-muted"
           type="button"
           aria-label={t("clearSearch")}
         >

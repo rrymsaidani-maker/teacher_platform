@@ -66,7 +66,7 @@ function ClosedPicker({
             disabled={disabled}
             onClick={() => onChange(selected ? '' : choice.id)}
             className={cn(
-              'inline-flex max-w-full items-center gap-1.5 rounded-lg border px-3 py-1.5 text-left text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/30 disabled:opacity-50',
+              'inline-flex max-w-full items-center gap-1.5 rounded-lg border px-3 py-1.5 text-start text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/30 disabled:opacity-50',
               selected ? 'border-brand-text bg-brand-tint font-medium text-brand-text' : 'bg-background text-muted-foreground hover:text-foreground'
             )}
           >

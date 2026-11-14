@@ -65,7 +65,7 @@ export function ExerciseAudioConfigStep() {
         <Label htmlFor="topic_prompt" className="mb-2 flex items-center gap-2 text-sm font-medium">
           {t('topicPromptLabel')}
           <Badge variant="outline" className="text-[10px] border-success/30 bg-success/10 text-success">
-            <IconEye className="mr-1 h-2.5 w-2.5" />
+            <IconEye className="me-1 h-2.5 w-2.5" />
             {t('visibleToStudents')}
           </Badge>
         </Label>
@@ -90,7 +90,7 @@ export function ExerciseAudioConfigStep() {
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-xl border bg-card p-4">
             <Label className="mb-2 block text-xs font-medium text-muted-foreground">
-              <IconClock className="mr-1 inline h-3 w-3" />
+              <IconClock className="me-1 inline h-3 w-3" />
               {t('minDurationLabel')}
             </Label>
             <Input
@@ -104,7 +104,7 @@ export function ExerciseAudioConfigStep() {
           </div>
           <div className="rounded-xl border bg-card p-4">
             <Label className="mb-2 block text-xs font-medium text-muted-foreground">
-              <IconClock className="mr-1 inline h-3 w-3" />
+              <IconClock className="me-1 inline h-3 w-3" />
               {t('maxDurationLabel')}
             </Label>
             <Input
@@ -175,7 +175,7 @@ export function ExerciseAudioConfigStep() {
                 aria-pressed={selected}
                 onClick={() => updateField('speech_rubric_mode', mode)}
                 className={cn(
-                  'rounded-xl border p-4 text-left transition-all',
+                  'rounded-xl border p-4 text-start transition-all',
                   selected
                     ? 'border-primary/30 bg-primary/5'
                     : 'border-transparent bg-muted/40 text-muted-foreground hover:bg-muted'
@@ -314,7 +314,7 @@ export function ExerciseAudioConfigStep() {
               type="button"
               onClick={() => updateField(key, !formData[key])}
               className={cn(
-                'flex items-start gap-3 rounded-xl border p-4 text-left transition-all',
+                'flex items-start gap-3 rounded-xl border p-4 text-start transition-all',
                 formData[key]
                   ? 'border-primary/30 bg-primary/5'
                   : 'border-transparent bg-muted/40 text-muted-foreground hover:bg-muted'

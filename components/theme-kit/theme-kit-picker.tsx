@@ -314,7 +314,7 @@ export function ThemeKitPicker({ stored, customBranding, variant, onContinue, on
               onClick={() => pickTheme(option.id)}
               className={cn(
                 RADIO_CLASS,
-                'flex min-h-15 w-full items-center gap-3 rounded-lg border bg-card px-3 py-2.5 text-left',
+                'flex min-h-15 w-full items-center gap-3 rounded-lg border bg-card px-3 py-2.5 text-start',
                 checked ? 'border-foreground ring-1 ring-foreground' : 'border-border'
               )}
             >

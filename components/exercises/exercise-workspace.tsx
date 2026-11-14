@@ -235,7 +235,7 @@ export default function ExerciseWorkspace({
           ordered around the tab bar; from `lg` up it is the instructions pane. */}
       <aside
         aria-label={t('brief')}
-        className="contents lg:block lg:w-[var(--brief-w)] lg:shrink-0 lg:space-y-8 lg:overflow-y-auto lg:py-6 lg:pr-8"
+        className="contents lg:block lg:w-[var(--brief-w)] lg:shrink-0 lg:space-y-8 lg:overflow-y-auto lg:py-6 lg:pe-8"
       >
         <div className="order-0">{header}</div>
 
@@ -275,7 +275,7 @@ export default function ExerciseWorkspace({
       >
         <span
           className={cn(
-            'absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-border transition-colors',
+            'absolute inset-y-0 start-1/2 w-px -translate-x-1/2 bg-border transition-colors',
             'group-hover:w-0.5 group-hover:bg-foreground/40 group-focus-visible:w-0.5 group-focus-visible:bg-ring',
             dragging && 'w-0.5 bg-foreground/40'
           )}
@@ -285,7 +285,7 @@ export default function ExerciseWorkspace({
       <div
         className={cn(
           'contents lg:block lg:min-w-0 lg:flex-1 lg:overflow-y-auto',
-          fillTask ? 'lg:overflow-hidden' : 'lg:py-6 lg:pl-8'
+          fillTask ? 'lg:overflow-hidden' : 'lg:py-6 lg:ps-8'
         )}
       >
         <div

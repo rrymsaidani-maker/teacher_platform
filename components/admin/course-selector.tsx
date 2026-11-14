@@ -41,13 +41,13 @@ export function CourseSelector({ courses, selectedCourses, onChange }: CourseSel
 
       {/* Search */}
       <div className="relative">
-        <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <IconSearch className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           type="text"
           placeholder={t('search')}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-9"
+          className="ps-9"
         />
       </div>
 

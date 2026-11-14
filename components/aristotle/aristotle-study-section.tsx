@@ -20,7 +20,7 @@ export function AristotleStudySection({ courseId }: AristotleStudySectionProps) 
             <div className="mt-10">
                 <button
                     onClick={() => setIsExpanded(true)}
-                    className="w-full group text-left rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 p-5 transition-colors hover:bg-amber-50 dark:hover:bg-amber-950/30"
+                    className="w-full group text-start rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 p-5 transition-colors hover:bg-amber-50 dark:hover:bg-amber-950/30"
                 >
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">

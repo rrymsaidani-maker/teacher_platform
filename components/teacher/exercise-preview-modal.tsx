@@ -63,7 +63,7 @@ export function ExercisePreviewModal() {
     {error && <span role="alert" className="text-sm text-destructive">{t('invalidDraft')}</span>}
     <Dialog open={Boolean(snapshot)} onOpenChange={(open) => { if (!open) setSnapshot(null) }}>
       <DialogContent className="flex h-[90dvh] max-h-[950px] w-[96vw] max-w-6xl sm:max-w-6xl flex-col gap-0 overflow-hidden p-0">
-        <DialogHeader className="shrink-0 border-b p-4 pr-12 sm:p-6 sm:pr-12">
+        <DialogHeader className="shrink-0 border-b p-4 pe-12 sm:p-6 sm:pe-12">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <DialogTitle>{t('title')}</DialogTitle>
             <Button type="button" variant="outline" size="sm" onClick={openPreview}><IconRefresh aria-hidden="true" />{t('restart')}</Button>

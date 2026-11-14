@@ -228,7 +228,7 @@ export default function NotificationForm({ onSuccess }: NotificationFormProps) {
       {/* Submit Button */}
       <div className="flex justify-end gap-2">
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {isSubmitting && <Loader2 className="me-2 h-4 w-4 animate-spin" />}
           {sendNow ? t('form.submit.send') : t('form.submit.save')}
         </Button>
       </div>

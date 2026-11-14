@@ -215,10 +215,10 @@ export const SchemaDisplayParameters = ({
 
   return (
     <Collapsible className={cn(className)} defaultOpen {...props}>
-      <CollapsibleTrigger className="group flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-muted/50">
+      <CollapsibleTrigger className="group flex w-full items-center gap-2 px-4 py-3 text-start transition-colors hover:bg-muted/50">
         <ChevronRightIcon className="size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-90" />
         <span className="font-medium text-sm">Parameters</span>
-        <Badge className="ml-auto text-xs" variant="secondary">
+        <Badge className="ms-auto text-xs" variant="secondary">
           {parameters?.length}
         </Badge>
       </CollapsibleTrigger>
@@ -246,7 +246,7 @@ export const SchemaDisplayParameter = ({
   className,
   ...props
 }: SchemaDisplayParameterProps) => (
-  <div className={cn("px-4 py-3 pl-10", className)} {...props}>
+  <div className={cn("px-4 py-3 ps-10", className)} {...props}>
     <div className="flex items-center gap-2">
       <span className="font-mono text-sm">{name}</span>
       <Badge className="text-xs" variant="outline">
@@ -283,7 +283,7 @@ export const SchemaDisplayRequest = ({
 
   return (
     <Collapsible className={cn(className)} defaultOpen {...props}>
-      <CollapsibleTrigger className="group flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-muted/50">
+      <CollapsibleTrigger className="group flex w-full items-center gap-2 px-4 py-3 text-start transition-colors hover:bg-muted/50">
         <ChevronRightIcon className="size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-90" />
         <span className="font-medium text-sm">Request Body</span>
       </CollapsibleTrigger>
@@ -310,7 +310,7 @@ export const SchemaDisplayResponse = ({
 
   return (
     <Collapsible className={cn(className)} defaultOpen {...props}>
-      <CollapsibleTrigger className="group flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-muted/50">
+      <CollapsibleTrigger className="group flex w-full items-center gap-2 px-4 py-3 text-start transition-colors hover:bg-muted/50">
         <ChevronRightIcon className="size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-90" />
         <span className="font-medium text-sm">Response</span>
       </CollapsibleTrigger>
@@ -362,10 +362,10 @@ export const SchemaDisplayProperty = ({
       <Collapsible defaultOpen={depth < 2}>
         <CollapsibleTrigger
           className={cn(
-            "group flex w-full items-center gap-2 py-3 text-left transition-colors hover:bg-muted/50",
+            "group flex w-full items-center gap-2 py-3 text-start transition-colors hover:bg-muted/50",
             className
           )}
-          style={{ paddingLeft }}
+          style={{ paddingInlineStart: paddingLeft }}
         >
           <ChevronRightIcon className="size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-90" />
           <span className="font-mono text-sm">{name}</span>
@@ -384,7 +384,7 @@ export const SchemaDisplayProperty = ({
         {description && (
           <p
             className="pb-2 text-muted-foreground text-sm"
-            style={{ paddingLeft: paddingLeft + 24 }}
+            style={{ paddingInlineStart: paddingLeft + 24 }}
           >
             {description}
           </p>
@@ -413,8 +413,8 @@ export const SchemaDisplayProperty = ({
 
   return (
     <div
-      className={cn("py-3 pr-4", className)}
-      style={{ paddingLeft }}
+      className={cn("py-3 pe-4", className)}
+      style={{ paddingInlineStart: paddingLeft }}
       {...props}
     >
       <div className="flex items-center gap-2">
@@ -433,7 +433,7 @@ export const SchemaDisplayProperty = ({
         )}
       </div>
       {description && (
-        <p className="mt-1 pl-6 text-muted-foreground text-sm">{description}</p>
+        <p className="mt-1 ps-6 text-muted-foreground text-sm">{description}</p>
       )}
     </div>
   );

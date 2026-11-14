@@ -151,7 +151,7 @@ export function CertificatePreview({
                 {/* Signatures row — keep: facsimile of the printed PDF's ink,
                     see lib/certificate-generator.ts .footer-rule/.footer-name/.footer-label */}
                 <div className="w-full grid grid-cols-2 gap-8 pt-4 mt-2">
-                    <div className="text-left space-y-1.5">
+                    <div className="text-start space-y-1.5">
                         {signatureImageUrl ? (
                             <img
                                 src={signatureImageUrl}
@@ -167,7 +167,7 @@ export function CertificatePreview({
                             {signatureTitle || t('preview.officialIssuer')}
                         </p>
                     </div>
-                    <div className="text-right space-y-1.5">
+                    <div className="text-end space-y-1.5">
                         <div className="h-px w-full" style={{ backgroundColor: CERTIFICATE_PAPER_INK.footerRule }} />
                         <p className="font-semibold text-sm" style={{ color: CERTIFICATE_PAPER_INK.footerName }}>{mockDate}</p>
                         <p className="text-[10px] uppercase tracking-wider" style={{ color: CERTIFICATE_PAPER_INK.footerLabel }}>{t('preview.issueDate')}</p>
@@ -186,7 +186,7 @@ export function CertificatePreview({
 
                     {designSettings.show_qr_code && (
                         <div className="flex items-center gap-2.5">
-                            <div className="text-right">
+                            <div className="text-end">
                                 <p className="text-[9px] font-mono" style={{ color: CERTIFICATE_PAPER_INK.certId }}>{mockCode}</p>
                             </div>
                             <div
@@ -202,11 +202,11 @@ export function CertificatePreview({
 
             {/* Corner accents */}
             <div
-                className="absolute top-0 right-0 w-24 h-24 -mr-12 -mt-12 rounded-full opacity-[0.06]"
+                className="absolute top-0 end-0 w-24 h-24 -me-12 -mt-12 rounded-full opacity-[0.06]"
                 style={{ backgroundColor: design.secondary }}
             />
             <div
-                className="absolute bottom-0 left-0 w-24 h-24 -ml-12 -mb-12 rounded-full opacity-[0.06]"
+                className="absolute bottom-0 start-0 w-24 h-24 -ms-12 -mb-12 rounded-full opacity-[0.06]"
                 style={{ backgroundColor: design.primary }}
             />
         </div>

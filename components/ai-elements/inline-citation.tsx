@@ -64,7 +64,7 @@ export const InlineCitationCardTrigger = ({
   className,
   ...props
 }: InlineCitationCardTriggerProps) => (
-  <HoverCardTrigger render={<Badge className={cn("ml-1 rounded-full", className)} variant="secondary" {...props} />}>{sources[0] ? (
+  <HoverCardTrigger render={<Badge className={cn("ms-1 rounded-full", className)} variant="secondary" {...props} />}>{sources[0] ? (
     <>
       {new URL(sources[0]).hostname}{" "}
       {sources.length > 1 && `+${sources.length - 1}`}
@@ -121,7 +121,7 @@ export const InlineCitationCarouselItem = ({
   ...props
 }: InlineCitationCarouselItemProps) => (
   <CarouselItem
-    className={cn("w-full space-y-2 p-4 pl-8", className)}
+    className={cn("w-full space-y-2 p-4 ps-8", className)}
     {...props}
   />
 );
@@ -273,7 +273,7 @@ export const InlineCitationQuote = ({
 }: InlineCitationQuoteProps) => (
   <blockquote
     className={cn(
-      "border-muted border-l-2 pl-3 text-muted-foreground text-sm italic",
+      "border-muted border-s-2 ps-3 text-muted-foreground text-sm italic",
       className
     )}
     {...props}

@@ -26,7 +26,7 @@ export function DesignSection() {
                         {t('design')}
                     </h2>
                 </div>
-                <div className="pl-[42px]">
+                <div className="ps-[42px]">
                     <UpgradeNudge feature="certificates" hint="certificatesBasic" compact />
                 </div>
             </div>
@@ -44,7 +44,7 @@ export function DesignSection() {
                 </h2>
             </div>
 
-            <div className="space-y-6 pl-[42px]">
+            <div className="space-y-6 ps-[42px]">
                 {/* Color presets */}
                 <div className="space-y-2.5">
                     <Label className="text-sm font-medium">{t('colorTheme')}</Label>

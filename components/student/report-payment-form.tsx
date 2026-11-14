@@ -101,7 +101,7 @@ export function ReportPaymentForm({ requestId, accounts, currency, initial }: Re
     <div className="space-y-1.5">
       <Label htmlFor={key} className="text-xs font-medium">
         {t(`fields.${key}`)}
-        {required && <span className="ml-0.5 text-destructive">*</span>}
+        {required && <span className="ms-0.5 text-destructive">*</span>}
       </Label>
       <Input
         id={key}

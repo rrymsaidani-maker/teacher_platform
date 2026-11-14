@@ -50,7 +50,7 @@ export function AssetDetailDialog({ asset, onOpenChange, onDelete }: AssetDetail
         {asset && (
           <>
             <DialogHeader>
-              <DialogTitle className="truncate pr-6">{asset.name}</DialogTitle>
+              <DialogTitle className="truncate pe-6">{asset.name}</DialogTitle>
               <DialogDescription>{t(`sources.${asset.source}`)}</DialogDescription>
             </DialogHeader>
 
@@ -114,12 +114,12 @@ export function AssetDetailDialog({ asset, onOpenChange, onDelete }: AssetDetail
 
             <div className="flex flex-wrap justify-between gap-2">
               <Button type="button" variant="destructive" onClick={() => onDelete(asset)}>
-                <IconTrash className="mr-1.5 h-4 w-4" />
+                <IconTrash className="me-1.5 h-4 w-4" />
                 {t('deleteConfirm')}
               </Button>
               <div className="flex gap-2">
                 <Button type="button" variant="outline" onClick={() => void copyUrl()}>
-                  <IconCopy className="mr-1.5 h-4 w-4" />
+                  <IconCopy className="me-1.5 h-4 w-4" />
                   {t('copyUrl')}
                 </Button>
                 <Button
@@ -127,7 +127,7 @@ export function AssetDetailDialog({ asset, onOpenChange, onDelete }: AssetDetail
                   variant="outline"
                   render={<a href={asset.url} target="_blank" rel="noopener noreferrer" />}
                 >
-                  <IconExternalLink className="mr-1.5 h-4 w-4" />
+                  <IconExternalLink className="me-1.5 h-4 w-4" />
                   {t('openOriginal')}
                 </Button>
               </div>

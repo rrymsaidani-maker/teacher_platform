@@ -284,7 +284,7 @@ export function VideoCheckpointMarkers({ courseId, lessonId }: VideoCheckpointMa
 
           <div className="flex gap-2">
             <Button type="button" size="sm" className="flex-1" onClick={handleCreate} disabled={saving}>
-              {saving && <IconLoader2 className="mr-2 h-3.5 w-3.5 animate-spin" />}
+              {saving && <IconLoader2 className="me-2 h-3.5 w-3.5 animate-spin" />}
               {t('save')}
             </Button>
             <Button
@@ -304,7 +304,7 @@ export function VideoCheckpointMarkers({ courseId, lessonId }: VideoCheckpointMa
 
       {!loading && !showCreateForm && (
         <Button type="button" variant="outline" size="sm" onClick={() => setShowCreateForm(true)}>
-          <IconPlus className="mr-2 h-3.5 w-3.5" />
+          <IconPlus className="me-2 h-3.5 w-3.5" />
           {t('addMarker')}
         </Button>
       )}

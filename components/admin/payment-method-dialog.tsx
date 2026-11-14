@@ -96,7 +96,7 @@ export function PaymentMethodDialog({
             <Button
               key={provider}
               variant="outline"
-              className="h-auto w-full min-w-0 justify-start gap-3 whitespace-normal py-3 text-left"
+              className="h-auto w-full min-w-0 justify-start gap-3 whitespace-normal py-3 text-start"
               disabled={loading}
               onClick={() => onSelectProvider(provider)}
             >
@@ -107,19 +107,19 @@ export function PaymentMethodDialog({
               ) : (
                 <IconCreditCard aria-hidden className="size-5 shrink-0 text-primary" />
               )}
-              <span className="min-w-0 flex-1 text-left font-medium">{providerLabel(provider)}</span>
+              <span className="min-w-0 flex-1 text-start font-medium">{providerLabel(provider)}</span>
               {provider === activeProvider && <Badge variant="secondary">{t('currentMethod')}</Badge>}
             </Button>
           ))}
 
           <Button
             variant="outline"
-            className="h-auto w-full min-w-0 justify-start gap-3 whitespace-normal py-3 text-left"
+            className="h-auto w-full min-w-0 justify-start gap-3 whitespace-normal py-3 text-start"
             disabled={loading}
             onClick={onSelectManual}
           >
             <IconBuildingBank aria-hidden className="size-5 shrink-0 text-primary" />
-            <span className="min-w-0 flex-1 text-left">
+            <span className="min-w-0 flex-1 text-start">
               <span className="block font-medium">{t('bankTransfer')}</span>
               <span className="block text-xs text-muted-foreground">{t('bankTransferHint')}</span>
             </span>

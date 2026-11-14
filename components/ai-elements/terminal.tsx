@@ -252,7 +252,7 @@ export const TerminalContent = ({
         <pre className="whitespace-pre-wrap break-words">
           <Ansi>{output}</Ansi>
           {isStreaming && (
-            <span className="ml-0.5 inline-block h-4 w-2 animate-pulse bg-zinc-100" />
+            <span className="ms-0.5 inline-block h-4 w-2 animate-pulse bg-zinc-100" />
           )}
         </pre>
       )}

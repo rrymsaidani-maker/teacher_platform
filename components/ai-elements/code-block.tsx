@@ -236,8 +236,8 @@ const LINE_NUMBER_CLASSES = cn(
   "before:inline-block",
   "before:[counter-increment:line]",
   "before:w-8",
-  "before:mr-4",
-  "before:text-right",
+  "before:me-4",
+  "before:text-end",
   "before:text-muted-foreground/50",
   "before:font-mono",
   "before:select-none"

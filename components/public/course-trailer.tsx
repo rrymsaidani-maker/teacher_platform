@@ -47,7 +47,7 @@ export function CourseTrailer({ title, trailerUrl, thumbnailUrl, category }: Cou
         onClick={() => setOpen(true)}
         data-testid="course-trailer-button"
         aria-label={t('watch')}
-        className="group relative block w-full text-left"
+        className="group relative block w-full text-start"
       >
         <CourseCover title={title} thumbnailUrl={cover} category={category} />
         <span className="absolute inset-0 flex items-center justify-center bg-black/25 transition-colors duration-150 group-hover:bg-black/35">

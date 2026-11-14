@@ -108,7 +108,7 @@ function InnerStudyTab({ courseId }: AristotleStudyTabProps) {
         <div className="flex h-[560px] rounded-xl border overflow-hidden bg-background">
             {/* Sessions sidebar (desktop) */}
             <div className={cn(
-                'hidden md:flex flex-col w-64 border-r shrink-0',
+                'hidden md:flex flex-col w-64 border-e shrink-0',
                 showSessions && 'flex'
             )}>
                 <div className="flex items-center justify-between px-4 py-2.5 border-b">

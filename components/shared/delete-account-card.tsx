@@ -136,7 +136,7 @@ export function DeleteAccountCard() {
                                     <IconAlertTriangle size={16} className="text-destructive" aria-hidden />
                                     {t("blockedTitle")}
                                 </p>
-                                <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
+                                <ul className="list-disc space-y-1 ps-5 text-muted-foreground">
                                     {status.blockers.map((b, i) => (
                                         <li key={i}>
                                             {b.reason === "sole_admin"
@@ -152,7 +152,7 @@ export function DeleteAccountCard() {
 
                         {status.kind === "ready" && (
                             <div className="space-y-2">
-                                <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                                <ul className="list-disc space-y-1 ps-5 text-sm text-muted-foreground">
                                     <li>{t("consequences.removed")}</li>
                                     <li>{t("consequences.kept")}</li>
                                     <li>{t("consequences.final")}</li>

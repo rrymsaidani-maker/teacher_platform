@@ -143,7 +143,7 @@ export function CodeBlock({
                       highlightLines.includes(i + 1) && 'bg-yellow-500/10 -mx-4 px-4'
                     )}
                   >
-                    <span className="mr-4 inline-block w-8 select-none text-right text-gray-600">
+                    <span className="me-4 inline-block w-8 select-none text-end text-gray-600">
                       {i + 1}
                     </span>
                     <span>{line || ' '}</span>

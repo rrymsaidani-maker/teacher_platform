@@ -178,7 +178,7 @@ export function ExamSubmissionsReview({
         header: sortHeader,
         meta: { label: t('table.aiScore'), variant: 'number' },
         cell: ({ row }) => (
-          <div className="text-right">
+          <div className="text-end">
             {row.original.aiScore !== null ? `${Math.round(row.original.aiScore * 10) / 10}%` : '—'}
           </div>
         ),
@@ -189,7 +189,7 @@ export function ExamSubmissionsReview({
         header: sortHeader,
         meta: { label: t('table.finalScore'), variant: 'number' },
         cell: ({ row }) => (
-          <div className="text-right font-bold">
+          <div className="text-end font-bold">
             {row.original.finalScore !== null ? `${Math.round(row.original.finalScore * 10) / 10}%` : '—'}
           </div>
         ),
@@ -200,7 +200,7 @@ export function ExamSubmissionsReview({
         header: sortHeader,
         meta: { label: t('table.submitted'), variant: 'date' },
         cell: ({ row }) => (
-          <div className="text-right text-muted-foreground">
+          <div className="text-end text-muted-foreground">
             {formatDate(row.original.submittedAt, locale)}
           </div>
         ),
@@ -211,7 +211,7 @@ export function ExamSubmissionsReview({
         enableSorting: false,
         enableHiding: false,
         cell: ({ row }) => (
-          <div className="text-right">
+          <div className="text-end">
             <Button
               variant="ghost"
               size="sm"
@@ -219,7 +219,7 @@ export function ExamSubmissionsReview({
               render={<Link href={`/dashboard/teacher/courses/${courseId}/exams/${examId}/submissions/${row.original.id}`} />}
             >
               {t('table.reviewButton')}
-              <IconExternalLink className="ml-2 h-4 w-4" />
+              <IconExternalLink className="ms-2 h-4 w-4" />
             </Button>
           </div>
         ),

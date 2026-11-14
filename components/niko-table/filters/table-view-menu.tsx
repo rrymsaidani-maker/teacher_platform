@@ -114,7 +114,7 @@ const MenuRow = React.memo(function MenuRow<TData extends RowData>({
       </span>
       <Check
         className={cn(
-          "ml-auto size-4 shrink-0",
+          "ms-auto size-4 shrink-0",
           isLocked ? "opacity-50" : isVisible ? "opacity-100" : "opacity-0",
         )}
       />
@@ -184,11 +184,11 @@ export function TableViewMenu<TData extends RowData>({
             role="combobox"
             variant="outline"
             size="sm"
-            className="ml-auto hidden h-8 lg:flex"
+            className="ms-auto hidden h-8 lg:flex"
           >
             <Settings2 />
             View
-            <ChevronsUpDown className="ml-auto opacity-50" />
+            <ChevronsUpDown className="ms-auto opacity-50" />
           </Button>
         )}
       </PopoverTrigger>

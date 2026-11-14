@@ -63,13 +63,13 @@ function Row({
             href={href}
             className={cn(
                 'group flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring',
-                indent && 'ml-5'
+                indent && 'ms-5'
             )}
         >
             <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden />
             <span className="min-w-0 flex-1 truncate">
                 {title}
-                {sub && <span className="ml-1.5 text-xs text-muted-foreground">{sub}</span>}
+                {sub && <span className="ms-1.5 text-xs text-muted-foreground">{sub}</span>}
             </span>
             <StatusBadge status={status} />
         </Link>

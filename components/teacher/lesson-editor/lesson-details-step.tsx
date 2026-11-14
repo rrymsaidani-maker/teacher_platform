@@ -99,7 +99,7 @@ export function LessonDetailsStep() {
               type="button"
               variant="destructive"
               size="sm"
-              className="absolute right-2 top-2 h-7 w-7 p-0"
+              className="absolute end-2 top-2 h-7 w-7 p-0"
               aria-label={t('imageRemove')}
               onClick={() => updateField('image', '')}
             >
@@ -123,9 +123,9 @@ export function LessonDetailsStep() {
             onClick={() => fileInputRef.current?.click()}
           >
             {uploading ? (
-              <IconLoader2 className="mr-2 h-4 w-4 motion-safe:animate-spin" />
+              <IconLoader2 className="me-2 h-4 w-4 motion-safe:animate-spin" />
             ) : (
-              <IconUpload className="mr-2 h-4 w-4" />
+              <IconUpload className="me-2 h-4 w-4" />
             )}
             {uploading ? t('imageUploading') : t('imageUpload')}
           </Button>

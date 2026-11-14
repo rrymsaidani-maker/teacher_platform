@@ -131,10 +131,10 @@ export async function TenantFeePanel({ tenantId, locale }: { tenantId: string; l
                   {overview.balances.map((b) => (
                     <tr key={b.currency} data-currency={b.currency}>
                       <td className={cn(TD, 'font-medium')}>{b.currency}</td>
-                      <td className={cn(TD, 'text-right tabular-nums')}>{formatMoney(b.accrued, b.currency, locale)}</td>
-                      <td className={cn(TD, 'text-right tabular-nums')}>{formatMoney(b.paid, b.currency, locale)}</td>
-                      <td className={cn(TD, 'text-right font-semibold tabular-nums')}>{formatMoney(b.netOwed, b.currency, locale)}</td>
-                      <td className={cn(TD, 'text-right tabular-nums text-muted-foreground')}>
+                      <td className={cn(TD, 'text-end tabular-nums')}>{formatMoney(b.accrued, b.currency, locale)}</td>
+                      <td className={cn(TD, 'text-end tabular-nums')}>{formatMoney(b.paid, b.currency, locale)}</td>
+                      <td className={cn(TD, 'text-end font-semibold tabular-nums')}>{formatMoney(b.netOwed, b.currency, locale)}</td>
+                      <td className={cn(TD, 'text-end tabular-nums text-muted-foreground')}>
                         {b.overpaid > 0 ? formatMoney(b.overpaid, b.currency, locale) : '—'}
                       </td>
                     </tr>
@@ -158,7 +158,7 @@ export async function TenantFeePanel({ tenantId, locale }: { tenantId: string; l
                     <li key={r.requestId} className="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
                       <span>
                         <span className="font-medium tabular-nums">{amount}</span>
-                        <span className="ml-2 text-xs text-muted-foreground">
+                        <span className="ms-2 text-xs text-muted-foreground">
                           {r.status.replace(/_/g, ' ')} · {day(r.createdAt)}
                         </span>
                       </span>
@@ -229,9 +229,9 @@ export async function TenantFeePanel({ tenantId, locale }: { tenantId: string; l
                           <td className={TD}>
                             <StatusDot tone={PAYMENT_TONE[p.status] ?? 'muted'} label={p.status} />
                           </td>
-                          <td className={cn(TD, 'text-right font-medium tabular-nums')}>{amount}</td>
+                          <td className={cn(TD, 'text-end font-medium tabular-nums')}>{amount}</td>
                           <td className={cn(TD, 'max-w-[18rem] text-xs text-muted-foreground')}>{note ?? '—'}</td>
-                          <td className={cn(TD, 'text-right')}>
+                          <td className={cn(TD, 'text-end')}>
                             {p.status === 'succeeded' && <ReverseFeePaymentButton paymentId={p.paymentId} amountLabel={amount} />}
                           </td>
                         </tr>
@@ -260,7 +260,7 @@ export async function TenantFeePanel({ tenantId, locale }: { tenantId: string; l
                       <span className="tabular-nums">{formatMoney(a.amount, a.currency, locale)}</span>
                     )}
                     {a.reason && <span className="min-w-0 text-xs text-muted-foreground">{a.reason}</span>}
-                    <span className="ml-auto text-xs text-muted-foreground tabular-nums">
+                    <span className="ms-auto text-xs text-muted-foreground tabular-nums">
                       {fmt(a.createdAt)}
                       {!a.actorId && ` · ${t('automated')}`}
                     </span>

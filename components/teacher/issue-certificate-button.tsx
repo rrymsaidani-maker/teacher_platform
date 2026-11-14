@@ -90,7 +90,7 @@ export function IssueCertificateButton({
                 aria-label={compact ? label : undefined}
                 title={compact ? label : undefined}
             >
-                <IconCheck className={compact ? 'h-4 w-4' : 'mr-2 h-4 w-4'} />
+                <IconCheck className={compact ? 'h-4 w-4' : 'me-2 h-4 w-4'} />
                 {!compact && label}
             </Button>
         )
@@ -108,9 +108,9 @@ export function IssueCertificateButton({
             title={compact ? label : undefined}
         >
             {isLoading ? (
-                <IconLoader2 className={compact ? 'h-4 w-4 motion-safe:animate-spin' : 'mr-2 h-4 w-4 motion-safe:animate-spin'} />
+                <IconLoader2 className={compact ? 'h-4 w-4 motion-safe:animate-spin' : 'me-2 h-4 w-4 motion-safe:animate-spin'} />
             ) : (
-                <IconAward className={compact ? 'h-4 w-4' : 'mr-2 h-4 w-4'} />
+                <IconAward className={compact ? 'h-4 w-4' : 'me-2 h-4 w-4'} />
             )}
             {!compact && label}
         </Button>

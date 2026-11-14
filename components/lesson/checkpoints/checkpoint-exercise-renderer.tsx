@@ -193,7 +193,7 @@ function ResultAlert({
             ? t('passed')
             : t('notPassed')}
         {showAttempts && (
-          <span className="ml-auto text-xs font-normal text-muted-foreground">
+          <span className="ms-auto text-xs font-normal text-muted-foreground">
             {t('attemptCounter', { attempt: result.attemptNumber, total: maxAttempts })}
           </span>
         )}

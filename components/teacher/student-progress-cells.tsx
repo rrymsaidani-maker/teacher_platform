@@ -107,7 +107,7 @@ export function ProgressCell({
           style={{ width: `${Math.max(0, Math.min(100, value))}%` }}
         />
       </div>
-      <span className="w-9 shrink-0 text-right text-sm font-semibold tabular-nums">{value}%</span>
+      <span className="w-9 shrink-0 text-end text-sm font-semibold tabular-nums">{value}%</span>
     </div>
   )
 }

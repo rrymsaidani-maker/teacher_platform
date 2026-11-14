@@ -71,7 +71,7 @@ export function CourseArchitectWorkspace({ initialCourseId, tenantId, locale }: 
                     </TabsList>
                 </Tabs>
                 {courseId && (
-                    <Link href={`/dashboard/teacher/courses/${courseId}`} className="ml-auto">
+                    <Link href={`/dashboard/teacher/courses/${courseId}`} className="ms-auto">
                         <Button size="sm" variant="outline" className="gap-2">
                             <IconExternalLink className="size-3.5" aria-hidden />
                             {t('openCourse')}

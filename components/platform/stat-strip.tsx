@@ -60,7 +60,7 @@ export function StatStrip({
             data-testid={stat.testId}
             className={cn(
               'group/stat relative flex min-w-0 flex-col gap-1 px-5 py-4',
-              'border-b border-border last:border-b-0 sm:odd:border-r lg:border-b-0 lg:not-last:border-r lg:odd:border-r-0 lg:not-last:odd:border-r',
+              'border-b border-border last:border-b-0 sm:odd:border-e lg:border-b-0 lg:not-last:border-e lg:odd:border-e-0 lg:not-last:odd:border-e',
               stat.href && 'transition-colors hover:bg-muted/40',
             )}
           >

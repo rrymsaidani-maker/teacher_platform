@@ -263,7 +263,7 @@ function EditorShell({ children }: { children?: ReactNode }) {
           onClose={() => chrome.setAiOpen(false)}
           className={cn(
             'relative z-10 w-full shrink-0 sm:w-[22rem]',
-            'max-lg:absolute max-lg:inset-y-0 max-lg:right-0 max-lg:z-20 max-lg:shadow-xl',
+            'max-lg:absolute max-lg:inset-y-0 max-lg:end-0 max-lg:z-20 max-lg:shadow-xl',
             !chrome.aiOpen && 'hidden'
           )}
         />

@@ -94,7 +94,7 @@ export function CoursePopularityChart({ data }: CoursePopularityChartProps) {
                         {t('enrollmentsCount', { count: course.enrollments })}
                       </p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-end">
                       <p className="text-sm font-medium" data-testid={`course-popularity-completion-${course.courseId}`}>
                         {course.completionRate.toFixed(0)}%
                       </p>

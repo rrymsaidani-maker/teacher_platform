@@ -191,7 +191,7 @@ export function ExamAIConfig({ examId, initialConfig }: ExamAIConfigProps) {
         {/* Save Button */}
         <div className="flex justify-end">
           <Button onClick={handleSave} disabled={isSaving}>
-            <IconDeviceFloppy className="mr-2 h-4 w-4" />
+            <IconDeviceFloppy className="me-2 h-4 w-4" />
             {isSaving ? 'Saving...' : 'Save Configuration'}
           </Button>
         </div>

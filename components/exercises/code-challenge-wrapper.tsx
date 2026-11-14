@@ -301,13 +301,13 @@ function ChallengeWorkspace({
 
     return (
         <SandpackLayout className="overflow-hidden rounded-card ring-1 ring-foreground/10 lg:ring-0">
-            <SandpackFileExplorer className="border-r bg-muted/50" />
+            <SandpackFileExplorer className="border-e bg-muted/50" />
             <SandpackCodeEditor
                 showLineNumbers
                 showTabs
                 closableTabs
             />
-            <div className="sp-output-panel flex flex-col border-l bg-background">
+            <div className="sp-output-panel flex flex-col border-s bg-background">
                 <div className="p-3 border-b flex items-center justify-between bg-muted/30 shrink-0">
                     <span className="text-sm font-semibold">{t("output")}</span>
                     <div className="flex items-center gap-2">

@@ -77,7 +77,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
       {/* Header with Create Button */}
       <div className="mb-4 flex justify-end">
         <Button onClick={() => setShowCreateDialog(true)}>
-          <IconPlus className="mr-2 h-4 w-4" />
+          <IconPlus className="me-2 h-4 w-4" />
           {t('table.addCategory')}
         </Button>
       </div>
@@ -90,7 +90,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
               <TableHead>{t('table.headers.name')}</TableHead>
               <TableHead>{t('table.headers.description')}</TableHead>
               <TableHead>{t('table.headers.courses')}</TableHead>
-              <TableHead className="text-right">{t('table.headers.actions')}</TableHead>
+              <TableHead className="text-end">{t('table.headers.actions')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -113,14 +113,14 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                         {t('table.courseCount', { count: courseCount })}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-end">
                       <div className="flex items-center justify-end gap-2">
                         <Button
                           variant="outline"
                           size="sm"
                           onClick={() => setEditingCategory(category)}
                         >
-                          <IconEdit className="mr-1 h-4 w-4" />
+                          <IconEdit className="me-1 h-4 w-4" />
                           {t('table.actions.edit')}
                         </Button>
                         <DropdownMenu>
@@ -140,7 +140,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                               onClick={() => setDeletingCategory(category)}
                               className="text-destructive"
                             >
-                              <IconTrash className="mr-2 h-4 w-4" />
+                              <IconTrash className="me-2 h-4 w-4" />
                               {t('table.actions.delete')}
                             </DropdownMenuItem>
                           </DropdownMenuContent>

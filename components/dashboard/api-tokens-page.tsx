@@ -133,7 +133,7 @@ export default function ApiTokensPage({ tokens, mcpUrl, schools }: ApiTokensPage
           </p>
         </div>
         <Button onClick={() => setCreateOpen(true)}>
-          <IconPlus className="size-4 mr-1.5" />
+          <IconPlus className="size-4 me-1.5" />
           {t('createToken')}
         </Button>
         <Dialog open={createOpen} onOpenChange={(open) => {
@@ -177,7 +177,7 @@ export default function ApiTokensPage({ tokens, mcpUrl, schools }: ApiTokensPage
                       <Button
                         variant="outline"
                         size="icon-sm"
-                        className="absolute top-2 right-2"
+                        className="absolute top-2 end-2"
                         onClick={() => copyToClipboard(configSnippet(revealedToken), 'config')}
                       >
                         {copiedConfig ? <IconCheck className="size-3" /> : <IconCopy className="size-3" />}

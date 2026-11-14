@@ -252,7 +252,7 @@ export function SubmissionReview({
 
           return (
             <Card key={q.id} className={cn(
-              "overflow-hidden border-l-4",
+              "overflow-hidden border-s-4",
               isPendingReview ? "border-l-border" : isCorrect ? "border-l-success" : "border-l-destructive"
             )}>
               <CardHeader className="pb-3">
@@ -264,13 +264,13 @@ export function SubmissionReview({
                       </Badge>
                       {override?.is_overridden && (
                         <Badge variant="outline" className="text-xs">
-                          <IconUser className="mr-1 h-3 w-3" />
+                          <IconUser className="me-1 h-3 w-3" />
                           {t('questions.overriddenBadge')}
                         </Badge>
                       )}
                       {isPendingReview && (
                         <Badge variant="outline" className="text-xs border-warning/30 bg-warning/10 text-warning">
-                          <IconHourglass className="mr-1 h-3 w-3" />
+                          <IconHourglass className="me-1 h-3 w-3" />
                           {t('questions.needsGradingBadge')}
                         </Badge>
                       )}
@@ -279,7 +279,7 @@ export function SubmissionReview({
                       {q.question_text}
                     </CardTitle>
                   </div>
-                  <div className="text-right">
+                  <div className="text-end">
                     <div className="text-2xl font-black">
                       {override?.points_earned ?? 0}/{q.points_possible}
                     </div>
@@ -374,7 +374,7 @@ export function SubmissionReview({
                       <div className="flex-1">
                         <Label>{t('teacherOverride.statusLabel')}</Label>
                         <div className="flex items-center h-10 border rounded px-3 bg-background">
-                          <span className="text-sm font-medium mr-auto">{isCorrect ? t('teacherOverride.correctStatus') : t('teacherOverride.incorrectStatus')}</span>
+                          <span className="text-sm font-medium me-auto">{isCorrect ? t('teacherOverride.correctStatus') : t('teacherOverride.incorrectStatus')}</span>
                         </div>
                       </div>
                     </div>
@@ -388,7 +388,7 @@ export function SubmissionReview({
                         className={cn(override?.is_correct && "bg-success text-success-foreground hover:bg-success/90")}
                         onClick={() => updateQuestionOverride(q.id, { is_correct: true })}
                       >
-                        <IconCheck className="mr-1 h-4 w-4" /> {t('teacherOverride.correctButton')}
+                        <IconCheck className="me-1 h-4 w-4" /> {t('teacherOverride.correctButton')}
                       </Button>
                       <Button
                         type="button"
@@ -397,7 +397,7 @@ export function SubmissionReview({
                         className={cn(!override?.is_correct && "bg-destructive text-destructive-foreground hover:bg-destructive/90")}
                         onClick={() => updateQuestionOverride(q.id, { is_correct: false })}
                       >
-                        <IconX className="mr-1 h-4 w-4" /> {t('teacherOverride.incorrectButton')}
+                        <IconX className="me-1 h-4 w-4" /> {t('teacherOverride.incorrectButton')}
                       </Button>
                     </div>
 
@@ -435,7 +435,7 @@ export function SubmissionReview({
                       onClick={() => setEditingQuestionId(q.id)}
                       className="shrink-0"
                     >
-                      <IconPencil className="h-4 w-4 mr-1" />
+                      <IconPencil className="h-4 w-4 me-1" />
                       {isFreeText && isPendingReview ? t('teacherOverride.gradeButton') : t('teacherOverride.overrideButton')}
                     </Button>
                   </div>
@@ -475,7 +475,7 @@ export function SubmissionReview({
               disabled={loading}
               className="px-8 shadow-lg shadow-primary/20"
             >
-              {loading && <IconLoader2 className="mr-2 h-4 w-4 motion-safe:animate-spin" />}
+              {loading && <IconLoader2 className="me-2 h-4 w-4 motion-safe:animate-spin" />}
               {t('finalReview.saveReviewButton')}
             </Button>
           </div>

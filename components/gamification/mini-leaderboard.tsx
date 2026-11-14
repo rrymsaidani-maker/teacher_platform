@@ -115,7 +115,7 @@ export function MiniLeaderboard() {
                                 </p>
                             </div>
 
-                            <div className="text-right">
+                            <div className="text-end">
                                 <p className="text-xs font-black text-foreground">
                                     {user.xp.toLocaleString()}
                                 </p>

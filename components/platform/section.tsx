@@ -45,6 +45,6 @@ export function PlatformPanel({ className, ...props }: React.HTMLAttributes<HTML
 }
 
 /** Shared `<th>` styling so every table on the panel has the same header voice. */
-export const TH = 'px-4 py-2.5 text-left text-[11px] font-medium uppercase tracking-wider text-muted-foreground whitespace-nowrap'
-export const TH_RIGHT = `${TH} text-right`
+export const TH = 'px-4 py-2.5 text-start text-[11px] font-medium uppercase tracking-wider text-muted-foreground whitespace-nowrap'
+export const TH_RIGHT = `${TH} text-end`
 export const TD = 'px-4 py-3 align-middle'
