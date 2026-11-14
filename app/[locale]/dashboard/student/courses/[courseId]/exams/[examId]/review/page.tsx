@@ -139,7 +139,7 @@ export default async function ExamReviewPage({ params }: PageProps) {
             <div className="h-16 w-px bg-border" />
             <div className="text-center">
               <div className="flex items-center text-sm text-muted-foreground">
-                <IconClock className="mr-1 h-4 w-4" />
+                <IconClock className="me-1 h-4 w-4" />
                 Submitted
               </div>
               <p className="text-sm">
@@ -184,9 +184,9 @@ export default async function ExamReviewPage({ params }: PageProps) {
                   {isCorrect !== null && isCorrect !== undefined && (
                     <Badge variant={isCorrect ? 'default' : 'destructive'}>
                       {isCorrect ? (
-                        <><IconCheck className="mr-1 h-3 w-3" /> Correct</>
+                        <><IconCheck className="me-1 h-3 w-3" /> Correct</>
                       ) : (
-                        <><IconX className="mr-1 h-3 w-3" /> Incorrect</>
+                        <><IconX className="me-1 h-3 w-3" /> Incorrect</>
                       )}
                     </Badge>
                   )}
@@ -261,7 +261,7 @@ export default async function ExamReviewPage({ params }: PageProps) {
 
                 {/* AI Feedback for this question */}
                 {answer?.feedback && (
-                  <div className="mt-4 rounded-lg border-l-4 border-primary bg-primary/5 p-3">
+                  <div className="mt-4 rounded-lg border-s-4 border-primary bg-primary/5 p-3">
                     <p className="text-sm font-medium text-brand-text mb-1">AI Feedback</p>
                     <p className="text-sm text-muted-foreground">{answer.feedback}</p>
                   </div>

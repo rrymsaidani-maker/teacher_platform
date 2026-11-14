@@ -143,20 +143,20 @@ export default async function CoursePreviewPage({ params }: PageProps) {
                 {firstLesson && (
                   <Link href={`/dashboard/teacher/courses/${courseId}/preview/lessons/${firstLesson.id}`} className="flex-1">
                     <Button size="lg" className="w-full h-12 md:h-14 text-lg font-bold shadow-md hover:shadow-lg transition-all">
-                      <IconPlayerPlay className="mr-2 h-6 w-6 fill-current" />
+                      <IconPlayerPlay className="me-2 h-6 w-6 fill-current" />
                       {t('startNow')}
                     </Button>
                   </Link>
                 )}
                 {exerciseCount > 0 && (
                   <Button variant="outline" size="lg" className="flex-1 h-12 md:h-14 text-lg font-bold border-2 cursor-default opacity-70" disabled>
-                    <IconBarbell className="mr-2 h-6 w-6" />
+                    <IconBarbell className="me-2 h-6 w-6" />
                     {t('exercises', { count: exerciseCount })}
                   </Button>
                 )}
                 {examCount > 0 && (
                   <Button variant="outline" size="lg" className="flex-1 h-12 md:h-14 text-lg font-bold border-2 cursor-default opacity-70" disabled>
-                    <IconFileText className="mr-2 h-6 w-6" />
+                    <IconFileText className="me-2 h-6 w-6" />
                     {t('exams', { count: examCount })}
                   </Button>
                 )}

@@ -179,7 +179,7 @@ export default async function CourseAnalyticsPage({ params, searchParams }: Page
             <AlertTitle>{t('warningsTitle')}</AlertTitle>
             <AlertDescription>
               <p>{t('warningsDesc')}</p>
-              <ul className="mt-1 list-disc pl-4">
+              <ul className="mt-1 list-disc ps-4">
                 {warnings.map((w) => (
                   <li key={w}>{w}</li>
                 ))}
@@ -206,7 +206,7 @@ export default async function CourseAnalyticsPage({ params, searchParams }: Page
               <>
                 {mislabeled.length > 0 && (
                   <p className="mb-4 text-sm">
-                    <Badge variant="destructive" className="mr-2">
+                    <Badge variant="destructive" className="me-2">
                       {mislabeled.length}
                     </Badge>
                     {t('calibration.mismatchSummary', { count: mislabeled.length })}

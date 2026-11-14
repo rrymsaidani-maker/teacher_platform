@@ -46,7 +46,7 @@ export default async function Loading() {
       </main>
 
       {/* Sidebar */}
-      <div className="hidden md:flex h-full w-72 shrink-0 border-l bg-card/50 flex-col gap-3 p-4">
+      <div className="hidden md:flex h-full w-72 shrink-0 border-s bg-card/50 flex-col gap-3 p-4">
         <Skeleton className="h-5 w-40" />
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="flex items-center gap-3">

@@ -252,16 +252,16 @@ export default async function CertificatesPage({ params }: PageProps) {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b bg-muted/30">
-                        <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        <th className="px-4 py-3 text-start text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                           {t('certificates.issued.table.student')}
                         </th>
-                        <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        <th className="px-4 py-3 text-start text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                           {t('certificates.issued.table.date')}
                         </th>
-                        <th className="px-4 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        <th className="px-4 py-3 text-start text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                           {t('certificates.issued.table.code')}
                         </th>
-                        <th className="px-4 py-3 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        <th className="px-4 py-3 text-end text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                           {t('certificates.issued.table.actions')}
                         </th>
                       </tr>
@@ -293,7 +293,7 @@ export default async function CertificatesPage({ params }: PageProps) {
                                 {cert.verification_code}
                               </code>
                             </td>
-                            <td className="px-4 py-3 text-right">
+                            <td className="px-4 py-3 text-end">
                               <div className="flex items-center justify-end gap-1">
                                 {cert.pdf_url && (
                                   <a href={cert.pdf_url} target="_blank" rel="noopener noreferrer" aria-label={t('certificates.issued.view')}>

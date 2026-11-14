@@ -67,7 +67,7 @@ export default async function AccessSuspendedPage() {
           </p>
         </div>
 
-        <Card className="w-full text-left">
+        <Card className="w-full text-start">
           <CardContent className="space-y-2 py-6">
             <p className="text-sm font-medium">{t('whatNowTitle')}</p>
             <p className="text-muted-foreground text-sm text-pretty">{t('whatNowBody')}</p>

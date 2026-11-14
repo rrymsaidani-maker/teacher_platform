@@ -40,7 +40,7 @@ export async function BankAccountsTable({ accounts, locale }: { accounts: Platfo
                   <StatusDot tone={a.isActive ? 'ok' : 'muted'} label={a.isActive ? t('active') : t('inactive')} />
                 </td>
                 <td className={`${TD} whitespace-nowrap text-xs text-muted-foreground`}>{fmt(a.updatedAt)}</td>
-                <td className={`${TD} text-right`}>
+                <td className={`${TD} text-end`}>
                   <div className="flex justify-end gap-2">
                     <EditBankAccountDialog account={a} />
                     <BankAccountActiveButton id={a.id} active={a.isActive} />

@@ -57,9 +57,9 @@ export function StudentProofUpload({ requestId }: StudentProofUploadProps) {
         disabled={uploading}
       >
         {uploading ? (
-          <IconLoader2 className="mr-1 h-3 w-3 animate-spin" />
+          <IconLoader2 className="me-1 h-3 w-3 animate-spin" />
         ) : (
-          <IconUpload className="mr-1 h-3 w-3" />
+          <IconUpload className="me-1 h-3 w-3" />
         )}
         {uploading ? t('uploading') : t('uploadProof')}
       </Button>

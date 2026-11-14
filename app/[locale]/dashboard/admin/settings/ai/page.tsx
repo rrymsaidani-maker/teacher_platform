@@ -70,7 +70,7 @@ export default async function AiSettingsPage() {
             <IconSparkles aria-hidden />
             <AlertTitle>{t('setup.title')}</AlertTitle>
             <AlertDescription>
-              <ol className="list-decimal space-y-0.5 pl-4">
+              <ol className="list-decimal space-y-0.5 ps-4">
                 <li>{t('setup.step1')}</li>
                 <li>{t('setup.step2')}</li>
               </ol>

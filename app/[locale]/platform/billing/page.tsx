@@ -185,7 +185,7 @@ export default async function PlatformBillingPage({
                         </>
                       )}
                     </td>
-                    <td className={cn(TD, 'text-right font-medium tabular-nums')}>
+                    <td className={cn(TD, 'text-end font-medium tabular-nums')}>
                       {fmt(req.amount)}
                       {priceDrifted && (
                         <span
@@ -236,7 +236,7 @@ export default async function PlatformBillingPage({
                         <span className="text-xs text-muted-foreground">None attached</span>
                       )}
                     </td>
-                    <td className={cn(TD, 'text-right')}>
+                    <td className={cn(TD, 'text-end')}>
                       {isOpen && <BillingActions requestId={req.request_id} status={req.status} />}
                     </td>
                   </tr>

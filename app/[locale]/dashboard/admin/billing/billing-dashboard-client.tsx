@@ -264,7 +264,7 @@ export function BillingDashboardClient({ status, paymentRequests }: BillingDashb
                 onClick={handleRenewal}
                 disabled={renewalLoading || hasPendingRenewal}
               >
-                <IconRefresh className="mr-2 h-4 w-4" />
+                <IconRefresh className="me-2 h-4 w-4" />
                 {hasPendingRenewal ? 'Renewal Pending' : renewalLoading ? 'Requesting...' : 'Renew via Bank Transfer'}
               </Button>
               <Button
@@ -272,7 +272,7 @@ export function BillingDashboardClient({ status, paymentRequests }: BillingDashb
                 onClick={handleSwitchToStripe}
                 disabled={switchLoading}
               >
-                <IconCreditCard className="mr-2 h-4 w-4" />
+                <IconCreditCard className="me-2 h-4 w-4" />
                 {switchLoading ? 'Redirecting...' : 'Switch to Stripe'}
               </Button>
             </div>
@@ -364,7 +364,7 @@ export function BillingDashboardClient({ status, paymentRequests }: BillingDashb
       {status.canUseCustomerPortal && (
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" onClick={handleManageBilling} disabled={portalLoading}>
-            <IconExternalLink className="mr-2 h-4 w-4" />
+            <IconExternalLink className="me-2 h-4 w-4" />
             {portalLoading ? 'Opening...' : 'View Invoices'}
           </Button>
         </div>
@@ -383,7 +383,7 @@ export function BillingDashboardClient({ status, paymentRequests }: BillingDashb
           <AlertDialogFooter>
             <AlertDialogCancel disabled={cancelLoading}>{t('cancelKeep')}</AlertDialogCancel>
             <Button variant="destructive" onClick={handleCancel} disabled={cancelLoading}>
-              {cancelLoading && <IconLoader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {cancelLoading && <IconLoader2 className="me-2 h-4 w-4 animate-spin" />}
               {t('cancelConfirmAction')}
             </Button>
           </AlertDialogFooter>

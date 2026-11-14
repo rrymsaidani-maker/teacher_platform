@@ -6,7 +6,7 @@ function TableCard({ rows, cols }: { rows: number; cols: number }) {
     <div className="rounded-xl border">
       <div className="flex items-center gap-4 border-b bg-muted/20 px-4 py-3">
         {Array.from({ length: cols }).map((_, i) => (
-          <Skeleton key={i} className={i === cols - 1 ? 'ml-auto h-3 w-14' : 'h-3 w-20'} />
+          <Skeleton key={i} className={i === cols - 1 ? 'ms-auto h-3 w-14' : 'h-3 w-20'} />
         ))}
       </div>
       <div className="divide-y">
@@ -15,7 +15,7 @@ function TableCard({ rows, cols }: { rows: number; cols: number }) {
             <Skeleton className="h-4 w-32" />
             <Skeleton className="hidden h-4 w-20 sm:block" />
             <Skeleton className="h-5 w-16 rounded-full" />
-            <Skeleton className="ml-auto h-4 w-16" />
+            <Skeleton className="ms-auto h-4 w-16" />
           </div>
         ))}
       </div>

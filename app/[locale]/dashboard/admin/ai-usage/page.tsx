@@ -173,10 +173,10 @@ export default async function AiUsagePage({
               <TableHeader>
                 <TableRow>
                   <TableHead>{t('byUser.user')}</TableHead>
-                  <TableHead className="text-right">{t('byUser.calls')}</TableHead>
-                  <TableHead className="text-right">{t('byUser.tokens')}</TableHead>
-                  <TableHead className="text-right">{t('byUser.cost')}</TableHead>
-                  <TableHead className="text-right">{t('byUser.share')}</TableHead>
+                  <TableHead className="text-end">{t('byUser.calls')}</TableHead>
+                  <TableHead className="text-end">{t('byUser.tokens')}</TableHead>
+                  <TableHead className="text-end">{t('byUser.cost')}</TableHead>
+                  <TableHead className="text-end">{t('byUser.share')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -191,13 +191,13 @@ export default async function AiUsagePage({
                         <span className="text-muted-foreground">{t('byUser.unknown')}</span>
                       )}
                     </TableCell>
-                    <TableCell className="text-right tabular-nums">{nf.format(u.calls)}</TableCell>
-                    <TableCell className="text-right tabular-nums">{nf.format(u.inputTokens + u.outputTokens)}</TableCell>
-                    <TableCell className="text-right tabular-nums">
+                    <TableCell className="text-end tabular-nums">{nf.format(u.calls)}</TableCell>
+                    <TableCell className="text-end tabular-nums">{nf.format(u.inputTokens + u.outputTokens)}</TableCell>
+                    <TableCell className="text-end tabular-nums">
                       {money(u.costUsd)}
                       {u.hasUnpriced && '+'}
                     </TableCell>
-                    <TableCell className="text-right tabular-nums text-muted-foreground">
+                    <TableCell className="text-end tabular-nums text-muted-foreground">
                       {totals.costUsd > 0 ? `${Math.round((u.costUsd / totals.costUsd) * 100)}%` : '—'}
                     </TableCell>
                   </TableRow>
@@ -217,18 +217,18 @@ export default async function AiUsagePage({
               <TableHeader>
                 <TableRow>
                   <TableHead>{t('byFeature.feature')}</TableHead>
-                  <TableHead className="text-right">{t('byFeature.calls')}</TableHead>
-                  <TableHead className="text-right">{t('byFeature.tokens')}</TableHead>
-                  <TableHead className="text-right">{t('byFeature.cost')}</TableHead>
+                  <TableHead className="text-end">{t('byFeature.calls')}</TableHead>
+                  <TableHead className="text-end">{t('byFeature.tokens')}</TableHead>
+                  <TableHead className="text-end">{t('byFeature.cost')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {byFeature.map((f) => (
                   <TableRow key={f.feature}>
                     <TableCell className="font-medium">{featureName(f.feature)}</TableCell>
-                    <TableCell className="text-right tabular-nums">{nf.format(f.calls)}</TableCell>
-                    <TableCell className="text-right tabular-nums">{nf.format(f.inputTokens + f.outputTokens)}</TableCell>
-                    <TableCell className="text-right tabular-nums">
+                    <TableCell className="text-end tabular-nums">{nf.format(f.calls)}</TableCell>
+                    <TableCell className="text-end tabular-nums">{nf.format(f.inputTokens + f.outputTokens)}</TableCell>
+                    <TableCell className="text-end tabular-nums">
                       {money(f.costUsd)}
                       {f.hasUnpriced && '+'}
                     </TableCell>

@@ -96,7 +96,7 @@ export default async function PricingPage({
         <div className="min-h-screen bg-background text-foreground font-sans">
             <div className="container py-24 px-4 md:px-6 relative mx-auto">
                 {/* Background Glow */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+                <div className="absolute top-0 start-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
                 {/* Header */}
                 <div className="flex flex-col items-center space-y-6 text-center mb-20 relative z-10">
@@ -110,7 +110,7 @@ export default async function PricingPage({
 
                 {sanitizedPlans.length === 0 ? (
                     <div className="relative max-w-2xl mx-auto px-6 py-16 text-center bg-card border border-border rounded-[2rem] overflow-hidden group">
-                        <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/15 transition-colors" />
+                        <div className="absolute -top-24 -end-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/15 transition-colors" />
                         <div className="relative z-10 flex flex-col items-center gap-6">
                             <div className="w-16 h-16 bg-brand-tint rounded-2xl flex items-center justify-center border border-primary/25 shadow-xl">
                                 <PackageSearch className="w-8 h-8 text-brand-text" />
@@ -125,7 +125,7 @@ export default async function PricingPage({
                                 <Link href="/courses">
                                     <Button className="px-8 h-12 font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
                                         {t('empty.backToCourses')}
-                                        <ArrowRight className="ml-2 w-4 h-4" />
+                                        <ArrowRight className="ms-2 w-4 h-4" />
                                     </Button>
                                 </Link>
                             </div>

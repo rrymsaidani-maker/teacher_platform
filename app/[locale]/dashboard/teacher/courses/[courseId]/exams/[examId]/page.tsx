@@ -74,7 +74,7 @@ export default async function EditExamPage({ params }: PageProps) {
 
   return (
     <PageShell variant="form">
-      <AiSetupGate><AiEditSheet scope={{ type: 'exam', examId: parseInt(examId), courseId: parseInt(courseId) }} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-30 gap-2 bg-background shadow-md" /></AiSetupGate>
+      <AiSetupGate><AiEditSheet scope={{ type: 'exam', examId: parseInt(examId), courseId: parseInt(courseId) }} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] end-4 z-30 gap-2 bg-background shadow-md" /></AiSetupGate>
       <ExamBuilder
         courseId={parseInt(courseId)}
         courseTitle={course.title}

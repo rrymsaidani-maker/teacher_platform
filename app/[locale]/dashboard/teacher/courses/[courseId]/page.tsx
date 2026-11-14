@@ -384,19 +384,19 @@ export default async function CourseManagementPage({ params, searchParams }: Pag
             <TabsList data-tour="course-tabs" className="bg-muted/50 p-1 inline-flex w-auto min-w-full sm:w-full">
               <TabsTrigger value="lessons" className="flex items-center gap-2 whitespace-nowrap">
                 <IconBook size={16} /> {t('tabs.lessons')}
-                {lessons.length > 0 && <span className="ml-0.5 text-xs text-muted-foreground">{lessons.length}</span>}
+                {lessons.length > 0 && <span className="ms-0.5 text-xs text-muted-foreground">{lessons.length}</span>}
               </TabsTrigger>
               <TabsTrigger value="exercises" className="flex items-center gap-2 whitespace-nowrap">
                 <IconTarget size={16} /> {t('tabs.exercises')}
-                {exercises.length > 0 && <span className="ml-0.5 text-xs text-muted-foreground">{exercises.length}</span>}
+                {exercises.length > 0 && <span className="ms-0.5 text-xs text-muted-foreground">{exercises.length}</span>}
               </TabsTrigger>
               <TabsTrigger value="exams" className="flex items-center gap-2 whitespace-nowrap">
                 <IconFileText size={16} /> {t('tabs.exams')}
-                {exams.length > 0 && <span className="ml-0.5 text-xs text-muted-foreground">{exams.length}</span>}
+                {exams.length > 0 && <span className="ms-0.5 text-xs text-muted-foreground">{exams.length}</span>}
               </TabsTrigger>
               <TabsTrigger value="students" className="flex items-center gap-2 whitespace-nowrap">
                 <IconUsers size={16} /> {t('tabs.students')}
-                {enrollments.length > 0 && <span className="ml-0.5 text-xs text-muted-foreground">{enrollments.length}</span>}
+                {enrollments.length > 0 && <span className="ms-0.5 text-xs text-muted-foreground">{enrollments.length}</span>}
               </TabsTrigger>
               <TabsTrigger value="certificates" className="flex items-center gap-2 whitespace-nowrap">
                 <IconCertificate size={16} /> {t('tabs.certificates')}
@@ -736,7 +736,7 @@ export default async function CourseManagementPage({ params, searchParams }: Pag
                           <TableHead className="px-4">{t('certificates.issued.table.student')}</TableHead>
                           <TableHead className="px-4">{t('certificates.issued.table.date')}</TableHead>
                           <TableHead className="px-4">{t('certificates.issued.table.code')}</TableHead>
-                          <TableHead className="px-4 text-right">{t('certificates.issued.table.actions')}</TableHead>
+                          <TableHead className="px-4 text-end">{t('certificates.issued.table.actions')}</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -760,7 +760,7 @@ export default async function CourseManagementPage({ params, searchParams }: Pag
                               <TableCell className="px-4 font-mono text-xs uppercase">
                                 {cert.verification_code}
                               </TableCell>
-                              <TableCell className="px-4 text-right">
+                              <TableCell className="px-4 text-end">
                                 <a href={cert.pdf_url} target="_blank" rel="noopener noreferrer">
                                   <Button variant="ghost" size="sm" aria-label={t('certificates.issued.view')}>
                                     <IconExternalLink className="h-4 w-4" />

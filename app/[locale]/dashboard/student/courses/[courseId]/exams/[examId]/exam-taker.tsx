@@ -174,7 +174,7 @@ export function ExamTaker({
           <p className="text-muted-foreground mb-8 text-lg">{t('noQuestionsDescription')}</p>
           <Link href={`/dashboard/student/courses/${courseId}/exams`}>
             <Button variant="outline" className="h-12 px-8 font-bold">
-              <IconChevronLeft className="mr-2 h-5 w-5" />
+              <IconChevronLeft className="me-2 h-5 w-5" />
               {t('returnToAssessments')}
             </Button>
           </Link>
@@ -239,7 +239,7 @@ export function ExamTaker({
                   {t('question', { number: currentQuestionIndex + 1 })}
                 </div>
 
-                <h2 className="text-2xl md:text-3xl font-black leading-tight text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl font-black leading-tight text-center md:text-start">
                   {currentQuestion.text}
                 </h2>
 

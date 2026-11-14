@@ -70,7 +70,7 @@ export function ConsentForm({ authorizationId, memberships, defaultTenantId }: C
                   aria-checked={selected}
                   onClick={() => setTenantId(m.tenantId)}
                   className={cn(
-                    "flex items-center justify-between gap-3 rounded-lg border px-3 py-2.5 text-left text-sm transition-colors",
+                    "flex items-center justify-between gap-3 rounded-lg border px-3 py-2.5 text-start text-sm transition-colors",
                     selected ? "border-primary bg-primary/5" : "hover:bg-muted/50",
                   )}
                 >

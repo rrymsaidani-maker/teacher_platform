@@ -88,7 +88,7 @@ export default async function PromptGradingPage({ params, searchParams }: PagePr
         }
       />
 
-      <section className="space-y-2 rounded-xl border-l-4 border-primary bg-card p-4">
+      <section className="space-y-2 rounded-xl border-s-4 border-primary bg-card p-4">
         {prompt.title && <h2 className="font-semibold">{prompt.title}</h2>}
         <CommunityMarkdown content={prompt.content} className="text-sm" collapsible />
       </section>

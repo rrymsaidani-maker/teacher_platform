@@ -85,7 +85,7 @@ export default async function TeacherCoursesPage() {
                                             <IconBook className="h-10 w-10 text-brand-text/40" />
                                         </div>
                                     )}
-                                    <div className="absolute top-2.5 right-2.5">
+                                    <div className="absolute top-2.5 end-2.5">
                                         <Badge
                                             variant={course.status === 'published' ? 'default' : 'secondary'}
                                             className={`text-[10px] ${course.status === 'published' ? 'bg-success text-success-foreground' : 'bg-background/80 backdrop-blur-sm'}`}

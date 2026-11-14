@@ -628,7 +628,7 @@ export default async function CourseDetailsPage(props: {
                                                         <BookOpen className="h-5 w-5 opacity-60" aria-hidden="true" />
                                                     )}
                                                 </div>
-                                                <span className="absolute left-1 top-1 rounded bg-background/85 px-1.5 py-[3px] text-[10px] font-bold leading-none tabular-nums text-foreground">
+                                                <span className="absolute start-1 top-1 rounded bg-background/85 px-1.5 py-[3px] text-[10px] font-bold leading-none tabular-nums text-foreground">
                                                     {index + 1}
                                                 </span>
                                             </div>
@@ -667,7 +667,7 @@ export default async function CourseDetailsPage(props: {
                                     <li key={`exercise-${exercise.id}`} className="flex items-start gap-4 px-4 py-3.5">
                                         <div className="relative flex aspect-video w-24 sm:w-28 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 text-brand-text">
                                             <Code2 className="h-6 w-6 opacity-70" aria-hidden="true" />
-                                            <span className="absolute left-1 top-1 rounded bg-background/85 px-1.5 py-[3px] text-[10px] font-bold leading-none text-foreground">
+                                            <span className="absolute start-1 top-1 rounded bg-background/85 px-1.5 py-[3px] text-[10px] font-bold leading-none text-foreground">
                                                 {t('sections.content.kind.exercise')}
                                             </span>
                                         </div>
@@ -689,7 +689,7 @@ export default async function CourseDetailsPage(props: {
                                             ) : (
                                                 <Award className="h-6 w-6 opacity-70" aria-hidden="true" />
                                             )}
-                                            <span className="absolute left-1 top-1 rounded bg-background/85 px-1.5 py-[3px] text-[10px] font-bold leading-none text-foreground">
+                                            <span className="absolute start-1 top-1 rounded bg-background/85 px-1.5 py-[3px] text-[10px] font-bold leading-none text-foreground">
                                                 {t('sections.content.kind.exam')}
                                             </span>
                                         </div>

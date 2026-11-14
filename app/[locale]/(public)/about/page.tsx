@@ -19,8 +19,8 @@ export default async function AboutPage() {
     return (
         <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-blue-500/30 overflow-hidden">
             {/* Subtle Background Glows */}
-            <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 end-0 w-[800px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 start-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none translate-y-1/2 -translate-x-1/2" />
 
             <main className="relative z-10">
                 {/* Hero Section */}
@@ -119,7 +119,7 @@ export default async function AboutPage() {
                 <section className="container mx-auto max-w-5xl px-4 md:px-6 py-20 border-t border-white/5">
                     <div className="bg-zinc-900/20 rounded-[2.5rem] border border-white/5 p-8 md:p-12 overflow-hidden relative">
                         {/* Decorative element */}
-                        <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
+                        <div className="absolute top-0 end-0 p-12 opacity-10 pointer-events-none">
                             <GraduationCap size={200} className="text-blue-500" />
                         </div>
 
@@ -164,7 +164,7 @@ export default async function AboutPage() {
                         <h2 className="text-4xl md:text-5xl font-bold mb-8 relative z-10">{t('cta.title')}</h2>
                         <Link href="/auth/sign-up" className="relative z-10">
                             <Button size="lg" className="h-14 px-10 bg-white text-black hover:bg-zinc-200 font-bold rounded-2xl text-lg transition-transform hover:scale-105">
-                                {t('cta.button')} <ArrowRight className="ml-2 w-5 h-5" />
+                                {t('cta.button')} <ArrowRight className="ms-2 w-5 h-5" />
                             </Button>
                         </Link>
                     </div>

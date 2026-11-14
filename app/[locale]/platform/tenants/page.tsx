@@ -157,12 +157,12 @@ export default async function TenantsPage({
                   <td className={TD} data-testid="tenant-billing-mode" data-mode={normalizeBillingMode(tenant.billing_mode)}>
                     <BillingModeBadge mode={tenant.billing_mode} />
                   </td>
-                  <td className={cn(TD, 'text-right tabular-nums')}>{tenant.students}</td>
-                  <td className={cn(TD, 'text-right tabular-nums')}>{tenant.courses}</td>
-                  <td className={cn(TD, 'text-right text-xs text-muted-foreground')}>
+                  <td className={cn(TD, 'text-end tabular-nums')}>{tenant.students}</td>
+                  <td className={cn(TD, 'text-end tabular-nums')}>{tenant.courses}</td>
+                  <td className={cn(TD, 'text-end text-xs text-muted-foreground')}>
                     <RelativeTime value={tenant.created_at} />
                   </td>
-                  <td className={cn(TD, 'text-right')}>
+                  <td className={cn(TD, 'text-end')}>
                     <TenantActionsMenu
                       tenantId={tenant.id}
                       tenantName={tenant.name}

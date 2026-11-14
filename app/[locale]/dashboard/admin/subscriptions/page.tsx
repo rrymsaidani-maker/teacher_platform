@@ -197,14 +197,14 @@ export default async function SubscriptionsPage({
           <CardContent className="p-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="relative flex-1 max-w-sm">
-                <IconSearch className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+                <IconSearch className="absolute start-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
                 <form method="get">
                   <Input
                     type="search"
                     name="search"
                     placeholder={t('filters.search')}
                     defaultValue={search}
-                    className="pl-9 h-8 text-sm"
+                    className="ps-9 h-8 text-sm"
                   />
                   {statusFilter !== 'all' && (
                     <input type="hidden" name="status" value={statusFilter} />

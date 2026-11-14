@@ -40,9 +40,9 @@ export default async function DashboardLayout({
                 <AppSidebar userRole={role} challengesEnabled={challengesEnabled} />
                 <SidebarInset>
                     <header className="flex h-16 min-w-0 shrink-0 items-center gap-2 border-b px-4">
-                        <SidebarTrigger className="-ml-1" />
-                        <Separator orientation="vertical" className="mr-2 h-4" />
-                        <div className="ml-auto flex min-w-0 items-center gap-4">
+                        <SidebarTrigger className="-ms-1" />
+                        <Separator orientation="vertical" className="me-2 h-4" />
+                        <div className="ms-auto flex min-w-0 items-center gap-4">
                             {/* #586: gated at `lg`, not `md`. The desktop sidebar
                                 arrives at `md` and takes 256px, which leaves the
                                 inset too narrow for these chips — the page ended up

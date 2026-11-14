@@ -331,7 +331,7 @@ function VerifyRow({ label, value }: { label: string; value: string }) {
     return (
         <div className="flex items-baseline justify-between gap-4">
             <span className="text-sm text-muted-foreground shrink-0">{label}</span>
-            <span className="text-sm font-medium text-foreground text-right">{value}</span>
+            <span className="text-sm font-medium text-foreground text-end">{value}</span>
         </div>
     )
 }

@@ -480,19 +480,19 @@ export default async function StudentBillingPage() {
                 <table className="min-w-[620px] w-full text-sm">
                   <thead className="bg-muted/20">
                     <tr className="border-b">
-                      <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      <th className="px-4 py-3 text-start text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                         {t('offline.table.product')}
                       </th>
-                      <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground hidden sm:table-cell">
+                      <th className="px-4 py-3 text-start text-[11px] font-semibold uppercase tracking-wider text-muted-foreground hidden sm:table-cell">
                         {t('offline.table.date')}
                       </th>
-                      <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      <th className="px-4 py-3 text-start text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                         {t('offline.table.status')}
                       </th>
-                      <th className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      <th className="px-4 py-3 text-end text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                         {t('offline.table.amount')}
                       </th>
-                      <th className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      <th className="px-4 py-3 text-end text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                         {t('offline.table.invoice')}
                       </th>
                     </tr>
@@ -516,12 +516,12 @@ export default async function StudentBillingPage() {
                               {req.status}
                             </Badge>
                           </td>
-                          <td className="px-4 py-3 text-right align-top font-medium tabular-nums">
+                          <td className="px-4 py-3 text-end align-top font-medium tabular-nums">
                             {req.payment_amount != null
                               ? formatCurrency(Number(req.payment_amount), req.payment_currency ?? 'USD')
                               : '—'}
                           </td>
-                          <td className="px-4 py-3 text-right align-top">
+                          <td className="px-4 py-3 text-end align-top">
                             {req.invoice_number ? (
                               <Link
                                 href={`/api/invoices/${req.invoice_number}`}

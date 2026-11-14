@@ -27,7 +27,7 @@ export function PreviewLessonSidebar({
   const t = useTranslations('components.lessonSidebar')
 
   return (
-    <aside className="h-full w-72 shrink-0 border-l bg-card/50 overflow-y-auto flex flex-col">
+    <aside className="h-full w-72 shrink-0 border-s bg-card/50 overflow-y-auto flex flex-col">
       {/* Course header */}
       <div className="sticky top-0 bg-card/80 backdrop-blur-sm border-b p-4 z-10">
         <Link

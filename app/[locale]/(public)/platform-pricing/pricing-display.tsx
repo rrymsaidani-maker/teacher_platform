@@ -92,8 +92,8 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
           backgroundSize: '64px 64px',
         }} />
         {/* Hero glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/8 blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 -translate-x-1/2 w-[300px] h-[300px] bg-violet-600/6 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/8 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 start-1/3 -translate-x-1/2 w-[300px] h-[300px] bg-violet-600/6 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-zinc-400 mb-8 backdrop-blur-sm">
@@ -186,7 +186,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
                 >
                   {/* Popular badge */}
                   {isPopular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+                    <div className="absolute -top-3.5 start-1/2 -translate-x-1/2 z-20">
                       <div className="bg-gradient-to-r from-blue-600 to-violet-600 text-white text-[10px] font-black px-5 py-1.5 rounded-full uppercase tracking-[0.15em] shadow-xl shadow-blue-600/25">
                         {t('card.mostPopular')}
                       </div>
@@ -204,7 +204,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
                         )} />
                         <h3 className="text-lg font-bold text-white">{planName(plan)}</h3>
                       </div>
-                      <p className="text-sm text-zinc-500 leading-relaxed pl-[22px]">
+                      <p className="text-sm text-zinc-500 leading-relaxed ps-[22px]">
                         {planDescription(plan)}
                       </p>
                     </div>
@@ -251,7 +251,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
                         )}
                       >
                         {plan.slug === 'free' ? t('card.startFree') : plan.slug === 'enterprise' ? t('card.contactSales') : t('card.getStarted')}
-                        <IconArrowRight className="w-4 h-4 ml-2" />
+                        <IconArrowRight className="w-4 h-4 ms-2" />
                       </Button>
                     </Link>
 
@@ -299,7 +299,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
                             )}>
                               {featureLabel(key)}
                               {typeof value === 'string' && value !== 'true' && value !== 'false' && (
-                                <span className="ml-1 text-xs text-zinc-500">({value})</span>
+                                <span className="ms-1 text-xs text-zinc-500">({value})</span>
                               )}
                             </span>
                           </div>
@@ -325,7 +325,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-zinc-800/80">
-                <th className="text-left py-4 px-6 text-zinc-500 font-medium w-[200px]">{t('compare.feature')}</th>
+                <th className="text-start py-4 px-6 text-zinc-500 font-medium w-[200px]">{t('compare.feature')}</th>
                 {plans.map((plan) => {
                   const accent = PLAN_ACCENTS[plan.slug] || PLAN_ACCENTS.free
                   return (
@@ -392,7 +392,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
       {/* === BOTTOM CTA === */}
       <section className="relative border-t border-zinc-800/60">
         {/* Subtle glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-violet-600/5 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 start-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-violet-600/5 blur-[150px] rounded-full pointer-events-none" />
 
         <div className="relative max-w-3xl mx-auto px-6 py-24 text-center">
           <div className="inline-flex items-center gap-2 mb-6">
@@ -408,7 +408,7 @@ export function PlatformPricingDisplay({ plans }: { plans: PlanData[] }) {
             <Link href="/create-school">
               <Button className="h-13 px-8 rounded-xl font-bold bg-white text-black hover:bg-zinc-100 transition-all duration-300 text-base">
                 Create Your School
-                <IconArrowRight className="w-4 h-4 ml-2" />
+                <IconArrowRight className="w-4 h-4 ms-2" />
               </Button>
             </Link>
             <Link href="/auth/login">

@@ -142,7 +142,7 @@ export default async function PlatformOverviewPage() {
                 {embedded(r.platform_plans)?.name ?? '—'} · {r.interval}
               </span>
               <span className="tabular-nums">{money(r.amount, r.currency)}</span>
-              <RelativeTime value={r.created_at} className="w-20 text-right text-muted-foreground tabular-nums" />
+              <RelativeTime value={r.created_at} className="w-20 text-end text-muted-foreground tabular-nums" />
             </li>
           ))}
           {pendingCount > (openRequests?.length ?? 0) && (
@@ -383,8 +383,8 @@ export default async function PlatformOverviewPage() {
                       <td className={TD}>
                         <StatusDot tone={tenantStatusTone(t.status)} label={t.status ?? 'unknown'} />
                       </td>
-                      <td className={cn(TD, 'text-right tabular-nums')}>{t.students}</td>
-                      <td className={cn(TD, 'text-right text-xs text-muted-foreground')}>
+                      <td className={cn(TD, 'text-end tabular-nums')}>{t.students}</td>
+                      <td className={cn(TD, 'text-end text-xs text-muted-foreground')}>
                         <RelativeTime value={t.created_at} />
                       </td>
                     </tr>
@@ -415,7 +415,7 @@ export default async function PlatformOverviewPage() {
                       <div className="h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
                         <div className="h-full rounded-full bg-primary" style={{ width: `${width}%` }} />
                       </div>
-                      <span className="w-16 text-right tabular-nums">
+                      <span className="w-16 text-end tabular-nums">
                         <span className="font-medium">{count}</span>{' '}
                         <span className="text-muted-foreground">{pct}%</span>
                       </span>

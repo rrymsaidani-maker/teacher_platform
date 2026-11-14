@@ -37,7 +37,7 @@ export default function Loading() {
       {/* StatStrip */}
       <div className="mb-8 grid overflow-hidden rounded-lg border sm:grid-cols-2 lg:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="space-y-2 border-b px-5 py-4 last:border-b-0 lg:border-b-0 lg:not-last:border-r">
+          <div key={i} className="space-y-2 border-b px-5 py-4 last:border-b-0 lg:border-b-0 lg:not-last:border-e">
             <Skeleton className="h-3 w-28" />
             <Skeleton className="h-7 w-10" />
             <Skeleton className="h-3 w-32" />
@@ -57,7 +57,7 @@ export default function Loading() {
               <Skeleton className="h-4 w-16" />
               <Skeleton className="h-4 w-20" />
               <Skeleton className="h-4 w-14" />
-              <Skeleton className="ml-auto h-4 w-20" />
+              <Skeleton className="ms-auto h-4 w-20" />
             </div>
           ))}
         </div>

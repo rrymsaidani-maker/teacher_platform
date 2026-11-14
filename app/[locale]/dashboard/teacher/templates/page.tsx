@@ -163,12 +163,12 @@ export default function PromptTemplatesPage() {
             {t('yourTemplatesDescription')}
           </CardDescription>
           <div className="relative mt-3">
-            <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+            <IconSearch className="absolute start-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
             <Input
               placeholder={t('searchPlaceholder')}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 h-8 max-w-sm text-sm"
+              className="ps-9 h-8 max-w-sm text-sm"
             />
           </div>
         </CardHeader>

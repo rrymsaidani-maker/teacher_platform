@@ -224,7 +224,7 @@ export function PlanPricesEditor({
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b text-left text-[11px] uppercase tracking-wider text-muted-foreground">
+                      <tr className="border-b text-start text-[11px] uppercase tracking-wider text-muted-foreground">
                         <th className="pb-2 font-medium">Provider</th>
                         <th className="pb-2 font-medium">Interval</th>
                         <th className="pb-2 font-medium">Price ID</th>
@@ -287,7 +287,7 @@ export function PlanPricesEditor({
                               data-testid="plan-price-active-toggle"
                             />
                           </td>
-                          <td className="py-2.5 text-right">
+                          <td className="py-2.5 text-end">
                             <Button
                               size="sm"
                               variant="ghost"

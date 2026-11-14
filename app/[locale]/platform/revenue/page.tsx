@@ -118,7 +118,7 @@ export default async function PlatformRevenuePage() {
                           style={{ width: `${Math.max(pct, m.fees > 0 ? 2 : 0)}%` }}
                         />
                       </div>
-                      <span className="w-20 text-right font-medium tabular-nums">{usd(m.fees)}</span>
+                      <span className="w-20 text-end font-medium tabular-nums">{usd(m.fees)}</span>
                     </li>
                   )
                 })}
@@ -146,9 +146,9 @@ export default async function PlatformRevenuePage() {
                     {byProvider.map((p) => (
                       <tr key={p.provider}>
                         <td className={TD}>{PROVIDER_LABEL[p.provider] ?? p.provider}</td>
-                        <td className={cn(TD, 'text-right tabular-nums')}>{usd(p.gmv)}</td>
-                        <td className={cn(TD, 'text-right font-medium tabular-nums')}>{usd(p.fees)}</td>
-                        <td className={cn(TD, 'text-right tabular-nums text-muted-foreground')}>{p.count}</td>
+                        <td className={cn(TD, 'text-end tabular-nums')}>{usd(p.gmv)}</td>
+                        <td className={cn(TD, 'text-end font-medium tabular-nums')}>{usd(p.fees)}</td>
+                        <td className={cn(TD, 'text-end tabular-nums text-muted-foreground')}>{p.count}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -198,9 +198,9 @@ export default async function PlatformRevenuePage() {
                       <td className={TD}>
                         <BillingModeBadge mode={normalizeBillingMode(t.billing_mode)} />
                       </td>
-                      <td className={cn(TD, 'text-right tabular-nums')}>{usd(t.gmv)}</td>
-                      <td className={cn(TD, 'text-right font-medium tabular-nums')}>{usd(t.fees)}</td>
-                      <td className={cn(TD, 'text-right tabular-nums text-muted-foreground')}>{t.count}</td>
+                      <td className={cn(TD, 'text-end tabular-nums')}>{usd(t.gmv)}</td>
+                      <td className={cn(TD, 'text-end font-medium tabular-nums')}>{usd(t.fees)}</td>
+                      <td className={cn(TD, 'text-end tabular-nums text-muted-foreground')}>{t.count}</td>
                     </tr>
                   ))}
                 </tbody>

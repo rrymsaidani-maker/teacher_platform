@@ -62,7 +62,7 @@ export function ModerationFlaggedContent({ flags }: { flags: Flag[] }) {
               variant="outline"
               onClick={() => handleReview(flag.id, 'reviewed')}
             >
-              <IconCheck size={14} className="mr-1" />
+              <IconCheck size={14} className="me-1" />
               {t('reviewFlag')}
             </Button>
             <Button
@@ -70,7 +70,7 @@ export function ModerationFlaggedContent({ flags }: { flags: Flag[] }) {
               variant="ghost"
               onClick={() => handleReview(flag.id, 'dismissed')}
             >
-              <IconX size={14} className="mr-1" />
+              <IconX size={14} className="me-1" />
               {t('dismissFlag')}
             </Button>
           </div>

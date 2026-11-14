@@ -389,7 +389,7 @@ export default async function TeacherDashboard() {
                           (activity.profiles?.full_name || '?').charAt(0).toUpperCase()
                         )}
                       </div>
-                      <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-success border-2 border-background" />
+                      <div className="absolute -bottom-0.5 -end-0.5 h-3 w-3 rounded-full bg-success border-2 border-background" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm leading-snug">
@@ -425,7 +425,7 @@ export default async function TeacherDashboard() {
                 </div>
                 <h4 className="text-sm font-semibold">{t('activity.growthTip')}</h4>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed pl-[38px]">
+              <p className="text-xs text-muted-foreground leading-relaxed ps-[38px]">
                 {t('activity.growthTipDesc')}
               </p>
             </div>

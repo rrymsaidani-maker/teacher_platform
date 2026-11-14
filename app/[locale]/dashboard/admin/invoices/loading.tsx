@@ -34,7 +34,7 @@ export default function Loading() {
                 <Skeleton className="h-4 w-16" />
                 <Skeleton className="h-5 w-16 rounded-full" />
                 <Skeleton className="hidden h-4 w-24 md:block" />
-                <Skeleton className="ml-auto h-4 w-20" />
+                <Skeleton className="ms-auto h-4 w-20" />
               </div>
             ))}
           </div>

@@ -97,7 +97,7 @@ export default async function EditLessonPage({ params, searchParams }: PageProps
         toursEnabled={areToursEnabled(uiState)}
       />
       {fromNewCourse && <FirstLessonHint courseTitle={course.title} />}
-      <AiSetupGate><AiEditSheet scope={{ type: 'lesson', lessonId: lesson.id, courseId: parseInt(courseId) }} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-30 gap-2 bg-background shadow-md" /></AiSetupGate>
+      <AiSetupGate><AiEditSheet scope={{ type: 'lesson', lessonId: lesson.id, courseId: parseInt(courseId) }} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] end-4 z-30 gap-2 bg-background shadow-md" /></AiSetupGate>
       <LessonEditor
         courseId={parseInt(courseId)}
         courseTitle={course.title}

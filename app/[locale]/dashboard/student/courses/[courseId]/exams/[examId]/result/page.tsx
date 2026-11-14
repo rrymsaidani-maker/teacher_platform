@@ -214,12 +214,12 @@ export default async function ExamResultPage({ params }: PageProps) {
 
             {/* Score Header */}
             <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-primary p-5 sm:p-8 md:p-12 text-primary-foreground shadow-2xl">
-                <div className="absolute top-0 right-0 p-4 sm:p-8 opacity-10">
+                <div className="absolute top-0 end-0 p-4 sm:p-8 opacity-10">
                     <IconTrophy className="h-24 w-24 sm:h-[180px] sm:w-[180px]" stroke={1} />
                 </div>
 
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
-                    <div className="space-y-3 sm:space-y-4 text-center md:text-left">
+                    <div className="space-y-3 sm:space-y-4 text-center md:text-start">
                         <Badge variant="outline" className="text-primary-foreground border-primary-foreground/30 bg-primary-foreground/10 px-3 py-1">
                             {t('completed')}
                         </Badge>
@@ -548,7 +548,7 @@ export default async function ExamResultPage({ params }: PageProps) {
                                                 )}
 
                                                 {isPendingReview && (
-                                                    <div className="bg-warning/10 border-l-4 border-warning p-3.5 sm:p-5 rounded-r-xl">
+                                                    <div className="bg-warning/10 border-s-4 border-warning p-3.5 sm:p-5 rounded-e-xl">
                                                         <div className="flex items-center gap-2 font-bold mb-2 text-warning">
                                                             <IconHourglass size={20} />
                                                             <span>{t('questionPending.title')}</span>
@@ -582,7 +582,7 @@ export default async function ExamResultPage({ params }: PageProps) {
                                         if (!feedbackText || stillPending) return null;
 
                                         return (
-                                            <div className="bg-brand-tint border-l-4 border-primary p-3.5 sm:p-5 rounded-r-xl">
+                                            <div className="bg-brand-tint border-s-4 border-primary p-3.5 sm:p-5 rounded-e-xl">
                                                 <div className="flex items-center gap-2 font-bold mb-2 text-brand-text">
                                                     {isTeacherFeedback ? <IconUserCheck size={20} /> : <IconMessageChatbot size={20} />}
                                                     <span>{isTeacherFeedback ? t('teacherFeedback') : t('aiFeedback')}</span>

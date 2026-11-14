@@ -226,7 +226,7 @@ export default async function TenantDetailPage({
                   {subscriptionPlan?.name ?? '—'}
                   {planMismatch && (
                     <span
-                      className="ml-2 inline-flex items-center gap-1 text-xs font-normal normal-case text-amber-700 dark:text-amber-400"
+                      className="ms-2 inline-flex items-center gap-1 text-xs font-normal normal-case text-amber-700 dark:text-amber-400"
                       data-testid="tenant-plan-mismatch"
                     >
                       <IconAlertTriangle className="size-3.5" aria-hidden="true" />
@@ -377,7 +377,7 @@ export default async function TenantDetailPage({
                         <td className={cn(TD, 'capitalize whitespace-nowrap')}>
                           {l.old_mode ?? '—'} → {l.new_mode}
                         </td>
-                        <td className={cn(TD, 'text-right tabular-nums')}>
+                        <td className={cn(TD, 'text-end tabular-nums')}>
                           {l.fee_percent_override != null ? `${Number(l.fee_percent_override)}%` : '—'}
                         </td>
                         <td className={cn(TD, 'text-xs whitespace-nowrap')}>
@@ -433,13 +433,13 @@ export default async function TenantDetailPage({
                         <td className={TD}>
                           <StatusDot tone={TX_TONE[t.status ?? ''] ?? 'muted'} label={t.status ?? 'unknown'} />
                         </td>
-                        <td className={cn(TD, 'text-right font-medium tabular-nums')}>
+                        <td className={cn(TD, 'text-end font-medium tabular-nums')}>
                           {formatMoney(t.amount, t.currency, locale)}
                         </td>
-                        <td className={cn(TD, 'text-right tabular-nums text-muted-foreground')}>
+                        <td className={cn(TD, 'text-end tabular-nums text-muted-foreground')}>
                           {t.refunded_amount ? formatMoney(t.refunded_amount, t.currency, locale) : '—'}
                         </td>
-                        <td className={cn(TD, 'text-right text-xs text-muted-foreground tabular-nums')}>
+                        <td className={cn(TD, 'text-end text-xs text-muted-foreground tabular-nums')}>
                           {format(new Date(t.transaction_date), 'MMM d, yyyy')}
                         </td>
                       </tr>

@@ -48,7 +48,7 @@ function ReportedAmountCell({
   testId: string
 }) {
   return (
-    <td className={cn(TD, 'text-right tabular-nums')} data-testid={testId}>
+    <td className={cn(TD, 'text-end tabular-nums')} data-testid={testId}>
       {amount > 0 ? (
         <span
           className={`inline-flex items-center justify-end gap-1 font-medium ${className}`}
@@ -251,13 +251,13 @@ export default async function PlatformPayoutsPage({
                           ? '—'
                           : Object.keys(r.byProvider).map((p) => PROVIDER_LABEL[p] ?? p).join(', ')}
                       </td>
-                      <td className={cn(TD, 'text-right tabular-nums')} data-testid="payout-collected-cell">
+                      <td className={cn(TD, 'text-end tabular-nums')} data-testid="payout-collected-cell">
                         {formatMoney(r.grossCollected, r.currency, locale)}
                       </td>
-                      <td className={cn(TD, 'text-right tabular-nums text-muted-foreground')}>
+                      <td className={cn(TD, 'text-end tabular-nums text-muted-foreground')}>
                         {r.schoolPercentage}%
                       </td>
-                      <td className={cn(TD, 'text-right tabular-nums text-muted-foreground')} data-testid="payout-paid-cell">
+                      <td className={cn(TD, 'text-end tabular-nums text-muted-foreground')} data-testid="payout-paid-cell">
                         {formatMoney(r.alreadyPaid, r.currency, locale)}
                       </td>
                       <ClawbackCell
@@ -268,7 +268,7 @@ export default async function PlatformPayoutsPage({
                       <td
                         className={cn(
                           TD,
-                          'text-right font-medium tabular-nums',
+                          'text-end font-medium tabular-nums',
                           r.netOwed > 0 && 'text-amber-700 dark:text-amber-400',
                         )}
                         data-testid="payout-owed-cell"
@@ -280,7 +280,7 @@ export default async function PlatformPayoutsPage({
                         formatted={formatMoney(r.overpaid, r.currency, locale)}
                         hint={t('table.overpaidHint')}
                       />
-                      <td className={cn(TD, 'text-right')}>
+                      <td className={cn(TD, 'text-end')}>
                         <MarkPayoutPaidDialog
                           tenantId={r.tenantId}
                           tenantName={r.tenantName}

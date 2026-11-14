@@ -27,7 +27,7 @@ export default function Loading() {
                 </div>
               </div>
               <div className="flex flex-col items-stretch sm:items-end gap-3 w-full sm:w-auto sm:min-w-[140px]">
-                <Skeleton className="h-9 w-20 sm:ml-auto" />
+                <Skeleton className="h-9 w-20 sm:ms-auto" />
                 <Skeleton className="h-10 w-full sm:w-36 rounded-md" />
               </div>
             </div>

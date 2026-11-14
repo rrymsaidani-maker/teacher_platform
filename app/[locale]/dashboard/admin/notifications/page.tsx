@@ -61,7 +61,7 @@ export default async function NotificationsPage() {
         <div className="flex gap-2">
           <Link href="/dashboard/admin/notifications/templates">
             <Button variant="outline">
-              <IconTemplate className="mr-2 h-4 w-4" />
+              <IconTemplate className="me-2 h-4 w-4" />
               {t('buttons.templates')}
             </Button>
           </Link>

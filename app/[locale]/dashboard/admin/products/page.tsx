@@ -231,7 +231,7 @@ export default async function AdminProductsPage() {
                     <div className="flex gap-2">
                       <Link href={`/dashboard/admin/products/${product.product_id}/edit`} className="flex-1">
                         <Button variant="outline" size="sm" className="w-full">
-                          <IconEdit className="mr-1 h-4 w-4" />
+                          <IconEdit className="me-1 h-4 w-4" />
                           {t('card.edit')}
                         </Button>
                       </Link>
@@ -258,7 +258,7 @@ export default async function AdminProductsPage() {
                   </p>
                   <Link href="/dashboard/admin/products/new">
                     <Button>
-                      <IconPlus className="mr-2 h-4 w-4" />
+                      <IconPlus className="me-2 h-4 w-4" />
                       {t('create')}
                     </Button>
                   </Link>

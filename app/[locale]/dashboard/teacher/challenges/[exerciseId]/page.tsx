@@ -45,7 +45,7 @@ export default async function StaffChallengeDetailPage({ params }: PageProps) {
                 <Badge variant={l.active ? 'default' : 'secondary'}>{l.active ? t('linkActive') : t('linkRevoked')}</Badge>
                 <a className="underline underline-offset-2" href={l.path} target="_blank" rel="noreferrer">{l.path}</a>
                 <span className="text-muted-foreground">{fmt.format(new Date(l.createdAt))} · {t('linkBy', { name: l.creatorName ?? t('unknownCreator') })}</span>
-                <span className="ml-auto tabular-nums">{t('linkPlays', { count: l.plays })}</span>
+                <span className="ms-auto tabular-nums">{t('linkPlays', { count: l.plays })}</span>
               </li>
             ))}
           </ul>

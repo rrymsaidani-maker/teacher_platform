@@ -23,7 +23,7 @@ export default async function NotFound() {
       {/* Soft brand glow behind the numerals */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[38%] h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2"
+        className="pointer-events-none absolute start-1/2 top-[38%] h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2"
         style={{
           background:
             'radial-gradient(circle, color-mix(in oklch, var(--primary) 16%, transparent), transparent 68%)',

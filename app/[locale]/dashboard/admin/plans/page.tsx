@@ -212,7 +212,7 @@ export default async function AdminPlansPage() {
                     {/* Actions */}
                     <Link href={`/dashboard/admin/plans/${plan.plan_id}/edit`} className="block">
                       <Button variant="outline" size="sm" className="w-full">
-                        <IconEdit className="mr-1 h-4 w-4" />
+                        <IconEdit className="me-1 h-4 w-4" />
                         {t('card.edit')}
                       </Button>
                     </Link>
@@ -233,7 +233,7 @@ export default async function AdminPlansPage() {
                   </p>
                   <Link href="/dashboard/admin/plans/new">
                     <Button>
-                      <IconPlus className="mr-2 h-4 w-4" />
+                      <IconPlus className="me-2 h-4 w-4" />
                       {t('create')}
                     </Button>
                   </Link>

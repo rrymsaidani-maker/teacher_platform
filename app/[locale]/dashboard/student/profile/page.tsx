@@ -535,7 +535,7 @@ export default async function ProfilePage() {
                             <CardContent className="p-0">
                                 {transactions.length > 0 ? (
                                     <div className="overflow-x-auto">
-                                        <table className="w-full text-left border-collapse">
+                                        <table className="w-full text-start border-collapse">
                                             <thead>
                                                 <tr className="bg-muted/30">
                                                     <th className="px-6 py-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">{t('id')}</th>

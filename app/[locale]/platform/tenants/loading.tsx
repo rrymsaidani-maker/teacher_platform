@@ -25,7 +25,7 @@ export default function Loading() {
             <Skeleton className="h-4 w-24 font-mono" />
             <Skeleton className="h-5 w-16 rounded-full" />
             <Skeleton className="h-5 w-14 rounded-full" />
-            <Skeleton className="h-4 w-8 ml-auto" />
+            <Skeleton className="h-4 w-8 ms-auto" />
             <Skeleton className="h-4 w-8" />
             <Skeleton className="h-4 w-20" />
             <Skeleton className="h-8 w-8 rounded-md" />

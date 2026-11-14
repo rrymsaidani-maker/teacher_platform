@@ -6,7 +6,7 @@ export default function Loading() {
   return (
     <PageShell variant="reading" skeleton>
       <PageHeaderSkeleton back />
-      <div className="space-y-2 rounded-xl border-l-4 border-primary bg-card p-4">
+      <div className="space-y-2 rounded-xl border-s-4 border-primary bg-card p-4">
         <Skeleton className="h-6 w-48" />
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />

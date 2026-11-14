@@ -404,7 +404,7 @@ export function LessonNavigation({
           <AlertDialogAction onClick={handleUncomplete} disabled={loading}>
             {loading ? (
               <>
-                <IconLoader2 className="w-4 h-4 mr-2 motion-safe:animate-spin" />
+                <IconLoader2 className="w-4 h-4 me-2 motion-safe:animate-spin" />
                 {t('uncompleteConfirming')}
               </>
             ) : (

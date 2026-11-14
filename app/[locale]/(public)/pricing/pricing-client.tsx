@@ -211,7 +211,7 @@ export default function PricingClient({
                                     <ul className="space-y-4 m-0 p-0">
                                         {parsedFeatures?.map((feature: string, i: number) => (
                                             <li key={i} className="flex items-center text-foreground list-none group/item">
-                                                <div className="h-6 w-6 bg-brand-tint rounded-full flex items-center justify-center mr-4 flex-shrink-0 border border-primary/25 group-hover/item:bg-primary/20 transition-colors">
+                                                <div className="h-6 w-6 bg-brand-tint rounded-full flex items-center justify-center me-4 flex-shrink-0 border border-primary/25 group-hover/item:bg-primary/20 transition-colors">
                                                     <Check className="h-3.5 w-3.5 text-brand-text" />
                                                 </div>
                                                 <span className="text-sm font-medium leading-none text-foreground">

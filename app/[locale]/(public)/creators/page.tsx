@@ -34,8 +34,8 @@ export default async function CreatorsPage() {
         <div className="flex flex-col min-h-screen bg-[#0A0A0A] overflow-hidden selection:bg-blue-500/30">
             {/* Background Glows */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-                <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] end-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[20%] start-[-10%] w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px]" />
             </div>
 
             {/* Hero Section */}
@@ -59,7 +59,7 @@ export default async function CreatorsPage() {
                             <Link href="/auth/sign-up">
                                 <Button size="lg" className="h-14 px-10 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-lg shadow-[0_0_25px_rgba(37,99,235,0.25)] hover:shadow-[0_0_35px_rgba(37,99,235,0.4)] transition-all active:scale-95">
                                     {t('ctaHero')}
-                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                    <ArrowRight className="ms-2 w-5 h-5" />
                                 </Button>
                             </Link>
                             <a href="#features">
@@ -221,7 +221,7 @@ export default async function CreatorsPage() {
                         <table className="w-full">
                             <thead>
                                 <tr className="border-b border-zinc-800">
-                                    <th className="text-left py-4 px-4 text-sm font-medium text-zinc-500">{t('comparison.feature')}</th>
+                                    <th className="text-start py-4 px-4 text-sm font-medium text-zinc-500">{t('comparison.feature')}</th>
                                     <th className="text-center py-4 px-4">
                                         <span className="text-sm font-bold text-blue-400">{APP_NAME}</span>
                                     </th>
@@ -357,7 +357,7 @@ export default async function CreatorsPage() {
 
                         {/* Pro - Highlighted */}
                         <div className="bg-zinc-900/50 border-2 border-blue-600/50 p-8 rounded-3xl flex flex-col relative">
-                            <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white border-0 rounded-full px-4 py-1 text-xs">
+                            <Badge className="absolute -top-3 start-1/2 -translate-x-1/2 bg-blue-600 text-white border-0 rounded-full px-4 py-1 text-xs">
                                 {t('pricing.popular')}
                             </Badge>
                             <h3 className="text-lg font-bold text-white mb-2">{t('pricing.pro.name')}</h3>
@@ -445,8 +445,8 @@ export default async function CreatorsPage() {
             <section className="py-24 relative overflow-hidden">
                 <div className="container mx-auto px-4 md:px-6 relative z-10">
                     <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-[2.5rem] p-12 md:p-20 text-center relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-transform duration-1000 group-hover:scale-110" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+                        <div className="absolute top-0 end-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-transform duration-1000 group-hover:scale-110" />
+                        <div className="absolute bottom-0 start-0 w-64 h-64 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
 
                         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
                             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
@@ -458,7 +458,7 @@ export default async function CreatorsPage() {
                             <Link href="/auth/sign-up">
                                 <Button size="lg" className="h-14 px-10 bg-white text-blue-600 hover:bg-blue-50 font-bold rounded-xl text-lg transition-all active:scale-95 shadow-xl shadow-black/10">
                                     {t('cta.button')}
-                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                    <ArrowRight className="ms-2 w-5 h-5" />
                                 </Button>
                             </Link>
                         </div>

@@ -42,7 +42,7 @@ export default async function DeleteAccountPage({
 
       <section className="mt-10 space-y-3">
         <h2 className="text-lg font-semibold">{t('stepsTitle')}</h2>
-        <ol className="list-decimal space-y-2 pl-5 text-muted-foreground">
+        <ol className="list-decimal space-y-2 ps-5 text-muted-foreground">
           <li>{t('steps.signIn')}</li>
           <li>{t('steps.open')}</li>
           <li>{t('steps.confirm')}</li>
@@ -60,7 +60,7 @@ export default async function DeleteAccountPage({
 
       <section className="mt-10 space-y-3">
         <h2 className="text-lg font-semibold">{t('keptTitle')}</h2>
-        <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+        <ul className="list-disc space-y-2 ps-5 text-muted-foreground">
           <li>{t('kept.payments')}</li>
           <li>{t('kept.content')}</li>
         </ul>
@@ -68,7 +68,7 @@ export default async function DeleteAccountPage({
 
       <section className="mt-10 space-y-3">
         <h2 className="text-lg font-semibold">{t('beforeTitle')}</h2>
-        <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+        <ul className="list-disc space-y-2 ps-5 text-muted-foreground">
           <li>{t('before.subscription')}</li>
           <li>{t('before.admin')}</li>
         </ul>

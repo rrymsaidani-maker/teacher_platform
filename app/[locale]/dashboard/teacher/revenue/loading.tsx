@@ -51,14 +51,14 @@ export default function Loading() {
           <div className="flex items-center gap-4 border-b px-4 py-3">
             <Skeleton className="h-3 w-20" />
             <Skeleton className="h-3 w-24" />
-            <Skeleton className="ml-auto h-3 w-16" />
+            <Skeleton className="ms-auto h-3 w-16" />
             <Skeleton className="h-3 w-16" />
           </div>
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="flex items-center gap-4 border-b px-4 py-3 last:border-0">
               <Skeleton className="h-4 w-24" />
               <Skeleton className="h-4 w-28" />
-              <Skeleton className="ml-auto h-4 w-16" />
+              <Skeleton className="ms-auto h-4 w-16" />
               <Skeleton className="h-5 w-16 rounded-full" />
             </div>
           ))}

@@ -313,7 +313,7 @@
 .prose th, .prose td {
   border: 1px solid var(--border);
   padding: 0.5rem 0.75rem;
-  text-align: left;
+  text-align: start;
 }
 .prose th {
   background: var(--muted);
@@ -332,4 +332,25 @@
 }
 :lang(ar) {
   font-family: var(--font-arabic), sans-serif;
+}
+/* RTL: mirror directional arrows and chevrons so they point the right way */
+[dir="rtl"] .icon-tabler-chevron-right,
+[dir="rtl"] .icon-tabler-chevron-left,
+[dir="rtl"] .icon-tabler-arrow-right,
+[dir="rtl"] .icon-tabler-arrow-left,
+[dir="rtl"] .icon-tabler-arrow-narrow-right,
+[dir="rtl"] .icon-tabler-arrow-narrow-left,
+[dir="rtl"] .icon-tabler-chevrons-right,
+[dir="rtl"] .icon-tabler-chevrons-left,
+[dir="rtl"] .icon-tabler-arrow-big-right,
+[dir="rtl"] .icon-tabler-arrow-big-left,
+[dir="rtl"] .icon-tabler-arrow-forward,
+[dir="rtl"] .icon-tabler-arrow-back,
+[dir="rtl"] .lucide-chevron-right,
+[dir="rtl"] .lucide-chevron-left,
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-chevrons-right,
+[dir="rtl"] .lucide-chevrons-left {
+  transform: scaleX(-1);
 }

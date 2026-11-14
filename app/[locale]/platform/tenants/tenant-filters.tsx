@@ -88,14 +88,14 @@ export function TenantFilters({ q, plan, status, mode }: { q?: string; plan?: st
         <label className="relative">
           <span className="sr-only">Search schools by name</span>
           <IconSearch
-            className="pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2 text-muted-foreground"
+            className="pointer-events-none absolute top-1/2 start-2 size-3.5 -translate-y-1/2 text-muted-foreground"
             aria-hidden="true"
           />
           <Input
             name="q"
             defaultValue={q}
             placeholder={tr('tenants.searchByName')}
-            className="w-56 pl-7"
+            className="w-56 ps-7"
             data-testid="tenants-search"
           />
         </label>
@@ -154,7 +154,7 @@ export function TenantFilters({ q, plan, status, mode }: { q?: string; plan?: st
               key={f.key}
               href={f.href}
               className={cn(
-                'inline-flex items-center gap-1 rounded-full border border-border bg-muted/40 py-0.5 pr-1.5 pl-2 hover:bg-muted',
+                'inline-flex items-center gap-1 rounded-full border border-border bg-muted/40 py-0.5 pe-1.5 ps-2 hover:bg-muted',
                 f.capitalize && 'capitalize',
               )}
               title={tr('tenants.removeFilter')}
@@ -163,7 +163,7 @@ export function TenantFilters({ q, plan, status, mode }: { q?: string; plan?: st
               <IconX className="size-3 text-muted-foreground" aria-hidden="true" />
             </Link>
           ))}
-          <Link href={pathname} className="ml-1 text-primary hover:underline underline-offset-4" data-testid="tenants-clear-filters">
+          <Link href={pathname} className="ms-1 text-primary hover:underline underline-offset-4" data-testid="tenants-clear-filters">
             Clear all
           </Link>
         </div>

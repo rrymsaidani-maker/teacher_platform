@@ -117,7 +117,7 @@ export default async function AdminCommunityPage({ searchParams }: PageProps) {
                   <IconFlag className="h-4 w-4" />
                   {t('moderation.title')}
                   {(flaggedCount ?? 0) > 0 && (
-                    <Badge variant="destructive" className="ml-1 h-5 min-w-5 px-1.5">
+                    <Badge variant="destructive" className="ms-1 h-5 min-w-5 px-1.5">
                       {flaggedCount}
                     </Badge>
                   )}

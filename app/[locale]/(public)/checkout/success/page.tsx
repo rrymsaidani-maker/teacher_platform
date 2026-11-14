@@ -125,7 +125,7 @@ export default async function CheckoutSuccessPage({ searchParams }: CheckoutSucc
             <h1 className="text-2xl font-semibold tracking-tight">{t('paymentSuccessful')}</h1>
             <p className="text-sm leading-relaxed text-muted-foreground">{t('receiptSubtitle')}</p>
           </div>
-          <div className="w-full rounded-lg border bg-muted/30 p-4 text-left sm:p-5">
+          <div className="w-full rounded-lg border bg-muted/30 p-4 text-start sm:p-5">
             <h2 className="mb-4 text-sm font-semibold">{t('orderSummary')}</h2>
             <dl className="space-y-3 text-sm">
               <ReceiptRow label={t('itemLabel')} value={purchaseName} />
@@ -164,7 +164,7 @@ function ReceiptRow({ label, value, strong = false, mono = false }: { label: str
   return (
     <div className="flex items-start justify-between gap-4">
       <dt className="shrink-0 text-muted-foreground">{label}</dt>
-      <dd className={`min-w-0 max-w-[65%] text-right [overflow-wrap:anywhere] ${strong ? 'font-semibold text-foreground' : 'font-medium'} ${mono ? 'font-mono text-xs' : ''}`}>{value}</dd>
+      <dd className={`min-w-0 max-w-[65%] text-end [overflow-wrap:anywhere] ${strong ? 'font-semibold text-foreground' : 'font-medium'} ${mono ? 'font-mono text-xs' : ''}`}>{value}</dd>
     </div>
   )
 }

@@ -40,7 +40,7 @@ export default async function Loading() {
             </div>
           </div>
         </div>
-        <aside className="hidden h-full w-72 shrink-0 flex-col border-l bg-card/50 md:flex">
+        <aside className="hidden h-full w-72 shrink-0 flex-col border-s bg-card/50 md:flex">
           <div className="space-y-3 border-b p-4">
             <Skeleton className="h-3 w-24" />
             <Skeleton className="h-4 w-4/5" />
