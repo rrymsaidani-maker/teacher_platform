@@ -12,6 +12,7 @@ import {
   useContext,
   useState,
 } from "react";
+import { useTranslations } from 'next-intl';
 
 interface EnvironmentVariablesContextType {
   showValues: boolean;
@@ -95,6 +96,7 @@ export const EnvironmentVariablesToggle = ({
   className,
   ...props
 }: EnvironmentVariablesToggleProps) => {
+  const tr = useTranslations('aiElements');
   const { showValues, setShowValues } = useContext(EnvironmentVariablesContext);
 
   return (
@@ -103,7 +105,7 @@ export const EnvironmentVariablesToggle = ({
         {showValues ? <EyeIcon size={14} /> : <EyeOffIcon size={14} />}
       </span>
       <Switch
-        aria-label="Toggle value visibility"
+        aria-label={tr('toggleValueVisibility')}
         checked={showValues}
         onCheckedChange={setShowValues}
         {...props}

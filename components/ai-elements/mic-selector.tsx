@@ -26,6 +26,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useTranslations } from 'next-intl';
 
 const deviceIdRegex = /\(([\da-fA-F]{4}:[\da-fA-F]{4})\)$/;
 
@@ -168,9 +169,9 @@ export type MicSelectorInputProps = ComponentProps<typeof CommandInput> & {
   onValueChange?: (value: string) => void;
 };
 
-export const MicSelectorInput = ({ ...props }: MicSelectorInputProps) => (
-  <CommandInput placeholder="Search microphones..." {...props} />
-);
+export const MicSelectorInput = ({ ...props }: MicSelectorInputProps) => { const tr = useTranslations('aiElements'); return (
+  <CommandInput placeholder={tr('searchMicrophones')} {...props} />
+); };
 
 export type MicSelectorListProps = Omit<
   ComponentProps<typeof CommandList>,

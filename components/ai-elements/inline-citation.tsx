@@ -22,6 +22,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useTranslations } from 'next-intl';
 
 export type InlineCitationProps = ComponentProps<"span">;
 
@@ -183,6 +184,7 @@ export const InlineCitationCarouselPrev = ({
   className,
   ...props
 }: InlineCitationCarouselPrevProps) => {
+  const tr = useTranslations('aiElements');
   const api = useCarouselApi();
 
   const handleClick = useCallback(() => {
@@ -193,7 +195,7 @@ export const InlineCitationCarouselPrev = ({
 
   return (
     <button
-      aria-label="Previous"
+      aria-label={tr('previous')}
       className={cn("shrink-0", className)}
       onClick={handleClick}
       type="button"
@@ -210,6 +212,7 @@ export const InlineCitationCarouselNext = ({
   className,
   ...props
 }: InlineCitationCarouselNextProps) => {
+  const tr = useTranslations('aiElements');
   const api = useCarouselApi();
 
   const handleClick = useCallback(() => {
@@ -220,7 +223,7 @@ export const InlineCitationCarouselNext = ({
 
   return (
     <button
-      aria-label="Next"
+      aria-label={tr('next')}
       className={cn("shrink-0", className)}
       onClick={handleClick}
       type="button"

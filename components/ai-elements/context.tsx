@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import type { LanguageModelUsage } from "ai";
 import { type ComponentProps, createContext, useContext } from "react";
 import { getUsage } from "tokenlens";
+import { useTranslations } from 'next-intl';
 
 const PERCENT_MAX = 100;
 const ICON_RADIUS = 10;
@@ -62,6 +63,7 @@ export const Context = ({
 );
 
 const ContextIcon = () => {
+  const tr = useTranslations('aiElements');
   const { usedTokens, maxTokens } = useContextValue();
   const circumference = 2 * Math.PI * ICON_RADIUS;
   const usedPercent = usedTokens / maxTokens;
@@ -69,7 +71,7 @@ const ContextIcon = () => {
 
   return (
     <svg
-      aria-label="Model context usage"
+      aria-label={tr('modelContextUsage')}
       height="20"
       role="img"
       style={{ color: "currentcolor" }}

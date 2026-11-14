@@ -21,6 +21,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import type { ComponentProps, HTMLAttributes, ReactElement } from "react";
 import { createContext, memo, useContext, useEffect, useState } from "react";
 import { Streamdown } from "streamdown";
+import { useTranslations } from 'next-intl';
 
 export type MessageProps = HTMLAttributes<HTMLDivElement> & {
   from: UIMessage["role"];
@@ -241,11 +242,12 @@ export const MessageBranchPrevious = ({
   children,
   ...props
 }: MessageBranchPreviousProps) => {
+  const tr = useTranslations('aiElements');
   const { goToPrevious, totalBranches } = useMessageBranch();
 
   return (
     <Button
-      aria-label="Previous branch"
+      aria-label={tr('previousBranch')}
       disabled={totalBranches <= 1}
       onClick={goToPrevious}
       size="icon-sm"
@@ -264,11 +266,12 @@ export const MessageBranchNext = ({
   children,
   ...props
 }: MessageBranchNextProps) => {
+  const tr = useTranslations('aiElements');
   const { goToNext, totalBranches } = useMessageBranch();
 
   return (
     <Button
-      aria-label="Next branch"
+      aria-label={tr('nextBranch')}
       disabled={totalBranches <= 1}
       onClick={goToNext}
       size="icon-sm"

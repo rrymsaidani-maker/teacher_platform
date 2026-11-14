@@ -64,6 +64,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useTranslations } from 'next-intl';
 
 // ============================================================================
 // Provider Context & Types
@@ -362,6 +363,7 @@ export const PromptInput = ({
   children,
   ...props
 }: PromptInputProps) => {
+  const tr = useTranslations('aiElements');
   // Try to use a provider controller if present
   const controller = useOptionalPromptInputController();
   const usingProvider = !!controller;
@@ -756,12 +758,12 @@ export const PromptInput = ({
     <>
       <input
         accept={accept}
-        aria-label="Upload files"
+        aria-label={tr('uploadFiles')}
         className="hidden"
         multiple={multiple}
         onChange={handleChange}
         ref={inputRef}
-        title="Upload files"
+        title={tr('uploadFiles')}
         type="file"
       />
       <form
